@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : pages/mod.xml
+    Description:
+        Description of all configuration options for Pages Module
+-->
+
+<config>
+    <params>
+        <param name="page_id" type="selectbox" label="Page" helper="getPages" module="pages" />
+        <param name="mod" type="selectbox" label="Module" helper="getModules" module="pages" />
+        <param name="action" type="selectbox" label="Action" values="getLoginForm,getRegisterForm,getShoppingCart,getAccountSummaryHtml,getProfileHtml,getAllHtml,getOrdersList,getDownloadsList" />
+        <param name="showFor" type="selectbox" label="Visibility" values="guest,all,logged" />
+        <param name="test" type="checkbox" values="1" default="0" label="Use this page" />
+    </params>
+</config>

@@ -1,0 +1,176 @@
+<?php
+
+/**
+ * Backup Module for Supsystic Backup plugin
+ * @package SupsysticBackup\Modules\Backup
+ * @version 2.0
+ */
+class backupBup extends moduleBup {
+
+	/**
+	 * Path to libraries
+	 * @var string
+	 */
+	private $_librariesPath = 'classes';
+
+	/**
+	 * Libraries list
+	 * @var array
+	 */
+	private $_libraries = array(
+
+        /* uses for creating archives */
+		'zip' => array(
+            'filename'  => 'Zip.php',
+            'classname' => 'Zip',
+        ),
+
+        /* uses for unpacking archives */
+        'pcl' => array(
+            'filename'  => 'pclzip.lib.php',
+            'classname' => 'PclZip',
+        ),
+	);
+
+	/**
+	 * Menu tab configuration
+	 * @var array
+	 */
+	private $tab = array(
+		'key'    => 'bupStorageOptions',
+		'title'  => 'Backups',
+		'action' => 'indexAction',
+	);
+
+	/**
+	 * Plugin initialization
+	 */
+	public function init() {
+		parent::init();
+
+        /* Register tab */
+		dispatcherBup::addFilter('adminOptionsTabs', array($this, 'registerModuleTab'));
+
+        /* Load assets */
+        $this->loadModuleScripts();
+
+        $this->loadLibrary('pcl');
+
+		/* Force run download action if $_GET param setted */
+		if (isset($_GET['download']) && !empty($_GET['download'])) {
+			$this->run('downloadAction');
+		}
+	}
+
+	/**
+	 * Loading dependencies and module classes
+     * @param string $handle
+	 */
+	public function loadLibrary($handle)
+    {
+        if (isset($this->_libraries[$handle])) {
+            $library = $this->_libraries[$handle];
+
+            if ('pcl' === strtolower($handle)) {
+                $this->loadPcl();
+                return;
+            }
+
+            if (!class_exists($library['classname'])) {
+                require_once realpath($this->getModDir()) . '/classes/' . $library['filename'];
+            }
+        }
+	}
+
+    protected function loadPcl()
+    {
+        if (is_file($file = ABSPATH . 'wp-admin/includes/class-pclzip.php')) {
+            require_once $file;
+            return;
+        }
+
+        require_once realpath($this->getModDir()) . '/classes/pclzip.lib.php';
+    }
+
+	/**
+	 * Load javascript & css files
+	 */
+	public function loadModuleScripts() {
+		if (is_admin() && frameBup::_()->isPluginAdminPage()) {
+			frameBup::_()->addScript('adminBackupOptionsV2', $this->getModPath() . 'js/admin.backup.v2.js');
+		}
+	}
+
+	/**
+	 * Add tab to the menu
+	 */
+	public function registerModuleTab($tabs) {
+		$tabs[$this->tab['key']] = array(
+			'title'   => $this->tab['title'],
+			'content' => $this->run($this->tab['action']),
+            'faIcon' => 'fa-database',
+		);
+
+
+		return $tabs;
+	}
+
+    /**
+     * Run controller's action
+     * @param string $action
+     * @return mixed
+     */
+    public function run($action) {
+        $controller = $this->getController();
+        if(method_exists($controller, $action)) {
+            return $controller->{$action}();
+        }
+    }
+
+    /**
+     * Returns path to the temporary folder.
+     *
+     * @return string
+     */
+    public function getWarehouseTmp()
+    {
+		return frameBup::_()->getModule('warehouse')->getTemporaryPath();
+    }
+
+	/**
+	* Disallows to do new backups while backup is doing now.
+	*/
+	public function lock()
+	{
+		if (!defined('BUP_LOCK_FIELD')) {
+			return;
+		}
+
+		update_option(BUP_LOCK_FIELD, 1);
+	}
+
+	/**
+	* Allows to do backups.
+	*/
+	public function unlock()
+	{
+		if (!defined('BUP_LOCK_FIELD')) {
+			return;
+		}
+
+		update_option(BUP_LOCK_FIELD, 0);
+	}
+
+	public function isLocked()
+	{
+		if (!defined('BUP_LOCK_FIELD')) {
+			return false;
+		}
+
+		if (get_option(BUP_LOCK_FIELD) == 0) {
+			return false;
+		}
+
+		return true;
+	}
+}

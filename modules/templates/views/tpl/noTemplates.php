@@ -1,0 +1,1 @@
+<?php langBup::_e('No Templates were found')?>
