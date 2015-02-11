@@ -63,20 +63,20 @@ jQuery(document).ready(function($) {
 
 	// Delete
 	j('.bupDelete').on('click', function() {
-		var filename = j(this).attr('data-filename'),
-			id       = j(this).attr('data-id');
-
 		if (confirm('Are you sure?')) {
+			var filename = j(this).attr('data-filename'),
+				id       = j(this).attr('data-id');
 			BackupModule.remove(id, filename, this);
 		}
 	});
 
 	// Restore
 	j('.bupRestore').on('click', function() {
-		var filename = j(this).attr('data-filename'),
-			id       = j(this).attr('data-id');
-
-		BackupModule.restore(id, filename);
+		if (confirm('Are you sure?')) {
+			var filename = j(this).attr('data-filename'),
+					id   = j(this).attr('data-id');
+			BackupModule.restore(id, filename);
+		}
 	});
 
 	// Create
@@ -174,7 +174,11 @@ var BackupModule = {
 			onSuccess: function(response) {
 
                 if (response.data.length === 0) {
-                    progress.hide();
+					jQuery('input[name="backupnow"]').val('Start Backup');
+					progress.hide();
+					jQuery('#BUP_SHOW_LOG').hide();
+					jQuery('#bupInfo').show();
+					jQuery('#bupLogText').html('Log is clear.');
                     return;
                 }
 
@@ -327,7 +331,6 @@ function sendCompleteRequest(progress) {
 			jQuery('#BUP_SHOW_LOG').hide();
 			jQuery('#bupInfo').show();
 			jQuery('#bupLogText').html('Log is clear.');
-            //console.log(r);
         }
     });
 }

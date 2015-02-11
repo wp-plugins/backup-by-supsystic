@@ -103,8 +103,8 @@ jQuery(document).ready(function($){
 	});
 	bupInitCustomCheckRadio();
 	bupInitStickyItem();
-	var $destinationForm = $('input[name=dest_opt]');
 
+	var $destinationForm = $('input[name=dest_opt]');
 	$destinationForm.on('click', function ($this) {
 		var proVersion = jQuery($this.currentTarget).closest('div.bupMargDest').find('span.bupAIP').html() ? false : true;
 		var backupPlace = $this.currentTarget.attributes.value.value;
@@ -118,6 +118,11 @@ jQuery(document).ready(function($){
 			jQuery('#bupMainOption').hide('slow');
 		}
 	});
+
+	var $backupDest = $('input[name=backupDest]').val();
+	if($backupDest) {
+		$('.bupMargDest input[value=' + $backupDest + ']').next().click();
+	}
 
     var changeHiddenField = (function (checkbox, field) {
         jQuery(checkbox).on('change', function () {

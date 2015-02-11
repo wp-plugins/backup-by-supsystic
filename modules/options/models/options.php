@@ -4,7 +4,7 @@ class optionsModelBup extends modelBup {
 
 
 	public function saveGroup($d = array()) {
-		$clearArr = array('opt_values' => array('full' => 0, 'plugins' => 0, 'themes' =>0 , 'uploads' => 0, 'database' => 0, 'any_directories' => 0, 'safe_update' => 0, 'force_update' => 0));
+		$clearArr = array('opt_values' => array('full' => 0, 'plugins' => 0, 'themes' =>0 , 'uploads' => 0, 'database' => 0, 'any_directories' => 0, 'safe_update' => 0, 'force_update' => 0, 'wp_core' => 0));
 
 		if(isset($d['opt_values']) && is_array($d['opt_values']) && !empty($d['opt_values'])) {
 
@@ -159,6 +159,32 @@ class optionsModelBup extends modelBup {
 					$this->_allOptions[$i]['cat_id'] = 6;
 					$this->_allOptions[$i]['cat_label'] = 'Other';
 				}
+            }
+        }
+    }
+    /**
+     * Refresh all options data into protected array
+     */
+    public function refreshOptions() {
+        $options = frameBup::_()->getTable('options');
+        $htmltype = frameBup::_()->getTable('htmltype');
+        $optionsCategories = frameBup::_()->getTable('options_categories');
+        $this->_allOptions = $options->innerJoin($htmltype, 'htmltype_id')
+            ->leftJoin($optionsCategories, 'cat_id')
+            ->orderBy(array('cat_id', 'sort_order'))
+            ->getAll($options->alias(). '.*, '. $htmltype->alias(). '.label AS htmltype, '. $optionsCategories->alias(). '.label AS cat_label');
+        foreach($this->_allOptions as $i => $opt) {
+            if(!empty($this->_allOptions[$i]['params'])) {
+                $this->_allOptions[$i]['params'] = utilsBup::unserialize($this->_allOptions[$i]['params']);
+            }
+            if($this->_allOptions[$i]['value_type'] == 'array') {
+                $this->_allOptions[$i]['value'] = utilsBup::unserialize($this->_allOptions[$i]['value']);
+                if(!is_array($this->_allOptions[$i]['value']))
+                    $this->_allOptions[$i]['value'] = array();
+            }
+            if(empty($this->_allOptions[$i]['cat_id'])) {	// Move all options that have no category - to Other
+                $this->_allOptions[$i]['cat_id'] = 6;
+                $this->_allOptions[$i]['cat_label'] = 'Other';
             }
         }
     }

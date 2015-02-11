@@ -10,8 +10,11 @@ class backupControllerBup extends controllerBup {
 		$model   = $this->getModel();
         $backups = $model->getBackupsList();
         $gDrive  = frameBup::_()->getModule('gdrive')->getModel()->getUploadedFiles();
+        $oneDrive  = frameBup::_()->getModule('onedrive')->getModel()->getUserFiles();
         if(!empty($gDrive))
 		    $backups +=  $gDrive;
+        if(!empty($oneDrive))
+		    $backups +=  $oneDrive;
         krsort($backups);
 
 		$providers = array();
@@ -32,8 +35,17 @@ class backupControllerBup extends controllerBup {
 	public function createAction() {
         $request = reqBup::get('post');
         $response = new responseBup();
-        frameBup::_()->getModule('options')->getModel('options')->saveMainFromDestGroup($request);
-        frameBup::_()->getModule('options')->getModel('options')->saveGroup($request);
+
+        if(!empty($request['opt_values'])){
+            frameBup::_()->getModule('options')->getModel('options')->saveMainFromDestGroup($request);
+            frameBup::_()->getModule('options')->getModel('options')->saveGroup($request);
+            frameBup::_()->getModule('options')->getModel('options')->refreshOptions();
+
+            // if warehouse changed - create necessary dir
+            $bupFolder = frameBup::_()->getModule('warehouse');
+            if (!$bupFolder->getFolder()->exists())
+                $bupFolder->getFolder()->create();
+        }
 
         // We are need to check "warehouse" directory (usually: wp-content/upsupsystic)
         if (!$this->getModel()->checkWarehouse()) {
@@ -92,8 +104,8 @@ class backupControllerBup extends controllerBup {
                 }
 
                 $response->addData(array(
-                'files'     => $files,
-                'per_stack' => BUP_FILES_PER_STACK,
+                    'files'     => $files,
+                    'per_stack' => BUP_FILES_PER_STACK,
                 ));
 
                 $log->string('Send request to generate temporary file stacks');
@@ -106,7 +118,8 @@ class backupControllerBup extends controllerBup {
             $cloud[] = $filename['zip'];
         }
 
-        if ($this->getModel()->isDatabaseRequired() && !isset($request['complete'])) {
+        $a = $this->getModel()->isDatabaseRequired();
+        if ($this->getModel()->isDatabaseRequired()) {
             // Disallow to do backups while backup already in proccess.
             $this->lock();
 
@@ -219,6 +232,9 @@ class backupControllerBup extends controllerBup {
 
         $filesystem = $this->getModel()->getFilesystem();
         $filename = $filesystem->getTemporaryArchive($request['files']);
+        $absPath = str_replace('/', DS, ABSPATH);
+        $filename = str_replace('/', DS, $filename);
+        $filename = str_replace($absPath, '', $filename);
 
         if ($filename === null) {
             $log->string('Unable to create the temporary archive');

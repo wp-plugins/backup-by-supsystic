@@ -38,6 +38,7 @@ Version: 1.0
 }
 .bupShowLogDlg{
 	cursor: pointer;
+	font-size: 13px;
 }
 
 #wp-admin-bar-comingsoon a {

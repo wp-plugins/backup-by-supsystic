@@ -64,7 +64,8 @@ class installerBup {
 		  (NULL, 'backup', 1, 1, '', 1, 'Backup by Supsystic!', 'Backup by Supsystic!'),
 		  (NULL, 'schedule', 1, 1, '', 1, 'Schedule', 'Schedule'),
 		  (NULL, 'storage', 1, 1, '', 1, 'Storage', 'Storage'),
-		  (NULL, 'gdrive', 1, 1, '', 1, 'gdrive', 'gdrive')
+		  (NULL, 'gdrive', 1, 1, '', 1, 'gdrive', 'gdrive'),
+		  (NULL, 'onedrive', 1, 1, '', 1, 'onedrive', 'onedrive')
 		  ");
 
         if(!dbBup::exist($wpPrefix.BUP_DB_PREF."modules", 'code', 'gdrive')){
@@ -73,6 +74,23 @@ class installerBup {
 		  ");
         }
 
+//        if(!dbBup::exist($wpPrefix.BUP_DB_PREF."modules", 'code', 'dropbox')){
+//            dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."modules` (id, code, active, type_id, params, has_tab, label, description) VALUES
+//		    (NULL, 'dropbox', 1, 1, '', 1, 'dropbox', 'dropbox')
+//		  ");
+//        }
+//
+//        if(!dbBup::exist($wpPrefix.BUP_DB_PREF."modules", 'code', 'amazon')){
+//            dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."modules` (id, code, active, type_id, params, has_tab, label, description) VALUES
+//		    (NULL, 'amazon', 1, 1, '', 1, 'amazon', 'amazon')
+//		  ");
+//        }
+
+        if(!dbBup::exist($wpPrefix.BUP_DB_PREF."modules", 'code', 'onedrive')){
+            dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."modules` (id, code, active, type_id, params, has_tab, label, description) VALUES
+		    (NULL, 'onedrive', 1, 1, '', 1, 'onedrive', 'onedrive')
+		  ");
+        }
 
 		/**
 		 *  modules_type
@@ -115,6 +133,7 @@ class installerBup {
 		$msgText = 'We apologize, but at this time our site does not work. But we promise you, very soon we will resume work. '. $eol. 'We just want to improve our site for your comfort.Be among the first to see our new website! Just send your email using the form below and we will inform you.';
 		dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES
 			(NULL,'full','1','Full backup','on/off full backup',1,'',0,0,'dest_backup'),
+			(NULL,'wp_core','1','Wordpress core backup','on/off Wordpress core backup',1,'',0,0,'dest_backup'),
 			(NULL,'plugins','0','Plugins','on/off backup plugins',1,'',0,0,'dest_backup'),
 			(NULL,'themes','0','Themes','on/off backup themes',1,'',0,0,'dest_backup'),
 			(NULL,'uploads','0','Uploads','on/off backup uploads',1,'',0,0,'dest_backup'),
@@ -122,8 +141,20 @@ class installerBup {
 			(NULL,'any_directories','0','Any','Any other directories found inside wp-content',1,'',0,0,'dest_backup'),
 			(NULL,'warehouse','".$warehouse."','Warehouse','path to storage',1,'',0,0,''),
 			(NULL,'warehouse_ignore','upsupsystic','Warehouse_ignore','Name ignore directory storage',1,'',0,0,''),
-			(NULL,'safe_array','','Safe array','Safe file array',1,'',0,0,'');");
+			(NULL,'safe_array','','Safe array','Safe file array',1,'',0,0,''),
+			(NULL,'dropbox_model','','Dropbox model','Module uses two models: for PHP 5.2.x and for PHP >= 5.3.x', '1','', '', '','')
+			;");
 			//(NULL,'exclude','upgrade,cache','Exclude','Exclude directories',1,'',0,0,'')
+        if(!dbBup::exist($wpPrefix.BUP_DB_PREF."options", 'code', 'dropbox_model')){
+            dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES
+			    (NULL,'dropbox_model','','Dropbox model','Module uses two models: for PHP 5.2.x and for PHP >= 5.3.x', '1','', '', '','')
+			;");
+        }
+        if(!dbBup::exist($wpPrefix.BUP_DB_PREF."options", 'code', 'wp_core')){
+            dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES
+			    (NULL,'wp_core','1','Wordpress core backup','on/off Wordpress core backup',1,'',0,0,'dest_backup')
+			;");
+        }
 
 			/* options categories */
 		if(!dbBup::exist($wpPrefix.BUP_DB_PREF."options_categories")) {

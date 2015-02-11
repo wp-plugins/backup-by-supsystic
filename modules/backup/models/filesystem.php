@@ -42,7 +42,9 @@ class filesystemModelBup extends modelBup {
         unset($pcl);
 
         // Unpack stacks
-        $stacks = glob(realpath(ABSPATH) . '/BUP*');
+        $warehouse = frameBup::_()->getModule('options')->get('warehouse');;
+        $stacksPath = realpath(ABSPATH . $warehouse . DS . 'tmp') . DS;
+        $stacks = glob($stacksPath . 'BUP*');
 
         if (empty($stacks)) {
             return true;
@@ -97,10 +99,11 @@ class filesystemModelBup extends modelBup {
 
         $zip = new Zip();
         $zip->setZipFile($name);
+        $absPath = str_replace('/', DS, ABSPATH);
 
         foreach ($files as $filename) {
 
-            $file = ABSPATH . $filename;
+            $file = $absPath . $filename;
 
             if ((file_exists($file) && is_readable($file))
                 && (substr(basename($file), 0, 3) != 'pcl' && substr($file, -2) != 'gz')) {
@@ -132,6 +135,7 @@ class filesystemModelBup extends modelBup {
             return false;
         }
 
+        $absPath = str_replace('/', DS, ABSPATH);
 
         $nodes = array();
 
@@ -151,8 +155,7 @@ class filesystemModelBup extends modelBup {
                 }
 
             } elseif (is_file($node) && is_readable($node)) {
-                $nodes[] = str_replace(ABSPATH, '', $node);
-                // $nodes[] = $node;
+                $nodes[] = str_replace($absPath, '', $node);
             }
         }
 

@@ -3,7 +3,7 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/backup-plugin/
 Tags: backup, back up, restoration, db backup, dump, file, migrate, schedule, email, FTP, mysql backup, website backup, database backup, db backup, wordpress backup, full backup, restoration, restore, rollback, transfer, website backup, wordpress backup 
 Tested up to: 4.1
-Stable tag: 1.0.3
+Stable tag: 1.0.5
 
 Online backup, restoration or migrate solution. Fully customized backup files and database to the FTP or Google Drive
 
@@ -50,7 +50,82 @@ To create Google Drive backup, at first you need to click the “Authenticate”
 
 1. Backup plugin admin interface
 
+== Other Notes ==
+
+= Complete Backup by Supsystic =
+
+The WordPress Backup by Supsystic plugin backups in the full scope the WordPress site along with the attached files and database saving the most important part of the data, such as: 
+* posts, 
+* pages, 
+* plugins, 
+* images, 
+* comments, etc.
+
+= Managed offsite backups =
+
+Additional load on the server backup plugins make when storing everything locally on the server to slow down the site and leave no room for the data you need. The Backup by Supsystic plugin does need no local storage for the WordPress backups, hence, should there be a server crashes, the entire WordPress site and its backups would be lost. So, what to do? Create an offsite backup!  To secure all the content when and if the site goes down the backup plugin Backup by Supsystic creates offsite backups to archive and place up to thirty WordPress backups at any particular point taken in time. The saved data is stored in the Backup by Supsystics` own servers and in addition all the copied go to Amazon S3 servers. Every WordPress backup has nine full copies maintained in the multiple independent data-centers.
+
+= Easy Restore of Backups =
+
+Should the site get hacked, the Backup by Supsystic plugin will easily restore all the data in no time automatically restoring the specific WordPress backup right onto the server. To verify the integrity of a WordPress backup version or to test backups before deploying them onto the server the Backup by Supsystic has a test-restore feature. The backup can be validated as the WordPress`s backup is temporarily restored on the Backup by Supsystic's own servers.
+
+= Migration using Backup =
+
+A simple migration feature designed to move simply to a new domain or host using backups is fully realized in the Backup by Supsystic. The work begins at the stored backup on the Backup by Supsystics` servers without making any damage to the original site; executed in several steps; yet a considerable amount of WordPress backups may be very easily migrated. A few minutes, a few clicks, and the selected WordPress backup version is moved to the new place and ready to work. Any version from the backup`s list is suitable for the job.
+
+= Securing your Backup =
+
+Multiple copies of WordPress backups as it is as well as Amazon S3 servers used in the Backup by Supsystic provide the best security system for the data ensuring redundancy of the given WordPress backups. All the backups are encrypted to perform better protection. The backup can be applied to Dropbox feature and to uploading backups to Dropbox account. Time limit for storing the chosen WordPress backup versions is beyond thirty days; exactly for this period the Backup by Supsystic archives the backups.
+
+= Incremental Backups =
+
+Should the site be more than scores of GB, in this case, an ordinary backup plugin does not work properly; a complete backup is done every time and each time, to up loading the data onto the server slowing the site down. To solve these tasks and reduce the load on the server and the size of the backups an incremental backup is used only once and only at the start of the Backup by Supsystic.
+
+= Real-time Backup =
+
+Real-time backup system Backup by Supsystic ensures that any change is saved together with the instant backup at the spot; very useful feature if the work is done in the field of electronic commerce needed to be backed up daily - no transaction is lost even if the site crashed between the scheduled backup. The Real-time backup works as follows, by means of listening to the triggers issued by the standard WordPress updates as follow:
+adding - updating posts, 
+adding - updating pages, 
+adding - updating users, 
+adding - updating media, etc. 
+For example, some plugins, let`s take the “wooCommerce” create custom tables in the WordPress database without any protection from the regular real-time backups due to its overwhelming size, hence the Backup by Supsystic has a special feature to manage the ” wooCommerce” backups.
+
+= WordPress Multisite (WPMU) Backup =
+
+WordPress Multisite backup is supported by the Backup by Supsystic and performed in the backup of the entire network, instead of a lonely standing sub –site, without losing in the process any shared resource, plugins or themes to backup, restore, or migrate the WPMU site.
+
+= Backup Monitoring =
+
+The Backup by Supsystic is always monitoring the site to ensure that the scheduled backups are done in time. Should there be any important news, such as failure of the backup or some problems with the site operation, a notification will be sent by E-mail.
+
+= Backup History =
+
+Backup by Supsystic's history page comprises information about each backup recorded within a considerable time period, such as:
+* list of plugins
+* number of posts
+* pages
+* files 
+* tables. 
+Also the changes in the backup are highlighted making finding any particular update and its time really easy, including the use of screenshots for each and every backup.
+
+= Test-Restore Backup =
+
+Temporarily restoring backup on the test servers is a unique feature provided by the Backup by Supsystic to validate the backup and ensure the expected results; or used for the accurate backup restoring from an older backup identification.
+
 == Changelog ==
+
+= 1.0.5 =
+ * Added - backup to OneDrive cloud service
+ * Fixed bug: backup destination after change destination setting on main page
+ * Fixed bugs: empty zip archive and don't created sql fle on 'Full backup'
+ * Minor issues fix
+
+= 1.0.4 =
+* Fixed bug - Wordpress core backup
+* Added - separator line on backups page
+* Confirm action on delete and restore backup
+* Saving backup destination on the main page
+* Fixed bug - restore backup and backup to the new folder
 
 = 1.0.3 =
  * First release on WordPress.org

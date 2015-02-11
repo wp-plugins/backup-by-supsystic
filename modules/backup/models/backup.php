@@ -319,7 +319,17 @@ class backupModelBup extends modelBup {
             $directory = trailingslashit($directory) . BUP_WP_CONTENT_DIR;
         }
 
-        return $this->filesystem->getFilesList($directory, $excluded);
+        $fileList = $this->filesystem->getFilesList($directory, $excluded);
+
+        if(1 == $options->get('wp_core')){
+            $directory = realpath(ABSPATH);
+            unset($excluded);
+            $excluded = array('wp-content');
+            $wpCoreFileList = $this->filesystem->getFilesList($directory, $excluded);
+            $fileList = array_merge($fileList,  $wpCoreFileList);
+        }
+
+        return $fileList;
     }
 
     /**

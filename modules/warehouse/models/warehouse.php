@@ -75,6 +75,8 @@ class warehouseModelBup extends modelBup
 
             @file_put_contents($htaccess, 'DENY FROM ALL', FILE_APPEND);
             @file_put_contents($indexphp, '<?php die("Hacking attempt");');
+
+            return true;
         }
     }
 

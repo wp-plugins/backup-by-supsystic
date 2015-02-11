@@ -3,7 +3,6 @@
         <div id="bupBackupWrapper">
             <div id="bupAdminStorageTable" style="width: 100%;">
                 <?php
-//                foreach ($backups as $id => $backup):
                 foreach ($backups as $id => $type):
                     $backupType = key($type);
                     $backupStartDateTime = $model->getBackupStartTimeFromLog($logs[$id]['content']);
@@ -75,17 +74,17 @@
                                 </tbody>
                             </table>
                             <?php if(!empty($logs[$id]['content'])):?>
-                                <b class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</b>
+                                <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</span>
                             <?php else: ?>
                                 <b>Log is clear.</b>
                             <?php endif; ?>
                         </div>
                     </div>
+                    <hr/>
 
                     <?php
                     elseif($backupType == 'gdrive'):
                         $file = $type['gdrive'];
-                        $a = true;
                         ?>
                         <div class="backupBlock">
                             <p>
@@ -124,12 +123,62 @@
                                     </table>
                                 <?php endif; ?>
                                 <?php if(!empty($logs[$id]['content'])):?>
-                                    <b class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</b>
+                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</span>
                                 <?php else: ?>
                                     <b>Log is clear.</b>
                                 <?php endif; ?>
                             </div>
                         </div>
+                        <hr/>
+
+                    <?php
+                    elseif($backupType == 'onedrive'):
+                        $file = $type['onedrive'];
+                        ?>
+                        <div class="backupBlock">
+                            <p>
+                                Backup to <b>OneDrive</b> / ID <b><?php echo $id; ?></b><?php echo !empty($backupStartDateTime) ?' / Start: <b>' . $backupStartDateTime . '</b>' : ''?><?php echo !empty($backupFinishDateTime) ?' / Finish: <b>' . $backupFinishDateTime . '</b>' : ''?>
+                            </p>
+                            <div align="left" id="MSG_EL_ID_<?php echo $id; ?>" class="bupSuccessMsg"></div>
+                            <div id="bupControl-<?php echo $id?>">
+                                <table>
+                                    <tbody>
+                                        <?php if ($file->type === 'file'): ?>
+                                            <tr id="backup-<?php echo $file->id; ?>" data-id="<?php echo $id; ?>" data-filename="<?php echo $file->name; ?>">
+                                                <td>
+                                                    <?php echo $file->name; ?>
+                                                </td>
+                                                <td>
+                                                    <button data-row-id="backup-<?php echo $file->id; ?>"
+                                                            data-file-id="<?php echo $file->id; ?>"
+                                                            data-file-name="<?php echo $file->name; ?>"
+                                                            class="button button-primary button-small bupRestoreOnedrive"
+                                                        >
+                                                        <?php langBup::_e('Restore'); ?>
+                                                    </button>
+                                                    <button
+                                                        data-file-id="<?php echo $file->id; ?>"
+                                                        class="button button-primary button-small onedriveDelete"
+                                                        >
+                                                        <?php langBup::_e('Delete'); ?>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php endif; ?>
+                                    </tbody>
+                                </table>
+
+
+                                <?php if(!empty($logs[$id]['content'])):?>
+                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</span>
+                                <?php else: ?>
+                                    <b>Log is clear.</b>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <hr/>
+
+
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>

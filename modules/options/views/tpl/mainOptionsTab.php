@@ -73,6 +73,32 @@
                         <?php echo $this->backupPlaces['bupGdriveOptions']['content']?>
                     </div>
 
+<!--                    <div class="bupMargDest">-->
+<!--                        --><?php //echo htmlBup::radiobutton('dest_opt', array(
+//                            'value'   => 'dropbox',
+//                        )); ?><!-- --><?php //echo $this->backupPlaces['bupDropboxOptions']['title']?>
+<!--                    </div>-->
+<!--                    <div class="bupOptions bup-dropbox">-->
+<!--                        --><?php //echo $this->backupPlaces['bupDropboxOptions']['content']?>
+<!--                    </div>-->
+<!--                    <div class="bupMargDest">-->
+<!--                        --><?php //echo htmlBup::radiobutton('dest_opt', array(
+//                                'value' => 'amazon',
+//                            )); ?><!-- --><?php //echo $this->backupPlaces['bupAmazonS3Options']['title']?>
+<!--                    </div>-->
+<!--                    <div class="bupOptions bup-amazon">-->
+<!--                        --><?php //echo $this->backupPlaces['bupAmazonS3Options']['content']?>
+<!--                    </div>-->
+                    <div class="bupMargDest">
+                        <?php echo htmlBup::radiobutton('dest_opt', array(
+                                'value' => 'onedrive',
+                            )); ?> <?php echo $this->backupPlaces['bupOneDriveOptions']['title']?>
+                     </div>
+                    <div class="bupOptions bup-onedrive">
+                        <?php echo $this->backupPlaces['bupOneDriveOptions']['content']?>
+                    </div>
+
+
                     <div id="bupMainOption" style="display: none;">
                         <hr/>
                         <h3>Backup Presets:</h3>
@@ -83,7 +109,7 @@
                                     <i class="fa fa-question supsystic-tooltip" title="Full backup"></i>
                                 </td class="col-w-1perc">
                                 <td class="col-w-1perc">
-                                    <input type="checkbox" name="" id="bupFullBackup"/>
+                                    <?php echo htmlBup::checkbox('opt_values[full]', array('attrs'=>'class="bupCheckbox bupFull" id="bupFullBackup"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('full') ? 'checked' : '' )); ?>
                                 </td>
                             </tr>
                             <tr>
@@ -91,7 +117,7 @@
                                 <td class="col-w-1perc">
                                     <i class="fa fa-question supsystic-tooltip" title="Wordpress Core"></i>
                                 </td>
-                                <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[full]', array('attrs'=>'class="bupCheckbox bupFull"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('full') ? 'checked' : '' )); ?></td>
+                                <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[wp_core]', array('attrs'=>'class="bupCheckbox bupFull"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('wp_core') ? 'checked' : '' )); ?></td>
                             </tr>
                             <tr>
                                 <th class="col-w-30perc">Plugins folder</th>
@@ -232,6 +258,7 @@
                     <?php echo htmlBup::hidden('reqType', array('value' => 'ajax'))?>
                     <?php echo htmlBup::hidden('page', array('value' => 'options'))?>
                     <?php echo htmlBup::hidden('action', array('value' => 'saveMainFromDestGroup'))?>
+                    <?php echo htmlBup::hidden('backupDest', array('value' => $this->backupDest))?>
                     <div id="bupMainFormOptionsMsg"></div>
                 </div>
             </form>
