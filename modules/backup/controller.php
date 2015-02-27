@@ -8,14 +8,9 @@ class backupControllerBup extends controllerBup {
 
     public function indexAction() {
 		$model   = $this->getModel();
-        $backups = $model->getBackupsList();
-        $gDrive  = frameBup::_()->getModule('gdrive')->getModel()->getUploadedFiles();
-        $oneDrive  = frameBup::_()->getModule('onedrive')->getModel()->getUserFiles();
-        if(!empty($gDrive))
-		    $backups +=  $gDrive;
-        if(!empty($oneDrive))
-		    $backups +=  $oneDrive;
-        krsort($backups);
+        $backups = dispatcherBup::applyFilters('adminGetUploadedFiles', array());
+        if(!empty($backups))
+            krsort($backups);
 
 		$providers = array();
         $logs = frameBup::_()->getModule('log')->getModel()->getFilesList();
@@ -35,8 +30,11 @@ class backupControllerBup extends controllerBup {
 	public function createAction() {
         $request = reqBup::get('post');
         $response = new responseBup();
+        /** @var backupLogModelBup $log */
+        $log = $this->getModel('backupLog');
 
         if(!empty($request['opt_values'])){
+            $log->writeBackupSettings($request['opt_values']);
             frameBup::_()->getModule('options')->getModel('options')->saveMainFromDestGroup($request);
             frameBup::_()->getModule('options')->getModel('options')->saveGroup($request);
             frameBup::_()->getModule('options')->getModel('options')->refreshOptions();
@@ -59,9 +57,6 @@ class backupControllerBup extends controllerBup {
         }
 
         $filename = $this->getModel()->generateFilename(array('zip', 'sql', 'txt'));
-
-        /** @var backupLogModelBup $log */
-        $log = $this->getModel('backupLog');
         $cloud = array();
 
         if ($this->getModel()->isFilesystemRequired()) {
@@ -118,7 +113,6 @@ class backupControllerBup extends controllerBup {
             $cloud[] = $filename['zip'];
         }
 
-        $a = $this->getModel()->isDatabaseRequired();
         if ($this->getModel()->isDatabaseRequired()) {
             // Disallow to do backups while backup already in proccess.
             $this->lock();
@@ -143,12 +137,12 @@ class backupControllerBup extends controllerBup {
 
             $cloud = array_map('basename', $cloud);
 
-            $log->string(sprintf('Upload to the <%s> required', ucfirst($destination)));
+            $log->string(sprintf('Upload to the "%s" required', ucfirst($destination)));
             $log->string(sprintf('Files to upload: %s', rtrim(implode(', ', $cloud), ', ')));
             $handler = $handlers[$destination];
             $result  = call_user_func_array($handler, array($cloud));
             if ($result === true || $result == 200 || $result == 201) {
-                $log->string(sprintf('Successfully uploaded to the <%s>', ucfirst($destination)));
+                $log->string(sprintf('Successfully uploaded to the "%s"', ucfirst($destination)));
 
                 $path = frameBup::_()->getModule('warehouse')->getPath();
                 $path = untrailingslashit($path);
@@ -178,7 +172,7 @@ class backupControllerBup extends controllerBup {
 
                 $log->string(
                     sprintf(
-                        'Cannot upload to the <%s>: %s',
+                        'Cannot upload to the "%s": %s',
                         ucfirst($destination),
                         is_array($error) ? array_pop($error) : $error
                     )
@@ -232,9 +226,11 @@ class backupControllerBup extends controllerBup {
 
         $filesystem = $this->getModel()->getFilesystem();
         $filename = $filesystem->getTemporaryArchive($request['files']);
-        $absPath = str_replace('/', DS, ABSPATH);
-        $filename = str_replace('/', DS, $filename);
-        $filename = str_replace($absPath, '', $filename);
+        if(frameBup::_()->getModule('options')->get('warehouse_abs') == 1){
+            $absPath = str_replace('/', DS, ABSPATH);
+            $filename = str_replace('/', DS, $filename);
+            $filename = str_replace($absPath, '', $filename);
+        }
 
         if ($filename === null) {
             $log->string('Unable to create the temporary archive');
@@ -295,8 +291,7 @@ class backupControllerBup extends controllerBup {
 		$request  = reqBup::get('get');
 		$filename = $request['download'];
 
-        $file = frameBup::_()->getModule('warehouse')->getPath() . DIRECTORY_SEPARATOR
-            . $filename;
+        $file = frameBup::_()->getModule('warehouse')->getPath() . DS . $filename;
 
         if (is_file($file)) {
             header('Content-Description: File Transfer');
@@ -320,10 +315,13 @@ class backupControllerBup extends controllerBup {
 		$request     = reqBup::get('post');
 		$response    = new responseBup();
 		$model       = $this->getModel();
-        $logFilename = pathinfo($request['filename']);
 
+        if(!empty($request['deleteLog'])){
+            $logFilename = pathinfo($request['filename']);
+            $model->remove($logFilename['filename'].'.txt');
+        }
 
-		if ($model->remove($request['filename']) === true &&  $model->remove($logFilename['filename'].'.txt') === true) {
+		if ($model->remove($request['filename']) === true) {
 			$response->addMessage(langBup::_('Backup successfully removed'));
 		}
 		else {

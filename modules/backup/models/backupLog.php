@@ -64,4 +64,38 @@ class backupLogModelBup extends modelBup
     {
         return $_SESSION[self::KEY];
     }
+
+    /**
+     * Write to the log backup settings
+     * @param array $settingsArray
+     */
+    public function writeBackupSettings($settingsArray){
+        $text = 'Backup settings: ';
+        $settingsStringArray = array();
+        if(!empty($settingsArray['full']))
+            $settingsStringArray[] = 'Full backup';
+        if(!empty($settingsArray['wp_core']))
+            $settingsStringArray[] = 'Wordpress Core';
+        if(!empty($settingsArray['plugins']))
+            $settingsStringArray[] = 'Plugins folder';
+        if(!empty($settingsArray['themes']))
+            $settingsStringArray[] = 'Themes folder';
+        if(!empty($settingsArray['uploads']))
+            $settingsStringArray[] = 'Uploads folder';
+        if(!empty($settingsArray['any_directories']))
+            $settingsStringArray[] = 'Any folder inside wp-content';
+        if(!empty($settingsArray['safe_update']))
+            $settingsStringArray[] = 'Safe Update';
+        if(!empty($settingsArray['force_update']))
+            $settingsStringArray[] = 'Force Update';
+        if(!empty($settingsArray['database']))
+            $settingsStringArray[] = 'Database backup';
+        if(!empty($settingsArray['exclude']))
+            $settingsStringArray[] = 'Exclude: ' . $settingsArray['exclude'];
+        if(!empty($settingsArray['email_ch']))
+            $settingsStringArray[] = 'Email notification: ' . $settingsArray['email'];
+
+        $text .= implode('; ', $settingsStringArray) . '.';
+        $this->string($text);
+    }
 }

@@ -44,7 +44,7 @@
 
     define('BUP_URL', BUP_SITE_URL);
 
-    define('BUP_LOADER_IMG', BUP_IMG_PATH. 'loading-cube.gif');
+    define('BUP_LOADER_IMG', BUP_IMG_PATH. 'loading.gif');
     define('BUP_DATE_DL', '/');
     define('BUP_DATE_FORMAT', 'd/m/Y');
     define('BUP_DATE_FORMAT_HIS', 'd/m/Y (H:i:s)');
@@ -59,14 +59,15 @@
 
 
     define('BUP_PLUGIN_INSTALLED', true);
-    define('BUP_VERSION', '1.0.5');
+    define('BUP_VERSION', '1.0.6');
 	define('BUP_S_VERSION', BUP_VERSION);
     define('BUP_USER', 'user');
 
 
     define('BUP_CLASS_PREFIX', 'bup');
     define('BUP_FREE_VERSION', false);
-
+	define('BUP_TEST_MODE', true);
+	
     define('BUP_SUCCESS', 'Success');
     define('BUP_FAILED', 'Failed');
 	define('BUP_ERRORS', 'bupErrors');

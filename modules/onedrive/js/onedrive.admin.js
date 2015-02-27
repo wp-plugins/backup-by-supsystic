@@ -18,9 +18,9 @@
         });
     };
 
-    OneDrive.prototype.restore = function (fileId, fileName) {
+    OneDrive.prototype.restore = function (fileId, fileName, rowId) {
         $.sendFormBup({
-            msgElID: 'bupOnedriveAlerts',
+            msgElID: 'bupOnedriveAlerts-' + rowId,
             data: {
                 reqType: 'ajax',
                 page:    'onedrive',
@@ -30,7 +30,7 @@
             onSuccess: function (response) {
                 if (!response.error) {
                     $.sendFormBup({
-                        msgElID: 'bupOnedriveAlerts',
+                        msgElID: 'bupOnedriveAlerts-' + rowId,
                         data: {
                             reqType: 'ajax',
                             page:    'backup',
@@ -52,22 +52,27 @@
 		if (confirm('Are you sure?')) {
 			var $button = $(e.currentTarget),
 				$row = $button.parents('tr'),
-				$filename = $row.data('filename');
+				$filename = $row.data('filename'),
+				$rowId = $row.data('id'),
+				deleteLog = 1;
+			//If two backup files(DB & Filesystem) exist - don't remove backup log
+			if((j(this).closest('table tbody').find('tr')).length > 1)
+				deleteLog = 0;
 
 			$.sendFormBup({
-				msgElID: 'bupOnedriveAlerts',
+				msgElID: 'bupOnedriveAlerts-' + $rowId,
 				data: {
 					reqType:  'ajax',
 					page:     'onedrive',
 					action:   'deleteAction',
 					id:       $button.data('file-id'),
-					filename: $filename
+					filename: $filename,
+					deleteLog: deleteLog
 				},
 				onSuccess: function (response) {
 					if (response.error === false) {
-						var rowId = $row.data('id');
 						$row.remove();
-						jQuery('#MSG_EL_ID_' + rowId).html('Backup successfully removed');
+						jQuery('#MSG_EL_ID_' + $rowId).html('Backup successfully removed');
 					}
 				}
 			});
@@ -82,7 +87,7 @@
 
         $('.bupRestoreOnedrive').on('click', function () {
 			if (confirm('Are you sure?')) {
-            	OneDrive.restore($(this).data('file-id'), $(this).data('file-name'));
+            	OneDrive.restore($(this).data('file-id'), $(this).data('file-name'), $(this).data('row-id'));
 			}
         });
 

@@ -67,6 +67,10 @@ class onedriveBup extends moduleBup
             'adminBackupUpload',
             array($this, 'registerUploadMethod')
         );
+        dispatcherBup::addfilter(
+            'adminGetUploadedFiles',
+            array($this, 'getUploadedFiles')
+        );
     }
 
     public function registerMenuItem($tabs)
@@ -110,5 +114,21 @@ class onedriveBup extends moduleBup
         if (method_exists($controller, $action)) {
             return $controller->{$action}();
         }
+    }
+
+    /**
+     * Register uploaded files to backups page
+     *
+     * @param  array $files
+     * @return array
+     */
+    public function getUploadedFiles($files) {
+        $uploadedFiles = $this->getController()->getModel()->getUserFiles();
+        if(is_array($uploadedFiles)){
+            foreach($uploadedFiles as $key=>$file){
+                $files[$key] = $file;
+            }
+        }
+        return $files;
     }
 }

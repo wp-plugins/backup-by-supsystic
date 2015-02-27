@@ -190,7 +190,7 @@ class skydriveBup {
 
 	public function download($fileid) {
 		$props = $this->get_file_properties($fileid);
-		$response = $this->curl_get(skydrive_base_url.$fileid."/content?access_token=".$this->access_token, "false", "HTTP/1.1 302 Found");
+		$response = $this->curl_get(skydrive_base_url.$fileid."/content?access_token=".$this->access_token, "false");
 		$arraytoreturn = Array();
 		if (@array_key_exists('error', $response)) {
 			throw new Exception($response['error']." - ".$response['description']);
@@ -288,17 +288,25 @@ class skydriveBup {
 	// Functions can override the default JSON-decoding and return just the plain result.
 	// They can also override the expected HTTP status code too.
 
-	protected function curl_get($uri, $json_decode_output="true", $expected_status_code="HTTP/1.1 200 OK") {
-		$output = "";
-		$output = @file_get_contents($uri);
-		if ($http_response_header[0] == $expected_status_code) {
+	protected function curl_get($uri, $json_decode_output="true") {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $uri);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $output = curl_exec ($ch);
+        $error = curl_error($ch);
+        curl_close ($ch);
+
+		if (empty($error)) {
 			if ($json_decode_output == "true") {
 				return json_decode($output, true);
 			} else {
 				return $output;
 			}
 		} else {
-			return Array('error' => 'HTTP status code not expected - got ', 'description' => substr($http_response_header[0],9,3));
+			return Array('error' => 'HTTP status code not expected - got ', 'description' => $httpCode);
 		}
 	}
 

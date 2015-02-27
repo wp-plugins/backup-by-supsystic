@@ -12,7 +12,7 @@ class dropboxControllerBup extends controllerBup {
 	 * Instance of Dropbox model
 	 * @var \dropboxModelBup
 	 */
-	protected $model = null;
+	public $model = null;
 
     public $modelType = null;
 
@@ -41,7 +41,6 @@ class dropboxControllerBup extends controllerBup {
 		}
 		try {
 			$tabHtml = $this->render('index', array(
-				'files' => $this->model->getUploadedFiles(),
 				'info'  => $this->model->getQuota(),
 			));
 		} catch(RuntimeException $e) {
@@ -173,6 +172,12 @@ class dropboxControllerBup extends controllerBup {
 	public function deleteAction() {
 		$request  = reqBup::get('post');
 		$response = new responseBup();
+
+        if(!empty($request['deleteLog'])){
+            $model    = frameBup::_()->getModule('backup')->getModel();
+            $logFilename = pathinfo($request['file']);
+            $model->remove($logFilename['filename'].'.txt');
+        }
 
 		if(!isset($request['file']) OR empty($request['file'])) {
 			$response->addError(langBup::_('Nothing to delete'));

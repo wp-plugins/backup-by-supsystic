@@ -12,19 +12,30 @@ jQuery(document).ready(function() {
 	});
 	
 	j('.bupDropboxDelete').on('click', function(event) {
-		event.preventDefault();
-		
-		var file = j(this).attr('data-filepath'),
-		    row  = j(this).attr('data-row-id');
-			
-		DropboxModule.remove(file, row);
+		if (confirm('Are you sure?')) {
+			event.preventDefault();
+
+			var file = j(this).attr('data-filepath'),
+				row  = j(this).attr('data-row-id'),
+				fileType  = j(this).attr('data-file-type'),
+				deleteLog = 1;
+
+			//If two backup files(DB & Filesystem) exist - don't remove backup log
+			if((j(this).closest('table tbody').find('tr')).length > 1)
+				deleteLog = 0;
+
+			DropboxModule.remove(file, row, fileType, deleteLog);
+		}
 	});
 	
 	j('.bupDropboxRestore').on('click', function(event) {
-		event.preventDefault();
-		
-		var filename = j(this).attr('data-filename');
-		DropboxModule.restore(filename);
+		if (confirm('Are you sure?')) {
+			event.preventDefault();
+
+			var filename = j(this).attr('data-filename'),
+				row  = j(this).attr('data-row-id');
+			DropboxModule.restore(filename, row);
+		}
 	});
 });
 
@@ -54,26 +65,26 @@ var DropboxModule = {
 			}
 		});
 	},
-	remove: function(file, row) {
+	remove: function(file, row, fileType, deleteLog) {
 		jQuery.sendFormBup({
-			msgElID: 'bupDropboxAlerts',
+			msgElID: 'bupDropboxAlerts-' + row,
 			data: {
 				'reqType': 'ajax',
 				'page':    'dropbox',
 				'action':  'deleteAction',
-				'file':    file
+				'file':    file,
+				'deleteLog':    deleteLog
 			},
 			onSuccess: function(response) {
-                //console.log(response);
 				if(response.error === false) {
-					jQuery(row).remove();
+					jQuery('#row-' + fileType + '-' + row).remove();
 				}
 			}
 		});
 	},
-	restore: function(filename) {
+	restore: function(filename, row) {
 		jQuery.sendFormBup({
-			msgElID: 'bupDropboxAlerts',
+			msgElID: 'bupDropboxAlerts-' + row,
 			data: {
 				'reqType':  'ajax',
 				'page':     'dropbox',
@@ -84,7 +95,7 @@ var DropboxModule = {
 				//console.log(response);
 				if(response.error === false) {
 					jQuery.sendFormBup({
-						msgElID: 'bupDropboxAlerts',
+						msgElID: 'bupDropboxAlerts-' + row,
 						data: {
 							'reqType': 'ajax',
 							'page':    'backup',

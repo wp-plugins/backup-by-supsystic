@@ -132,16 +132,20 @@ class gdriveControllerBup extends controllerBup {
 	 * @since  1.1
 	 */
 	public function deleteAction() {
-        $model    = frameBup::_()->getModule('backup')->getModel();
 		$request  = reqBup::get('post');
 		$response = new responseBup();
-        $logFilename = pathinfo($request['filename']);
+
+        if(!empty($request['deleteLog'])){
+            $model    = frameBup::_()->getModule('backup')->getModel();
+            $logFilename = pathinfo($request['filename']);
+            $model->remove($logFilename['filename'].'.txt');
+        }
 
 		if(!isset($request['file']) OR empty($request['file'])) {
 			$response->addError(langBup::_('Nothing to delete'));
 		}
 
-		if($this->getModel()->remove($request['file']) === true && $model->remove($logFilename['filename'].'.txt') === true) {
+		if($this->getModel()->remove($request['file']) === true) {
 			$response->addMessage(langBup::_('File successfully deleted'));
 		}
 		else {

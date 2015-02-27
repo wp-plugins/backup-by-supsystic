@@ -3,7 +3,7 @@
  * Plugin Name: Backup by Supsystic
  * Plugin URI: http://supsystic.com/plugins/backup
  * Description:  Complete online backup + restoration. Manual or automate backup to Dropbox, FTP and Email. Custom backup files, database, plugins
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: Supsystic
  * Author URI: http://supsystic.com/
  **/
@@ -40,7 +40,6 @@ importClassBup('installerDbUpdaterBup');
 importClassBup('templateModuleBup');
 importClassBup('templateViewBup');
 importClassBup('fileuploaderBup');
-importClassBup('wpUpdaterBup');
 
 installerBup::update();
 errorsBup::init();

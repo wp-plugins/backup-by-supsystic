@@ -189,8 +189,27 @@ class dropboxModelBup extends modelBup {
 		}
 
        // try {
-		    $client = new Dropbox\Client($this->getToken(), $this->applicationName);
-		    return $client->getMetadataWithChildren(rtrim($this->getDropboxPath(), '/'));
+        $client = new Dropbox\Client($this->getToken(), $this->applicationName);
+        $response = $client->getMetadataWithChildren(rtrim($this->getDropboxPath(), '/'));
+
+        // Formatting uploading data files for use their on backups page
+        $files = array();
+        foreach ($response['contents'] as $file) {
+            $pathInfo = pathinfo($file['path']);
+            $backupInfo = $this->getBackupInfoByFilename($pathInfo['basename']);
+
+            if(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql'){
+                $files[$backupInfo['id']]['dropbox']['sql'] = $file;
+                $files[$backupInfo['id']]['dropbox']['sql']['backupInfo'] = $backupInfo;
+            }elseif(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'zip'){
+                $files[$backupInfo['id']]['dropbox']['zip'] = $file;
+                $files[$backupInfo['id']]['dropbox']['zip']['backupInfo'] = $backupInfo;
+            }
+        }
+        unset($response['contents']);
+        $response['contents']= $files;
+
+        return $response;
        // } catch (Exception $e) {
             //echo sprintf('Dropbox client error: %s. Try to refresh page', $e->getMessage());
         //}

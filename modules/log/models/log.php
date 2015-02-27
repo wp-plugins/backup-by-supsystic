@@ -21,7 +21,7 @@ class logModelBup extends modelBup {
 			if (preg_match('/([\d]+).txt/', $node, $matches)) {
 
                 $backupInfo = $this->getBackupInfoByFilename($node, true);
-				$content = file_get_contents($path . $node);
+				$content = htmlspecialchars(file_get_contents($path . $node));
 				$linesArray = preg_split('/\n|\r/', $content);
 				$lines = count($linesArray);
 

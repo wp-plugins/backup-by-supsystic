@@ -352,7 +352,9 @@ class utilsBup {
         } else {
             installerBup::init();
         }*/
-
+		if(BUP_TEST_MODE) {
+			add_action('activated_plugin', array(frameBup::_(), 'savePluginActivationErrors'));
+		}
 		installerBup::init();
     }
 

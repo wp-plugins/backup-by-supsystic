@@ -15,12 +15,15 @@ class filesystemModelBup extends modelBup {
         $files = $this->getTemporaryFiles();
 
         $warehouse = frameBup::_()->getModule('warehouse')->getTemporaryPath();
-
-        $this->getArchive($filename, $files, $warehouse);
+        if(frameBup::_()->getModule('options')->get('warehouse_abs') == 0)
+            $this->getArchive($filename, $files, $warehouse, true);
+        else
+            $this->getArchive($filename, $files, $warehouse);
     }
 
     public function restore($filename)
     {
+        $absolutePath = frameBup::_()->getModule('options')->get('warehouse_abs') ? false : true;
         if (!file_exists($filename)) {
             $this->pushError(sprintf(langBup::_('Filesystem backup %s does not exists'), basename($filename)));
             return false;
@@ -31,10 +34,15 @@ class filesystemModelBup extends modelBup {
             $backup = $this->getModule();
             $backup->loadLibrary('pcl');
         }
-
         $pcl = new PclZip($filename);
+        if($absolutePath) {
+            $absPath = explode(DS, ABSPATH);
+            $absPath = $absPath[0].DS;
+        } else {
+            $absPath = ABSPATH;
+        }
 
-        if ($files = $pcl->extract(PCLZIP_OPT_PATH, ABSPATH, PCLZIP_OPT_REPLACE_NEWER) === 0) {
+        if ($files = $pcl->extract(PCLZIP_OPT_PATH, $absPath, PCLZIP_OPT_REPLACE_NEWER) === 0) {
             $this->pushError(langBup::_('An error has occurred while unpacking the archive'));
             return false;
         }
@@ -42,8 +50,13 @@ class filesystemModelBup extends modelBup {
         unset($pcl);
 
         // Unpack stacks
-        $warehouse = frameBup::_()->getModule('options')->get('warehouse');;
-        $stacksPath = realpath(ABSPATH . $warehouse . DS . 'tmp') . DS;
+        $warehouse = frameBup::_()->getModule('options')->get('warehouse');
+
+        if($absolutePath)
+            $stacksPath = realpath($warehouse . DS . 'tmp') . DS;
+        else
+            $stacksPath = realpath(ABSPATH . $warehouse . DS . 'tmp') . DS;
+
         $stacks = glob($stacksPath . 'BUP*');
 
         if (empty($stacks)) {
@@ -87,7 +100,7 @@ class filesystemModelBup extends modelBup {
      * @param string $replace
      * @return int How many files has been successfully handled
      */
-    public function getArchive($name, array $files, $replace = ABSPATH)
+    public function getArchive($name, array $files, $replace = ABSPATH, $fullPath=false)
     {
         set_time_limit(300);
 
@@ -99,11 +112,16 @@ class filesystemModelBup extends modelBup {
 
         $zip = new Zip();
         $zip->setZipFile($name);
-        $absPath = str_replace('/', DS, ABSPATH);
+        if($fullPath)
+            $absPath = null;
+        else
+            $absPath = str_replace('/', DS, ABSPATH);
 
         foreach ($files as $filename) {
 
             $file = $absPath . $filename;
+            if($fullPath)
+                $file = str_replace('\\\\', DS, $filename );
 
             if ((file_exists($file) && is_readable($file))
                 && (substr(basename($file), 0, 3) != 'pcl' && substr($file, -2) != 'gz')) {

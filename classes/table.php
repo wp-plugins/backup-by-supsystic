@@ -46,7 +46,6 @@ abstract class tableBup {
 	
     static public function getInstance($table = '') {
         static $instances = array();
-        if(!$table) $table = $this->_table;
         if(!isset($instances[$table])) {
             $class = 'table'. strFirstUp($table). strFirstUp(BUP_CODE);
             if(class_exists($class)) 
@@ -134,7 +133,7 @@ abstract class tableBup {
             return $this->_table;
     }
     public function setTable($table) {
-        $this->_table = $talbe;
+        $this->_table = $table;
     }
     /**
      * Get name of ID column

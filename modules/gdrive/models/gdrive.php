@@ -464,13 +464,19 @@ class gdriveModelBup extends modelBup {
             }
         } while ($pageToken);
 
+        // Formatting uploading data files for use their on backups page
         $files = array();
-
         foreach ($child as $file) {
             $backupInfo = $service->files->get($file['id']);
             $backupInfo = $this->getBackupInfoByFilename($backupInfo['title']);
-            $files[$backupInfo['id']]['gdrive'] = $service->files->get($file['id']);
-            $files[$backupInfo['id']]['gdrive']['backupInfo'] = $backupInfo;
+
+            if(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql'){
+                $files[$backupInfo['id']]['gdrive']['sql'] = $service->files->get($file['id']);
+                $files[$backupInfo['id']]['gdrive']['sql']['backupInfo'] = $backupInfo;
+            }elseif(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'zip'){
+                $files[$backupInfo['id']]['gdrive']['zip'] = $service->files->get($file['id']);
+                $files[$backupInfo['id']]['gdrive']['zip']['backupInfo'] = $backupInfo;
+            }
         }
 
         return $files;

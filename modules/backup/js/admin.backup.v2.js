@@ -64,9 +64,14 @@ jQuery(document).ready(function($) {
 	// Delete
 	j('.bupDelete').on('click', function() {
 		if (confirm('Are you sure?')) {
-			var filename = j(this).attr('data-filename'),
-				id       = j(this).attr('data-id');
-			BackupModule.remove(id, filename, this);
+			var filename  = j(this).attr('data-filename'),
+				id        = j(this).attr('data-id'),
+				deleteLog = 1;
+			//If two backup files(DB & Filesystem) exist - don't remove backup log
+			if((j(this).closest('table tbody').find('tr')).length > 1)
+				deleteLog = 0;
+
+			BackupModule.remove(id, filename, this, deleteLog);
 		}
 	});
 
@@ -128,19 +133,19 @@ var BackupModule = {
 	download: function(filename) {
 		document.location.href = document.location.href + '&download=' + filename;
 	},
-	remove: function(id, filename, button) {
+	remove: function(id, filename, button, deleteLog) {
 		jQuery.sendFormBup({
 			msgElID: 'MSG_EL_ID_' + id,
 			data: {
 				'reqType':  'ajax',
 				'page':     'backup',
 				'action':   'removeAction',
-				'filename': filename
+				'filename': filename,
+				'deleteLog': deleteLog
 			},
 			onSuccess: function(response) {
 				if (response.error === false) {
 					jQuery(button).parent().parent().remove();
-					jQuery('#bupControl-' + id).remove();
 				}
 			}
 		});

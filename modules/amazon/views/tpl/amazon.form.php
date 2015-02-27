@@ -3,22 +3,20 @@
         <div class="bupErrorMsg"><?php echo $e?></div>
     <?php }?>
 <?php }?>
-<div class="Amazon_Main_Auth">
-    <form id="bupAmazonCredentials">
-        <div id="bupAmazonAlerts"></div>
+<div class="Amazon_Main_Auth" id="AmazonCredentialData">
+    <div id="bupAmazonAlerts"></div>
 
-        <p><?php echo $form['legend']; ?></p>
-        <?php foreach($form['fields'] as $control): ?>
-        <p>
-            <?php echo ucfirst($control['label']); ?>
-            <?php echo $control['field']; ?>
-        </p>
-        <?php endforeach; ?>
+    <p><?php echo $form['legend']; ?></p>
+    <?php foreach($form['fields'] as $control): ?>
+    <p>
+        <?php echo ucfirst($control['label']); ?>
+        <?php echo $control['field']; ?>
+    </p>
+    <?php endforeach; ?>
 
-        <?php foreach($form['extra'] as $extra): ?>
-            <?php echo $extra; ?>
-        <?php endforeach; ?>
-    </form>
+    <?php foreach($form['extra'] as $extra): ?>
+        <?php echo $extra; ?>
+    <?php endforeach; ?>
 </div>
 
 <div id="Amazon_Auth_Result"></div>

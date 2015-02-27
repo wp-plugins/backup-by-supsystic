@@ -76,9 +76,12 @@ class onedriveControllerBup extends controllerBup
     {
         $request  = reqBup::get('post');
         $response = new responseBup();
-        $model    = frameBup::_()->getModule('backup')->getModel();
-        $logFilename = pathinfo($request['filename']);
-        $model->remove($logFilename['filename'].'.txt');
+
+        if(!empty($request['deleteLog'])){
+            $model = frameBup::_()->getModule('backup')->getModel();
+            $logFilename = pathinfo($request['filename']);
+            $model->remove($logFilename['filename'].'.txt');
+        }
 
         $onedrive = $this->getModel();
         $onedrive->refreshAccessToken();

@@ -28,7 +28,6 @@ class amazonControllerBup extends controllerBup {
         return $this->getView()->getContent('amazon.index', array(
             'credentials' => $model->getCredentials(), 
             'bucket'      => $model->getBucket(),
-            'files'       => $model->getUploadedFiles(),
         ));
 		} catch(Aws\S3\Exception\InvalidAccessKeyIdException $e) {
 			 return $this->getView()->getContent('amazon.form', array(
@@ -161,6 +160,12 @@ class amazonControllerBup extends controllerBup {
     public function deleteAction() {
         $request  = reqBup::get('post');
         $response = new responseBup();
+
+        if(!empty($request['deleteLog'])){
+            $model = frameBup::_()->getModule('backup')->getModel();
+            $logFilename = pathinfo($request['filename']);
+            $model->remove($logFilename['filename'].'.txt');
+        }
         
         $result = $this->getModel()->remove($request['filename']);
 
@@ -194,7 +199,8 @@ class amazonControllerBup extends controllerBup {
         $model    = $this->getModel();
 
         if($model->download($request['filename']) === 201) {
-            $response->addData(array('filename' => $request['filename']));
+            $filename = pathinfo($request['filename']);
+            $response->addData(array('filename' => $filename['basename']));
         }
         else {
             $response->addError(array(langBup::_('File not found on Amazon S3')));
@@ -237,10 +243,7 @@ class amazonControllerBup extends controllerBup {
                 htmlBup::hidden('reqType', array('value' => 'ajax')),
                 htmlBup::hidden('page',    array('value' => 'amazon')),
                 htmlBup::hidden('action',  array('value' => 'manageCredentialsAction')),
-                htmlBup::submit('save',    array(
-                    'value' => langBup::_('Store credentials'), 
-                    'attrs' => 'class="button button-primary button-large"',
-                )),
+                htmlBup::button(array('value' => langBup::_('Store credentials'), 'attrs' => 'class="button button-primary button-large" id="bupAmazonCredentials"')),
             ),
         );
     }

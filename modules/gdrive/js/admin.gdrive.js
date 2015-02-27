@@ -18,8 +18,17 @@ jQuery(document).ready(function(){
 
 			var rowId  = j(this).attr('data-row-id'),
 				filename  = j(this).attr('data-filename'),
-				fileId = j(this).attr('data-file-id');
-			GoogleDriveModule.delete(rowId, fileId, filename);
+				fileId = j(this).attr('data-file-id'),
+				fileType = j(this).attr('data-file-type'),
+				deleteLog = 1;
+
+			//If two backup files(DB & Filesystem) exist - don't remove backup log
+			if(j('#zip-'+rowId).length && fileType=='sql')
+				deleteLog = 0;
+			if(j('#sql-'+rowId).length && fileType=='zip')
+				deleteLog = 0;
+
+			GoogleDriveModule.delete(rowId, fileId, filename, fileType, deleteLog);
 		} else {
 			return false;
 		}
@@ -27,12 +36,16 @@ jQuery(document).ready(function(){
 	});
 	
 	j('.bupGDriveRestore').on('click', function(event) {
-		event.preventDefault();
-		
-		var download = j(this).attr('data-file-url'),
-			filename = j(this).attr('data-file-name');
-			
-		GoogleDriveModule.restore(download, filename);
+		if (confirm('Are you sure?')) {
+			event.preventDefault();
+
+			var download = j(this).attr('data-file-url'),
+				filename = j(this).attr('data-file-name'),
+				rowId  = j(this).attr('data-row-id'),
+				fileType  = j(this).attr('data-file-type');
+
+			GoogleDriveModule.restore(download, filename, rowId, fileType);
+		}
 	});
 });
 
@@ -66,27 +79,27 @@ var GoogleDriveModule = {
 			}
 		});
 	},
-	delete: function(rowId, fileId, filename) {
+	delete: function(rowId, fileId, filename, fileType, deleteLog) {
 		jQuery.sendFormBup({
-			msgElID: 'bupGDriveAlerts',
+			msgElID: 'bupGDriveAlerts-' + rowId,
 			data: {
 				'reqType': 'ajax',
 				'page':    'gdrive',
 				'action':  'deleteAction',
 				'file':    fileId,
-				'filename':    filename
+				'filename':    filename,
+				'deleteLog':    deleteLog
 			},
 			onSuccess: function(response) {
 				if(response.error === false) {
-					jQuery('#bupControl-' + rowId).remove();
-					jQuery('#MSG_EL_ID_' + rowId).html('Backup successfully removed');
+					jQuery('#' + fileType + '-' + rowId).remove();
 				}
 			}
 		});
 	},
-	restore: function(downloadUrl, filename) {
+	restore: function(downloadUrl, filename, rowId) {
 		jQuery.sendFormBup({
-			msgElID: 'bupGDriveAlerts',
+			msgElID: 'bupGDriveAlerts-' + rowId,
 			data: {
 				'reqType':      'ajax',
 				'page':         'gdrive',
@@ -97,7 +110,7 @@ var GoogleDriveModule = {
 			onSuccess: function(response) {
 				if(response.error === false) {
 					jQuery.sendFormBup({
-						msgElID: 'bupGDriveAlerts',
+						msgElID: 'bupGDriveAlerts-' + rowId,
 						data: {
 							'reqType': 'ajax',
 							'page':    'backup',

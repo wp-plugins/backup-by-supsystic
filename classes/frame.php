@@ -116,7 +116,7 @@ class frameBup {
 
         add_action('admin_notices', array('errorsBup', 'displayOnAdmin'));
 
-		$this->_registerU();
+		//var_dump($this->getActivationErrors());
         //$operationTime = microtime(true) - $startTime;
     }
 
@@ -401,8 +401,7 @@ class frameBup {
 		return $user->data->ID;
     }
 
-    public function humanSize($bytes)
-    {
+    public function humanSize($bytes) {
         $si_prefix = array('B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB');
         $base = 1024;
         $class = min((int)log($bytes , $base) , count($si_prefix) - 1);
@@ -410,8 +409,7 @@ class frameBup {
         return sprintf('%1.2f' , $bytes / pow($base,$class)) . ' ' . $si_prefix[$class];
     }
 
-    public static function devlog($data)
-    {
+    public static function devlog($data) {
         if (is_array($data)) {
             array_map(array('frameBup', 'devlog'), $data);
             return;
@@ -421,23 +419,10 @@ class frameBup {
 
         error_log('(' . $type . ') ' . var_export($data, true), 4);
     }
-	private function _registerU() {
-		add_filter('pre_set_site_transient_update_plugins', array($this, 'preU'));
-		add_filter('plugins_api', array($this, 'plA'), 10, 3);
-
-		if(!defined('S_YOUR_SECRET_HASH_'. BUP_CODE))
-			define('S_YOUR_SECRET_HASH_'. BUP_CODE, 'efF#F#2fj#IFJIFo3jFOIJEIOFJCIOEFCJ9039r32r32983#@j');
+	public function savePluginActivationErrors() {
+		update_option(BUP_CODE. '_plugin_activation_errors',  ob_get_contents());
 	}
-	public function preU($checkedData) {
-		if(class_exists('wpUpdaterBup')) {
-			return wpUpdaterBup::getInstance( BUP_PLUG_NAME, BUP_MAIN_FILE, BUP_CODE )->checkForPluginUpdate($checkedData);
-		}
-		return $checkedData;
-	}
-	public function plA($def, $action, $args) {
-		if(class_exists('wpUpdaterBup')) {
-			return wpUpdaterBup::getInstance( BUP_PLUG_NAME, BUP_MAIN_FILE, BUP_CODE )->myPluginApiCall($def, $action, $args);
-		}
-		return $def;
+	public function getActivationErrors() {
+		return get_option(BUP_CODE. '_plugin_activation_errors');
 	}
 }

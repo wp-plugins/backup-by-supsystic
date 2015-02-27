@@ -50,6 +50,7 @@ class backupBup extends moduleBup {
 
         /* Register tab */
 		dispatcherBup::addFilter('adminOptionsTabs', array($this, 'registerModuleTab'));
+        dispatcherBup::addfilter('adminGetUploadedFiles', array($this, 'getUploadedFiles'));
 
         /* Load assets */
         $this->loadModuleScripts();
@@ -173,4 +174,20 @@ class backupBup extends moduleBup {
 
 		return true;
 	}
+
+    /**
+     * Register uploaded files to backups page
+     *
+     * @param  array $files
+     * @return array
+     */
+    public function getUploadedFiles($files) {
+        $uploadedFiles = $this->getController()->getModel()->getBackupsList();
+        if(is_array($uploadedFiles)){
+            foreach($uploadedFiles as $key=>$file){
+                $files[$key] = $file;
+            }
+        }
+        return $files;
+    }
 }

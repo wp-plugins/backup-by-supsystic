@@ -18,7 +18,9 @@ class onedriveModelBup extends modelBup
      */
     public function isAuthenticated()
     {
-        if (isset($_SESSION[self::SESSION_ID]) || null !== $this->readToken()) {
+        if (isset($_SESSION[self::SESSION_ID]) || null !== ($token = $this->readToken())) {
+            if(empty($_SESSION[self::SESSION_ID]))
+                $_SESSION[self::SESSION_ID] = $token;
             return true;
         }
 
@@ -288,12 +290,22 @@ class onedriveModelBup extends modelBup
         $body = json_decode(wp_remote_retrieve_body($response));
 
         if(!empty($body->data[0]->name) && strpos($body->data[0]->name, 'backup_') !== false ){
-            $files = array();
 
+            // Formatting uploading data files for use their on backups page
+            $files = array();
             foreach ($body->data as $key => $file) {
                 $backupInfo = $this->getBackupInfoByFilename($file->name);
-                $files[$backupInfo['id']]['onedrive'] = $body->data[$key];
-                $files[$backupInfo['id']]['onedrive']->backupInfo = $backupInfo;
+
+                if(empty($files[$backupInfo['id']]['onedrive']))
+                    $files[$backupInfo['id']]['onedrive']= new stdClass();
+
+                if(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql'){
+                    $files[$backupInfo['id']]['onedrive']->sql = $body->data[$key];
+                    $files[$backupInfo['id']]['onedrive']->sql->backupInfo = $backupInfo;
+                }elseif(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'zip'){
+                    $files[$backupInfo['id']]['onedrive']->zip = $body->data[$key];
+                    $files[$backupInfo['id']]['onedrive']->zip->backupInfo = $backupInfo;
+                }
             }
 
             return $files;

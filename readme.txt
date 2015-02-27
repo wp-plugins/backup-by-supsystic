@@ -1,19 +1,19 @@
 === Backup by Supsystic ===
 Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/backup-plugin/
-Tags: backup, back up, restoration, db backup, dump, file, migrate, schedule, email, FTP, mysql backup, website backup, database backup, db backup, wordpress backup, full backup, restoration, restore, rollback, transfer, website backup, wordpress backup 
+Tags: backup, back up, restoration, db backup, dump, file, migrate, schedule, email, FTP, mysql backup, website backup, database backup, db backup, wordpress backup, full backup, restoration, restore, rollback, transfer, website backup, wordpress backup, migration, backup plugins, backup posts, backup pages 
 Tested up to: 4.1
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 
 Online backup, restoration or migrate solution. Fully customized backup files and database to the FTP or Google Drive
 
 == Description ==
 
-Backup WordPress website to the FTP, Google Drive or Local Computer and restore in two clicks. With Backup plugin by Supsystic make keeping a copy of your site's data on hand extraordinarily simple.
+Backup WordPress website to the FTP, Google Drive or Local Computer and restore in two clicks. With [Backup plugin by Supsystic](http://supsystic.com/plugins/backup-plugin/ "Backup plugin by Supsytic") make keeping a copy of your site's data on hand extraordinarily simple.
 
 = Backup plugin features =
 
-* Backup to FTP, Google Drive
+* Backup to FTP
 * Google Drive cloude service backup
 * Customisation and presets. Database backup, plugins, WordPress core files backup
 * Backup in archive with .zip
@@ -26,16 +26,32 @@ Any number of undesirable events can happen:
 * If you’re tinkering with your site and playing in areas that perhaps you shouldn’t be (e.g. in the functions.php file), depending on the severity of the problem, you may need to restore your backup,
 * If your site gets hacked, having a backup to restore to will mean all your hard work doesn’t go down the drain.
 
+= Support =
+
+If you have any problem or feature request for the Backup plugin by Supsystic, please [let us know](http://supsystic.com/contact-us/ "Contact Us")!
+
 == Installation ==
 
 = First time Backup by Supsystic user =
 
 Thank you for choosing Backup by Supsystic! Open page of our plug-in admin panel WordPress and you will see two menu items: "Main" and "Backups". 
-
-In order to create your backup, at first you need to choose where to backup - on the Main tab you have a choice between FTP and Google Drive backup. Then you wiil see the Backup presets. Here you can set what exatly you want to backup (full backup or backup specific folders). It is already possible to exclude some folders from backup, activate email notification and set the warehouse where to save backup. After all these points you need to click "Start backup" button. When you see the message "Backup complete", you can check the folder with backup. By default backup is stored in upsupsystic folder (you can find it using this path /wp-content/upsupsystic/), there you should see the archive with backup, log file and .sql file (sql file will be created only if you set the database backup). All this files will be with the same ID in the name.
+In order to create your backup, at first you need to choose where to backup - on the Main tab you have a choice between FTP, Google Drive, Dropbox, Amazon S3 and OneDrive backup. Then you will see the Backup presets. Here you can set what exatly you want to backup (full backup or backup specific folders). It is already possible to exclude some folders from backup, activate email notification and set the warehouse where to save backup. After all these points you need to click "Start backup" button. When you see the message "Backup complete", you can check the folder with backup. By default backup is stored in upsupsystic folder (you can find it using this path /wp-content/upsupsystic/), there you should see the archive with backup, log file and .sql file (sql file will be created only if you set the database backup). All this files will be with the same ID in the name.
 On the Backups tab you have the ability to restore, download or delete backup, simply click on the appropriate button. 
+To create Google Drive, Dropbox, or OneDrive backup, at first you need to click the “Authenticate” button. On your cloud service will be created “Backup by Supsystic” folder with one more folder inside (folder with the name of your site), where the backups will be stored. 
 
-To create Google Drive backup, at first you need to click the “Authenticate” button. On your Google Disk will be created “Backup by Supsystic” folder with one more folder inside (folder with the name of your site), where the backups will be stored.
+To create Amazon S3 backup, at first you need to get your access key ID and secret access key. To do this - follow next steps:
+
+1. Open the IAM console.  https://console.aws.amazon.com/iam/home?#home 
+2. From the navigation menu, click Users.
+3. Select your IAM user name.
+4. Click User Actions, and then click Manage Access Keys.
+5. Click Create Access Key.
+6. Your keys will look something like this:
+	- Access key ID example: AKIAIOSFODNN7EXAMPLE
+	- Secret access key example: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+7. Click Download Credentials, and store the keys in a secure location.
+
+After you have got the keys you need to enter them in the appropriate fields, also enter the name of the basket (which exists on Amazon S3), where the backups will be stored. And click “Store Credentials” button.
 
 = To install a plugin via FTP, you must = 
 
@@ -55,6 +71,7 @@ To create Google Drive backup, at first you need to click the “Authenticate”
 = Complete Backup by Supsystic =
 
 The WordPress Backup by Supsystic plugin backups in the full scope the WordPress site along with the attached files and database saving the most important part of the data, such as: 
+
 * posts, 
 * pages, 
 * plugins, 
@@ -84,10 +101,12 @@ Should the site be more than scores of GB, in this case, an ordinary backup plug
 = Real-time Backup =
 
 Real-time backup system Backup by Supsystic ensures that any change is saved together with the instant backup at the spot; very useful feature if the work is done in the field of electronic commerce needed to be backed up daily - no transaction is lost even if the site crashed between the scheduled backup. The Real-time backup works as follows, by means of listening to the triggers issued by the standard WordPress updates as follow:
-adding - updating posts, 
-adding - updating pages, 
-adding - updating users, 
-adding - updating media, etc. 
+
+* adding - updating posts, 
+* adding - updating pages, 
+* adding - updating users, 
+* adding - updating media, etc. 
+
 For example, some plugins, let`s take the “wooCommerce” create custom tables in the WordPress database without any protection from the regular real-time backups due to its overwhelming size, hence the Backup by Supsystic has a special feature to manage the ” wooCommerce” backups.
 
 = WordPress Multisite (WPMU) Backup =
@@ -101,18 +120,34 @@ The Backup by Supsystic is always monitoring the site to ensure that the schedul
 = Backup History =
 
 Backup by Supsystic's history page comprises information about each backup recorded within a considerable time period, such as:
+
 * list of plugins
 * number of posts
 * pages
 * files 
 * tables. 
+
 Also the changes in the backup are highlighted making finding any particular update and its time really easy, including the use of screenshots for each and every backup.
 
 = Test-Restore Backup =
 
 Temporarily restoring backup on the test servers is a unique feature provided by the Backup by Supsystic to validate the backup and ensure the expected results; or used for the accurate backup restoring from an older backup identification.
 
+*Check other WordPress plugins:*
+
+* [Slider by Supsystic](https://wordpress.org/plugins/slider-by-supsystic/ "Slider plugin")
+* [Grid Gallery](https://wordpress.org/plugins/gallery-by-supsystic/ "Grid Gallery plugin")
+* [Google Maps](https://wordpress.org/plugins/google-maps-easy/ "Google Maps plugin")
+* [Popup plugin](https://wordpress.org/plugins/popup-by-supsystic/ "Popup plugin")
+* [Security and Firewall](https://wordpress.org/plugins/security-by-supsystic/ "Security solution")
+
 == Changelog ==
+
+= 1.0.6 =
+ * Fixed bug: restore backup, when backup destination set absolute path
+ * Added - backup to Amazon S3 cloud service
+ * Added - writing backup settings in log
+ * Minor issues fix
 
 = 1.0.5 =
  * Added - backup to OneDrive cloud service

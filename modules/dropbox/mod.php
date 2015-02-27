@@ -33,13 +33,13 @@ class dropboxBup extends moduleBup {
 	private $options = array(
 		array(
 			'code'        => 'dropbox_app_key',
-			'value'       => 'uam2sj2hctayn66',
+			'value'       => 'dpzwg762n7tgvt3',
 			'label'       => 'Dropbox Application Key',
 			'description' => 'Dropbox Application Key',
 		),
 		array(
 			'code'        => 'dropbox_app_secret',
-			'value'       => 'nznkl0jasyygrkz',
+			'value'       => 'vyp3moe0d1sx0s6',
 			'label'       => 'Dropbox Application Secret',
 			'description' => 'Dropbox Application Secret',
 		),
@@ -62,6 +62,11 @@ class dropboxBup extends moduleBup {
 	 * Relative path to Dropbox SDK
 	 */
 	private $sdkPath = 'sdk/';
+
+	/**
+	 * Module supported row
+	 */
+	private $_isSupportedModule = false;
 
 	/**
 	 * Module installer
@@ -89,6 +94,7 @@ class dropboxBup extends moduleBup {
         }
 
         $curl = curl_version();
+        $this->_isSupportedModule = true;
 
 		if((version_compare(PHP_VERSION, '5.3.1', '>=') &&
 				(substr($curl['ssl_version'], 0, 3) != 'NSS')) && PHP_INT_MAX > 2147483647)
@@ -109,6 +115,7 @@ class dropboxBup extends moduleBup {
         dispatcherBup::addFilter('adminCloudServices', array($this, 'registerTab'));
         dispatcherBup::addFilter('adminSendToLinks', array($this, 'registerSendLink'));
         dispatcherBup::addfilter('adminBackupUpload', array($this, 'registerUploadMethod'));
+        dispatcherBup::addfilter('adminGetUploadedFiles', array($this, 'getUploadedFiles'));
 
 	}
 
@@ -179,5 +186,25 @@ class dropboxBup extends moduleBup {
         if(method_exists($controller, $action)) {
             return $controller->{$action}();
         }
+    }
+
+    /**
+     * Register uploaded files to backups page
+     *
+     * @param  array $files
+     * @return array
+     */
+    public function getUploadedFiles($files) {
+        if($this->_isSupportedModule){
+            try{
+                $uploadedFiles = $this->getController()->model->getUploadedFiles();
+                if(is_array($uploadedFiles['contents'])){
+                    foreach($uploadedFiles['contents'] as $key=>$file){
+                        $files[$key] = $file;
+                    }
+                }
+            } catch (Exception $e) {}
+        }
+        return $files;
     }
 }

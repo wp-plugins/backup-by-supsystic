@@ -32,7 +32,8 @@ class dropbox52ModelBup extends modelBup {
             return true;
         }
 
-        if (null !== $this->readToken()) {
+        if (null !== ($token = $this->readToken())) {
+            $_SESSION[self::TOKEN] = $token;
             return true;
         }
 
@@ -75,7 +76,7 @@ class dropbox52ModelBup extends modelBup {
 
         $request->setAuthorization($this->getToken());
        // try {
-            $response = json_decode($request->exec(), true);
+        $response = json_decode($request->exec(), true);
        // } catch (RuntimeException $e) {
          //   exit (sprintf('Dropbox Client error: %s\nTry to refresh page', $e->getMessage()));
        // }
@@ -83,6 +84,23 @@ class dropbox52ModelBup extends modelBup {
         if (isset($response['error'])) {
             return null;
         }
+
+        // Formatting uploading data files for use their on backups page
+        $files = array();
+        foreach ($response['contents'] as $file) {
+            $pathInfo = pathinfo($file['path']);
+            $backupInfo = $this->getBackupInfoByFilename($pathInfo['basename']);
+
+            if(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql'){
+                $files[$backupInfo['id']]['dropbox']['sql'] = $file;
+                $files[$backupInfo['id']]['dropbox']['sql']['backupInfo'] = $backupInfo;
+            }elseif(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'zip'){
+                $files[$backupInfo['id']]['dropbox']['zip'] = $file;
+                $files[$backupInfo['id']]['dropbox']['zip']['backupInfo'] = $backupInfo;
+            }
+        }
+        unset($response['contents']);
+        $response['contents']= $files;
 
         return $response;
     }

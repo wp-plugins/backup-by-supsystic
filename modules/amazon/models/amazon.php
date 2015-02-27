@@ -284,12 +284,14 @@ class amazonModelBup extends ModelBup {
         if($client->doesObjectExist($this->getBucket(), $filename) === false) {
             return 404;
         }
-
-        $client->getObject(array(
-            'Bucket' => $this->getBucket(),
-            'Key'    => $filename,
-            'SaveAs' => $this->getBackupsPath() . $filename,
-        ));
+        $filenameInfo = pathinfo($filename);
+        if(!file_exists($this->getBackupsPath() . $filenameInfo['basename'])){
+            $client->getObject(array(
+                'Bucket' => $this->getBucket(),
+                'Key'    => $filename,
+                'SaveAs' => $this->getBackupsPath() . $filenameInfo['basename'],
+            ));
+        }
 
         return 201;
     }
@@ -340,7 +342,20 @@ class amazonModelBup extends ModelBup {
             krsort($files);
         }
 
-        return $files;
+        // Formatting uploading data files for use their on backups page
+        $newFiles = array();
+        foreach ($files as $file) {
+            $backupInfo = $this->getBackupInfoByFilename($file);
+
+            if(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql'){
+                $newFiles[$backupInfo['id']]['amazon']['sql']['file'] = $file;
+                $newFiles[$backupInfo['id']]['amazon']['sql']['backupInfo'] = $backupInfo;
+            }elseif(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'zip'){
+                $newFiles[$backupInfo['id']]['amazon']['zip']['file'] = $file;
+                $newFiles[$backupInfo['id']]['amazon']['zip']['backupInfo'] = $backupInfo;
+            }
+        }
+        return $newFiles;
     }
     
     /**
