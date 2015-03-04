@@ -78,16 +78,16 @@
                         <?php echo $this->backupPlaces['bupGdriveOptions']['content']?>
                     </div>
 
-<!--                    <div class="bupMargDest">-->
-<!--                        <label>-->
-<!--                            --><?php //echo htmlBup::radiobutton('dest_opt', array(
-//                                'value'   => 'dropbox',
-//                            )); ?><!-- --><?php //echo $this->backupPlaces['bupDropboxOptions']['title']?>
-<!--                        </label>-->
-<!--                    </div>-->
-<!--                    <div class="bupOptions bup-dropbox">-->
-<!--                        --><?php //echo $this->backupPlaces['bupDropboxOptions']['content']?>
-<!--                    </div>-->
+                    <div class="bupMargDest">
+                        <label>
+                            <?php echo htmlBup::radiobutton('dest_opt', array(
+                                'value'   => 'dropbox',
+                            )); ?> <?php echo $this->backupPlaces['bupDropboxOptions']['title']?>
+                        </label>
+                    </div>
+                    <div class="bupOptions bup-dropbox">
+                        <?php echo $this->backupPlaces['bupDropboxOptions']['content']?>
+                    </div>
 
                     <div class="bupMargDest">
                         <label>

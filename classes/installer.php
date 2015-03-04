@@ -64,7 +64,7 @@ class installerBup {
 				(NULL, 'gdrive', 1, 1, '', 1, 'gdrive', 'gdrive'),
 				(NULL, 'onedrive', 1, 1, '', 1, 'onedrive', 'onedrive'),
 				(NULL, 'amazon', 1, 1, '', 1, 'amazon', 'amazon'),
-				(NULL, 'dropbox', 0, 1, '', 1, 'dropbox', 'dropbox')");
+				(NULL, 'dropbox', 1, 1, '', 1, 'dropbox', 'dropbox')");
 		}
         if(!dbBup::exist($wpPrefix.BUP_DB_PREF."modules", 'code', 'gdrive')){
             dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."modules` (id, code, active, type_id, params, has_tab, label, description) VALUES
@@ -72,7 +72,7 @@ class installerBup {
         }
         if(!dbBup::exist($wpPrefix.BUP_DB_PREF."modules", 'code', 'dropbox')){
             dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."modules` (id, code, active, type_id, params, has_tab, label, description) VALUES
-            (NULL, 'dropbox', 0, 1, '', 1, 'dropbox', 'dropbox')");
+            (NULL, 'dropbox', 1, 1, '', 1, 'dropbox', 'dropbox')");
         }
         if(!dbBup::exist($wpPrefix.BUP_DB_PREF."modules", 'code', 'amazon')){
             dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."modules` (id, code, active, type_id, params, has_tab, label, description) VALUES

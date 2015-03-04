@@ -2,10 +2,10 @@
 Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/backup-plugin/
 Tags: backup, back up, restoration, db backup, dump, file, migrate, schedule, email, FTP, mysql backup, website backup, database backup, db backup, wordpress backup, full backup, restoration, restore, rollback, transfer, website backup, wordpress backup, migration, backup plugins, backup posts, backup pages 
-Tested up to: 4.1
-Stable tag: 1.0.6
+Tested up to: 4.1.1
+Stable tag: 1.0.7
 
-Online backup, restoration or migrate solution. Fully customized backup files and database to the FTP or Google Drive
+Online backup, restoration or migrate solution. Fully customized backup files and database to the FTP, DropBox, Google Drive or Amazon S3
 
 == Description ==
 
@@ -14,7 +14,7 @@ Backup WordPress website to the FTP, Google Drive or Local Computer and restore 
 = Backup plugin features =
 
 * Backup to FTP
-* Google Drive cloude service backup
+* Backup to DropBox, Google Drive, Amazone S3 cloude service backup
 * Customisation and presets. Database backup, plugins, WordPress core files backup
 * Backup in archive with .zip
 * WordPress website restoration and migration via backup
@@ -26,6 +26,10 @@ Any number of undesirable events can happen:
 * If you’re tinkering with your site and playing in areas that perhaps you shouldn’t be (e.g. in the functions.php file), depending on the severity of the problem, you may need to restore your backup,
 * If your site gets hacked, having a backup to restore to will mean all your hard work doesn’t go down the drain.
 
+= Video Tutorial how to backup to FTP or DropBox =
+
+[youtube http://www.youtube.com/embed/CWHpAjOkKp8]
+
 = Support =
 
 If you have any problem or feature request for the Backup plugin by Supsystic, please [let us know](http://supsystic.com/contact-us/ "Contact Us")!
@@ -35,11 +39,44 @@ If you have any problem or feature request for the Backup plugin by Supsystic, p
 = First time Backup by Supsystic user =
 
 Thank you for choosing Backup by Supsystic! Open page of our plug-in admin panel WordPress and you will see two menu items: "Main" and "Backups". 
+
 In order to create your backup, at first you need to choose where to backup - on the Main tab you have a choice between FTP, Google Drive, Dropbox, Amazon S3 and OneDrive backup. Then you will see the Backup presets. Here you can set what exatly you want to backup (full backup or backup specific folders). It is already possible to exclude some folders from backup, activate email notification and set the warehouse where to save backup. After all these points you need to click "Start backup" button. When you see the message "Backup complete", you can check the folder with backup. By default backup is stored in upsupsystic folder (you can find it using this path /wp-content/upsupsystic/), there you should see the archive with backup, log file and .sql file (sql file will be created only if you set the database backup). All this files will be with the same ID in the name.
+
 On the Backups tab you have the ability to restore, download or delete backup, simply click on the appropriate button. 
+
 To create Google Drive, Dropbox, or OneDrive backup, at first you need to click the “Authenticate” button. On your cloud service will be created “Backup by Supsystic” folder with one more folder inside (folder with the name of your site), where the backups will be stored. 
 
-To create Amazon S3 backup, at first you need to get your access key ID and secret access key. To do this - follow next steps:
+To create Dropbox backup, Google Drive or OneDrive backup, at first you need to click the “Authenticate” button. On your cloud service will be created “Backup by Supsystic” folder with one more folder inside (folder with the name of your site), where the backups will be stored. 
+
+To create Amazon S3 backup, at first you need to get your access key ID and secret access key. Then enter the keys and name of the basket (where backups will be stored) in the appropriate fields, and click “Store Credentials” button.
+
+= To install a plugin via FTP, you must = 
+
+1. Download the plugin
+2. Unarchive the plugin
+3. Copy the folder with plugin
+4. Open ftp \wp-content\plugins\
+5. Paste the plug-ins folder in the folder
+6. Go to admin panel => open item "Plugins" => activate the plugin 
+
+= How to Backup a WordPress site = 
+
+*Step 1: Choosing the cloud storage*
+
+Primarily on the Main tab you need to choose the cloud storage where you prefer backups to be stored With Backup plugin by Supsystic you can backup to:
+
+* FTP server
+* Google Drive
+* Dropbox
+* Amazon S3
+* OneDrive
+
+To create backup to Google Drive, Dropbox, Amazon S3 or OneDrive, at first you need to authenticate your account. For all cloud services (except Amazon S3) it is very easy – just click “Authenticate”.
+
+
+If prompted request for permission to access to your account – press “Allow” button to give permissions to upload the backup files on your account.  Then on your cloud service will be created “Backup by Supsystic” folder with one more folder inside (folder with the name of your site), where the backups will be stored.
+
+If you want to backup to the Amazon S3 – you need to know your access key ID, secret access key and name of the basket (which exists on Amazon S3) where backups will be stored. To get your access key ID and secret access key you must follow the next steps:
 
 1. Open the IAM console.  https://console.aws.amazon.com/iam/home?#home 
 2. From the navigation menu, click Users.
@@ -51,16 +88,55 @@ To create Amazon S3 backup, at first you need to get your access key ID and secr
 	- Secret access key example: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 7. Click Download Credentials, and store the keys in a secure location.
 
-After you have got the keys you need to enter them in the appropriate fields, also enter the name of the basket (which exists on Amazon S3), where the backups will be stored. And click “Store Credentials” button.
+After these steps – enter the keys and name of the basket in the appropriate fields, then click “Store Credentials” button.
 
-= To install a plugin via FTP, you must = 
+*Step 2: Customization of Backup by Supsystic*
 
-1. Download the plugin
+Choose the backup preset – what exactly you want to backup and how you want to backup:
+=======
+1. Download the backup plugin
 2. Unarchive the plugin
 3. Copy the folder with plugin
 4. Open ftp \wp-content\plugins\
 5. Paste the plug-ins folder in the folder
 6. Go to admin panel => open item "Plugins" => activate the plugin 
+
+* Full Backup
+* WordPress Core – all folders and files backup, in the root directory, where the WordPress is installed, except the /wp-content folder
+* Plugins folder
+* Themes folder
+* Uploads folder
+* Any folder inside wp-content
+* Safe update – if the checkbox is set up, the database backup will be performed. This will let the database backup work in the transaction mode, i.e. should there occur any failure during the data base recovery, no data from the data-base backup will be transferred to the data-base. The data-base backup recovery will occur if and only there were no failures during the process. If the checkbox is not set up the data-base backup will be performed without transaction mode
+* Force backup – when backup is performed, the labels are usually put at the beginning of the file dump, such as: WordPress version for the backup; WordPress data-base version for the backup; the plugin version for the backup. At recovering, if the force has been off, the backup will not be performed, because it will constantly pop up with the message, that the version is incorrect (the version of WordPress, the version of WordPress data-base or the plugin version). If the force has been on, there will be no such system check and the recovery will be performed
+
+
+You can select several items at one time. If you choose a full backup – all checkboxes will be automatically activated (including the database backup).
+
+Besides you have the ability to:
+
+* Create only Database backup
+* Exclude files and folders from the backup
+* Enable email notification – activate checkbox and enter the email address where you want to be notified about how did the backup process passed.
+* Specify the warehouse where the data is to be backed up – if ‘Use relative path’ checkbox has been set up, the path will be set against in the root directory, where the WordPress is installed. If ‘Use relative path’ checkbox has been of, the full path to the disk root should be specified in the Warehouse field.
+* Use relative path – if the checkbox has been set up, then the backup path must be specified in the Warehouse field against the root directory, where the WordPress is installed. if the checkbox has been off, then the backup path must be specified in the Warehouse field against the disk root.
+
+*Step 3: Creating the backup*
+
+After you have selected the cloud storage and have specified all the settings, click “Start Backup”. Wait while your site is being backed up. It can take a while if your website is large. It depends on your site and hosting how much time will take the process. While plugin is backing up your website, you are not able to create another backup.
+
+
+When you see the message “Backup complete”, you can check the folder with backup. There you should see the archive with backup, log file and .sql file (sql file will be created only if you set the database backup). All this files will be with the same ID in the name.
+
+On Backups tab will appear a new entry with Database ( if you marked Full Backup or Database Backup) and Filesystem backup files. On top will be shown where has been made backup, the ID of backup files, the date and time of the backup.  You can restore, download (only if it was backup to FTP server) or delete backup, simply click on the appropriate button.
+
+Also here you can view the log file of backup – just clicking “Show Backup Log”.
+
+*Step 4: Backup restoration*
+
+In order to restore the backup you need to go to the Backups tab, select the backup files you want and click “Restore” button. When you see the message “Done!” – restoration will be completed.
+
+If the backup you want to restore is on your computer, then upload it to the folder on the FTP server where you store the other backups.  By default backup is stored in ‘upsupsystic’ folder (you can find it  in the root directory, where the WordPress is installed, using this path /wp-content/upsupsystic/). Then files of this backup will appear on the Backups tab and you will be able to restore them.
 
 == Screenshots ==
 
@@ -80,11 +156,11 @@ The WordPress Backup by Supsystic plugin backups in the full scope the WordPress
 
 = Managed offsite backups =
 
-Additional load on the server backup plugins make when storing everything locally on the server to slow down the site and leave no room for the data you need. The Backup by Supsystic plugin does need no local storage for the WordPress backups, hence, should there be a server crashes, the entire WordPress site and its backups would be lost. So, what to do? Create an offsite backup!  To secure all the content when and if the site goes down the backup plugin Backup by Supsystic creates offsite backups to archive and place up to thirty WordPress backups at any particular point taken in time. The saved data is stored in the Backup by Supsystics` own servers and in addition all the copied go to Amazon S3 servers. Every WordPress backup has nine full copies maintained in the multiple independent data-centers.
+Additional load on the server backup plugins make when storing everything locally on the server to slow down the site and leave no room for the data you need. The Backup by Supsystic plugin does need no local storage for the WordPress backups, hence, should there be a server crashes, the entire WordPress site and its backups would be lost. So, what to do? Create an offsite backup!  To secure all the content when and if the site goes down the backup dropbox plugin Backup by Supsystic creates offsite backups to archive and place up to thirty WordPress backups at any particular point taken in time. The saved data is stored in the Backup by Supsystics` own servers and in addition all the copied go to Amazon S3 servers. Every WordPress backup has nine full copies maintained in the multiple independent data-centers.
 
 = Easy Restore of Backups =
 
-Should the site get hacked, the Backup by Supsystic plugin will easily restore all the data in no time automatically restoring the specific WordPress backup right onto the server. To verify the integrity of a WordPress backup version or to test backups before deploying them onto the server the Backup by Supsystic has a test-restore feature. The backup can be validated as the WordPress`s backup is temporarily restored on the Backup by Supsystic's own servers.
+Should the site get hacked, the DropBox Backup by Supsystic plugin will easily restore all the data in no time automatically restoring the specific WordPress backup right onto the server. To verify the integrity of a WordPress backup version or to test backups before deploying them onto the server the Backup by Supsystic has a test-restore feature. The backup can be validated as the WordPress`s backup is temporarily restored on the Backup by Supsystic's own servers.
 
 = Migration using Backup =
 
@@ -142,6 +218,12 @@ Temporarily restoring backup on the test servers is a unique feature provided by
 * [Security and Firewall](https://wordpress.org/plugins/security-by-supsystic/ "Security solution")
 
 == Changelog ==
+
+= 1.0.7 =
+* Add backup to DropBox
+* Database backup fixed
+* Restoration via DropBox and Amazon S3 fixed
+* Add backup log option
 
 = 1.0.6 =
  * Fixed bug: restore backup, when backup destination set absolute path
