@@ -9,7 +9,7 @@ Online backup, restoration or migrate solution. Fully customized backup files an
 
 == Description ==
 
-Backup WordPress website to the FTP, Google Drive or Local Computer and restore in two clicks. With [Backup plugin by Supsystic](http://supsystic.com/plugins/backup-plugin/ "Backup plugin by Supsytic") make keeping a copy of your site's data on hand extraordinarily simple.
+Backup WordPress website to the FTP, DropBox, Google Drive or Local Computer and restore in two clicks. With [Backup plugin by Supsystic](http://supsystic.com/plugins/backup-plugin/ "Backup plugin by Supsytic") make keeping a copy of your site's data on hand extraordinarily simple.
 
 = Backup plugin features =
 
@@ -18,6 +18,8 @@ Backup WordPress website to the FTP, Google Drive or Local Computer and restore 
 * Customisation and presets. Database backup, plugins, WordPress core files backup
 * Backup in archive with .zip
 * WordPress website restoration and migration via backup
+
+>Only this week. [Get PRO version for FREE!](http://supsystic.com/get-pro-version-of-any-plugin-for-free/ "Get PRO version for FREE")
 
 Why do you need to backup your site?
 Any number of undesirable events can happen:
@@ -28,7 +30,7 @@ Any number of undesirable events can happen:
 
 = Video Tutorial how to backup to FTP or DropBox =
 
-[youtube http://www.youtube.com/embed/CWHpAjOkKp8]
+[youtube http://www.youtube.com/watch?v=CWHpAjOkKp8]
 
 = Support =
 
@@ -93,7 +95,7 @@ After these steps – enter the keys and name of the basket in the appropriate f
 *Step 2: Customization of Backup by Supsystic*
 
 Choose the backup preset – what exactly you want to backup and how you want to backup:
-=======
+
 1. Download the backup plugin
 2. Unarchive the plugin
 3. Copy the folder with plugin
