@@ -19,8 +19,6 @@ Backup WordPress website to the FTP, DropBox, Google Drive or Local Computer and
 * Backup in archive with .zip
 * WordPress website restoration and migration via backup
 
->Only this week. [Get PRO version for FREE!](http://supsystic.com/get-pro-version-of-any-plugin-for-free/ "Get PRO version for FREE")
-
 Why do you need to backup your site?
 Any number of undesirable events can happen:
 
