@@ -13,7 +13,7 @@ class promo_supsysticControllerBup extends controllerBup {
 		//$return = $this->getModule()->decodeSlug(str_replace('return=', '', $originalPage));
 		$return = admin_url( strpos($originalPage, '?') ? $originalPage : 'admin.php?page='. $originalPage);
 		// Start usage in any case
-		redirect($return);
+        redirectBup($return);
 		return $res->ajaxExec();
 	}
 	public function getPermissions() {

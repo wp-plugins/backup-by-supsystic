@@ -10,9 +10,15 @@ class adminmenuViewBup extends viewBup {
     public function initMenu() {
 		$accessCap = 'manage_options';
 		$firstTimeLookedToPlugin = installerBup::isUsed();
-				
+        $subMenuTabs = array(
+            array('parentSlug' => $this->_file, 'pageTitle' => langBup::_('Log'), 'menuTitle' => langBup::_('Log'), 'capability' => $accessCap, 'menuSlug' => 'admin.php?page=supsystic-backup&tab=bupLog')
+        );
+        $subMenuTabs = dispatcherBup::applyFilters('addAdminSubMenuTabs', $subMenuTabs);
 		if($firstTimeLookedToPlugin) {
-        	add_menu_page(langBup::_('Backup by Supsystic'), langBup::_('Backup by Supsystic'), $accessCap, $this->_file, array(frameBup::_()->getModule('options')->getView(), 'getAdminPage'));
+            add_menu_page(langBup::_('Backup by Supsystic'), langBup::_('Backup by Supsystic'), $accessCap, $this->_file, array(frameBup::_()->getModule('options')->getView(), 'getAdminPage'));
+            foreach($subMenuTabs as $tab){
+                add_submenu_page($tab['parentSlug'], $tab['pageTitle'], $tab['menuTitle'], $tab['capability'], $tab['menuSlug']);
+            }
 		} else {
 			if ( frameBup::_()->getModule('promo_supsystic') ){
 				add_menu_page(langBup::_('Backup by Supsystic'), langBup::_('Backup by Supsystic'), $accessCap, $this->_file, array(frameBup::_()->getModule('promo_supsystic')->getView(), 'showWelcomePage'));

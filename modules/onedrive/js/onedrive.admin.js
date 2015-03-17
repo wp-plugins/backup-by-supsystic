@@ -1,56 +1,27 @@
-(function ($) {
+jQuery(document).ready(function() {
+	var j = jQuery.noConflict();
 
-    function OneDrive() {
-        return this;
-    }
+	j('.onedriveLogout').on('click', function(event) {
+		event.preventDefault();
 
-    OneDrive.prototype.logout = function () {
-        $.sendFormBup({
-            msgElID: 'bupOnedriveAlerts',
-            data: {
-                reqType: 'ajax',
-                page:    'onedrive',
-                action:  'logoutAction'
-            },
-            onSuccess: function () {
-                location.reload(true);
-            }
-        });
-    };
+		j.sendFormBup({
+			msgElID: 'bupOnedriveAlerts',
+			data: {
+				reqType: 'ajax',
+				page:    'onedrive',
+				action:  'logoutAction'
+			},
+			onSuccess: function () {
+				location.reload(true);
+			}
+		});
+	});
 
-    OneDrive.prototype.restore = function (fileId, fileName, rowId) {
-        $.sendFormBup({
-            msgElID: 'bupOnedriveAlerts-' + rowId,
-            data: {
-                reqType: 'ajax',
-                page:    'onedrive',
-                action:  'downloadAction',
-                file_id: fileId
-            },
-            onSuccess: function (response) {
-                if (!response.error) {
-                    $.sendFormBup({
-                        msgElID: 'bupOnedriveAlerts-' + rowId,
-                        data: {
-                            reqType: 'ajax',
-                            page:    'backup',
-                            action:  'restoreAction',
-                            filename: fileName
-                        },
-                        onSuccess: function (response) {
-                            if (!response.error) {
-                                location.reload(true);
-                            }
-                        }
-                    });
-                }
-            }
-        });
-    };
+	j('.onedriveDelete').on('click', function(event) {
+		event.preventDefault();
 
-    OneDrive.prototype.delete = function (e) {
 		if (confirm('Are you sure?')) {
-			var $button = $(e.currentTarget),
+			var $button = j(event.currentTarget),
 				$row = $button.parents('tr'),
 				$filename = $row.data('filename'),
 				$rowId = $row.data('id'),
@@ -59,7 +30,7 @@
 			if((j(this).closest('table tbody').find('tr')).length > 1)
 				deleteLog = 0;
 
-			$.sendFormBup({
+			j.sendFormBup({
 				msgElID: 'bupOnedriveAlerts-' + $rowId,
 				data: {
 					reqType:  'ajax',
@@ -77,20 +48,51 @@
 				}
 			});
 		}
-    };
+	});
 
-    $(document).ready(function (OneDrive) {
+	j('.bupRestoreOnedrive').on('click', function(event) {
+		event.preventDefault();
 
-        $('.onedriveLogout').on('click', OneDrive.logout);
+		var fileId = j(event.currentTarget).data('file-id');
+		var fileName = j(event.currentTarget).data('file-name');
+		var rowId = j(event.currentTarget).data('row-id');
 
-        $('.onedriveDelete').on('click', OneDrive.delete);
-
-        $('.bupRestoreOnedrive').on('click', function () {
-			if (confirm('Are you sure?')) {
-            	OneDrive.restore($(this).data('file-id'), $(this).data('file-name'), $(this).data('row-id'));
+		j.sendFormBup({
+			msgElID: 'bupOnedriveAlerts-' + rowId,
+			data: {
+				reqType: 'ajax',
+				page:    'onedrive',
+				action:  'downloadAction',
+				file_id: fileId
+			},
+			onSuccess: function (response) {
+				if (!response.error) {
+					j.sendFormBup({
+						msgElID: 'bupOnedriveAlerts-' + rowId,
+						data: {
+							reqType: 'ajax',
+							page:    'backup',
+							action:  'restoreAction',
+							filename: fileName
+						},
+						onSuccess: function (response) {
+							if (!response.error) {
+								location.reload(true);
+							}
+						}
+					});
+				}
 			}
-        });
+		});
+	});
 
-    }(new OneDrive()));
-
-}(jQuery));
+	j('.oneDriveAuthenticate').on('click', function(event) {
+		j.sendFormBup({
+			data: {
+				'reqType': 'ajax',
+				'page':    'onedrive',
+				'action':  'saveBackupDestinationOnAuthenticate'
+			}
+		});
+	});
+});

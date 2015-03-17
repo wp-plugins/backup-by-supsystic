@@ -96,21 +96,26 @@ class dropboxBup extends moduleBup {
         $curl = curl_version();
         $this->_isSupportedModule = true;
 
-		if((version_compare(PHP_VERSION, '5.3.1', '>=') &&
-				(substr($curl['ssl_version'], 0, 3) != 'NSS')) && PHP_INT_MAX > 2147483647)
-		{
-			require $this->sdkPath . 'autoload.php';
-
+//		if((version_compare(PHP_VERSION, '5.3.1', '>=') &&
+//				(substr($curl['ssl_version'], 0, 3) != 'NSS')) && PHP_INT_MAX > 2147483647)
+//		{
+//			require $this->sdkPath . 'autoload.php';
+//
+//            require dirname(__FILE__) . '/classes/curlBup.php';
+//            frameBup::_()->getModule('options')->set('dropbox', 'dropbox_model');
+//        }
+//		else {
             require dirname(__FILE__) . '/classes/curlBup.php';
-            frameBup::_()->getModule('options')->set('dropbox', 'dropbox_model');
-        }
-		else {
-            require dirname(__FILE__) . '/classes/curlBup.php';
-            $this->getController()->modelType = 'dropbox52';
-            frameBup::_()->getModule('options')->set('dropbox52', 'dropbox_model');
-		}
+//            $this->getController()->modelType = 'dropbox52';
+//            frameBup::_()->getModule('options')->set('dropbox52', 'dropbox_model');
+//		}
 
         frameBup::_()->getModule('options')->set('dropbox52', 'dropbox_model');
+
+        if(is_admin() && frameBup::_()->isPluginAdminPage()) {
+            frameBup::_()->addScript('adminDropboxOptions', $this->getModPath() . 'js/admin.dropbox.js');
+        }
+
 
         dispatcherBup::addFilter('adminCloudServices', array($this, 'registerTab'));
         dispatcherBup::addFilter('adminSendToLinks', array($this, 'registerSendLink'));
@@ -137,11 +142,6 @@ class dropboxBup extends moduleBup {
 	 * @return array
 	 */
 	public function registerTab($tabs) {
-
-		if(is_admin() && frameBup::_()->isPluginAdminPage()) {
-			frameBup::_()->addScript('adminDropboxOptions', $this->getModPath() . 'js/admin.dropbox.js');
-		}
-
 		$tabs[$this->config['tabs']['key']] = array(
 			'title'   => $this->config['tabs']['title'],
 			'content' => $this->run($this->config['tabs']['action']),

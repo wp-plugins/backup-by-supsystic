@@ -16,6 +16,12 @@ class dropboxControllerBup extends controllerBup {
 
     public $modelType = null;
 
+    public function getModel($name = ''){
+        if (empty($name) || $name == 'dropbox')
+            $name = 'dropbox52';
+        return parent::getModel($name);
+    }
+
 	/**
 	 * Prefix for view files
 	 * @var string
@@ -80,7 +86,7 @@ class dropboxControllerBup extends controllerBup {
 				return $this->model->getErrors();
 			}
 			else {
-                redirect(admin_url('admin.php?page='.BUP_PLUGIN_PAGE_URL_SUFFIX));
+                redirectBup(admin_url('admin.php?page='.BUP_PLUGIN_PAGE_URL_SUFFIX));
 			}
 		}
 	}
@@ -227,4 +233,11 @@ class dropboxControllerBup extends controllerBup {
 	public function render($template, $data = array()) {
 		return $this->getView()->getContent($this->templatePrefix . '.' . $template, $data);
 	}
+
+    /**
+     * Save backup destination 'dropbox', when user clicked on Authenticate button
+     */
+    public function saveBackupDestinationOnAuthenticate(){
+        frameBup::_()->getTable('options')->update(array('value' => 'dropbox'), array('code' => 'glb_dest'));
+    }
 }

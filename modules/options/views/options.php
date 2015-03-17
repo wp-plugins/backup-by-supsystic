@@ -4,30 +4,32 @@ class optionsViewBup extends viewBup {
     public function getAdminPage() {
         $tabsData =  array(
             'bupMainOptions' => array(
-                'title'   => 'Main',
-                'content' => $this->getMainOptionsTab(),
+                'title'   => 'Backup',
+                'content' => array($this, 'getMainOptionsTab'),
                 'faIcon' => 'fa-home',
             ),
-            'bupStorageOptions' => array(
-                'title' => 'Backups',
-                'content' => frameBup::_()->getModule('storage')->getController()->getView()->getAdminOptions(),
+            'bupLog' => array(
+                'title' => 'Log',
+                'content' => array(frameBup::_()->getModule('storage')->getController()->getView(), 'getAdminOptions'),
                 'faIcon' => 'fa-database',
             ),
         );
-
-        $activeTab = $this->getModule()->getActiveTab();
         $tabsData = dispatcherBup::applyFilters('adminOptionsTabs', $tabsData);
+        $activeTabForCssClass = $this->getModule()->getActiveTabForCssClass($tabsData);
+        $activeTab = $this->getModule()->getActiveTab();
         if(!empty($tabsData[$activeTab]['content'])) {
-            $content = $tabsData[$activeTab]['content'];
+            $content = call_user_func_array($tabsData[$activeTab]['content'], array());
         } else {
-            $content = $tabsData['bupMainOptions']['content'];
+            $content = call_user_func_array($tabsData['bupMainOptions']['content'], array());
             $activeTab = 'bupMainOptions';
         }
         $page = !empty($_GET['page']) ? $_GET['page'] : BUP_PLUGIN_PAGE_URL_SUFFIX;
+        frameBup::_()->addJSVar('adminOptionsBup', 'bupActiveTab', $activeTab);
         $this->assign('tabsData', $tabsData);
         $this->assign('page', $page);
         $this->assign('activeTab', $activeTab);
         $this->assign('content', $content);
+        $this->assign('activeTabForCssClass', $activeTabForCssClass);
         parent::display('optionsAdminPage');
     }
 
@@ -39,6 +41,7 @@ class optionsViewBup extends viewBup {
         $backupDest = frameBup::_()->getModule('options')->get('glb_dest');
         $this->assign('backupPlaces', $backupPlaces);
         $this->assign('backupDest', $backupDest);
+        $this->assign('backupOptions', parent::getContent('backupOptions'));
         //$this->assign('allOptions', $generalOptions['opts']);
         return parent::getContent('mainOptionsTab');
     }

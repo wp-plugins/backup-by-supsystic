@@ -33,16 +33,6 @@ class backupBup extends moduleBup {
 	);
 
 	/**
-	 * Menu tab configuration
-	 * @var array
-	 */
-	private $tab = array(
-		'key'    => 'bupStorageOptions',
-		'title'  => 'Backups',
-		'action' => 'indexAction',
-	);
-
-	/**
 	 * Plugin initialization
 	 */
 	public function init() {
@@ -106,9 +96,9 @@ class backupBup extends moduleBup {
 	 * Add tab to the menu
 	 */
 	public function registerModuleTab($tabs) {
-		$tabs[$this->tab['key']] = array(
-			'title'   => $this->tab['title'],
-			'content' => $this->run($this->tab['action']),
+		$tabs['bupLog'] = array(
+			'title'   => 'Log',
+			'content' => array($this->getController(), 'indexAction'),
             'faIcon' => 'fa-database',
 		);
 

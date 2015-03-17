@@ -197,7 +197,7 @@ class backupModelBup extends modelBup {
     public function isFilesystemRequired()
     {
         return $this->isSomethingRequired(array(
-            'full_backup', 'any_dir', 'plugins_dir', 'themes_dir', 'uploads_dir'
+            'full_backup', 'any_dir', 'plugins_dir', 'themes_dir', 'uploads_dir', 'wp_core'
         ));
     }
 
@@ -257,10 +257,13 @@ class backupModelBup extends modelBup {
         return false;
     }
 
-    public function getFilesList()
+    public function getFilesList($optionsModel = false)
     {
         $excluded = array(BUP_PLUG_NAME, BUP_PLUG_NAME_PRO);
-        $options  = frameBup::_()->getModule('options');
+        if(!$optionsModel)
+            $options  = frameBup::_()->getModule('options');
+        else
+            $options  = $optionsModel;
 
         // Where we are need to look for files.
         $directory = realpath(ABSPATH);
@@ -371,6 +374,7 @@ class backupModelBup extends modelBup {
 
             $this->config = array(
                 'full_backup'   => (bool)$options->get('full'),
+                'wp_core'       => (bool)$options->get('wp_core'),
                 'plugins_dir'   => (bool)$options->get('plugins'),
                 'themes_dir'    => (bool)$options->get('themes'),
                 'uploads_dir'   => (bool)$options->get('uploads'),

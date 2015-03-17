@@ -21,6 +21,10 @@ class onedriveModelBup extends modelBup
         if (isset($_SESSION[self::SESSION_ID]) || null !== ($token = $this->readToken())) {
             if(empty($_SESSION[self::SESSION_ID]))
                 $_SESSION[self::SESSION_ID] = $token;
+
+            if (!isset($_SESSION[self::SESSION_EXP]))
+                $_SESSION[self::SESSION_EXP] = $this->getRefreshTokenExpireTime();
+
             return true;
         }
 
@@ -87,6 +91,7 @@ class onedriveModelBup extends modelBup
 
         if (property_exists($body, 'refresh_token')) {
             $this->saveRefreshToken($body->refresh_token);
+            $this->saveRefreshTokenExpireTime($_SESSION[self::SESSION_EXP]);
         }
 
         return true;
@@ -158,6 +163,7 @@ class onedriveModelBup extends modelBup
 
         if (property_exists($body, 'refresh_token')) {
             $this->saveRefreshToken($body->refresh_token);
+            $this->saveRefreshTokenExpireTime($_SESSION[self::SESSION_EXP]);
         }
 
         return true;
@@ -168,8 +174,13 @@ class onedriveModelBup extends modelBup
         if (isset($_SESSION[self::SESSION_ID])) {
             unset ($_SESSION[self::SESSION_ID]);
         }
+        if (isset($_SESSION[self::SESSION_EXP])) {
+            unset ($_SESSION[self::SESSION_EXP]);
+        }
 
         $this->removeToken();
+        $this->deleteRefreshToken();
+        $this->deleteRefreshTokenExpireTime();
     }
 
     /**
@@ -706,11 +717,37 @@ class onedriveModelBup extends modelBup
         }
     }
 
+    protected function deleteRefreshTokenExpireTime()
+    {
+        $storage = frameBup::_()->getModule('warehouse')->getPath();
+
+        if (false !== $expired = glob($storage . '/onedriveRefreshTokenExpireTime*.json')) {
+            if (is_array($expired) && count($expired) > 0) {
+                foreach ($expired as $file) {
+                    @unlink($file);
+                }
+            }
+        }
+    }
+
     protected function getRefreshToken()
     {
         $storage = frameBup::_()->getModule('warehouse')->getPath();
 
-        if (false !== $refreshToken = glob($storage . '/onedriveRefreshToken*.json')) {
+        if (false !== $refreshTokenExpireTime = glob($storage . '/onedriveRefreshToken*.json')) {
+            if (is_array($refreshTokenExpireTime) && count($refreshTokenExpireTime) === 1) {
+                return @file_get_contents($refreshTokenExpireTime[0]);
+            }
+        }
+
+        return null;
+    }
+
+    protected function getRefreshTokenExpireTime()
+    {
+        $storage = frameBup::_()->getModule('warehouse')->getPath();
+
+        if (false !== $refreshToken = glob($storage . '/onedriveRefreshTokenExpireTime*.json')) {
             if (is_array($refreshToken) && count($refreshToken) === 1) {
                 return @file_get_contents($refreshToken[0]);
             }
@@ -732,6 +769,22 @@ class onedriveModelBup extends modelBup
 
         if (!$result) {
             @error_log('Backup by Supsystic: Failed to write OneDrive refresh token.');
+        }
+    }
+
+    protected function saveRefreshTokenExpireTime($refreshTokenExpireTime)
+    {
+        $storage = frameBup::_()->getModule('warehouse')->getPath();
+
+        $this->deleteRefreshTokenExpireTime();
+
+        $result = file_put_contents(
+            $storage . '/' . uniqid('onedriveRefreshTokenExpireTime') . '.json',
+            $refreshTokenExpireTime
+        );
+
+        if (!$result) {
+            @error_log('Backup by Supsystic: Failed to write OneDrive refresh token expire time.');
         }
     }
 }

@@ -48,7 +48,7 @@ class onedriveControllerBup extends controllerBup
                 ));
             }
 
-            return redirect(admin_url(
+            return redirectBup(admin_url(
                 'admin.php?page='.BUP_PLUGIN_PAGE_URL_SUFFIX
             ));
         }
@@ -146,5 +146,9 @@ class onedriveControllerBup extends controllerBup
         }
 
         return $response->ajaxExec();
+    }
+
+    public function saveBackupDestinationOnAuthenticate(){
+        frameBup::_()->getTable('options')->update(array('value' => 'onedrive'), array('code' => 'glb_dest'));
     }
 }

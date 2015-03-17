@@ -204,4 +204,11 @@ class gdriveControllerBup extends controllerBup {
 	public function getModel($name = '') {
 		return parent::getModel();
 	}
+
+    /**
+     * Save backup destination 'googledrive', when user clicked on Authenticate button
+     */
+    public function saveBackupDestinationOnAuthenticate(){
+        frameBup::_()->getTable('options')->update(array('value' => 'googledrive'), array('code' => 'glb_dest'));
+    }
 }

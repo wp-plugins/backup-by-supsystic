@@ -130,6 +130,7 @@ class gdriveModelBup extends modelBup {
      */
     public function isAuthenticated() {
         if(isset($_SESSION[self::GDRIVE_SESS_NAME]) || null !== $this->readToken()) {
+            $this->refreshToken();
             return true;
         }
 
@@ -151,7 +152,7 @@ class gdriveModelBup extends modelBup {
             }
         }
 		$credentials = $this->getCredentials();
-		$client = new Google_Client();
+		$client = new Google_Client(getGoogleClientApiConfig());
 
 		$client->setClientId($credentials['clientId']);
 		$client->setClientSecret($credentials['clientSecret']);
@@ -194,7 +195,11 @@ class gdriveModelBup extends modelBup {
 
             $this->saveToken($_SESSION[self::GDRIVE_SESS_NAME]);
 
-            redirect(admin_url('admin.php?page='.BUP_PLUGIN_PAGE_URL_SUFFIX));
+            $tokens = json_decode($this->readToken());
+            if(!empty($tokens->refresh_token))
+                frameBup::_()->getTable('options')->update(array('value' => $tokens->refresh_token), array('code' => 'gdrive_refresh_token'));
+
+            redirectBup(admin_url('admin.php?page='.BUP_PLUGIN_PAGE_URL_SUFFIX));
         } catch (Exception $e) {
             $this->pushError($e->getMessage());
             return $this->getAuthenticationURL();
@@ -369,7 +374,7 @@ class gdriveModelBup extends modelBup {
                 $files = $service->files->listFiles($config);
             } catch(Exception $e) {
                 $this->resetCredentials();
-                redirect($this->authenticate());
+                redirectBup($this->authenticate());
             }
 
             $list = array_merge($list, $files['items']);
@@ -510,7 +515,7 @@ class gdriveModelBup extends modelBup {
 		// 		$files = $service->files->listFiles($config);
 		// 	} catch(Exception $e) {
 		// 		session_destroy();
-		// 		redirect($client->createAuthUrl());
+		// 		redirectBup($client->createAuthUrl());
 		// 	}
         //
 		// 	$list = array_merge($list, $files['items']);
@@ -634,5 +639,15 @@ class gdriveModelBup extends modelBup {
         }
 
         return null;
+    }
+
+    protected function refreshToken(){
+        $token = frameBup::_()->getTable('options')->get('value', array('code' => 'gdrive_refresh_token'), '', 'row');
+        if(!empty($token['value'])){
+            $client = $this->getClient();
+            if($client->isAccessTokenExpired()){
+                $client->refreshToken($token['value']);
+            }
+        }
     }
 }

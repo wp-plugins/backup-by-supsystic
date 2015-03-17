@@ -91,6 +91,10 @@ class amazonBup extends moduleBup {
             return;
         }
 
+        if (is_admin() && frameBup::_()->isPluginAdminPage()) {
+            frameBup::_()->addScript('adminAmazonHandle', $this->getModPath() . 'js/admin.amazon.js');
+        }
+
         // Register tab into menu
         dispatcherBup::addFilter('adminCloudServices', array($this, 'registerTab'));
         // Register "send to" link
@@ -119,10 +123,6 @@ class amazonBup extends moduleBup {
      * @return array
      */
     public function registerTab($tabs) {
-        if (is_admin() && frameBup::_()->isPluginAdminPage()) {
-            frameBup::_()->addScript('adminAmazonHandle', $this->getModPath() . 'js/admin.amazon.js');
-        }
-
         $tabs[$this->config['key']] = array(
             'title'   => $this->config['title'],
             'content' => $this->run($this->config['action']),
@@ -190,11 +190,15 @@ class amazonBup extends moduleBup {
      */
     public function getUploadedFiles($files) {
         if(BUP_S3_SUPPORT && $this->getController()->getModel()->isCredentialsSaved()){
-            $uploadedFiles = $this->getController()->getModel()->getUploadedFiles();
-            if(is_array($uploadedFiles)){
-                foreach($uploadedFiles as $key=>$file){
-                    $files[$key] = $file;
+            try {
+                $uploadedFiles = $this->getController()->getModel()->getUploadedFiles();
+                if (is_array($uploadedFiles)) {
+                    foreach ($uploadedFiles as $key => $file) {
+                        $files[$key] = $file;
+                    }
                 }
+            } catch (Exception $e) {
+                return $files;
             }
         }
         return $files;

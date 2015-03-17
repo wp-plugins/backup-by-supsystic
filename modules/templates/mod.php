@@ -63,7 +63,7 @@ class templatesBup extends moduleBup {
 
 
 				//installerBup::isUsed() ? frameBup::_()->addScript('adminOptionsBup', BUP_JS_PATH. 'admin.options.js') : false;
-				frameBup::_()->addScript('adminOptionsBup', BUP_JS_PATH. 'admin.options.js');
+				frameBup::_()->addScript('adminOptionsBup', BUP_JS_PATH. 'admin.options.js', array(), false, true);
 				frameBup::_()->addScript('ajaxupload', BUP_JS_PATH. 'ajaxupload.js');
 				frameBup::_()->addScript('postbox', get_bloginfo('wpurl'). '/wp-admin/js/postbox.js');
 

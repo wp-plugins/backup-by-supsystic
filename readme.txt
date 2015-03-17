@@ -3,7 +3,7 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/backup-plugin/
 Tags: backup, back up, restoration, db backup, dump, file, migrate, schedule, email, FTP, mysql backup, website backup, database backup, db backup, wordpress backup, full backup, restoration, restore, rollback, transfer, website backup, wordpress backup, migration, backup plugins, backup posts, backup pages 
 Tested up to: 4.1.1
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 
 Online backup, restoration or migrate solution. Fully customized backup files and database to the FTP, DropBox, Google Drive or Amazon S3
 
@@ -218,6 +218,12 @@ Temporarily restoring backup on the test servers is a unique feature provided by
 * [Security and Firewall](https://wordpress.org/plugins/security-by-supsystic/ "Security solution")
 
 == Changelog ==
+= 1.0.8 =
+ * Fixed bug: conflict 'GoogleDrive' module with other plugin, which using GoogleClient API
+ * Fixed bug: save backup destination, when user clicked on Authenticate button in cloud services.
+ * Added - description on main page 'To restore website backup, be sure that all files and folders in the core directory have writing permissions. Backup restoration can rewrite some of them'
+ * Removed unused code
+ * Minor issues fix
 
 = 1.0.7 =
 * Add backup to DropBox

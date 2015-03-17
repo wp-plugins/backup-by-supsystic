@@ -102,3 +102,19 @@ Version: 1.0
 	margin-bottom: 12px;
 	display: none;
 }
+
+table.bupSchedulesTable {
+	border-collapse: separate;
+	border-spacing: 0;
+	border-width: 1px 0 0 1px;
+	margin-bottom: 24px;
+	width: 40%;
+}
+
+table.bupSchedulesTable th, table.bupSchedulesTable td{
+	text-align: center;
+}
+
+table.bupSchedulesTable th:first-child, table.bupSchedulesTable td:first-child{
+	text-align: left;
+}

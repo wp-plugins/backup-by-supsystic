@@ -15,7 +15,7 @@ class responseBup {
         if($reqType == 'ajax')
             exit( json_encode($this) );
         if($redirect)
-            redirect($redirect);
+            redirectBup($redirect);
         return $this;
     }
     public function error() {

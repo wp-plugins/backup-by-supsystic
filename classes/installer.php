@@ -59,7 +59,6 @@ class installerBup {
 				(NULL, 'log', 1, 1, '', 1, 'Log', 'Internal system module to log some actions on server'),
 				(NULL, 'templates',1,1,'',0,'Templates for Plugin',''),
 				(NULL, 'backup', 1, 1, '', 1, 'Backup by Supsystic!', 'Backup by Supsystic!'),
-				(NULL, 'schedule', 1, 1, '', 1, 'Schedule', 'Schedule'),
 				(NULL, 'storage', 1, 1, '', 1, 'Storage', 'Storage'),
 				(NULL, 'gdrive', 1, 1, '', 1, 'gdrive', 'gdrive'),
 				(NULL, 'onedrive', 1, 1, '', 1, 'onedrive', 'onedrive'),
@@ -137,6 +136,10 @@ class installerBup {
         if(!dbBup::exist($wpPrefix.BUP_DB_PREF."options", 'code', 'dropbox_model')){
             dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES
 			    (NULL,'dropbox_model','','Dropbox model','Module uses two models: for PHP 5.2.x and for PHP >= 5.3.x', '1','', '', '','');");
+        }
+        if(!dbBup::exist($wpPrefix.BUP_DB_PREF."options", 'code', 'gdrive_refresh_token')){
+            dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES
+			    (NULL,'gdrive_refresh_token','','Google Refresh Token','GoogleDrive refresh token using for automatically extend token time', '1','', '', '','');");
         }
         if(!dbBup::exist($wpPrefix.BUP_DB_PREF."options", 'code', 'aws_access_key')){
             dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES

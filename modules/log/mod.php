@@ -2,16 +2,6 @@
 class logBup extends moduleBup {
 	
 	/**
-	 * Menu tab config
-	 * @var array
-	 */
-	private $tab = array(
-		'key'    => 'bupLogOptions',
-		'title'  => 'Log',
-		'action' => 'indexAction',
-	);
-	
-	/**
 	 * Plugin initialization
 	 */
     public function init() {
@@ -26,9 +16,9 @@ class logBup extends moduleBup {
 	 * @return array
 	 */
 	public function registerTab($tabs) {
-		$tabs[$this->tab['key']] = array(
-			'title'   => $this->tab['title'],
-			'content' => $this->run($this->tab['action']),
+		$tabs['bupLogOptions'] = array(
+			'title'   => 'Log',
+			'content' => $this->run('indexAction'),
             'faIcon' => 'fa-file-text',
 		);
 		

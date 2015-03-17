@@ -13,15 +13,6 @@ class installerDbUpdaterBup {
 			dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES
 				(NULL,'count_folder','','Count folder','Count folder',1,'',0,0,''),
 				(NULL,'exclude','upgrade,cache','Exclude','Exclude directories',1,'',0,0,'');");
-			dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES
-				(NULL,'sch_enable','0','Enable shedule','Enable shedule',1,'',0,0,''),
-				(NULL,'sch_every_hour','0','Schedule every hour','Schedule every hour',1,'',0,0,'every'),
-				(NULL,'sch_every_day','0','Schedule every day','Schedule every day',1,'',0,0,'every'),
-				(NULL,'sch_every_day_twice','0','Schedule every day twice','Schedule every day twice',1,'',0,0,'every'),
-				(NULL,'sch_every_week','0','Schedule every week','Schedule every week',1,'',0,0,'every'),
-				(NULL,'sch_every_month','0','Schedule every month','Schedule every month',1,'',0,0,'every'),
-				(NULL,'sch_time','a:1:{i:1;i:0;}','Schedule time backup','Schedule time backup',1,'',0,0,''),
-				(NULL,'sch_dest','1','Destination backup','Destination backup',1,'',0,0,'');");
 		}
 	}
 	static public function update_002() {

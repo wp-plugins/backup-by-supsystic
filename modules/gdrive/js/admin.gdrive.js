@@ -47,6 +47,16 @@ jQuery(document).ready(function(){
 			GoogleDriveModule.restore(download, filename, rowId, fileType);
 		}
 	});
+
+	j('.gDriveAuthenticate').on('click', function(event) {
+		j.sendFormBup({
+			data: {
+				'reqType': 'ajax',
+				'page':    'gdrive',
+				'action':  'saveBackupDestinationOnAuthenticate'
+			}
+		});
+	});
 });
 
 var GoogleDriveModule = {

@@ -4,7 +4,7 @@
             echo implode('<br />', $errors);
         }?>
     </div>
-    <a href="<?php echo $authUrl; ?>" class="button button-primary button-large">
+    <a href="<?php echo $authUrl; ?>" class="button button-primary button-large dropboxAuthenticate">
         <?php langBup::_e('Authenticate'); ?>
     </a>
 </div>

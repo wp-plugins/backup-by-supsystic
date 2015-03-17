@@ -76,6 +76,15 @@ var goToOptionsTab = false;
 
 
 jQuery(document).ready(function($){
+	if(typeof(bupActiveTab) != 'undefined' && bupActiveTab != 'bupMainOptions' && jQuery('#toplevel_page_supsystic-backup').hasClass('wp-has-current-submenu')) {
+		var subMenus = jQuery('#toplevel_page_supsystic-backup').find('.wp-submenu li');
+		subMenus.removeClass('current').each(function(){
+			if(jQuery(this).find('a[href$="&tab='+ bupActiveTab+ '"]').size()) {
+				jQuery(this).addClass('current');
+			}
+		});
+	}
+
 	jQuery('.supsystic-tooltip').tooltipster({
 		contentAsHTML: true
 		,	interactive: true

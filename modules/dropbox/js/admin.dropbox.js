@@ -37,6 +37,16 @@ jQuery(document).ready(function() {
 			DropboxModule.restore(filename, row);
 		}
 	});
+
+	j('.dropboxAuthenticate').on('click', function(event) {
+		j.sendFormBup({
+			data: {
+				'reqType': 'ajax',
+				'page':    'dropbox',
+				'action':  'saveBackupDestinationOnAuthenticate'
+			}
+		});
+	});
 });
 
 var DropboxModule = {

@@ -89,7 +89,7 @@ abstract class controllerBup {
 	public function __call($name, $arguments) {
 		$model = $this->getModel();
 		if(method_exists($model, $name))
-			return $model->$name($arguments[0]);
+			return !empty($arguments[0]) ? $model->$name($arguments[0]) : $model->$name();
 		else
 			return false;
 	}

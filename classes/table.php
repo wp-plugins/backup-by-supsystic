@@ -343,19 +343,19 @@ abstract class tableBup {
 					switch($this->_fields[$k]->type) {
 						case 'int':
 						case 'tinyint':
-							$res .= $k. ' = '. (int)$val. ' '. $delim. ' ';
+							$res .= '`'.$k. '` = '. (int)$val. ' '. $delim. ' ';
 							break;
 						case 'float':
-							$res .= $k. ' = '. (float)$val. ' '. $delim. ' ';
+							$res .= '`'.$k. '` = '. (float)$val. ' '. $delim. ' ';
 							break;
 						case 'decimal':
-							$res .= $k. ' = '. (double)$val. ' '. $delim. ' ';
+							$res .= '`'.$k. '` = '. (double)$val. ' '. $delim. ' ';
 							break;
 						case 'free':    //Just set it as it is
-							$res .= $k. ' = '. $val. ' '. $delim. ' ';
+							$res .= '`'.$k. '` = '. $val. ' '. $delim. ' ';
 							break;
 						default:
-							$res .= $k. ' = \''. $val. '\' '. $delim. ' ';
+							$res .= '`'.$k. '` = \''. $val. '\' '. $delim. ' ';
 							break;
 					}
                 } elseif($k == 'additionalCondition') {    //just add some string to query

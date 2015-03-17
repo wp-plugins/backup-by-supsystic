@@ -83,6 +83,11 @@ class gdriveBup extends moduleBup {
 				define('BUP_GAPI_SUPPORT', false);
 			}
 		}
+
+        if (is_admin() && frameBup::_()->isPluginAdminPage()) {
+            frameBup::_()->addScript('adminGDriveOptions', $this->getModPath(). 'js/admin.gdrive.js');
+        }
+
 		dispatcherBup::addFilter('adminCloudServices', array($this, 'registerTab'));
 		dispatcherBup::addFilter('adminSendToLinks', array($this, 'registerSendLink'));
 		dispatcherBup::addfilter('adminBackupUpload', array($this, 'registerUploadMethod'));
@@ -111,10 +116,6 @@ class gdriveBup extends moduleBup {
 	 * @return array
 	 */
 	public function registerTab($tabs) {
-        if (is_admin() && frameBup::_()->isPluginAdminPage()) {
-            frameBup::_()->addScript('adminGDriveOptions', $this->getModPath(). 'js/admin.gdrive.js');
-        }
-
 		$tabs[$this->config['tabs']['key']] = array(
 			'title'   => $this->config['tabs']['title'],
 			'content' => $this->run($this->config['tabs']['action']),
@@ -172,7 +173,8 @@ class gdriveBup extends moduleBup {
             $uploadedFiles = $this->getController()->getModel()->getUploadedFiles();
             if(is_array($uploadedFiles)){
                 foreach($uploadedFiles as $key=>$file){
-                    $files[$key] = $file;
+                    if((isset($file['gdrive']['sql']['labels']['trashed']) && $file['gdrive']['sql']['labels']['trashed'] === false) || (isset($file['gdrive']['zip']['labels']['trashed']) && $file['gdrive']['zip']['labels']['trashed'] === false))
+                        $files[$key] = $file;
                 }
             }
         }

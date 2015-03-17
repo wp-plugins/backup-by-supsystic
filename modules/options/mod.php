@@ -46,5 +46,16 @@ class optionsBup extends moduleBup {
         $reqTab = reqBup::getVar('tab');
         return empty($reqTab) ? 'bupMainOptions' : $reqTab;
     }
+    public function getActiveTabForCssClass($tabsData) {
+        $reqTab = reqBup::getVar('tab');
+        $currentTab = empty($reqTab) ? 'bupMainOptions' : $reqTab;
+        foreach($tabsData as $key => $tab){
+            if($currentTab == $key && !empty($tab['parent'])){
+                $currentTab = $tab['parent'];
+                break;
+            }
+        }
+        return $currentTab;
+    }
 }
 

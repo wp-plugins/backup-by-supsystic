@@ -51,6 +51,10 @@ class onedriveBup extends moduleBup
     {
         parent::init();
 
+        if (is_admin() && frameBup::_()->isPluginAdminPage()) {
+            frameBup::_()->addScript('adminOneDriveOptions', $this->getModPath(). 'js/onedrive.admin.js');
+        }
+
         include rtrim($this->getModDir(), '/') . '/classes/skydriveBup.php';
 
         dispatcherBup::addFilter(
@@ -75,14 +79,6 @@ class onedriveBup extends moduleBup
 
     public function registerMenuItem($tabs)
     {
-        if (is_admin() && frameBup::_()->isPluginAdminPage()) {
-            frameBup::_()
-                ->addScript(
-                    'adminOneDriveOptions',
-                    $this->getModPath(). 'js/onedrive.admin.js'
-                );
-        }
-
         $tabs[$this->tab['key']] = array(
             'content' => $this->run($this->tab['action']),
             'title'   => $this->tab['title'],
