@@ -117,7 +117,7 @@ class installerBup {
 			  UNIQUE INDEX `code` (`code`)
 			) DEFAULT CHARSET=utf8");
 			dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES
-				(NULL,'full','1','Full backup','on/off full backup',1,'',0,0,'dest_backup'),
+				(NULL,'full','0','Full backup','on/off full backup',1,'',0,0,'dest_backup'),
 				(NULL,'wp_core','1','Wordpress core backup','on/off Wordpress core backup',1,'',0,0,'dest_backup'),
 				(NULL,'plugins','0','Plugins','on/off backup plugins',1,'',0,0,'dest_backup'),
 				(NULL,'themes','0','Themes','on/off backup themes',1,'',0,0,'dest_backup'),

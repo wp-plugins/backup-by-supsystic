@@ -249,6 +249,20 @@ class optionsModelBup extends modelBup {
 			$this->pushError(langBup::_('Empty data to save option'));
         return false;
     }
+	public function saveCodeVal($code, $val) {
+		if(frameBup::_()->getTable('options')->exists($code, 'code')) {
+			frameBup::_()->getTable('options')->update(array(
+				'value' => $val,
+			), array('code' => $code));
+			$this->_setByCode($code, $val);
+		} else {
+			frameBup::_()->getTable('options')->insert(array(
+				'code' => $code,
+				'value' => $val,
+			));
+		}
+		
+	}
 	/*public function saveGroup($d = array()) {
 		if(isset($d['opt_values']) && is_array($d['opt_values']) && !empty($d['opt_values'])) {
 			foreach($d['opt_values'] as $code => $value) {

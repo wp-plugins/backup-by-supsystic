@@ -16,6 +16,7 @@ class promo_supsysticControllerBup extends controllerBup {
         redirectBup($return);
 		return $res->ajaxExec();
 	}
+
 	public function getPermissions() {
 		return array(
 			BUP_USERLEVELS => array(
@@ -23,4 +24,18 @@ class promo_supsysticControllerBup extends controllerBup {
 			),
 		);
 	}
+
+    public function getPromoScheduleAction() {
+        return $this->render('schedulePromo');
+    }
+
+    /**
+     *
+     * @param  string $template
+     * @param  array  $data
+     * @return string
+     */
+    public function render($template, $data = array()) {
+        return $this->getView()->getContent($template, $data);
+    }
 }

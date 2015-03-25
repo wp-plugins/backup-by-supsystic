@@ -100,6 +100,7 @@ class backupBup extends moduleBup {
 			'title'   => 'Log',
 			'content' => array($this->getController(), 'indexAction'),
             'faIcon' => 'fa-database',
+            'sort_order' => 20,
 		);
 
 

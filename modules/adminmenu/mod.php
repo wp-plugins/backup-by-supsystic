@@ -10,5 +10,8 @@ class adminmenuBup extends moduleBup {
 		array_unshift($links, '<a href="'. uriBup::_(array('baseUrl' => admin_url('admin.php'), 'page' => plugin_basename(frameBup::_()->getModule('adminmenu')->getView()->getFile()))). '">'. langBup::_('Settings'). '</a>');
 		return $links;
 	}
+	public function getMainLink() {
+		return uriBup::_(array('baseUrl' => admin_url('admin.php'), 'page' => $this->getView()->getFile()));
+	}
 }
 

@@ -34,7 +34,12 @@ class gdriveControllerBup extends controllerBup {
             return $this->authAction();
         }
 
-		return $this->getView()->getContent('gdrive.index');
+        $error = null;
+        $refreshToken = frameBup::_()->getTable('options')->get('value', array('code' => 'gdrive_refresh_token'), '', 'row');
+        if($model->isAuthenticated() && empty($refreshToken['value']))
+            $error = 'For long-term storage of Google Drive authorization, please re-connect our application in your personal account of Google Drive.';
+
+		return $this->getView()->getContent('gdrive.index', array('error' => $error));
     }
 
 	/**

@@ -7,12 +7,12 @@ class responseBup {
     public $html = '';
     public $data = array();
     
-    public function ajaxExec() {
+    public function ajaxExec($forceAjax = false) {
         $reqType = reqBup::getVar('reqType');
         $redirect = reqBup::getVar('redirect');
         if(count($this->errors) > 0)
             $this->error = true;
-        if($reqType == 'ajax')
+        if($reqType == 'ajax' || $forceAjax)
             exit( json_encode($this) );
         if($redirect)
             redirectBup($redirect);

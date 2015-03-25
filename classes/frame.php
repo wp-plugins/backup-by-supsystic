@@ -13,6 +13,7 @@ class frameBup {
     private $_scripts = array();
     private $_scriptsInitialized = false;
     private $_styles = array();
+	private $_stylesInitialized = false;
 
     private $_scriptsVars = array();
     private $_mod = '';
@@ -336,13 +337,18 @@ class frameBup {
     }
 
     public function addStyle($handle, $src = false, $deps = array(), $ver = false, $media = 'all') {
-        $this->_styles[] = array(
-            'handle' => $handle,
-            'src' => $src,
-            'deps' => $deps,
-            'ver' => $ver,
-            'media' => $media
-        );
+		$src = empty($src) ? $src : uriBup::_($src);
+		if($this->_stylesInitialized) {
+			wp_enqueue_style($handle, $src, $deps, $ver, $media);
+		} else {
+			$this->_styles[] = array(
+				'handle' => $handle,
+				'src' => $src,
+				'deps' => $deps,
+				'ver' => $ver,
+				'media' => $media
+			);
+		}
     }
     public function addStyles() {
         if(!empty($this->_styles)) {
@@ -350,6 +356,7 @@ class frameBup {
                 wp_enqueue_style($s['handle'], $s['src'], $s['deps'], $s['ver'], $s['media']);
             }
         }
+		$this->_stylesInitialized = true;
     }
     //Very interesting thing going here.............
     public function loadPlugins() {

@@ -2,6 +2,9 @@
     width: 100%;
 	font-size: 15px;
 }
+.supsystic-plugin * {
+	box-sizing: border-box
+}
 .supsystic-plugin a {
 	color: #4ae8ea;
 }
@@ -562,4 +565,16 @@ a.button-large {
 .chosen-container, .chosen-container div {
 	overflow: auto !important;
 	height: auto !important;
+}
+.supsistic-half-side-box {
+	float: left;
+	width: 50%;
+	padding-right: 1%;
+}
+@media (max-width: 800px) {
+	.supsistic-half-side-box {
+		float: none;
+		width: 100%;
+		padding: inherit;
+	}
 }

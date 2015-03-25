@@ -130,7 +130,6 @@ class gdriveModelBup extends modelBup {
      */
     public function isAuthenticated() {
         if(isset($_SESSION[self::GDRIVE_SESS_NAME]) || null !== $this->readToken()) {
-            $this->refreshToken();
             return true;
         }
 
@@ -169,7 +168,8 @@ class gdriveModelBup extends modelBup {
         }
 
 		if (isset($_SESSION[self::GDRIVE_SESS_NAME])) {
-			$client->setAccessToken($_SESSION[self::GDRIVE_SESS_NAME]);
+            $token = $this->addRefreshTokenToJSONToken($_SESSION[self::GDRIVE_SESS_NAME]);
+			$client->setAccessToken($token);
 		}
 
 		return $client;
@@ -199,7 +199,18 @@ class gdriveModelBup extends modelBup {
             if(!empty($tokens->refresh_token))
                 frameBup::_()->getTable('options')->update(array('value' => $tokens->refresh_token), array('code' => 'gdrive_refresh_token'));
 
-            redirectBup(admin_url('admin.php?page='.BUP_PLUGIN_PAGE_URL_SUFFIX));
+            $uri = null;
+            if(is_array($request)){
+                $uri = array();
+                foreach($request as $key => $value){
+                    if($key != 'googleAuthCode')
+                        $uri[] = $key . '=' . $value;
+                }
+                $uri = 'admin.php?' . join('&', $uri);
+            }
+            $redirectURI = !empty($uri) ? $uri : 'admin.php?page='.BUP_PLUGIN_PAGE_URL_SUFFIX;
+
+            redirectBup(admin_url($redirectURI));
         } catch (Exception $e) {
             $this->pushError($e->getMessage());
             return $this->getAuthenticationURL();
@@ -214,9 +225,12 @@ class gdriveModelBup extends modelBup {
      */
     public function getAuthenticationURL() {
         $url  = 'http://supsystic.com/authenticator/index.php/authenticator/drive';
-        $slug = frameBup::_()->getModule('adminmenu')->getView()->getFile();
 
-        return $url . '?ref=' . base64_encode(admin_url('admin.php?page=' . $slug));
+        $slug = frameBup::_()->getModule('adminmenu')->getView()->getFile();
+        $queryString = !empty($_SERVER['QUERY_STRING']) ? 'admin.php?' . $_SERVER['QUERY_STRING'] : '';
+        $redirectURI = !empty($queryString) ? $queryString : 'admin.php?page=' . $slug;
+
+        return $url . '?ref=' . base64_encode(admin_url($redirectURI));
     }
 
 	/**
@@ -634,20 +648,21 @@ class gdriveModelBup extends modelBup {
 
         if (false !== $token = glob($storage . '/drive*.json')) {
             if (is_array($token) && count($token) === 1) {
-                return file_get_contents($token[0]);
+                $token = $this->addRefreshTokenToJSONToken(file_get_contents($token[0]));
+                return $token;
             }
         }
 
         return null;
     }
 
-    protected function refreshToken(){
-        $token = frameBup::_()->getTable('options')->get('value', array('code' => 'gdrive_refresh_token'), '', 'row');
-        if(!empty($token['value'])){
-            $client = $this->getClient();
-            if($client->isAccessTokenExpired()){
-                $client->refreshToken($token['value']);
-            }
+    protected function addRefreshTokenToJSONToken($token){
+        $refreshToken = frameBup::_()->getTable('options')->get('value', array('code' => 'gdrive_refresh_token'), '', 'row');
+        if (!empty($refreshToken['value']) && false !== json_decode($token)) {
+            $token = json_decode($token);
+            $token->refresh_token = $refreshToken['value'];
+            $token = json_encode($token);
         }
+        return $token;
     }
 }

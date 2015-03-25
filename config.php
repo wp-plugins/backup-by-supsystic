@@ -59,7 +59,7 @@
 
 
     define('BUP_PLUGIN_INSTALLED', true);
-    define('BUP_VERSION', '1.0.8');
+    define('BUP_VERSION', '1.0.9');
 	define('BUP_S_VERSION', BUP_VERSION);
     define('BUP_USER', 'user');
 
@@ -87,6 +87,7 @@
 	 * Framework instance code, unused for now
 	 */
 	define('BUP_CODE', 'bup');
+	define('BUP_LANG_CODE', 'but_lng');
 
     /** Files per stack in filesystem backup */
     define('BUP_FILES_PER_STACK', 500);
@@ -98,3 +99,5 @@
 	define('BUP_MAX_FILE_REQUEST', 500);
 
     define('BUP_LOCK_FIELD', 'bup_locked');
+	
+	define('BUP_WP_PLUGIN_NAME', 'Backup by Supsystic');

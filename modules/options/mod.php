@@ -44,11 +44,11 @@ class optionsBup extends moduleBup {
     }
     public function getActiveTab() {
         $reqTab = reqBup::getVar('tab');
-        return empty($reqTab) ? 'bupMainOptions' : $reqTab;
+        return empty($reqTab) ? 'overview' : $reqTab;
     }
     public function getActiveTabForCssClass($tabsData) {
         $reqTab = reqBup::getVar('tab');
-        $currentTab = empty($reqTab) ? 'bupMainOptions' : $reqTab;
+        $currentTab = empty($reqTab) ? 'overview' : $reqTab;
         foreach($tabsData as $key => $tab){
             if($currentTab == $key && !empty($tab['parent'])){
                 $currentTab = $tab['parent'];
@@ -57,5 +57,12 @@ class optionsBup extends moduleBup {
         }
         return $currentTab;
     }
+	public function getTabUrl($tab) {
+		static $mainUrl;
+		if(empty($mainUrl)) {
+			$mainUrl = frameBup::_()->getModule('adminmenu')->getMainLink();
+		}
+		return empty($tab) ? $mainUrl : $mainUrl. '&tab='. $tab;
+	}
 }
 

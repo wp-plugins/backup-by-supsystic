@@ -11,17 +11,34 @@ class htmlBup {
         return str_replace(array('[', ']'), '', $name);
     }
     static public function textarea($name, $params = array('attrs' => '', 'value' => '', 'rows' => 3, 'cols' => 50)) {
+		$params['attrs'] = isset($params['attrs']) ? $params['attrs'] : '';
         $params['rows'] = isset($params['rows']) ? $params['rows'] : 3;
         $params['cols'] = isset($params['cols']) ? $params['cols'] : 50;
+		if(isset($params['placeholder'])) {
+			$params['attrs'] .= ' placeholder="'. $params['placeholder']. '"';
+		}
+		if(isset($params['required'])) {
+			$params['attrs'] .= ' required ';
+		}
         return '<textarea name="'.$name.'" '.$params['attrs'].' rows="'.$params['rows'].'" cols="'.$params['cols'].'">'.
-                $params['value'].
+                (isset($params['value']) ? $params['value'] : '').
                 '</textarea>';
     }
     static public function input($name, $params = array('attrs' => '', 'type' => 'text', 'value' => '')) {
+		$params['attrs'] = isset($params['attrs']) ? $params['attrs'] : '';
+		if(isset($params['required']) && $params['required']) {
+			$params['attrs'] .= ' required ';	// HTML5 "required" validation attr
+		}
+		if(isset($params['placeholder']) && $params['placeholder']) {
+			$params['attrs'] .= ' placeholder="'. $params['placeholder']. '"';	// HTML5 "required" validation attr
+		}
 		$params['type'] = isset($params['type']) ? $params['type'] : '';
 		$params['value'] = isset($params['value']) ? $params['value'] : '';
-		$params['attrs'] = isset($params['attrs']) ? $params['attrs'] : '';
         return '<input type="'.$params['type'].'" name="'.$name.'" value="'.$params['value'].'" '.$params['attrs'].' />';
+    }
+	static public function email($name, $params = array('attrs' => '', 'value' => '')) {
+        $params['type'] = 'email';
+        return self::input($name, $params);
     }
     static public function text($name, $params = array('attrs' => '', 'value' => '')) {
         $params['type'] = 'text';
@@ -118,7 +135,7 @@ class htmlBup {
         $out .= '<select name="'.$name.'" '.$params['attrs'].'>';
         if(!empty($params['options'])) {
             foreach($params['options'] as $k => $v) {
-                $selected = ($k == $params['value'] ? 'selected="true"' : '');
+                $selected = (isset($params['value']) && $k == $params['value'] ? 'selected="true"' : '');
                 $out .= '<option value="'.$k.'" '.$selected.'>'.$v.'</option>';
             }
         }

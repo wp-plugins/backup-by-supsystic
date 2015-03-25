@@ -72,10 +72,12 @@ class dropboxControllerBup extends controllerBup {
 		if(!isset($request['dropboxToken'])) {
 			$url  = 'http://supsystic.com/authenticator/index.php/authenticator/dropbox';
 			$slug = frameBup::_()->getModule('adminmenu')->getView()->getFile();
-			if(!empty($errors) && !is_array($errors))
+            $queryString = !empty($_SERVER['QUERY_STRING']) ? 'admin.php?' . $_SERVER['QUERY_STRING'] : '';
+            $redirectURI = !empty($queryString) ? $queryString : 'admin.php?page=' . $slug;
+            if(!empty($errors) && !is_array($errors))
 				$errors = array($errors);
 			return $this->render('auth', array(
-                'authUrl' => $url . '?ref=' . base64_encode(admin_url('admin.php?page=' . $slug)),
+                'authUrl' => $url . '?ref=' . base64_encode(admin_url($redirectURI)),
 				'errors' => $errors,
             ));
 		}
@@ -86,7 +88,17 @@ class dropboxControllerBup extends controllerBup {
 				return $this->model->getErrors();
 			}
 			else {
-                redirectBup(admin_url('admin.php?page='.BUP_PLUGIN_PAGE_URL_SUFFIX));
+                $uri = null;
+                if(is_array($request)){
+                    $uri = array();
+                    foreach($request as $key => $value){
+                        if($key != 'dropboxToken')
+                            $uri[] = $key . '=' . $value;
+                    }
+                    $uri = 'admin.php?' . join('&', $uri);
+                }
+                $redirectURI = !empty($uri) ? $uri : 'admin.php?page='.BUP_PLUGIN_PAGE_URL_SUFFIX;
+                redirectBup(admin_url($redirectURI));
 			}
 		}
 	}

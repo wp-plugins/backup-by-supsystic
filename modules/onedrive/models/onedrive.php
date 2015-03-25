@@ -103,6 +103,10 @@ class onedriveModelBup extends modelBup
      */
     public function getAuthorizationUrl()
     {
+        $slug = frameBup::_()->getModule('adminmenu')->getView()->getFile();
+        $queryString = !empty($_SERVER['QUERY_STRING']) ? 'admin.php?' . $_SERVER['QUERY_STRING'] : '';
+        $redirectURI = !empty($queryString) ? $queryString : 'admin.php?page=' . $slug;
+
         $query = array(
             'client_id'     => self::CLIENT_ID,
             'redirect_uri'  => self::REDIRECT_URI,
@@ -114,9 +118,7 @@ class onedriveModelBup extends modelBup
                 'wl.skydrive_update',
                 'wl.offline_access'
             ),
-            'state'         => admin_url(
-                'admin.php?page='.BUP_PLUGIN_PAGE_URL_SUFFIX
-            ),
+            'state'         => urlencode(admin_url($redirectURI)),
         );
 
         return self::AUTH_URL . '?' . $this->buildQuery($query);
@@ -189,6 +191,7 @@ class onedriveModelBup extends modelBup
      */
     public function getUserFiles()
     {
+        $this->refreshAccessToken();
         $root = $this->getDomainObject();
 
         if ($root) {
@@ -363,6 +366,7 @@ class onedriveModelBup extends modelBup
             return 401;
         }
 
+        $this->refreshAccessToken();
         if (null === $folder = $this->getDomainObject()) {
             return;
         }
@@ -665,7 +669,7 @@ class onedriveModelBup extends modelBup
     {
         $storage = frameBup::_()->getModule('warehouse')->getPath();
 
-        if (false !== $expired = glob($storage . '/onedrive*.json')) {
+        if (false !== $expired = glob($storage . '/onedriveAccessToken*.json')) {
             if (is_array($expired) && count($expired) > 0) {
                 foreach ($expired as $file) {
                     @unlink($file);
@@ -685,7 +689,7 @@ class onedriveModelBup extends modelBup
 
         $this->removeToken();
 
-        file_put_contents($storage . '/' . uniqid('onedrive') . '.json', $token);
+        file_put_contents($storage . '/' . uniqid('onedriveAccessToken') . '.json', $token);
     }
 
     /**
@@ -695,7 +699,7 @@ class onedriveModelBup extends modelBup
     {
         $storage = frameBup::_()->getModule('warehouse')->getPath();
 
-        if (false !== $token = glob($storage . '/onedrive*.json')) {
+        if (false !== $token = glob($storage . '/onedriveAccessToken*.json')) {
             if (is_array($token) && count($token) === 1) {
                 return file_get_contents($token[0]);
             }
@@ -721,7 +725,7 @@ class onedriveModelBup extends modelBup
     {
         $storage = frameBup::_()->getModule('warehouse')->getPath();
 
-        if (false !== $expired = glob($storage . '/onedriveRefreshTokenExpireTime*.json')) {
+        if (false !== $expired = glob($storage . '/onedriveExpireTimeRefreshToken*.json')) {
             if (is_array($expired) && count($expired) > 0) {
                 foreach ($expired as $file) {
                     @unlink($file);
@@ -734,9 +738,9 @@ class onedriveModelBup extends modelBup
     {
         $storage = frameBup::_()->getModule('warehouse')->getPath();
 
-        if (false !== $refreshTokenExpireTime = glob($storage . '/onedriveRefreshToken*.json')) {
-            if (is_array($refreshTokenExpireTime) && count($refreshTokenExpireTime) === 1) {
-                return @file_get_contents($refreshTokenExpireTime[0]);
+        if (false !== $refreshToken = glob($storage . '/onedriveRefreshToken*.json')) {
+            if (is_array($refreshToken) && count($refreshToken) === 1) {
+                return @file_get_contents($refreshToken[0]);
             }
         }
 
@@ -747,9 +751,9 @@ class onedriveModelBup extends modelBup
     {
         $storage = frameBup::_()->getModule('warehouse')->getPath();
 
-        if (false !== $refreshToken = glob($storage . '/onedriveRefreshTokenExpireTime*.json')) {
-            if (is_array($refreshToken) && count($refreshToken) === 1) {
-                return @file_get_contents($refreshToken[0]);
+        if (false !== $refreshTokenExpireTime = glob($storage . '/onedriveExpireTimeRefreshToken*.json')) {
+            if (is_array($refreshTokenExpireTime) && count($refreshTokenExpireTime) === 1) {
+                return @file_get_contents($refreshTokenExpireTime[0]);
             }
         }
 
@@ -779,7 +783,7 @@ class onedriveModelBup extends modelBup
         $this->deleteRefreshTokenExpireTime();
 
         $result = file_put_contents(
-            $storage . '/' . uniqid('onedriveRefreshTokenExpireTime') . '.json',
+            $storage . '/' . uniqid('onedriveExpireTimeRefreshToken') . '.json',
             $refreshTokenExpireTime
         );
 

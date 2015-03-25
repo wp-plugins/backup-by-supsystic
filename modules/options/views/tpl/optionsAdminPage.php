@@ -6,7 +6,7 @@
                     <?php foreach($this->tabsData as $tabKey => $tab) {
                             if(!empty($tab['faIcon'])){?>
                                 <li class="<?php echo ($this->activeTabForCssClass == $tabKey ? 'active' : '')?>">
-                                    <a href="<?php echo uriBup::_(array('baseUrl' => get_admin_url(0, 'admin.php?page='.$this->page.'&tab='.$tabKey))); ?>">
+                                    <a href="<?php echo uriBup::_(array('baseUrl' => get_admin_url(0, 'admin.php?page='. $this->page. '&tab='. $tabKey))); ?>">
                                         <i class="fa <?php echo $tab['faIcon']?>"></i>
                                         <?php echo $tab['title']?>
                                     </a>
@@ -15,7 +15,7 @@
                     <?php }?>
                 </ul>
             </nav>
-            <div class="supsystic-container">
+            <div class="supsystic-container supsystic-<?php echo $this->activeTab?>">
                 <?php echo $this->content?>
                 <div class="clear"></div>
             </div>

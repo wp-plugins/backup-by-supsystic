@@ -6,6 +6,7 @@ else if(jQuery.inArray(BUP_DATA.animationSpeed, ['fast', 'slow']) == -1)
     BUP_DATA.animationSpeed = 'fast';
 BUP_DATA.showSubscreenOnCenter = parseInt(BUP_DATA.showSubscreenOnCenter);
 var sdLoaderImgBup = '<img src="'+ BUP_DATA.loader+ '" />';
+var g_bupAnimationSpeed = 300;
 
 jQuery.fn.showLoaderBup = function() {
     jQuery(this).html( sdLoaderImgBup );
@@ -80,6 +81,16 @@ jQuery.fn.sendFormBup = function(params) {
 			.removeClass('bupErrorMsg')
 			.showLoaderBup();
 	}
+	if(params.btn) {
+		jQuery(params.btn).attr('disabled', 'disabled');
+		// Font awesome usage
+		params.btnIconElement = jQuery(params.btn).find('.fa').size() ? jQuery(params.btn).find('.fa') : jQuery(params.btn);
+		if(jQuery(params.btn).find('.fa').size()) {
+			params.btnIconElement
+				.data('prev-class', params.btnIconElement.attr('class'))
+				.attr('class', 'fa fa-spinner fa-spin');
+		}
+	}
     var url = '';
 	if(typeof(params.url) != 'undefined')
 		url = params.url;
@@ -139,6 +150,12 @@ function toeProcessAjaxResponseBup(res, msgEl, form, sentFromForm, params) {
         msgEl = jQuery('#'+ msgEl);
     if(msgEl)
         jQuery(msgEl).html('');
+	if(params.btn) {
+		jQuery(params.btn).removeAttr('disabled');
+		if(params.btnIconElement) {
+			params.btnIconElement.attr('class', params.btnIconElement.data('prev-class'));
+		}
+	}
     /*if(sentFromForm) {
         jQuery(form).find('*').removeClass('bupInputError');
     }*/

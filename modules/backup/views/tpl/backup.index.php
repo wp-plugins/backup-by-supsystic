@@ -20,7 +20,7 @@
 
                         <div id="bupControl-<?php echo $id?>">
                             <!-- Hides "Send to" button if the PRO version isn't activated -->
-                            <?php if (null !== frameBup::_()->getModule('license')): ?>
+                            <?php if (null !== frameBup::_()->getModule('license') && false): ?>
                             <div>
                                 <a href="#" onclick="return false;" class="bupSendTo" style="font-size:.9em">Send to &rarr;</a>
                             </div>
@@ -70,11 +70,19 @@
                                                 <?php langBup::_e('Delete'); ?>
                                             </button>
                                             <!-- /deleteButton -->
+<!--                                            --><?php //dispatcherBup::doAction('backupListActionButtonsFTPAfter')?>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <!-- migrateButton -->
+                            <p>
+                                <button class="button button-primary button-small bupMigratePromo bupMigrateFTP" data-id="<?php echo $id; ?>" data-filename="<?php echo $data['name']; ?>">
+                                    <?php langBup::_e('Migrate'); ?>
+                                </button>
+                            </p>
+                            <!-- /migrateButton -->
                             <?php if(!empty($logs[$id]['content'])):?>
                                 <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</span>
                             <?php else: ?>
@@ -130,6 +138,13 @@
                                     <?php endforeach;?>
                                     </tbody>
                                     </table>
+                                    <!-- migrateButton -->
+                                    <p>
+                                        <button class="button button-primary button-small bupMigratePromo bupMigrateGoogleDrive">
+                                            <?php langBup::_e('Migrate'); ?>
+                                        </button>
+                                    </p>
+                                    <!-- /migrateButton -->
                                 <?php endif; ?>
                                 <?php if(!empty($logs[$id]['content'])):?>
                                     <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</span>
@@ -182,6 +197,13 @@
                                             <?php endif; ?>
                                         <?php endforeach; ?>
                                     </tbody>
+                                    <!-- migrateButton -->
+                                    <p>
+                                        <button class="button button-primary button-small bupMigratePromo bupMigrateOneDrive">
+                                            <?php langBup::_e('Migrate'); ?>
+                                        </button>
+                                    </p>
+                                    <!-- /migrateButton -->
                                 </table>
 
                                 <?php if(!empty($logs[$id]['content'])):?>
@@ -225,6 +247,13 @@
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
+                                <!-- migrateButton -->
+                                <p>
+                                    <button class="button button-primary button-small bupMigratePromo bupMigrateAmazon">
+                                        <?php langBup::_e('Migrate'); ?>
+                                    </button>
+                                </p>
+                                <!-- /migrateButton -->
 
                                 <?php if(!empty($logs[$id]['content'])):?>
                                     <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</span>
@@ -278,6 +307,13 @@
                                     <?php endforeach; ?>
                                     </tbody>
                                 </table>
+                                <!-- migrateButton -->
+                                <p>
+                                    <button class="button button-primary button-small bupMigratePromo bupMigrateDropbox">
+                                        <?php langBup::_e('Migrate'); ?>
+                                    </button>
+                                </p>
+                                <!-- /migrateButton -->
 
                                 <?php if(!empty($logs[$id]['content'])):?>
                                     <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</span>
@@ -301,6 +337,15 @@
                 <p id="bupLogText"></p>
             </div>
             <!-- Log modal window end  -->
+
+            <!-- Migrate promo modal window start  -->
+            <div id="bupShowMigratePromoDlg" title="Get PRO Verion!">
+                <p id="bupMigratePromoText" class="supsystic-plugin">
+                    Please, be advised, that this option is available only in PRO version.
+                    You can <a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank">Get PRO</a>
+                </p>
+            </div>
+            <!-- Migrate promo modal window end  -->
         </div>
     </div>
 </section>

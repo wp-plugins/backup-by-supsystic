@@ -48,9 +48,19 @@ class onedriveControllerBup extends controllerBup
                 ));
             }
 
-            return redirectBup(admin_url(
-                'admin.php?page='.BUP_PLUGIN_PAGE_URL_SUFFIX
-            ));
+            $request = reqBup::get('get');
+            $uri = null;
+            if(is_array($request)){
+                $uri = array();
+                foreach($request as $key => $value){
+                    if($key != 'onedrive')
+                        $uri[] = $key . '=' . $value;
+                }
+                $uri = 'admin.php?' . join('&', $uri);
+            }
+            $redirectURI = !empty($uri) ? $uri : 'admin.php?page='.BUP_PLUGIN_PAGE_URL_SUFFIX;
+
+            redirectBup(admin_url($redirectURI));
         }
     }
 
@@ -105,8 +115,6 @@ class onedriveControllerBup extends controllerBup
 
         $files = $request['sendArr'];
         $drive = $this->getModel();
-
-        $drive->refreshAccessToken();
 
         switch ($drive->upload($files)) {
             case 401:

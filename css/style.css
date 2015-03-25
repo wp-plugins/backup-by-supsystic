@@ -103,18 +103,29 @@ Version: 1.0
 	display: none;
 }
 
-table.bupSchedulesTable {
+.bupSchedulesTable {
+	padding: 20px;
 	border-collapse: separate;
 	border-spacing: 0;
 	border-width: 1px 0 0 1px;
 	margin-bottom: 24px;
-	width: 40%;
+	width: 90%;
+	max-width: 1000px;
+}
+.bupSchedulesTable th{
+	font-size: large;
+	padding: 0 10px;
 }
 
-table.bupSchedulesTable th, table.bupSchedulesTable td{
+.bupSchedulesTable tr{
+	height: 40px;
+}
+
+.bupSchedulesTable th, table.bupSchedulesTable td{
 	text-align: center;
 }
 
-table.bupSchedulesTable th:first-child, table.bupSchedulesTable td:first-child{
+.bupSchedulesTable th:first-child, .bupSchedulesTable td:first-child{
 	text-align: left;
+	padding-left: 0;
 }

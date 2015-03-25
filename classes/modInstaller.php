@@ -16,43 +16,40 @@ class modInstallerBup {
         if(!empty($module) && !empty($path) && is_dir($path)) {
             if(self::isModule($path)) {
                 $filesMoved = false;
-                if(empty($module['ex_plug_dir'])){
+                if(empty($module['ex_plug_dir']))
                     $filesMoved = self::moveFiles($module['code'], $path);
-				} else {
+                else
                     $filesMoved = true;     //Those modules doesn't need to move their files
-				}
                 if($filesMoved) {
                     if(frameBup::_()->getTable('modules')->exists($module['code'], 'code')) {
                         frameBup::_()->getTable('modules')->delete(array('code' => $module['code']));
                     }
+					if($module['code'] != 'license')
+						$module['active'] = 0;
                     frameBup::_()->getTable('modules')->insert($module);
                     self::_runModuleInstall($module);
                     self::_installTables($module);
                     return true;
-                    /*if(frameBup::_()->getTable('modules')->insert($module)) {
-                        self::_installTables($module);
-                        return true;
-                    } else {
-                        errorsBup::push(langBup::_(array('Install', $module['code'], 'failed ['. mysql_error(). ']')), errorsBup::MOD_INSTALL);
-                    }*/
                 } else {
-                    errorsBup::push(langBup::_(array('Move files for', $module['code'], 'failed')), errorsBup::MOD_INSTALL);
+                    errorsBup::push(sprintf(__('Move files for %s failed'), $module['code']), errorsBup::MOD_INSTALL);
                 }
             } else
-                errorsBup::push(langBup::_(array($module['code'], 'is not plugin module')), errorsBup::MOD_INSTALL);
+                errorsBup::push(sprintf(__('%s is not plugin module'), $module['code']), errorsBup::MOD_INSTALL);
         }
         return false;
     }
-    static protected function _runModuleInstall($module) {
+    static protected function _runModuleInstall($module, $action = 'install') {
         $moduleLocationDir = BUP_MODULES_DIR;
         if(!empty($module['ex_plug_dir']))
             $moduleLocationDir = utilsBup::getPluginDir( $module['ex_plug_dir'] );
         if(is_dir($moduleLocationDir. $module['code'])) {
-            importClassBup($module['code'], $moduleLocationDir. $module['code']. DS. 'mod.php');
+			if(!class_exists($module['code']. strFirstUp(BUP_CODE))) {
+				importClassBup($module['code'], $moduleLocationDir. $module['code']. DS. 'mod.php');
+			}
             $moduleClass = toeGetClassNameBup($module['code']);
-            $moduleObj = new $moduleClass($m);
+            $moduleObj = new $moduleClass($module);
             if($moduleObj) {
-                $moduleObj->install();
+                $moduleObj->$action();
             }
         }
     }
@@ -76,10 +73,9 @@ class modInstallerBup {
                 utilsBup::copyDirectories($path, BUP_MODULES_DIR. $code);
                 return true;
             } else 
-                errorsBup::push(langBup::_('Can not create module directory. Try to set permission to '. BUP_MODULES_DIR. ' directory 755 or 777'), errorsBup::MOD_INSTALL);
+                errorsBup::push(__('Can not create module directory. Try to set permission to '. BUP_MODULES_DIR. ' directory 755 or 777', BUP_LANG_CODE), errorsBup::MOD_INSTALL);
         } else
             return true;
-            //errorsBup::push(langBup::_(array('Directory', $code, 'already exists')), errorsBup::MOD_INSTALL);
         return false;
     }
     static private function _getPluginLocations() {
@@ -91,6 +87,7 @@ class modInstallerBup {
         }
         $locations['plugPath'] = plugin_basename( trim( $plug ) );
         $locations['plugDir'] = dirname(WP_PLUGIN_DIR. DS. $locations['plugPath']);
+		$locations['plugMainFile'] = WP_PLUGIN_DIR. DS. $locations['plugPath'];
         $locations['xmlPath'] = $locations['plugDir']. DS. 'install.xml';
         return $locations;
     }
@@ -103,13 +100,13 @@ class modInstallerBup {
                     $modules[] = $mod;
                 }
                 if(empty($modules))
-                    errorsBup::push(langBup::_('No modules were found in XML file'), errorsBup::MOD_INSTALL);
+                    errorsBup::push(__('No modules were found in XML file', BUP_LANG_CODE), errorsBup::MOD_INSTALL);
                 else
                     return $modules;
             } else
-                errorsBup::push(langBup::_('Invalid XML file'), errorsBup::MOD_INSTALL);
+                errorsBup::push(__('Invalid XML file', BUP_LANG_CODE), errorsBup::MOD_INSTALL);
         } else
-            errorsBup::push(langBup::_('No XML file were found'), errorsBup::MOD_INSTALL);
+            errorsBup::push(__('No XML file were found', BUP_LANG_CODE), errorsBup::MOD_INSTALL);
         return false;
     }
     /**
@@ -128,19 +125,29 @@ class modInstallerBup {
                         self::activate($modDataArr);
                     } else {                                           //  if not - install it
                         if(!self::install($modDataArr, $locations['plugDir'])) {
-                            errorsBup::push(langBup::_(array('Install', $modDataArr['code'], 'failed')), errorsBup::MOD_INSTALL);
+                            errorsBup::push(sprintf(__('Install %s failed'), $modDataArr['code']), errorsBup::MOD_INSTALL);
                         }
                     }
                 }
             }
         } else
-            errorsBup::push(langBup::_('Error Activate module'), errorsBup::MOD_INSTALL);
+            errorsBup::push(__('Error Activate module', BUP_LANG_CODE), errorsBup::MOD_INSTALL);
         if(errorsBup::haveErrors(errorsBup::MOD_INSTALL)) {
             self::displayErrors();
             return false;
         }
+		update_option(BUP_CODE. '_full_installed', 1);
         return true;
     }
+    /**
+	 * Public alias for _getCheckRegPlugs()
+	 */
+	/**
+	 * We will run this each time plugin start to check modules activation messages
+	 */
+	static public function checkActivationMessages() {
+
+	}
     /**
      * Deactivate module after deactivating external plugin
      */
@@ -154,7 +161,7 @@ class modInstallerBup {
                         'id' => frameBup::_()->getModule($modDataArr['code'])->getID(),
                         'active' => 0,
                     ))->error) {
-                        errorsBup::push(langBup::_('Error Deactivation module'), errorsBup::MOD_INSTALL);
+                        errorsBup::push(__('Error Deactivation module', BUP_LANG_CODE), errorsBup::MOD_INSTALL);
                     }
                 }
             }
@@ -175,8 +182,14 @@ class modInstallerBup {
                         'code' => $modDataArr['code'],
                         'active' => 1,
                     ))->error) {
-                        errorsBup::push(langBup::_('Error Activating module'), errorsBup::MOD_INSTALL);
-                    }
+                        errorsBup::push(__('Error Activating module', BUP_LANG_CODE), errorsBup::MOD_INSTALL);
+                    } else {
+						$dbModData = frameBup::_()->getModule('options')->getModel('modules')->get(array('code' => $modDataArr['code']));
+						if(!empty($dbModData) && !empty($dbModData[0])) {
+							$modDataArr['ex_plug_dir'] = $dbModData[0]['ex_plug_dir'];
+						}
+						self::_runModuleInstall($modDataArr, 'activate');
+					}
                 }
             }
         }
@@ -214,8 +227,8 @@ class modInstallerBup {
             }
         }
     }
-    static public function _installTables($module) {
-        $modDir = empty($module['ex_plug_dir']) ? 
+    static public function _installTables($module, $action = 'install') {
+		$modDir = empty($module['ex_plug_dir']) ? 
             BUP_MODULES_DIR. $module['code']. DS : 
             utilsBup::getPluginDir($module['ex_plug_dir']). $module['code']. DS; 
         if(is_dir($modDir. 'tables')) {
@@ -225,7 +238,7 @@ class modInstallerBup {
                 foreach($tableFiles as $file) {
                     $tableName = str_replace('.php', '', $file);
                     if(frameBup::_()->getTable($tableName))
-                        frameBup::_()->getTable($tableName)->install();
+                        frameBup::_()->getTable($tableName)->$action();
                 }
             }
         }
