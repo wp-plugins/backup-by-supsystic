@@ -10,6 +10,7 @@
                     $backupFinishDateTime = (!empty($logs[$id]['content'])) ?$model->getBackupFinishTimeFromLog($logs[$id]['content']) : '';
                     if($backupType == 'ftp'):
                         $backup = $type['ftp'];
+                        $sqlExist = !empty($backup['sql']) ? 'data-sql="sql"' : false;
                     ?>
                     <!--  FTP files rendering start    -->
                     <div class="backupBlock">
@@ -70,7 +71,6 @@
                                                 <?php langBup::_e('Delete'); ?>
                                             </button>
                                             <!-- /deleteButton -->
-<!--                                            --><?php //dispatcherBup::doAction('backupListActionButtonsFTPAfter')?>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>
@@ -78,7 +78,7 @@
                             </table>
                             <!-- migrateButton -->
                             <p>
-                                <button class="button button-primary button-small bupMigratePromo bupMigrateFTP" data-id="<?php echo $id; ?>" data-filename="<?php echo $data['name']; ?>">
+                                <button class="button button-primary button-small bupMigratePromo bupMigrateFTP" data-id="<?php echo $id; ?>" <?php echo $sqlExist?>>
                                     <?php langBup::_e('Migrate'); ?>
                                 </button>
                             </p>
@@ -140,9 +140,10 @@
                                     </table>
                                     <!-- migrateButton -->
                                     <p>
-                                        <button class="button button-primary button-small bupMigratePromo bupMigrateGoogleDrive">
-                                            <?php langBup::_e('Migrate'); ?>
-                                        </button>
+                                        <?php
+                                        $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateGoogleDrive">' . langBup::_('Migrate'). '</button>';
+                                        echo dispatcherBup::applyFilters('getGoogleDriveMigrationButton', $button, $id, $files);
+                                        ?>
                                     </p>
                                     <!-- /migrateButton -->
                                 <?php endif; ?>
@@ -197,14 +198,16 @@
                                             <?php endif; ?>
                                         <?php endforeach; ?>
                                     </tbody>
-                                    <!-- migrateButton -->
-                                    <p>
-                                        <button class="button button-primary button-small bupMigratePromo bupMigrateOneDrive">
-                                            <?php langBup::_e('Migrate'); ?>
-                                        </button>
-                                    </p>
-                                    <!-- /migrateButton -->
                                 </table>
+
+                                <!-- migrateButton -->
+                                <p>
+                                    <?php
+                                    $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateOneDrive">' . langBup::_('Migrate'). '</button>';
+                                    echo dispatcherBup::applyFilters('getOneDriveMigrationButton', $button, $id, $files);
+                                    ?>
+                                </p>
+                                <!-- /migrateButton -->
 
                                 <?php if(!empty($logs[$id]['content'])):?>
                                     <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</span>
@@ -249,9 +252,10 @@
                                 </table>
                                 <!-- migrateButton -->
                                 <p>
-                                    <button class="button button-primary button-small bupMigratePromo bupMigrateAmazon">
-                                        <?php langBup::_e('Migrate'); ?>
-                                    </button>
+                                    <?php
+                                    $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateAmazon">' . langBup::_('Migrate'). '</button>';
+                                    echo dispatcherBup::applyFilters('getAmazonMigrationButton', $button, $id, $files);
+                                    ?>
                                 </p>
                                 <!-- /migrateButton -->
 
@@ -309,9 +313,10 @@
                                 </table>
                                 <!-- migrateButton -->
                                 <p>
-                                    <button class="button button-primary button-small bupMigratePromo bupMigrateDropbox">
-                                        <?php langBup::_e('Migrate'); ?>
-                                    </button>
+                                    <?php
+                                    $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateDropbox">' . langBup::_('Migrate'). '</button>';
+                                    echo dispatcherBup::applyFilters('getDropboxMigrationButton', $button, $id, $files);
+                                    ?>
                                 </p>
                                 <!-- /migrateButton -->
 
@@ -339,7 +344,7 @@
             <!-- Log modal window end  -->
 
             <!-- Migrate promo modal window start  -->
-            <div id="bupShowMigratePromoDlg" title="Get PRO Verion!">
+            <div id="bupShowMigratePromoDlg" title="Get PRO Verion!" style="display: none">
                 <p id="bupMigratePromoText" class="supsystic-plugin">
                     Please, be advised, that this option is available only in PRO version.
                     You can <a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank">Get PRO</a>

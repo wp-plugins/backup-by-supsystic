@@ -586,7 +586,7 @@ class gdriveModelBup extends modelBup {
 	 * @param  string $filename
 	 * @return boolean|null
 	 */
-	public function download($url = null, $filename = '') {
+	public function download($url = null, $filename = '', $returnDataString = false) {
 
 		$client = $this->getClient();
 		$service = new Google_DriveService($client);
@@ -598,6 +598,9 @@ class gdriveModelBup extends modelBup {
 			if($httpRequest->getResponseHttpCode() == 200) {
 				$filepath = $this->getBackupsPath() . $filename;
 				$content  = $httpRequest->getResponseBody();
+
+                if($returnDataString)
+                    return $content;
 
 				if(file_put_contents($filepath, $content) !== false) {
 					return true;

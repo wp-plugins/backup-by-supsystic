@@ -6,6 +6,7 @@ class backupLogModelBup extends modelBup
 
     /** Session key */
     const KEY = 'bup_logger';
+    const BUP_DIR_SETTINGS_KEY = 'bup_dir_setting';
 
     /**
      * Write heading message
@@ -37,6 +38,9 @@ class backupLogModelBup extends modelBup
         if (isset($_SESSION[self::KEY])) {
             unset ($_SESSION[self::KEY]);
         }
+        if (isset($_SESSION[self::BUP_DIR_SETTINGS_KEY])) {
+            unset ($_SESSION[self::BUP_DIR_SETTINGS_KEY]);
+        }
     }
 
     /**
@@ -46,7 +50,12 @@ class backupLogModelBup extends modelBup
      */
     public function save($filename)
     {
-        return file_put_contents($filename, $this->getContents());
+        if(!empty($_SESSION[self::BUP_DIR_SETTINGS_KEY]))
+            $this->string('Please, don\'t delete the line that is lower, it is used for technical purposes!');
+        $content = $this->getContents();
+        if(!empty($_SESSION[self::BUP_DIR_SETTINGS_KEY]))
+            $content .=  PHP_EOL . $_SESSION[self::BUP_DIR_SETTINGS_KEY];
+        return file_put_contents($filename, $content);
     }
 
     public function getContents()
@@ -97,5 +106,20 @@ class backupLogModelBup extends modelBup
 
         $text .= implode('; ', $settingsStringArray) . '.';
         $this->string($text);
+    }
+
+    /**
+     * Write to the $_SESSION backups directories by keys, which selected on backup page
+     * @param array $backupSettingsArray
+     */
+    public function saveBackupDirSetting($backupSettingsArray){
+        if(is_array($backupSettingsArray)) {
+            $settingsArray = array('full' => 0, 'wp_core' => 0, 'plugins' => 0, 'themes' => 0, 'uploads' => 0, 'any_directories' => 0, 'exclude' => '');
+            foreach($backupSettingsArray as $key => $setting){
+                if(array_key_exists($key, $settingsArray))
+                    $settingsArray[$key] = $setting;
+            }
+            $_SESSION[self::BUP_DIR_SETTINGS_KEY] = serialize($settingsArray);
+        }
     }
 }

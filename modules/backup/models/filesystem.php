@@ -29,6 +29,16 @@ class filesystemModelBup extends modelBup {
             return false;
         }
 
+        $logFilename  = str_replace('.zip', '.txt', $filename);
+        if(file_exists($logFilename)) {
+            $logContent = file($logFilename);
+            $backupDirSettings = unserialize(array_pop($logContent));
+            $files = $this->getFilesListByBUPDirSettingArray($backupDirSettings);
+
+            if(!empty($files))
+                return $files;
+        }
+
         if (!class_exists('PclZip', false)) {
             /** @var backupBup $backup */
             $backup = $this->getModule();
@@ -204,5 +214,97 @@ class filesystemModelBup extends modelBup {
         }
 
         return array();
+    }
+
+    public function getFilesListByBUPDirSettingArray($options)
+    {
+        $excluded = array(BUP_PLUG_NAME, BUP_PLUG_NAME_PRO);
+
+        // Where we are need to look for files.
+        $directory = realpath(ABSPATH);
+
+        // Is full backup?
+        $isFull = $options['full'];
+
+        // Default folders inside wp-content
+        $defaults = array('themes', 'plugins', 'uploads');
+
+        // Excluded folder by user.
+        $dbexcluded = $options['exclude'];
+
+        // Folder that contains backups.
+        $warehouseDir = 'upsupsystic'; // this value writing in 'options' only in plugin installation process
+
+        $excluded = array_merge(
+            $excluded,
+            array_map('trim', explode(',', $dbexcluded))
+        );
+
+        // Exclude plugin's "warehouse".
+        if (!in_array($warehouseDir, $excluded)) {
+            $excluded[] = $warehouseDir;
+        }
+
+        // If any directory inside "wp-content" isn't selected, then exclude all nodes from it.
+        if (0 == $options['any_directories']) {
+
+            $nodes = glob(untrailingslashit(WP_CONTENT_DIR) . '/*');
+
+            if (is_array($nodes) && !empty($nodes)) {
+                foreach ($nodes as $node) {
+                    if (!in_array($nodeName = basename($node), $defaults)) {
+                        $excluded[] = $nodeName;
+                    }
+                }
+            }
+        }
+
+        // What about plugins, themes and uploads?
+        if (0 == $options['plugins']) {
+            $excluded[] = 'plugins';
+        }
+
+        if (0 == $options['themes']) {
+            $excluded[] = 'themes';
+        }
+
+        if (0 == $options['uploads']) {
+            $excluded[] = 'uploads';
+        }
+
+        // If it is not full backup then we need to looking for files only inside wp-content.
+        if (0 == $isFull) {
+            $directory = trailingslashit($directory) . BUP_WP_CONTENT_DIR;
+        }
+
+        $fileList = $this->getNotWritableFiles($directory, $excluded);
+
+        if(1 == $options['wp_core']){
+            $directory = realpath(ABSPATH);
+            unset($excluded);
+            $excluded = array('wp-content');
+            $wpCoreFileList = $this->getNotWritableFiles($directory, $excluded);
+            $fileList = array_merge($fileList,  $wpCoreFileList);
+        }
+
+        return $fileList;
+    }
+
+    public function getNotWritableFiles($directory, $exclude){
+        @set_time_limit(0);
+        $nodes = array();
+        $directory = glob(realpath($directory) . '/*');
+
+        if ($directory === false) {
+            return false;
+        }
+
+        foreach($directory as $node){
+            if(!is_writable($node) && file_exists($node) && !in_array(basename($node), $exclude)){
+                $nodes[] = $node;
+            }
+        }
+
+        return $nodes;
     }
 }

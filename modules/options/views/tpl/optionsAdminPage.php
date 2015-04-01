@@ -22,4 +22,4 @@
         </section>
     </div>
 </div>
-<div id="cspAdminTemplatesSelection"><?php echo $this->presetTemplatesHtml?></div>
+<div id="cspAdminTemplatesSelection"><?php echo !empty($this->presetTemplatesHtml) ? $this->presetTemplatesHtml : ''?></div>

@@ -85,7 +85,7 @@ class databaseModelBup extends modelBup
 						$table['insert'] .= 'INSERT INTO `' . $table['name'] . '` (' . implode(', ', array_map(array($this, 'addColQuotes'), $tableCols)) . ') VALUES (' . $data . ')' . '#endQuery' . PHP_EOL;
 					}*/
 					//$table['insert'] .= 'INSERT INTO `' . $table['name'] . '` (' . implode(', ', array_map(array($this, 'addColQuotes'), $tableCols)) . ') VALUES ('. implode('),(', $tableData). ');';
-					fwrite($dumpHandle, 'INSERT INTO `' . $table['name'] . '` (' . implode(', ', array_map(array($this, 'addColQuotes'), $tableCols)) . ') VALUES ('. implode('),(', $tableData). ');' . '#endQuery'. PHP_EOL);
+					fwrite($dumpHandle, 'INSERT INTO `' . $table['name'] . '` (' . implode(', ', array_map(array($this, 'addColQuotes'), $tableCols)) . ') VALUES ('. implode('),/*BUP_EOL*/(', $tableData). ');' . '#endQuery'. PHP_EOL);
 				}
 			}
 

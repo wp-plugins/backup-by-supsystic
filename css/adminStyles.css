@@ -45,7 +45,6 @@
 .cspNiceStyle { }
     #bupAdminOptionsTabs table { border:0 !important;cell-padding:0 !important; cell-spacing:0 !important;}
     .cspNiceStyle table tr:hover {background:none;}
-    .cspNiceStyle table tr td {border-top:1px dashed #e3e3e3;}
     .cspNiceStyle table tr td {padding:5px;}
     
     .cspHeadCells { }

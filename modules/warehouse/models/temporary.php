@@ -28,16 +28,18 @@ class temporaryModelBup extends modelBup
         return is_dir($path) && file_exists($path);
     }
 
-    public function isWritable()
+    public function isWritable($path = false)
     {
-        $path = $this->getPath();
+        if(!$path)
+            $path = $this->getPath();
 
         return $this->exists() && is_writable($path);
     }
 
-    public function create()
+    public function create($path = false)
     {
-        $path = $this->getPath() . DIRECTORY_SEPARATOR;
+        if(!$path)
+            $path = $this->getPath() . DIRECTORY_SEPARATOR;
 
         if (@mkdir($path, 0775, true)) {
             $htaccess = $path . '.htaccess';

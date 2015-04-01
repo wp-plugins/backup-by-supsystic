@@ -145,7 +145,6 @@ class onedriveControllerBup extends controllerBup
         $request  = reqBup::get('post');
         $response = new responseBup();
         $onedrive = $this->getModel();
-        $onedrive->refreshAccessToken();
 
         if ($onedrive->download($request['file_id'])) {
             $response->addMessage('File downloaded.');

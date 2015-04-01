@@ -311,14 +311,14 @@ class dropbox52ModelBup extends modelBup {
      * @param  string $filename Name of the file to download
      * @return bool
      */
-    public function download($filename) {
+    public function download($filename, $returnDataString = false) {
         if (!$this->isAuthenticated()) {
             $this->pushError(langBup::_('Authentication required'));
             return false;
         }
 
         if (file_exists($this->getBackupsPath() . $filename)) {
-            return true;
+            return $returnDataString ? file_get_contents($this->getBackupsPath() . $filename) : true;
         }
 
         $url = self::CONTENT_URL. 'files/sandbox';
@@ -332,6 +332,9 @@ class dropbox52ModelBup extends modelBup {
         } catch (RuntimeException $e) {
             $this->pushError($e->getMessage());
         }
+
+        if($returnDataString)
+            return $response;
 
         if (!file_put_contents($this->getBackupsPath() . $filename, $response)) {
             $this->pushError(langBup::_(sprintf('Can\'t download the file: %', $filename)));

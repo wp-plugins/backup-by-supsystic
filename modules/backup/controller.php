@@ -60,6 +60,8 @@ class backupControllerBup extends controllerBup {
         $cloud = array();
 
         if ($this->getModel()->isFilesystemRequired()) {
+            if(!empty($request['opt_values']))
+                $log->saveBackupDirSetting($request['opt_values']);
             if (!isset($request['complete'])) {
                 // Disallow to do backups while backup already in proccess.
                 $this->lock();
@@ -275,6 +277,10 @@ class backupControllerBup extends controllerBup {
             }
 			$response->addError($errors);
 		}
+        elseif(is_array($result) && !empty($result)) {
+            $content = 'Unable to restore backup files. Check folder or files writing permissions. Try to set 777 permissions to the: <br>'. implode('<br>', $result);
+            $response->addError($content);
+        }
 		else {
 			$response->addData($result);
 			$response->addMessage(langBup::_('Done!'));
@@ -363,11 +369,11 @@ class backupControllerBup extends controllerBup {
 	}
 	private function _checkExtensions($res) {
 		if(!function_exists('gzopen')) {
-			$res->addError(langBup::_('There are no zlib extension on your server. Check this link <a target="_blank" href="http://php.net/manual/en/zlib.installation.php">http://php.net/manual/en/zlib.installation.php</a>'));
+			$res->addError(langBup::_('There are no zlib extension on your server. You need to install it. How to install check this link <a target="_blank" href="http://php.net/manual/en/zlib.installation.php">http://php.net/manual/en/zlib.installation.php</a>'));
 			return false;
 		}
 		if(!class_exists('ZipArchive')) {
-			$res->addError(langBup::_('There are no zib extension on your server. Check this link <a target="_blank" href="http://php.net/manual/en/book.zip.php">http://php.net/manual/en/book.zip.php</a>'));
+			$res->addError(langBup::_('There are no zib extension on your server. You need to install it. How to install check this link <a target="_blank" href="http://php.net/manual/en/book.zip.php">http://php.net/manual/en/book.zip.php</a>'));
 			return false;
 		}
 		return true;

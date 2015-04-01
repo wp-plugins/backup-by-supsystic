@@ -157,6 +157,10 @@ class installerBup {
             dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES
 			    (NULL,'wp_core','1','Wordpress core backup','on/off Wordpress core backup',1,'',0,0,'dest_backup');");
         }
+        if(!dbBup::exist($wpPrefix.BUP_DB_PREF."options", 'code', 'serialized_backups_path')){
+            dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES
+			    (NULL,'serialized_backups_path','','Serialized backups path','Store all backups path in serialized data',0,'',0,0,'');");
+        }
 		/* options categories */
 		if(!dbBup::exist($wpPrefix.BUP_DB_PREF."options_categories")) {
 			dbDelta("CREATE TABLE IF NOT EXISTS `".$wpPrefix.BUP_DB_PREF."options_categories` (

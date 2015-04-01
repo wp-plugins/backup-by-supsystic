@@ -50,9 +50,10 @@ class warehouseModelBup extends modelBup
      * Checks whether the warehouse directory is writable.
      * @return bool
      */
-    public function isWritable()
+    public function isWritable($path = false)
     {
-        $path = $this->getPath();
+        if(!$path)
+            $path = $this->getPath();
 
         if (!$this->exists()) {
             return false;
@@ -65,9 +66,10 @@ class warehouseModelBup extends modelBup
      * Try to create warehouse folder.
      * @return bool
      */
-    public function create()
+    public function create($path = false)
     {
-        $path = $this->getPath() . DIRECTORY_SEPARATOR;
+        if(!$path)
+            $path = $this->getPath() . DIRECTORY_SEPARATOR;
 
         if (@mkdir($path, 0775, true)) {
             $htaccess = $path . '.htaccess';

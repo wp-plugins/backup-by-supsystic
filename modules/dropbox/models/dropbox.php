@@ -246,18 +246,25 @@ class dropboxModelBup extends modelBup {
 	 * @param  string $filename
 	 * @return boolean
 	 */
-	public function download($filename) {
+	public function download($filename, $returnDataString = false) {
 		if($this->isAuthenticated() === false) {
 			$this->pushError(langBup::_('Authentication required'));
 			return false;
 		}
 
 		if(file_exists($this->getBackupsPath() . $filename)) {
-			return true;
+            return $returnDataString ? file_get_contents($this->getBackupsPath() . $filename) : true;
 		}
 
 		try {
 			$client = new Dropbox\Client($this->getToken(), $this->applicationName);
+
+            if($returnDataString){
+                $dataString = null;
+                $client->getFile($this->getDropboxPath() . $filename, $dataString);
+                return $dataString;
+            }
+
 			$stream = @fopen($this->getBackupsPath() . $filename, 'wb');
 			$result = $client->getFile($this->getDropboxPath() . $filename, $stream);
 			fclose($stream);

@@ -389,8 +389,9 @@ class onedriveModelBup extends modelBup
         return 201;
     }
 
-    public function download($fileId)
+    public function download($fileId, $returnDataString = false)
     {
+        $this->refreshAccessToken();
         $skydrive = new skydriveBup($this->getAccessToken());
 
         if (!$this->isAuthenticated()) {
@@ -412,6 +413,9 @@ class onedriveModelBup extends modelBup
                 $filename = $this->getBackupsPath()
                     . '/'
                     . $file['properties']['name'];
+
+                if($returnDataString)
+                    return $file['data'];
 
                 if (!file_put_contents($filename, $file['data'])) {
                     $this->pushError(langBup::_('Failed to save downloaded file.'));

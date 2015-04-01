@@ -49,6 +49,8 @@ class optionsModelBup extends modelBup {
 
 	public function saveMainFromDestGroup($d = array()) {
 		if (isset($d['dest_opt']) && !empty($d['dest_opt'])){
+            if(isset($d['opt_values']['warehouse']) && isset($d['opt_values']['warehouse_abs']))
+                $this->saveBackupPath(array('warehouse' => $d['opt_values']['warehouse'], 'warehouse_abs' => (int)$d['opt_values']['warehouse_abs']));
 			if (utilsBup::checkPRO() || $d['dest_opt'] == 0){
 				$this->set($d['dest_opt'], 'glb_dest');
 			} else {
@@ -425,4 +427,26 @@ class optionsModelBup extends modelBup {
 		// good in any case
 		return $res;
 	}
+    public function saveBackupPath($newBackupPathArray) {
+        $backupsPath = frameBup::_()->getTable('options')->get('value', array('code' => 'serialized_backups_path'), '', 'row');
+        $backupsPath = !empty($backupsPath['value']) ? unserialize($backupsPath['value']) : null;
+        if(is_array($backupsPath)) {
+            $newPathExist = false;
+            $serializedNewPath = serialize($newBackupPathArray);
+
+            foreach($backupsPath as $path) {
+                if($serializedNewPath === serialize($path))
+                    $newPathExist=true;
+            }
+
+            if(!$newPathExist) {
+                $backupsPath[] = $newBackupPathArray;
+                frameBup::_()->getTable('options')->update(array('value' => serialize($backupsPath)), array('code' => 'serialized_backups_path'));
+            }
+        } elseif (is_array($newBackupPathArray) && isset($newBackupPathArray['warehouse']) && isset($newBackupPathArray['warehouse_abs'])) {
+            $backupsPath = array();
+            $backupsPath[] = $newBackupPathArray;
+            frameBup::_()->getTable('options')->update(array('value' => serialize($backupsPath)), array('code' => 'serialized_backups_path'));
+        }
+    }
 }
