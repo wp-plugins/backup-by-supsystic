@@ -1,7 +1,7 @@
 === Backup by Supsystic ===
 Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/backup-plugin
-Tags: backup, back up, restoration, db backup, dump, file, migrate, schedule, email, FTP, mysql backup, website backup, database backup, db backup, wordpress backup, full backup, restoration, restore, rollback, transfer, website backup, wordpress backup, migration, backup plugins, backup posts, backup pages 
+Tags: backup, back up, restoration, db backup, dump, migrate, email, FTP, mysql backup, database backup, db backup, full backup, restore, transfer, website backup, wordpress backup, migration, backup plugins, backup posts, backup pages 
 Tested up to: 4.1.1
 Stable tag: 1.1.0
 
