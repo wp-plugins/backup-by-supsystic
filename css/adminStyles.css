@@ -122,7 +122,7 @@ label, span, input, button {
 #lBackupBlock{ margin:0px 0px 0px 10px;}
 
 .excludeOpt{ margin:0px 0px 0px 4px; }
-.excludeInput, .input-regular { width:250px !important; display:inline !important; }
+.excludeInput, .input-regular, .bupSecretKeyForCryptDB { width:250px !important; display:inline !important; }
 
 .log_scroll{ width:500px; padding:5px 3px; }
 .logBlock{ text-align:left; width:900px; }

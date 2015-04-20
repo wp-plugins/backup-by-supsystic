@@ -89,7 +89,7 @@ class dropboxBup extends moduleBup {
 	public function init() {
 		parent::init();
         if (!extension_loaded('curl')) {
-            dispatcherBup::addFilter('adminCloudServices', array($this, 'registerTabNotSupport'));
+            dispatcherBup::addFilter('getBackupDestination', array($this, 'registerNotSupport'));
             return;
         }
 
@@ -117,15 +117,15 @@ class dropboxBup extends moduleBup {
         }
 
 
-        dispatcherBup::addFilter('adminCloudServices', array($this, 'registerTab'));
+        dispatcherBup::addFilter('getBackupDestination', array($this, 'addDropboxBupDestination'));
         dispatcherBup::addFilter('adminSendToLinks', array($this, 'registerSendLink'));
         dispatcherBup::addfilter('adminBackupUpload', array($this, 'registerUploadMethod'));
         dispatcherBup::addfilter('adminGetUploadedFiles', array($this, 'getUploadedFiles'));
 
 	}
 
-	public function registerTabNotSupport($tabs) {
-		$tabs[$this->config['tabs']['key']] = array(
+	public function registerNotSupport($tabs) {
+		$tabs['dropbox'] = array(
 			'title'   => $this->config['tabs']['title'],
 			'content' => langbup::_('Your server does not support the Dropbox without cURL extension'),
             'faIcon' => 'fa-dropbox',
@@ -141,8 +141,8 @@ class dropboxBup extends moduleBup {
 	 * @param  array $tabs
 	 * @return array
 	 */
-	public function registerTab($tabs) {
-		$tabs[$this->config['tabs']['key']] = array(
+	public function addDropboxBupDestination($tabs) {
+		$tabs['dropbox'] = array(
 			'title'   => $this->config['tabs']['title'],
 			'content' => $this->run($this->config['tabs']['action']),
             'faIcon' => 'fa-dropbox',

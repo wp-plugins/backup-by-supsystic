@@ -41,6 +41,7 @@ class backupBup extends moduleBup {
         /* Register tab */
 		dispatcherBup::addFilter('adminOptionsTabs', array($this, 'registerModuleTab'));
         dispatcherBup::addfilter('adminGetUploadedFiles', array($this, 'getUploadedFiles'));
+        dispatcherBup::addfilter('getBackupDestination', array($this, 'addLocalFTPBupDestination'));
 
         /* Load assets */
         $this->loadModuleScripts();
@@ -180,5 +181,14 @@ class backupBup extends moduleBup {
             }
         }
         return $files;
+    }
+
+    public function addLocalFTPBupDestination($tabs){
+        $tabs['ftp'] = array(
+            'title'   => 'FTP',
+            'faIcon' => 'fa-server',
+        );
+
+        return $tabs;
     }
 }

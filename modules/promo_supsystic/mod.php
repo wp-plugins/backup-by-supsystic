@@ -13,6 +13,8 @@ class promo_supsysticBup extends moduleBup {
 		parent::init();
         if(!frameBup::_()->getModule('license')) {
             dispatcherBup::addFilter('adminOptionsTabs', array($this, 'registerModuleTab'));
+            dispatcherBup::addFilter('getBackupDestination', array($this, 'addRemoteBackupDestination'));
+            dispatcherBup::addFilter('getInputForSecretKeyEncryptDb', array($this, 'getPromoSecretKeyEncryptDb'));
             frameBup::_()->addJSVar('adminBackupOptionsV2', 'bupFreeVersionPlugin', 'true');
         } else {
             frameBup::_()->addJSVar('adminBackupOptionsV2', 'bupFreeVersionPlugin', 'false');
@@ -92,5 +94,21 @@ class promo_supsysticBup extends moduleBup {
         );
 
         return $tabs;
+    }
+    public function addRemoteBackupDestination(array $destinations){
+        $connectType = array('remoteFtp' => 'Remote FTP Server', 'remoteSFtp' => 'Remote SFTP Server', 'remoteFtpS' => 'Remote FTPS Server', 'remoteScp' => 'Remote SCP Server');
+        foreach($connectType as $type => $title){
+            if($type === 'remoteFtp') { // this is temporary condition, while addon not support other protocol
+                $destinations[$type] = array(
+                    'title' => $title,
+                    'content' => langBup::_('Please, be advised, that this option is available only in PRO version. You can ') . '<a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank">' . langBup::_('Get PRO') . '</a>',
+                );
+            }
+        }
+        return $destinations;
+    }
+    public function getPromoSecretKeyEncryptDb(){
+        $promoBlock = '<td>' . langBup::_('Please, be advised, that this option is available only in PRO version. You can ') . '<a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank">' . langBup::_('Get PRO') . '</a></td>';
+        return $promoBlock;
     }
 }

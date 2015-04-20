@@ -88,7 +88,7 @@ class gdriveBup extends moduleBup {
             frameBup::_()->addScript('adminGDriveOptions', $this->getModPath(). 'js/admin.gdrive.js');
         }
 
-		dispatcherBup::addFilter('adminCloudServices', array($this, 'registerTab'));
+		dispatcherBup::addFilter('getBackupDestination', array($this, 'addGDriveBupDestination'));
 		dispatcherBup::addFilter('adminSendToLinks', array($this, 'registerSendLink'));
 		dispatcherBup::addfilter('adminBackupUpload', array($this, 'registerUploadMethod'));
 		dispatcherBup::addfilter('adminGetUploadedFiles', array($this, 'getUploadedFiles'));
@@ -115,8 +115,8 @@ class gdriveBup extends moduleBup {
 	 * @param  array $tabs
 	 * @return array
 	 */
-	public function registerTab($tabs) {
-		$tabs[$this->config['tabs']['key']] = array(
+	public function addGDriveBupDestination($tabs) {
+		$tabs['googledrive'] = array(
 			'title'   => $this->config['tabs']['title'],
 			'content' => $this->run($this->config['tabs']['action']),
             'faIcon' => 'fa-google',

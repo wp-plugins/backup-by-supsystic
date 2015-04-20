@@ -1,5 +1,8 @@
 <?php
 abstract class moduleBup extends baseObjectBup {
+    /**
+     * @var controllerBup $_controller
+     */
 	protected $_controller = NULL;
 	protected $_helper = NULL;
 	protected $_code = '';

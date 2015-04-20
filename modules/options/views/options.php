@@ -41,15 +41,13 @@ class optionsViewBup extends viewBup {
 	}
 
     public function getMainOptionsTab() {
-        //$generalOptions = $this->getModel()->getByCategories('General');
         if(!isset($this->optModel))
             $this->assign('optModel', $this->getModel());
-        $backupPlaces = dispatcherBup::applyFilters('adminCloudServices', array());
+        $backupPlaces = dispatcherBup::applyFilters('getBackupDestination', array());
         $backupDest = frameBup::_()->getModule('options')->get('glb_dest');
         $this->assign('backupPlaces', $backupPlaces);
         $this->assign('backupDest', $backupDest);
         $this->assign('backupOptions', parent::getContent('backupOptions'));
-        //$this->assign('allOptions', $generalOptions['opts']);
         return parent::getContent('mainOptionsTab');
     }
 

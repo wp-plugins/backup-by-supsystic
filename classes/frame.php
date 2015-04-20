@@ -254,7 +254,7 @@ class frameBup {
     /**
      * Return table by name
      * @param string $tableName table name in database
-     * @return object table
+     * @return tableBup table
      * @example frameBup::_()->getTable('products')->getAll()
      */
     public function getTable($tableName) {
@@ -281,7 +281,9 @@ class frameBup {
     }
 
     public function getModule($code) {
-        return (isset($this->_modules[$code]) ? $this->_modules[$code] : NULL);
+        /**@var moduleBup $module*/
+        $module = (isset($this->_modules[$code]) ? $this->_modules[$code] : NULL);
+        return $module;
     }
     public function inPlugin() {
         return $this->_inPlugin;

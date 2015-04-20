@@ -15,6 +15,20 @@ jQuery(document).ready(function($) {
 		});
 	}
 
+	//promo block for pro-version, module 'scrambler'
+	var databaseCheckbox = jQuery('.bupDatabaseCheckbox');
+	var secretKeyRow = jQuery('.bupSecretKeyDBRow'); // input for secret key encrypting db on backup setting page
+	var databaseBackupSelected = databaseCheckbox.attr('checked') ? true : false;
+
+	if(databaseBackupSelected)
+		secretKeyRow.show();
+	else
+		secretKeyRow.hide();
+
+	databaseCheckbox.on('click', function($this) {
+		secretKeyRow.toggle(200);
+	});
+
 	bupShowLogDlg();
 	bupBackupsShowLogDlg();
 	var j = jQuery.noConflict();
@@ -90,7 +104,7 @@ jQuery(document).ready(function($) {
 	});
 
 	// Restore
-	j('.bupRestore').on('click', function() {
+	jQuery(document).on('click', '.bupRestore', function(){
 		if (confirm('Are you sure?')) {
 			var filename = j(this).attr('data-filename'),
 					id   = j(this).attr('data-id');
@@ -165,17 +179,25 @@ var BackupModule = {
 		});
 	},
 	restore: function(id, filename) {
+		var secretKey = jQuery('input.bupSecretKeyForCryptDB').val();
 		jQuery.sendFormBup({
 			msgElID: 'MSG_EL_ID_' + id,
 			data: {
 				'reqType':  'ajax',
 				'page':     'backup',
 				'action':   'restoreAction',
-				'filename': filename
+				'filename': filename,
+				'encryptDBSecretKey': secretKey
 			},
 			onSuccess: function(response) {
-				if (response.error === false) {
+				if (response.error === false && !response.data.need) {
+					jQuery('#bupEncryptingModalWindow').dialog('close');
 					location.reload(true);
+				} else if(response.data.need) {
+					requestSecretKeyToRestoreEncryptedDb('bupRestore', {'id': id, 'filename': filename}); // open modal window to request secret key for decrypt DB dump
+				} else if(response.error) {
+					jQuery('input.bupSecretKeyForCryptDB').val(''); // clear input value, because user earlier entered secret key
+					jQuery('#bupEncryptingModalWindow').dialog('close');
 				}
 			}
 		});
@@ -186,7 +208,7 @@ var BackupModule = {
 		var progress = jQuery('.main-progress-bar');
 
         jQuery('.' + progress.attr('class') + ' .progress-bar span').css({ width: '1%' });
-		progress.show().css({ display: 'inline-block' });;
+		progress.show().css({ display: 'inline-block' });
 
 		jQuery(form).sendFormBup({
 			msgElID: 'BUP_MESS_MAIN',

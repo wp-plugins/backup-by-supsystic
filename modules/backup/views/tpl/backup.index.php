@@ -6,16 +6,18 @@
                 if(!empty($backups)):
                     foreach ($backups as $id => $type):
                     $backupType = key($type);
-                    $backupStartDateTime  = (!empty($logs[$id]['content'])) ? $model->getBackupStartTimeFromLog($logs[$id]['content']) : '' ;
-                    $backupFinishDateTime = (!empty($logs[$id]['content'])) ?$model->getBackupFinishTimeFromLog($logs[$id]['content']) : '';
+                    $backupStartDateTime  = (!empty($logs[$id]['content'])) ? ' / Start: <b>' . $model->getBackupStartTimeFromLog($logs[$id]['content']) . '</b>' : '' ;
+                    $backupFinishDateTime = (!empty($logs[$id]['content'])) ? ' / Finish: <b>' . $model->getBackupFinishTimeFromLog($logs[$id]['content']) . '</b>' : '';
+                    $backupTimeInfo = $backupStartDateTime . ' ' . $backupFinishDateTime;
                     if($backupType == 'ftp'):
                         $backup = $type['ftp'];
-                        $sqlExist = !empty($backup['sql']) ? 'data-sql="sql"' : false;
+                        $sqlExist = !empty($backup['sql']) ? 'data-sql="sql"' : false; // this attribute used in JS(migration module), if it exist - show inputs for find/replace site url in DB dump
+                        $encrypted = !empty($backup['sql']['encrypted']) ? $backup['sql']['encrypted'] : ''; // this class used in JS(migration module), if it exist - show input for decrypt DB dump for find/replace site url
                     ?>
                     <!--  FTP files rendering start    -->
                     <div class="backupBlock">
                         <p>
-                            Backup to <b>FTP</b> / ID <b><?php echo $id; ?></b><?php echo !empty($backupStartDateTime) ?' / Start: <b>' . $backupStartDateTime . '</b>' : ''?> / Finish: <b><?php echo (isset($backup['zip']) ? $backup['zip']['date'].' '.$backup['zip']['time'] : $backup['sql']['date'].' '.$backup['sql']['time'])?></b>
+                            Backup to <b>FTP</b> / ID <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
                         </p>
                         <div align="left" id="MSG_EL_ID_<?php echo $id; ?>"></div>
 
@@ -78,7 +80,7 @@
                             </table>
                             <!-- migrateButton -->
                             <p>
-                                <button class="button button-primary button-small bupMigratePromo bupMigrateFTP" data-id="<?php echo $id; ?>" <?php echo $sqlExist?>>
+                                <button class="button button-primary button-small bupMigratePromo bupMigrateFTP <?php echo $encrypted ?>" data-id="<?php echo $id; ?>" <?php echo $sqlExist?>>
                                     <?php langBup::_e('Migrate'); ?>
                                 </button>
                             </p>
@@ -98,10 +100,11 @@
                     <?php
                     elseif($backupType == 'gdrive'):
                         $files = $type['gdrive'];
+                        $encrypted = !empty($files['sql']['backupInfo']['encrypted']) ? $files['sql']['backupInfo']['encrypted'] : '';
                         ?>
                         <div class="backupBlock">
                             <p>
-                                Backup to <b>GoogleDrive</b> / ID <b><?php echo $id; ?></b><?php echo !empty($backupStartDateTime) ?' / Start: <b>' . $backupStartDateTime . '</b>' : ''?><?php echo !empty($backupFinishDateTime) ?' / Finish: <b>' . $backupFinishDateTime . '</b>' : ''?>
+                                Backup to <b>GoogleDrive</b> / ID <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
                             </p>
                             <div id="bupGDriveAlerts-<?php echo $id; ?>"></div>
                             <div id="bupControl-<?php echo $id?>">
@@ -142,7 +145,7 @@
                                     <p>
                                         <?php
                                         $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateGoogleDrive">' . langBup::_('Migrate'). '</button>';
-                                        echo dispatcherBup::applyFilters('getGoogleDriveMigrationButton', $button, $id, $files);
+                                        echo dispatcherBup::applyFilters('getGoogleDriveMigrationButton', $button, $id, $files, $encrypted);
                                         ?>
                                     </p>
                                     <!-- /migrateButton -->
@@ -161,10 +164,11 @@
                     <?php
                     elseif($backupType == 'onedrive'):
                         $files = $type['onedrive'];
+                        $encrypted = !empty($files->sql->backupInfo['encrypted']) ? $files->sql->backupInfo['encrypted'] : '';
                         ?>
                         <div class="backupBlock">
                             <p>
-                                Backup to <b>OneDrive</b> / ID <b><?php echo $id; ?></b><?php echo !empty($backupStartDateTime) ?' / Start: <b>' . $backupStartDateTime . '</b>' : ''?><?php echo !empty($backupFinishDateTime) ?' / Finish: <b>' . $backupFinishDateTime . '</b>' : ''?>
+                                Backup to <b>OneDrive</b> / ID <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
                             </p>
                             <div id="bupOnedriveAlerts-<?php echo $id; ?>"></div>
                             <div id="bupControl-<?php echo $id?>">
@@ -204,7 +208,7 @@
                                 <p>
                                     <?php
                                     $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateOneDrive">' . langBup::_('Migrate'). '</button>';
-                                    echo dispatcherBup::applyFilters('getOneDriveMigrationButton', $button, $id, $files);
+                                    echo dispatcherBup::applyFilters('getOneDriveMigrationButton', $button, $id, $files, $encrypted);
                                     ?>
                                 </p>
                                 <!-- /migrateButton -->
@@ -223,10 +227,11 @@
                     <?php
                     elseif($backupType == 'amazon'):
                         $files = $type['amazon'];
+                        $encrypted = !empty($files['sql']['backupInfo']['encrypted']) ? $files['sql']['backupInfo']['encrypted'] : '';
                         ?>
                         <div class="backupBlock">
                             <p>
-                                Backup to <b>Amazon S3</b> / ID <b><?php echo $id; ?></b><?php echo !empty($backupStartDateTime) ?' / Start: <b>' . $backupStartDateTime . '</b>' : ''?><?php echo !empty($backupFinishDateTime) ?' / Finish: <b>' . $backupFinishDateTime . '</b>' : ''?>
+                                Backup to <b>Amazon S3</b> / ID <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
                             </p>
                             <div id="bupAmazonAlerts-<?php echo $id;?>"></div>
                             <div id="bupControl-<?php echo $id?>">
@@ -254,7 +259,7 @@
                                 <p>
                                     <?php
                                     $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateAmazon">' . langBup::_('Migrate'). '</button>';
-                                    echo dispatcherBup::applyFilters('getAmazonMigrationButton', $button, $id, $files);
+                                    echo dispatcherBup::applyFilters('getAmazonMigrationButton', $button, $id, $files, $encrypted);
                                     ?>
                                 </p>
                                 <!-- /migrateButton -->
@@ -273,10 +278,11 @@
                     <?php
                     elseif($backupType == 'dropbox'):
                         $files = $type['dropbox'];
+                        $encrypted = !empty($files['sql']['backupInfo']['encrypted']) ? $files['sql']['backupInfo']['encrypted'] : '';
                         ?>
                         <div class="backupBlock">
                             <p>
-                                Backup to <b>DropBox</b> / ID <b><?php echo $id; ?></b><?php echo !empty($backupStartDateTime) ?' / Start: <b>' . $backupStartDateTime . '</b>' : ''?><?php echo !empty($backupFinishDateTime) ?' / Finish: <b>' . $backupFinishDateTime . '</b>' : ''?>
+                                Backup to <b>DropBox</b> / ID <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
                             </p>
                             <div id="bupDropboxAlerts-<?php echo $id; ?>"></div>
                             <div id="bupControl-<?php echo $id?>">
@@ -315,7 +321,7 @@
                                 <p>
                                     <?php
                                     $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateDropbox">' . langBup::_('Migrate'). '</button>';
-                                    echo dispatcherBup::applyFilters('getDropboxMigrationButton', $button, $id, $files);
+                                    echo dispatcherBup::applyFilters('getDropboxMigrationButton', $button, $id, $files, $encrypted);
                                     ?>
                                 </p>
                                 <!-- /migrateButton -->
@@ -329,6 +335,12 @@
                         </div>
                         <hr/>
                         <!--  DropBox files rendering end    -->
+
+                        <!--  Backups from remote server(pro version) files rendering start    -->
+                        <?php elseif(false !== strpos($backupType, 'bupRemoteServerType-')):
+                            echo dispatcherBup::applyFilters('getRemoteBackupsFileListContent', null, $type, $backupType, $backupTimeInfo, $id, $logs[$id]['content']);
+                        ?>
+                        <!--  Backups from remote server(pro version) files rendering end    -->
 
                     <?php endif; ?>
                 <?php endforeach;
@@ -346,11 +358,14 @@
             <!-- Migrate promo modal window start  -->
             <div id="bupShowMigratePromoDlg" title="Get PRO Verion!" style="display: none">
                 <p id="bupMigratePromoText" class="supsystic-plugin">
-                    Please, be advised, that this option is available only in PRO version.
-                    You can <a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank">Get PRO</a>
+                    <?php langBup::_e('Please, be advised, that this option is available only in PRO version. You can')?>
+                    <a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank"><?php langBup::_e('Get PRO')?></a>
                 </p>
             </div>
             <!-- Migrate promo modal window end  -->
+
+            <?php echo dispatcherBup::applyFilters('getModalWindowForSecretKeyEncryptDB', '');?>
         </div>
     </div>
 </section>
+<?php //phpinfo();?>

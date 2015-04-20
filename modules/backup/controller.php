@@ -34,6 +34,7 @@ class backupControllerBup extends controllerBup {
         $log = $this->getModel('backupLog');
 
         if(!empty($request['opt_values'])){
+            do_action('bupBeforeSaveBackupSettings', $request['opt_values']);
             $log->writeBackupSettings($request['opt_values']);
             frameBup::_()->getModule('options')->getModel('options')->saveMainFromDestGroup($request);
             frameBup::_()->getModule('options')->getModel('options')->saveGroup($request);
@@ -268,6 +269,13 @@ class backupControllerBup extends controllerBup {
 		$filename = $request['filename'];
 		$model    = $this->getModel();
 
+        // This block for pro-version module 'scrambler'
+        $needKeyToDecryptDB = dispatcherBup::applyFilters('checkIsNeedSecretKeyToEncryptedDB', false, $filename, $request);
+        if($needKeyToDecryptDB){
+            $response->addData(array('need' => 'secretKey'));
+            return $response->ajaxExec();
+        }
+
 		$result = $model->restore($filename);
 
 		if (false === $result) {
@@ -277,6 +285,9 @@ class backupControllerBup extends controllerBup {
             }
 			$response->addError($errors);
 		}
+        elseif(is_array($result) && array_key_exists('error', $result)) {
+            $response->addError($result['error']);
+        }
         elseif(is_array($result) && !empty($result)) {
             $content = 'Unable to restore backup files. Check folder or files writing permissions. Try to set 777 permissions to the: <br>'. implode('<br>', $result);
             $response->addError($content);

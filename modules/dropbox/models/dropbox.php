@@ -201,6 +201,7 @@ class dropboxModelBup extends modelBup {
             if(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql'){
                 $files[$backupInfo['id']]['dropbox']['sql'] = $file;
                 $files[$backupInfo['id']]['dropbox']['sql']['backupInfo'] = $backupInfo;
+                $files[$backupInfo['id']]['dropbox']['sql']['backupInfo'] = dispatcherBup::applyFilters('addInfoIfEncryptedDb', $files[$backupInfo['id']]['dropbox']['sql']['backupInfo']);
             }elseif(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'zip'){
                 $files[$backupInfo['id']]['dropbox']['zip'] = $file;
                 $files[$backupInfo['id']]['dropbox']['zip']['backupInfo'] = $backupInfo;

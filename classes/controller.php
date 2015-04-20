@@ -31,7 +31,12 @@ abstract class controllerBup {
 		}
 		return null;
 	}
-	public function getView($name = '') {
+
+    /**
+     * @param string $name
+     * @return viewBup mixed
+     */
+    public function getView($name = '') {
 		if(empty($name)) $name = $this->getCode();
 		if(!isset($this->_views[$name])) {
 			$this->_views[$name] = $this->_createView($name);

@@ -276,24 +276,29 @@ class amazonModelBup extends ModelBup {
      * @return integer
      */
     public function download($filename) {
-        $client = Aws\S3\S3Client::factory(array(
-            'key'    => $this->getCredential('access'),
-            'secret' => $this->getCredential('secret'),
-        ));
-
-        if($client->doesObjectExist($this->getBucket(), $filename) === false) {
-            return 404;
-        }
         $filenameInfo = pathinfo($filename);
-        if(!file_exists($this->getBackupsPath() . $filenameInfo['basename'])){
-            $client->getObject(array(
-                'Bucket' => $this->getBucket(),
-                'Key'    => $filename,
-                'SaveAs' => $this->getBackupsPath() . $filenameInfo['basename'],
+        $backupPath = $this->getBackupsPath();
+        if(!file_exists($backupPath . $filenameInfo['basename'])) {
+            $client = Aws\S3\S3Client::factory(array(
+                'key' => $this->getCredential('access'),
+                'secret' => $this->getCredential('secret'),
             ));
-        }
 
-        return 201;
+            if ($client->doesObjectExist($this->getBucket(), $filename) === false) {
+                return 404;
+            }
+            if (!file_exists($backupPath . $filenameInfo['basename'])) {
+                $client->getObject(array(
+                    'Bucket' => $this->getBucket(),
+                    'Key' => $filename,
+                    'SaveAs' => $backupPath . $filenameInfo['basename'],
+                ));
+            }
+
+            return 201;
+        } elseif(file_exists($backupPath . $filenameInfo['basename'])) {
+            return 201;
+        }
     }
 
     /**
@@ -350,6 +355,7 @@ class amazonModelBup extends ModelBup {
             if(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql'){
                 $newFiles[$backupInfo['id']]['amazon']['sql']['file'] = $file;
                 $newFiles[$backupInfo['id']]['amazon']['sql']['backupInfo'] = $backupInfo;
+                $newFiles[$backupInfo['id']]['amazon']['sql']['backupInfo'] = dispatcherBup::applyFilters('addInfoIfEncryptedDb', $newFiles[$backupInfo['id']]['amazon']['sql']['backupInfo']);
             }elseif(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'zip'){
                 $newFiles[$backupInfo['id']]['amazon']['zip']['file'] = $file;
                 $newFiles[$backupInfo['id']]['amazon']['zip']['backupInfo'] = $backupInfo;

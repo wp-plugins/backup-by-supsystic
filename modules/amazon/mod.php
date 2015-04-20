@@ -87,7 +87,7 @@ class amazonBup extends moduleBup {
         }
 
         if (version_compare(PHP_VERSION, '5.3.3', '<')) {
-            dispatcherBup::addFilter('adminCloudServices', array($this, 'registerNotSupportTab'));
+            dispatcherBup::addFilter('getBackupDestination', array($this, 'registerNotSupportTab'));
             return;
         }
 
@@ -95,8 +95,8 @@ class amazonBup extends moduleBup {
             frameBup::_()->addScript('adminAmazonHandle', $this->getModPath() . 'js/admin.amazon.js');
         }
 
-        // Register tab into menu
-        dispatcherBup::addFilter('adminCloudServices', array($this, 'registerTab'));
+        // Register backup destination
+        dispatcherBup::addFilter('getBackupDestination', array($this, 'addAmazonBupDestination'));
         // Register "send to" link
         dispatcherBup::addFilter('adminSendToLinks', array($this, 'registerSendLink'));
 		dispatcherBup::addfilter('adminBackupUpload', array($this, 'registerUploadMethod'));
@@ -104,7 +104,7 @@ class amazonBup extends moduleBup {
     }
     
     public function registerNotSupportTab($tabs) {
-        $tabs[$this->config['key']] = array(
+        $tabs['amazon'] = array(
             'title'   => $this->config['title'],
             'content' => langBup::_(sprintf('To use this module you need '
                     . 'PHP version <code>5.3.3</code> or higher, your PHP version: '
@@ -122,8 +122,8 @@ class amazonBup extends moduleBup {
      * @param  array $tabs
      * @return array
      */
-    public function registerTab($tabs) {
-        $tabs[$this->config['key']] = array(
+    public function addAmazonBupDestination($tabs) {
+        $tabs['amazon'] = array(
             'title'   => $this->config['title'],
             'content' => $this->run($this->config['action']),
             'faIcon' => 'fa-font',

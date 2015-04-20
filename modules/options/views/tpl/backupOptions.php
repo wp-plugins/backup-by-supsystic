@@ -2,56 +2,23 @@
     <form id="bupMainFormOptions" method="post">
         <div id="bupOptions">
             <div class="bupMsgDest"></div>
-            <div class="bupMargDest">
-                <label>
-                    <?php echo htmlBup::radiobutton('dest_opt', array('attrs'=>'class=""', 'value' => 'ftp',)); ?> FTP
-                </label>
-            </div>
+            <?php foreach($this->backupPlaces as $key => $bupPlace): ?>
 
-            <div class="bupMargDest">
-                <label>
-                    <?php echo htmlBup::radiobutton('dest_opt', array(
-                        'value'   => 'googledrive',
-                    )); ?> <?php echo $this->backupPlaces['bupGdriveOptions']['title']?>
-                </label>
-            </div>
-            <div class="bupOptions bup-googledrive">
-                <?php echo $this->backupPlaces['bupGdriveOptions']['content']?>
-            </div>
+                <div class="bupMargDest">
+                    <label>
+                        <?php echo htmlBup::radiobutton('dest_opt', array('value'   => $key)); ?> <?php echo $bupPlace['title']?>
+                    </label>
+                </div>
 
-            <div class="bupMargDest">
-                <label>
-                    <?php echo htmlBup::radiobutton('dest_opt', array(
-                        'value'   => 'dropbox',
-                    )); ?> <?php echo $this->backupPlaces['bupDropboxOptions']['title']?>
-                </label>
-            </div>
-            <div class="bupOptions bup-dropbox">
-                <?php echo $this->backupPlaces['bupDropboxOptions']['content']?>
-            </div>
+                <?php if(!empty($bupPlace['content'])): ?>
 
-            <div class="bupMargDest">
-                <label>
-                    <?php echo htmlBup::radiobutton('dest_opt', array(
-                        'value' => 'amazon',
-                    )); ?> <?php echo $this->backupPlaces['bupAmazonS3Options']['title']?>
-                </label>
-            </div>
-            <div class="bupOptions bup-amazon">
-                <?php echo $this->backupPlaces['bupAmazonS3Options']['content']?>
-            </div>
+                    <div class="bupOptions bup-<?php echo $key ?>">
+                        <?php echo $bupPlace['content']?>
+                    </div>
 
-            <div class="bupMargDest">
-                <label>
-                    <?php echo htmlBup::radiobutton('dest_opt', array(
-                        'value' => 'onedrive',
-                    )); ?> <?php echo $this->backupPlaces['bupOneDriveOptions']['title']?>
-                </label>
-            </div>
-            <div class="bupOptions bup-onedrive">
-                <?php echo $this->backupPlaces['bupOneDriveOptions']['content']?>
-            </div>
+                <?php endif; ?>
 
+            <?php endforeach; ?>
 
             <div id="bupMainOption" style="display: none;">
                 <hr/>
@@ -132,7 +99,11 @@
                 <table style="width: 100%">
                     <tr>
                         <td width="200"><i class="fa fa-question supsystic-tooltip" title="Database backup"></i>Database backup</td>
-                        <td><?php echo htmlBup::checkbox('opt_values[database]', array('attrs'=>'class="bupCheckbox bupFull"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('database') ? 'checked' : '')); ?></td>
+                        <td><?php echo htmlBup::checkbox('opt_values[database]', array('attrs'=>'class="bupCheckbox bupFull bupDatabaseCheckbox"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('database') ? 'checked' : '')); ?></td>
+                    </tr>
+                    <tr class="bupSecretKeyDBRow" style="display: none">
+                        <td width="200"><i class="fa fa-question supsystic-tooltip" title="Secret key for encrypting DB data"></i>Secret key for DB</td>
+                        <?php echo dispatcherBup::applyFilters('getInputForSecretKeyEncryptDb', '') ?>
                     </tr>
                 </table>
 

@@ -492,6 +492,7 @@ class gdriveModelBup extends modelBup {
             if(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql'){
                 $files[$backupInfo['id']]['gdrive']['sql'] = $service->files->get($file['id']);
                 $files[$backupInfo['id']]['gdrive']['sql']['backupInfo'] = $backupInfo;
+                $files[$backupInfo['id']]['gdrive']['sql']['backupInfo'] = dispatcherBup::applyFilters('addInfoIfEncryptedDb', $files[$backupInfo['id']]['gdrive']['sql']['backupInfo']);;
             }elseif(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'zip'){
                 $files[$backupInfo['id']]['gdrive']['zip'] = $service->files->get($file['id']);
                 $files[$backupInfo['id']]['gdrive']['zip']['backupInfo'] = $backupInfo;

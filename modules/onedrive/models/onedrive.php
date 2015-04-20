@@ -316,6 +316,7 @@ class onedriveModelBup extends modelBup
                 if(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql'){
                     $files[$backupInfo['id']]['onedrive']->sql = $body->data[$key];
                     $files[$backupInfo['id']]['onedrive']->sql->backupInfo = $backupInfo;
+                    $files[$backupInfo['id']]['onedrive']->sql->backupInfo = dispatcherBup::applyFilters('addInfoIfEncryptedDb', $files[$backupInfo['id']]['onedrive']->sql->backupInfo);
                 }elseif(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'zip'){
                     $files[$backupInfo['id']]['onedrive']->zip = $body->data[$key];
                     $files[$backupInfo['id']]['onedrive']->zip->backupInfo = $backupInfo;

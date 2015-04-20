@@ -130,8 +130,9 @@ class backupModelBup extends modelBup {
                     'raw'  => $backupInfo['raw'],
                     'ext'  => $backupInfo['ext'],
                     'date' => $backupInfo['date'],
-                    'time' => $backupInfo['time'],
+                    'time' => $backupInfo['time']
                 );
+                $backups[$backupInfo['id']]['ftp'][strtolower($backupInfo['ext'])] = dispatcherBup::applyFilters('addInfoIfEncryptedDb', $backups[$backupInfo['id']]['ftp'][strtolower($backupInfo['ext'])]);
             }
         }
         krsort($backups);
@@ -455,11 +456,16 @@ class backupModelBup extends modelBup {
      */
     public function getBackupStartTimeFromLog($logContent)
     {
+        $dateTime = null;
         if(is_string($logContent)){
             $logFileArray = explode(']', $logContent);
-            $content = array_shift($logFileArray);
-            $dateTime = substr($content, 1);
-            return ($dateTime) ? $dateTime : false;
+            foreach($logFileArray as $logString) {
+                if(false !== $datePos = strpos($logString, '[')) {
+                    $dateTime = substr($logString, $datePos + 1);
+                    break;
+                }
+            }
+            return $dateTime;
         } else {
             return false;
         }

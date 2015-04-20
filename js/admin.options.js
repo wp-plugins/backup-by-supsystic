@@ -25,8 +25,10 @@
         $.each(this.$checkboxes, (function (index, checkbox) {
             if (e.currentTarget.checked) {
                 $(checkbox).attr('checked', 'checked');
+                $('.bupSecretKeyDBRow').show();
             } else {
                 $(checkbox).removeAttr('checked');
+				$('.bupSecretKeyDBRow').hide();
             }
         }));
 		bupCheckUpdateArea();

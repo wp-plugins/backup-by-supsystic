@@ -3,7 +3,7 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/backup-plugin
 Tags: backup, back up, restoration, db backup, dump, migrate, email, FTP, mysql backup, database backup, db backup, full backup, restore, transfer, website backup, wordpress backup, migration, backup plugins, backup posts, backup pages 
 Tested up to: 4.1.1
-Stable tag: 1.1.0
+Stable tag: 1.2.1
 
 Online backup, restoration or migrate solution. Fully customized backup files and database to the FTP, DropBox, Google Drive or Amazon S3
 
@@ -14,10 +14,13 @@ Backup WordPress website to the FTP, DropBox, Google Drive or Local Computer and
 = Backup plugin features =
 
 * Backup to FTP
-* Backup to DropBox, Google Drive, Amazone S3 cloude service backup
+* Backup to DropBox, Google Drive, Amazon S3 cloud service backup
 * Customisation and presets. Database backup, plugins, WordPress core files backup
 * Backup in archive with .zip
-* WordPress website restoration and migration via backup
+* WordPress website restoration. Plugins, Posts, Databases, Themes and Files.
+* WordPress migration
+* Encrypted and Secure backups
+* Backup Logs
 
 Why do you need to backup your site?
 Any number of undesirable events can happen:
@@ -134,7 +137,7 @@ Also here you can view the log file of backup – just clicking “Show Backup L
 
 *Step 4: Backup restoration*
 
-In order to restore the backup you need to go to the Backups tab, select the backup files you want and click “Restore” button. When you see the message “Done!” – restoration will be completed.
+In order to restore the backup you need to go to the Backups tab, select the backup files you want and click “Restore” button - at first for the Filesystem backup, then for Database backup. When you see the message “Done!” – restoration will be completed.
 
 If the backup you want to restore is on your computer, then upload it to the folder on the FTP server where you store the other backups.  By default backup is stored in ‘upsupsystic’ folder (you can find it  in the root directory, where the WordPress is installed, using this path /wp-content/upsupsystic/). Then files of this backup will appear on the Backups tab and you will be able to restore them.
 
@@ -218,7 +221,18 @@ Temporarily restoring backup on the test servers is a unique feature provided by
 * [Security and Firewall](https://wordpress.org/plugins/security-by-supsystic/ "Security solution")
 
 == Changelog ==
-= 1.1.0 =
+
+= 1.2.1 = 20/04/2015
+ * Code improvements
+ * Added backup to FTP on the other server
+ * Minor issues fix
+
+= 1.2.0 = 15/04/2015
+ * Backup encryption for security reason
+ * Fixed bugs in WordPress migration option
+ * Added video tutorial How to Backup the first time users
+
+= 1.1.0 = 01/04/2015
  * Added check, when restoration process starting and notice, if restoring directory or files don't have permission to write
  * Code improvements
  * Minor issues fix

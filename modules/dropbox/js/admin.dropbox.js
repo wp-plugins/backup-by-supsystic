@@ -27,8 +27,8 @@ jQuery(document).ready(function() {
 			DropboxModule.remove(file, row, fileType, deleteLog);
 		}
 	});
-	
-	j('.bupDropboxRestore').on('click', function(event) {
+
+	j(document).on('click', '.bupDropboxRestore', function(event) {
 		if (confirm('Are you sure?')) {
 			event.preventDefault();
 
@@ -104,18 +104,25 @@ var DropboxModule = {
 			onSuccess: function(response) {
 				//console.log(response);
 				if(response.error === false) {
+					var secretKey = jQuery('input.bupSecretKeyForCryptDB').val();
 					jQuery.sendFormBup({
 						msgElID: 'bupDropboxAlerts-' + row,
 						data: {
 							'reqType': 'ajax',
 							'page':    'backup',
 							'action':  'restoreAction',
-							'filename': response.data.filename
+							'filename': response.data.filename,
+							'encryptDBSecretKey': secretKey
 						},
 						onSuccess: function(response) {
-							//console.log(response);
-							if(response.error === false) {
+							if (response.error === false && !response.data.need) {
+								jQuery('#bupEncryptingModalWindow').dialog('close');
 								location.reload(true);
+							} else if(response.data.need) {
+								requestSecretKeyToRestoreEncryptedDb('bupDropboxRestore', {'row-id': row, 'filename': filename}); // open modal window to request secret key for decrypt DB dump
+							} else if(response.error) {
+								jQuery('input.bupSecretKeyForCryptDB').val(''); // clear input value, because user earlier entered secret key
+								jQuery('#bupEncryptingModalWindow').dialog('close');
 							}
 						}
 					});

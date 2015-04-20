@@ -24,7 +24,7 @@ jQuery(document).ready(function() {
     });
 
     // Restore
-    jQuery('.bupAmazonS3Restore').on('click', function() {
+	jQuery(document).on('click', '.bupAmazonS3Restore', function() {
 		if (confirm('Are you sure?')) {
 			var filename = jQuery(this).attr('data-filename'),
 				rowId    = jQuery(this).attr('data-row-id');
@@ -94,19 +94,27 @@ var AmazonModule = {
         });
     },
     restore: function(filename, rowId) {
+		var secretKey = jQuery('input.bupSecretKeyForCryptDB').val();
         jQuery.sendFormBup({
             msgElID: 'bupAmazonAlerts-' + rowId,
             data: {
                 'reqType': 'ajax',
                 'page':    'backup',
                 'action':  'restoreAction',
-                'filename': filename
+                'filename': filename,
+				'encryptDBSecretKey': secretKey
             },
             onSuccess: function(response) {
-                if(response.error === false) {
-                    location.reload(true);
-                }
+				if (response.error === false && !response.data.need) {
+					jQuery('#bupEncryptingModalWindow').dialog('close');
+					location.reload(true);
+				} else if(response.data.need) {
+					requestSecretKeyToRestoreEncryptedDb('bupAmazonS3Restore', {'row-id': rowId, 'filename': filename}); // open modal window to request secret key for decrypt DB dump
+				} else if(response.error) {
+					jQuery('input.bupSecretKeyForCryptDB').val(''); // clear input value, because user earlier entered secret key
+					jQuery('#bupEncryptingModalWindow').dialog('close');
+				}
             }
         });
-    },
+    }
 }

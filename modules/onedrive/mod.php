@@ -58,8 +58,8 @@ class onedriveBup extends moduleBup
         include rtrim($this->getModDir(), '/') . '/classes/skydriveBup.php';
 
         dispatcherBup::addFilter(
-            'adminCloudServices',
-            array($this, 'registerMenuItem')
+            'getBackupDestination',
+            array($this, 'addOnedriveBupDestination')
         );
 
         dispatcherBup::addFilter(
@@ -77,9 +77,9 @@ class onedriveBup extends moduleBup
         );
     }
 
-    public function registerMenuItem($tabs)
+    public function addOnedriveBupDestination($tabs)
     {
-        $tabs[$this->tab['key']] = array(
+        $tabs['onedrive'] = array(
             'content' => $this->run($this->tab['action']),
             'title'   => $this->tab['title'],
             'faIcon' => ' fa-cloud-upload',

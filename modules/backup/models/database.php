@@ -52,6 +52,7 @@ class databaseModelBup extends modelBup
             sprintf('-- @wpcrv=%s;', $wp_version),           // wordpress verison
             sprintf('-- @plgnv=%s;', BUP_VERSION) . PHP_EOL, // plugin version
         );
+        $database = dispatcherBup::applyFilters('changeDBDumpHeader', $database);
 		fwrite($dumpHandle, implode(PHP_EOL, $database));
         $tables = $wpdb->get_results('SHOW TABLES', ARRAY_N);
         foreach($tables as $table) {
@@ -60,11 +61,15 @@ class databaseModelBup extends modelBup
 
             // Drop table query
             //$table['drop'] = 'DROP TABLE IF EXISTS `'.$table['name'].'`#endQuery' . PHP_EOL;
-			fwrite($dumpHandle, 'DROP TABLE IF EXISTS `'.$table['name'].'`#endQuery' . PHP_EOL);
+            $dropTableQuery = 'DROP TABLE IF EXISTS `'.$table['name'].'`#endQuery' . PHP_EOL;
+            $dropTableQuery = dispatcherBup::applyFilters('encryptDbData', $dropTableQuery);
+			fwrite($dumpHandle, $dropTableQuery);
             // Create table query
             $createQuery = $wpdb->get_row('SHOW CREATE TABLE `'.$table['name'].'`', ARRAY_A);
             if(isset($createQuery['Create Table'])) {
-				fwrite($dumpHandle, $createQuery['Create Table'] . '#endQuery' . PHP_EOL);
+                $createTableQuery = $createQuery['Create Table'] . '#endQuery' . PHP_EOL;
+                $createTableQuery = dispatcherBup::applyFilters('encryptDbData', $createTableQuery);
+				fwrite($dumpHandle, $createTableQuery);
                 //$table['create'] = $createQuery['Create Table'] . '#endQuery' . PHP_EOL;
             }
 
@@ -85,7 +90,9 @@ class databaseModelBup extends modelBup
 						$table['insert'] .= 'INSERT INTO `' . $table['name'] . '` (' . implode(', ', array_map(array($this, 'addColQuotes'), $tableCols)) . ') VALUES (' . $data . ')' . '#endQuery' . PHP_EOL;
 					}*/
 					//$table['insert'] .= 'INSERT INTO `' . $table['name'] . '` (' . implode(', ', array_map(array($this, 'addColQuotes'), $tableCols)) . ') VALUES ('. implode('),(', $tableData). ');';
-					fwrite($dumpHandle, 'INSERT INTO `' . $table['name'] . '` (' . implode(', ', array_map(array($this, 'addColQuotes'), $tableCols)) . ') VALUES ('. implode('),/*BUP_EOL*/(', $tableData). ');' . '#endQuery'. PHP_EOL);
+					$insertQuery = 'INSERT INTO `' . $table['name'] . '` (' . implode(', ', array_map(array($this, 'addColQuotes'), $tableCols)) . ') VALUES ('. implode('),/*BUP_EOL*/(', $tableData). ');' . '#endQuery'. PHP_EOL;
+					$insertQuery = dispatcherBup::applyFilters('encryptDbData', $insertQuery);
+                    fwrite($dumpHandle, $insertQuery);
 				}
 			}
 
@@ -109,9 +116,13 @@ class databaseModelBup extends modelBup
 		$config = $this->getConfig();
 		$transaction = $this->getTransactionSupport();
 		$handle = fopen($filename, 'r');
+		$handle = dispatcherBup::applyFilters('decryptDbData', $handle, $filename);
+        $decryptKeyExist = dispatcherBup::applyFilters('checkIsSecretKeyToDecryptDBExist', false);
 		$queriesStarted = false;
-		while(($row = fgets($handle)) !== false) {	// Parse file row-by-row as it can be too large to store all data - in memory in one time
+        $iteratorEmptyRow = 0; // This iterator used to control decrypted data, if data not decrypted - all query will be empty, well then secret key is wrong
+        while(($row = fgets($handle)) !== false) {	// Parse file row-by-row as it can be too large to store all data - in memory in one time
 			$row = trim($row);
+            $iteratorEmptyRow++;
 			if(preg_match('/--\s*@(.*);/', $row, $metadata)) {	// At first - let's find metadata, it should be in the begining of file
 				$metaKeyValue = array_map('trim', explode('=', $metadata[1]));
 				$allMetadata[ $metaKeyValue[0] ] = $metaKeyValue[1];
@@ -136,6 +147,7 @@ class databaseModelBup extends modelBup
 				if(strpos($row, $canStartQuery) === 0) {	// Check - if this is start of our query
 					if(!empty($query)) {	// If we have some not executed query (in some case) - execute it
 						$this->_runQuery($query, $config, $transaction);
+                        $iteratorEmptyRow = 0;
 					}
 					$query = $row;
 					$rowAplied = true;
@@ -147,13 +159,20 @@ class databaseModelBup extends modelBup
 			}
 			if(strpos($row, '#endQuery')) {	// If this is end of query - just execute it and prepare for next one
 				$this->_runQuery($query, $config, $transaction);
+                $iteratorEmptyRow = 0;
 				$query = '';
 			}
+            if(empty($query) && empty($row) && $decryptKeyExist && $iteratorEmptyRow > 20){
+                do_action('bupClearSecretKeyToDecryptDb');
+                return array('error' => 'Secret key for decrypt DB data wrong! Please, try again.');
+            }
 		}
 		if($queriesStarted) {	// If queries was started - then let's finish it's execution correctly
 			$this->_endQueries($config, $transaction);
 		}
 		fclose($handle);
+        if($this->haveErrors())
+            return false;
 	}
 	private function _startQueries($config, $transaction) {
 		// Start transaction if safe update enabled or set error if transaction is unsupported

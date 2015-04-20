@@ -71,7 +71,7 @@ class backupLogModelBup extends modelBup
 
     public function getBackupLog()
     {
-        return $_SESSION[self::KEY];
+        return isset($_SESSION[self::KEY]) ? $_SESSION[self::KEY] : '';
     }
 
     /**
@@ -98,7 +98,7 @@ class backupLogModelBup extends modelBup
         if(!empty($settingsArray['force_update']))
             $settingsStringArray[] = 'Force Update';
         if(!empty($settingsArray['database']))
-            $settingsStringArray[] = 'Database backup';
+            $settingsStringArray[] = dispatcherBup::applyFilters('changeDBSettingStringInLog', 'Database backup');
         if(!empty($settingsArray['exclude']))
             $settingsStringArray[] = 'Exclude: ' . $settingsArray['exclude'];
         if(!empty($settingsArray['email_ch']))
