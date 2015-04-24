@@ -17,7 +17,7 @@ class logBup extends moduleBup {
 	 */
 	public function registerTab($tabs) {
 		$tabs['bupLogOptions'] = array(
-			'title'   => 'Log',
+			'title'   => __('Restore', BUP_LANG_CODE),
 			'content' => $this->run('indexAction'),
             'faIcon' => 'fa-file-text',
 		);

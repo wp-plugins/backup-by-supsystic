@@ -249,7 +249,7 @@ class dropboxModelBup extends modelBup {
 	 */
 	public function download($filename, $returnDataString = false) {
 		if($this->isAuthenticated() === false) {
-			$this->pushError(langBup::_('Authentication required'));
+			$this->pushError(__('Authentication required', BUP_LANG_CODE));
 			return false;
 		}
 
@@ -271,7 +271,7 @@ class dropboxModelBup extends modelBup {
 			fclose($stream);
 
 			if($result === null) {
-				$this->pushError(langBup::_('File not found'));
+				$this->pushError(__('File not found', BUP_LANG_CODE));
 				return false;
 			}
 

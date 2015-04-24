@@ -18,10 +18,10 @@ class gdriveControllerBup extends controllerBup {
 		// Google API SDK require curl in any case
 		if(!function_exists('curl_version')) {
 			return $this->notSupportAction(array(
-				langBup::_('Your server do not have curl extension installed.'),
-				langBup::_('This extension is required by Google API SDK.'),
-				langBup::_('Please install it at first.'),
-				langBup::_('You can also check following links for more info:'),
+				__('Your server do not have curl extension installed.', BUP_LANG_CODE),
+				__('This extension is required by Google API SDK.', BUP_LANG_CODE),
+				__('Please install it at first.', BUP_LANG_CODE),
+				__('You can also check following links for more info:', BUP_LANG_CODE),
 				'<a href="http://php.net/manual/en/book.curl.php" target="_blank">http://php.net/manual/en/book.curl.php</a>',
 				'<a href="http://php.net/manual/en/curl.installation.php" target="_blank">http://php.net/manual/en/curl.installation.php</a>',
 			));
@@ -37,7 +37,7 @@ class gdriveControllerBup extends controllerBup {
         $error = null;
         $refreshToken = frameBup::_()->getTable('options')->get('value', array('code' => 'gdrive_refresh_token'), '', 'row');
         if($model->isAuthenticated() && empty($refreshToken['value']))
-            $error = 'For long-term storage of Google Drive authorization, please re-connect our application in your personal account of Google Drive.';
+            $error = __('For long-term storage of Google Drive authorization, please re-connect our application in your personal account of Google Drive.', BUP_LANG_CODE);
 
 		return $this->getView()->getContent('gdrive.index', array('error' => $error));
     }
@@ -52,9 +52,9 @@ class gdriveControllerBup extends controllerBup {
     public function notSupportAction($messages = array()) {
 		if(empty($messages)) {
 			$messages = array(
-				langBup::_('Your server is not support Google API Client Library.'),
-				langBup::_(sprintf('Your PHP version: %s (5.2.1 or higher required)', PHP_VERSION)),
-				langBup::_('PHP JSON extension required'),
+				__('Your server is not support Google API Client Library.', BUP_LANG_CODE),
+				__(sprintf('Your PHP version: %s (5.2.1 or higher required)', PHP_VERSION), BUP_LANG_CODE),
+				__('PHP JSON extension required', BUP_LANG_CODE),
 			);
 		} elseif(!is_array($messages)) {
 			$messages = array($messages);
@@ -94,7 +94,7 @@ class gdriveControllerBup extends controllerBup {
         $response = new responseBup();
 
         $this->getModel()->resetCredentials();
-        $this->addMessage(langBup::_('Please wait...'));
+        $this->addMessage(__('Please wait...', BUP_LANG_CODE));
 
         return $response->ajaxExec();
     }
@@ -114,17 +114,17 @@ class gdriveControllerBup extends controllerBup {
 
 			switch($result) {
 				case 201:
-					$response->addMessage(langBup::_('Done!'));
+					$response->addMessage(__('Done!', BUP_LANG_CODE));
 					break;
 				case 401:
-					$response->addError(langBup::_('Authentication required'));
+					$response->addError(__('Authentication required', BUP_LANG_CODE));
 					break;
 				default:
 					$response->addMessage($result);
 			}
 		}
 		else {
-			$response->addError(langBup::_('Nothing to upload'));
+			$response->addError(__('Nothing to upload', BUP_LANG_CODE));
 		}
 
 		$response->ajaxExec();
@@ -147,14 +147,14 @@ class gdriveControllerBup extends controllerBup {
         }
 
 		if(!isset($request['file']) OR empty($request['file'])) {
-			$response->addError(langBup::_('Nothing to delete'));
+			$response->addError(__('Nothing to delete', BUP_LANG_CODE));
 		}
 
 		if($this->getModel()->remove($request['file']) === true) {
-			$response->addMessage(langBup::_('File successfully deleted'));
+			$response->addMessage(__('File successfully deleted', BUP_LANG_CODE));
 		}
 		else {
-			$response->addError(langBup::_('Authentication required'));
+			$response->addError(__('Authentication required', BUP_LANG_CODE));
 		}
 
 		$response->ajaxExec();
@@ -170,7 +170,7 @@ class gdriveControllerBup extends controllerBup {
 		$model    = $this->getModel();
 
 		if($model->isAuthenticated() === false) {
-			$response->addError(langBup::_('Authentication required'));
+			$response->addError(__('Authentication required', BUP_LANG_CODE));
 		}
 
 		// if there is a local file, then we do not have sense to download it
@@ -185,10 +185,10 @@ class gdriveControllerBup extends controllerBup {
 //				$response->addData(array('responseBody' => $result));
 //			}
 			elseif($result === null) {
-				$response->addError(langBup::_('File not found on Google Drive'));
+				$response->addError(__('File not found on Google Drive', BUP_LANG_CODE));
 			}
 			elseif($result === false) {
-				$response->addError(langBup::_('Failed to download file'));
+				$response->addError(__('Failed to download file', BUP_LANG_CODE));
 			}
 		}
 		else {

@@ -131,7 +131,7 @@ class frameBup {
         if($this->havePermissions($code, $action))
             return true;
         else {
-            exit(langBup::_e('You have no permissions to view this page'));
+            exit(_e('You have no permissions to view this page', BUP_LANG_CODE));
         }
     }
     /**

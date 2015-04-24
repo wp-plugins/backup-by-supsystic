@@ -3,7 +3,7 @@
 
     <div>
         <button class="onedriveLogout button button-primary button-large">
-            <?php echo langBup::_('Logout'); ?>
+            <?php echo __('Logout', BUP_LANG_CODE); ?>
         </button>
     </div>
 </div>

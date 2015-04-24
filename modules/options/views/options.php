@@ -4,7 +4,7 @@ class optionsViewBup extends viewBup {
     public function getAdminPage() {
         $tabsData =  array(
             'bupMainOptions' => array(
-                'title'   => 'Backup',
+                'title'   => __('Backup', BUP_LANG_CODE),
                 'content' => array($this, 'getMainOptionsTab'),
                 'faIcon' => 'fa-home',
 				'sort_order' => 10,

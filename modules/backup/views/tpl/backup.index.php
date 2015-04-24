@@ -2,12 +2,43 @@
     <div class="supsystic-item supsystic-panel">
         <div id="bupBackupWrapper">
             <div id="bupAdminStorageTable" style="width: 100%;">
+                <div id="bupRestorePresetsMsg"></div>
+                <table class="bup-form-table-restore-presets form-table">
+                    <tr>
+                        <th colspan="3">Restore Presets:</th>
+                    </tr>
+                    <tr>
+                        <th class="col-w-30perc"><?php _e('Safe Update', BUP_LANG_CODE); ?></th>
+                        <td class="col-w-1perc">
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('If the ckeckbox is set up, the database backup will be performed. This will let the database backup work in the transaction mode, i.e. should there occur any failure during the data base recovery, no data from the data-base backup will be transferred to the data-base. The data-base backup recovery will occur if and only there were no failures during the process. If the ckeckbox is not set up the data-base backup will be performed without transaction mode.', BUP_LANG_CODE) ?>"></i>
+                        </td>
+                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[safe_update]', array(
+                                'attrs'   => 'class="bupCheckbox bupSaveRestoreSetting" data-setting-key="safe_update"',
+                                'value'   => '1',
+                                'checked' => frameBup::_()->getModule('options')->get('safe_update') == 1 ? 'checked' : '',
+                            )); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-w-30perc"><?php _e('Force Update', BUP_LANG_CODE); ?></th>
+                        <td class="col-w-1perc">
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('When backup is performed, the labels are usually put at the beginning of the file dump, such as: WordPress version for the backup; WordPress data-base version for the backup; the plugin version for the backup. At recovering, if the force has been off, the backup will not be performed, because it will constantly pop up with the message, that the version is incorrect (the version of WordPress, the version of WordPress data-base or the plugin version). If the force has been on, there will be no such system check and the recovery will be performed.', BUP_LANG_CODE) ?>"></i>
+                        </td>
+                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[force_update]', array(
+                                'attrs'   => 'class="bupCheckbox bupSaveRestoreSetting" data-setting-key="force_update"',
+                                'value'   => '1',
+                                'checked' => frameBup::_()->getModule('options')->get('force_update') == 1 ? 'checked' : '',
+                            )); ?>
+                        </td>
+                    </tr>
+                </table>
+                <hr />
                 <?php
                 if(!empty($backups)):
                     foreach ($backups as $id => $type):
                     $backupType = key($type);
-                    $backupStartDateTime  = (!empty($logs[$id]['content'])) ? ' / Start: <b>' . $model->getBackupStartTimeFromLog($logs[$id]['content']) . '</b>' : '' ;
-                    $backupFinishDateTime = (!empty($logs[$id]['content'])) ? ' / Finish: <b>' . $model->getBackupFinishTimeFromLog($logs[$id]['content']) . '</b>' : '';
+                    $backupStartDateTime  = (!empty($logs[$id]['content'])) ? __(' / Start:', BUP_LANG_CODE) . '<b>' . $model->getBackupStartTimeFromLog($logs[$id]['content']) . '</b>' : '' ;
+                    $backupFinishDateTime = (!empty($logs[$id]['content'])) ? __(' / Finish:', BUP_LANG_CODE) . '<b>' . $model->getBackupFinishTimeFromLog($logs[$id]['content']) . '</b>' : '';
                     $backupTimeInfo = $backupStartDateTime . ' ' . $backupFinishDateTime;
                     if($backupType == 'ftp'):
                         $backup = $type['ftp'];
@@ -17,7 +48,7 @@
                     <!--  FTP files rendering start    -->
                     <div class="backupBlock">
                         <p>
-                            Backup to <b>FTP</b> / ID <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
+                            <?php _e('Backup to <b>FTP</b> / ID', BUP_LANG_CODE)?> <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
                         </p>
                         <div align="left" id="MSG_EL_ID_<?php echo $id; ?>"></div>
 
@@ -53,24 +84,24 @@
 
                                     <tr class="tabStr" id="<?php echo $data['name']; ?>">
                                         <td>
-                                            <?php echo ($type == 'zip' ? 'Filesystem' : 'Database'); ?>
+                                            <?php echo ($type == 'zip' ? __('Filesystem', BUP_LANG_CODE) : __('Database', BUP_LANG_CODE)); ?>
                                         </td>
                                         <td>
                                             <!-- restoreButton -->
                                             <button class="button button-primary button-small bupRestore" data-id="<?php echo $id; ?>" data-filename="<?php echo $data['name']; ?>" >
-                                                <?php langBup::_e('Restore'); ?>
+                                                <?php _e('Restore', BUP_LANG_CODE); ?>
                                             </button>
                                             <!-- /restoreButton -->
 
                                             <!-- downloadButton -->
                                             <button class="button button-primary button-small bupDownload" data-filename="<?php echo $data['name']; ?>">
-                                                <?php langBup::_e('Download'); ?>
+                                                <?php _e('Download', BUP_LANG_CODE); ?>
                                             </button>
                                             <!-- /downloadButton -->
 
                                             <!-- deleteButton -->
                                             <button class="button button-primary button-small bupDelete" data-id="<?php echo $id; ?>" data-filename="<?php echo $data['name']; ?>">
-                                                <?php langBup::_e('Delete'); ?>
+                                                <?php _e('Delete', BUP_LANG_CODE); ?>
                                             </button>
                                             <!-- /deleteButton -->
                                         </td>
@@ -81,14 +112,14 @@
                             <!-- migrateButton -->
                             <p>
                                 <button class="button button-primary button-small bupMigratePromo bupMigrateFTP <?php echo $encrypted ?>" data-id="<?php echo $id; ?>" <?php echo $sqlExist?>>
-                                    <?php langBup::_e('Migrate'); ?>
+                                    <?php _e('Migrate', BUP_LANG_CODE); ?>
                                 </button>
                             </p>
                             <!-- /migrateButton -->
                             <?php if(!empty($logs[$id]['content'])):?>
-                                <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</span>
+                                <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
                             <?php else: ?>
-                                <b>Log is clear.</b>
+                                <b><?php _e('Log is clear.', BUP_LANG_CODE) ?></b>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -104,7 +135,7 @@
                         ?>
                         <div class="backupBlock">
                             <p>
-                                Backup to <b>GoogleDrive</b> / ID <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
+                            <?php _e('Backup to <b>GoogleDrive</b> / ID', BUP_LANG_CODE) ?> <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
                             </p>
                             <div id="bupGDriveAlerts-<?php echo $id; ?>"></div>
                             <div id="bupControl-<?php echo $id?>">
@@ -114,7 +145,7 @@
                                     <?php foreach($files as $type=>$file): ?>
                                         <tr id="<?php echo $type.'-'.$id; ?>">
                                             <td>
-                                                <?php echo ($type == 'zip')? 'Filesystem' : 'Database'?>
+                                                <?php echo ($type == 'zip')? __('Filesystem'. BUP_LANG_CODE) : __('Database', BUP_LANG_CODE)?>
                                             </td>
                                             <td>
                                                 <img src="<?php echo $file['iconLink']; ?>" /> <?php echo $file['title']; ?>
@@ -126,7 +157,7 @@
                                                         data-file-type="<?php echo $type; ?>"
                                                         class="button button-primary button-small bupGDriveRestore"
                                                     >
-                                                    <?php langBup::_e('Restore'); ?>
+                                                    <?php _e('Restore', BUP_LANG_CODE); ?>
                                                 </button>
                                                 <button data-row-id="<?php echo $id; ?>"
                                                         data-file-id="<?php echo $file['id']; ?>"
@@ -134,7 +165,7 @@
                                                         data-file-type="<?php echo $type; ?>"
                                                         class="button button-primary button-small bupGDriveDelete"
                                                     >
-                                                    <?php langBup::_e('Delete'); ?>
+                                                    <?php _e('Delete', BUP_LANG_CODE); ?>
                                                 </button>
                                             </td>
                                         </tr>
@@ -144,16 +175,16 @@
                                     <!-- migrateButton -->
                                     <p>
                                         <?php
-                                        $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateGoogleDrive">' . langBup::_('Migrate'). '</button>';
+                                        $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateGoogleDrive">' . __('Migrate', BUP_LANG_CODE). '</button>';
                                         echo dispatcherBup::applyFilters('getGoogleDriveMigrationButton', $button, $id, $files, $encrypted);
                                         ?>
                                     </p>
                                     <!-- /migrateButton -->
                                 <?php endif; ?>
                                 <?php if(!empty($logs[$id]['content'])):?>
-                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</span>
+                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
                                 <?php else: ?>
-                                    <b>Log is clear.</b>
+                                    <b><?php _e('Log is clear.', BUP_LANG_CODE) ?></b>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -168,7 +199,7 @@
                         ?>
                         <div class="backupBlock">
                             <p>
-                                Backup to <b>OneDrive</b> / ID <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
+                                <?php _e('Backup to <b>OneDrive</b> / ID', BUP_LANG_CODE) ?><b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
                             </p>
                             <div id="bupOnedriveAlerts-<?php echo $id; ?>"></div>
                             <div id="bupControl-<?php echo $id?>">
@@ -178,7 +209,7 @@
                                             <?php if ($file->type === 'file'): ?>
                                                 <tr id="backup-<?php echo $file->id; ?>" data-id="<?php echo $id; ?>" data-filename="<?php echo $file->name; ?>">
                                                     <td>
-                                                        <?php echo ($type == 'zip')? 'Filesystem' : 'Database'?>
+                                                        <?php echo ($type == 'zip')? __('Filesystem', BUP_LANG_CODE) : __('Database', BUP_LANG_CODE)?>
                                                     </td>
                                                     <td>
                                                         <?php echo $file->name; ?>
@@ -189,13 +220,13 @@
                                                                 data-file-name="<?php echo $file->name; ?>"
                                                                 class="button button-primary button-small bupRestoreOnedrive"
                                                             >
-                                                            <?php langBup::_e('Restore'); ?>
+                                                            <?php _e('Restore', BUP_LANG_CODE); ?>
                                                         </button>
                                                         <button
                                                             data-file-id="<?php echo $file->id; ?>"
                                                             class="button button-primary button-small onedriveDelete"
                                                             >
-                                                            <?php langBup::_e('Delete'); ?>
+                                                            <?php _e('Delete', BUP_LANG_CODE); ?>
                                                         </button>
                                                     </td>
                                                 </tr>
@@ -207,16 +238,16 @@
                                 <!-- migrateButton -->
                                 <p>
                                     <?php
-                                    $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateOneDrive">' . langBup::_('Migrate'). '</button>';
+                                    $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateOneDrive">' . __('Migrate', BUP_LANG_CODE). '</button>';
                                     echo dispatcherBup::applyFilters('getOneDriveMigrationButton', $button, $id, $files, $encrypted);
                                     ?>
                                 </p>
                                 <!-- /migrateButton -->
 
                                 <?php if(!empty($logs[$id]['content'])):?>
-                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</span>
+                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
                                 <?php else: ?>
-                                    <b>Log is clear.</b>
+                                    <b><?php _e('Log is clear.', BUP_LANG_CODE) ?></b>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -231,7 +262,7 @@
                         ?>
                         <div class="backupBlock">
                             <p>
-                                Backup to <b>Amazon S3</b> / ID <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
+                                <?php _e('Backup to <b>Amazon S3</b> / ID', BUP_LANG_CODE)?> <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
                             </p>
                             <div id="bupAmazonAlerts-<?php echo $id;?>"></div>
                             <div id="bupControl-<?php echo $id?>">
@@ -240,15 +271,15 @@
                                         <?php foreach($files as $type => $file):?>
                                             <tr id="<?php echo $id;?>">
                                                 <td>
-                                                    <?php echo ($type == 'zip')? 'Filesystem' : 'Database'?>
+                                                    <?php echo ($type == 'zip')? __('Filesystem', BUP_LANG_CODE) : __('Database', BUP_LANG_CODE)?>
                                                 </td>
                                                 <td><?php echo $file['file']; ?></td>
                                                 <td>
                                                     <button class="button button-primary button-small bupAmazonS3Restore" data-row-id="<?php echo $id; ?>" data-filename="<?php echo $file['file']; ?>">
-                                                        <?php langBup::_e('Restore'); ?>
+                                                        <?php _e('Restore', BUP_LANG_CODE); ?>
                                                     </button>
                                                     <button class="button button-primary button-small bupAmazonS3Delete" data-row-id="<?php echo $id; ?>" data-filename="<?php echo $file['file']; ?>">
-                                                        <?php langBup::_e('Delete'); ?>
+                                                        <?php _e('Delete', BUP_LANG_CODE); ?>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -258,16 +289,16 @@
                                 <!-- migrateButton -->
                                 <p>
                                     <?php
-                                    $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateAmazon">' . langBup::_('Migrate'). '</button>';
+                                    $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateAmazon">' . __('Migrate', BUP_LANG_CODE). '</button>';
                                     echo dispatcherBup::applyFilters('getAmazonMigrationButton', $button, $id, $files, $encrypted);
                                     ?>
                                 </p>
                                 <!-- /migrateButton -->
 
                                 <?php if(!empty($logs[$id]['content'])):?>
-                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</span>
+                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
                                 <?php else: ?>
-                                    <b>Log is clear.</b>
+                                    <b><?php _e('Log is clear.', BUP_LANG_CODE)?></b>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -282,7 +313,7 @@
                         ?>
                         <div class="backupBlock">
                             <p>
-                                Backup to <b>DropBox</b> / ID <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
+                                <?php _e('Backup to <b>DropBox</b> / ID', BUP_LANG_CODE)?> <b><?php echo $id; ?></b><?php echo $backupTimeInfo ?>
                             </p>
                             <div id="bupDropboxAlerts-<?php echo $id; ?>"></div>
                             <div id="bupControl-<?php echo $id?>">
@@ -291,7 +322,7 @@
                                     <?php foreach($files as $type=>$file):?>
                                         <tr id="row-<?php echo $type.'-'.$id; ?>">
                                             <td>
-                                                <?php echo ($type == 'sql') ? 'Database' : 'Filesystem'; ?>
+                                                <?php echo ($type == 'sql') ? __('Database', BUP_LANG_CODE) : __('Filesystem', BUP_LANG_CODE); ?>
                                             </td>
                                             <td>
                                                 <?php echo basename($file['path']); ?>
@@ -302,7 +333,7 @@
                                                     data-filename="<?php echo basename($file['path']); ?>"
                                                     data-row-id="<?php echo $id; ?>"
                                                     >
-                                                    <?php langBup::_e('Restore'); ?>
+                                                    <?php _e('Restore', BUP_LANG_CODE); ?>
                                                 </button>
                                                 <button
                                                     class="button button-primary button-small bupDropboxDelete"
@@ -310,7 +341,7 @@
                                                     data-row-id="<?php echo $id; ?>"
                                                     data-file-type="<?php echo $type; ?>"
                                                     >
-                                                    <?php langBup::_e('Delete'); ?>
+                                                    <?php _e('Delete', BUP_LANG_CODE); ?>
                                                 </button>
                                             </td>
                                         </tr>
@@ -320,16 +351,16 @@
                                 <!-- migrateButton -->
                                 <p>
                                     <?php
-                                    $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateDropbox">' . langBup::_('Migrate'). '</button>';
+                                    $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateDropbox">' . __('Migrate', BUP_LANG_CODE). '</button>';
                                     echo dispatcherBup::applyFilters('getDropboxMigrationButton', $button, $id, $files, $encrypted);
                                     ?>
                                 </p>
                                 <!-- /migrateButton -->
 
                                 <?php if(!empty($logs[$id]['content'])):?>
-                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>">Show Backup Log</span>
+                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE)?></span>
                                 <?php else: ?>
-                                    <b>Log is clear.</b>
+                                    <b><?php _e('Log is clear.', BUP_LANG_CODE) ?></b>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -345,7 +376,7 @@
                     <?php endif; ?>
                 <?php endforeach;
                 else:?>
-                    <h3>Backups don't exist!</h3>
+                    <h3><?php _e('Backups don\'t exist!', BUP_LANG_CODE) ?></h3>
                 <?php endif;
                 ?>
             </div>
@@ -358,8 +389,8 @@
             <!-- Migrate promo modal window start  -->
             <div id="bupShowMigratePromoDlg" title="Get PRO Verion!" style="display: none">
                 <p id="bupMigratePromoText" class="supsystic-plugin">
-                    <?php langBup::_e('Please, be advised, that this option is available only in PRO version. You can')?>
-                    <a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank"><?php langBup::_e('Get PRO')?></a>
+                    <?php _e('Please, be advised, that this option is available only in PRO version. You can', BUP_LANG_CODE)?>
+                    <a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank"><?php _e('Get PRO', BUP_LANG_CODE)?></a>
                 </p>
             </div>
             <!-- Migrate promo modal window end  -->
@@ -368,4 +399,3 @@
         </div>
     </div>
 </section>
-<?php //phpinfo();?>

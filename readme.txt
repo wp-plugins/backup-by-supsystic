@@ -2,10 +2,10 @@
 Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/backup-plugin
 Tags: backup, back up, restoration, db backup, dump, migrate, email, FTP, mysql backup, database backup, db backup, full backup, restore, transfer, website backup, wordpress backup, migration, backup plugins, backup posts, backup pages 
-Tested up to: 4.1.1
-Stable tag: 1.2.1
+Tested up to: 4.2
+Stable tag: 1.2.2
 
-Online backup, restoration or migrate solution. Fully customized backup files and database to the FTP, DropBox, Google Drive or Amazon S3
+Online backup, restoration or migrate solution. Custom backup files and database to the FTP, DropBox, Google Drive or Amazon S3. Backup secure option
 
 == Description ==
 
@@ -21,6 +21,7 @@ Backup WordPress website to the FTP, DropBox, Google Drive or Local Computer and
 * WordPress migration
 * Encrypted and Secure backups
 * Backup Logs
+* Secure Backup
 
 Why do you need to backup your site?
 Any number of undesirable events can happen:
@@ -221,6 +222,11 @@ Temporarily restoring backup on the test servers is a unique feature provided by
 * [Security and Firewall](https://wordpress.org/plugins/security-by-supsystic/ "Security solution")
 
 == Changelog ==
+
+= 1.2.2 = 24/04/2015
+ * Clearing TMP directory after backup was created & before restore filesystem process was started
+ * Minor bugs fix
+ * Added backup translation file and option
 
 = 1.2.1 = 20/04/2015
  * Code improvements

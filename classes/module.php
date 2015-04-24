@@ -195,7 +195,7 @@ abstract class moduleBup extends baseObjectBup {
 					);
 			}
 		}
-		errorsBup::push(langBup::_(array('Module', $this->_code, 'method', $name, 'undefined')), errorsBup::FATAL);
+		errorsBup::push(__(array('Module', $this->_code, 'method', $name, 'undefined'), BUP_LANG_CODE), errorsBup::FATAL);
 	}
 	public function setParams($params) {
 		if(!is_array($params)) {

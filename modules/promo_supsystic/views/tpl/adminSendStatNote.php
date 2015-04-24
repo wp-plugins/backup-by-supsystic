@@ -6,7 +6,7 @@ jQuery(document).ready(function(){
 		position: {edge: 'top', align: 'center'},
 		buttons: function (event, t) {
 			// \\\ is for escape ' in js 
-			var button = jQuery('<a id="toeHideSendUsageStatButt" style="margin-left:5px" class="button-secondary">' + '<?php langBup::_e('No, don\\\'t send'); ?>' + '</a>');
+			var button = jQuery('<a id="toeHideSendUsageStatButt" style="margin-left:5px" class="button-secondary">' + '<?php _e('No, don\\\'t send', BUP_LANG_CODE); ?>' + '</a>');
 			button.bind('click.pointer', function () {
 				jQuery.sendForm({
 					msgElID: 'toeSendUsageStatMsg',
@@ -23,7 +23,7 @@ jQuery(document).ready(function(){
 		close: function() {}
 	}).pointer('open');
 
-	jQuery('#toeHideSendUsageStatButt').after('<a id="toeSendUsageStatButt" class="button-primary">' + '<?php langBup::_e('Yes, send statistics'); ?>' + '</a><div id="toeSendUsageStatMsg"></div>');
+	jQuery('#toeHideSendUsageStatButt').after('<a id="toeSendUsageStatButt" class="button-primary">' + '<?php _e('Yes, send statistics', BUP_LANG_CODE); ?>' + '</a><div id="toeSendUsageStatMsg"></div>');
 
 	jQuery('#toeSendUsageStatButt').click(function(){
 		var self = this;

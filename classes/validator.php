@@ -27,7 +27,7 @@ class validatorBup {
     }
     static public function validLen($field, $label = '', $validate = array()) {
         if( !(bool) (strlen($field->value) <= $field->maxlen)) {
-			self::addError(langBup::_(array('Invalid length for', $field->label, ', max length is', $field->maxlen)), $field->name);
+			self::addError(__(array('Invalid length for', $field->label, ', max length is', $field->maxlen), BUP_LANG_CODE), $field->name);
 			return false;
 		}
 		return true;
@@ -40,7 +40,7 @@ class validatorBup {
     }
     static public function numeric($field) {
         if(!is_numeric($field->value) && !empty($field->value)) {
-            self::addError(langBup::_(array('Invalid numeric value for', $field->label)), $field->name);
+            self::addError(__(array('Invalid numeric value for', $field->label), BUP_LANG_CODE), $field->name);
             return false;
         }
         return true;
@@ -68,24 +68,24 @@ class validatorBup {
     }
     static public function notEmpty($field) {
         if(!self::_notEmpty($field->value)) {
-            self::addError(langBup::_(array('Please enter', $field->label)), $field->name);
+            self::addError(__(array('Please enter', $field->label), BUP_LANG_CODE), $field->name);
             return false;
         }
         return true;
     }
     static public function selectNotEmpty($field) {
         if(empty($field->value)) {
-            self::addError(langBup::_(array('Please select', $field->label)), $field->name);
+            self::addError(__(array('Please select', $field->label), BUP_LANG_CODE), $field->name);
             return false;
         }
         return true;
     }
     static public function email($field) {
         if(!is_email($field->value)) {
-            self::addError(langBup::_(array('Invalid', $field->label)), $field->name);
+            self::addError(__(array('Invalid', $field->label), BUP_LANG_CODE), $field->name);
             return false;
         } elseif(email_exists($field->value)) {
-            self::addError(langBup::_(array($field->label, 'is already registered')), $field->name);
+            self::addError(__(array($field->label, 'is already registered'), BUP_LANG_CODE), $field->name);
             return false;
         }
         return true;
@@ -98,7 +98,7 @@ class validatorBup {
     }
     static public function string($field) {
         if (preg_match('/([0-9].*)/', $field->value)) {
-            self::addError(langBup::_(array('Invalid', $field->label)), $field->name);
+            self::addError(__(array('Invalid', $field->label), BUP_LANG_CODE), $field->name);
             return false;
         }
         return true;
@@ -114,7 +114,7 @@ class validatorBup {
         $all = get_class_methods('validatorBup');
         foreach($all as $m) {
             if(in_array($m, array('int', 'none', 'string'))) {
-                $res[$m] = langBup::_($m);
+                $res[$m] = __($m, BUP_LANG_CODE);
             }
         }
         return $res;
@@ -126,7 +126,7 @@ class validatorBup {
         $all = get_class_methods('validatorBup');
         foreach($all as $m) {
             if(in_array($m, array('int', 'none', 'string', 'email', 'validLen'))) {
-                $res[$m] = langBup::_($m);
+                $res[$m] = __($m, BUP_LANG_CODE);
             }
         }
         return $res;

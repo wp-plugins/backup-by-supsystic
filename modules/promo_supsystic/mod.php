@@ -87,7 +87,7 @@ class promo_supsysticBup extends moduleBup {
 	}
     public function registerModuleTab($tabs) {
         $tabs['bupSchedule'] = array(
-            'title'   => 'Schedule <p class="bupAIP">Available In PRO</p>',
+            'title'   => __('Schedule <p class="bupAIP">Available In PRO</p>', BUP_LANG_CODE),
             'content' => array($this->getController(), 'getPromoScheduleAction'),
             'faIcon' => 'fa-clock-o',
             'sort_order' => 15
@@ -96,19 +96,17 @@ class promo_supsysticBup extends moduleBup {
         return $tabs;
     }
     public function addRemoteBackupDestination(array $destinations){
-        $connectType = array('remoteFtp' => 'Remote FTP Server', 'remoteSFtp' => 'Remote SFTP Server', 'remoteFtpS' => 'Remote FTPS Server', 'remoteScp' => 'Remote SCP Server');
+        $connectType = array('remoteFtp' => __('Remote FTP Server', BUP_LANG_CODE), 'remoteSFtp' => __('Remote SFTP(SCP) Server', BUP_LANG_CODE), 'remoteFtpS' => __('Remote FTPS Server', BUP_LANG_CODE));
         foreach($connectType as $type => $title){
-            if($type === 'remoteFtp') { // this is temporary condition, while addon not support other protocol
-                $destinations[$type] = array(
-                    'title' => $title,
-                    'content' => langBup::_('Please, be advised, that this option is available only in PRO version. You can ') . '<a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank">' . langBup::_('Get PRO') . '</a>',
-                );
-            }
+            $destinations[$type] = array(
+                'title' => $title,
+                'content' => __('Please, be advised, that this option is available only in PRO version. You can ', BUP_LANG_CODE) . '<a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank">' . __('Get PRO', BUP_LANG_CODE) . '</a>',
+            );
         }
         return $destinations;
     }
     public function getPromoSecretKeyEncryptDb(){
-        $promoBlock = '<td>' . langBup::_('Please, be advised, that this option is available only in PRO version. You can ') . '<a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank">' . langBup::_('Get PRO') . '</a></td>';
+        $promoBlock = '<td>' . __('Please, be advised, that this option is available only in PRO version. You can ', BUP_LANG_CODE) . '<a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank">' . __('Get PRO', BUP_LANG_CODE) . '</a></td>';
         return $promoBlock;
     }
 }

@@ -39,7 +39,7 @@
             msgElID: 'toeTplMsg',
             onSuccess: function(res) {
                 if(!res.error) {
-                    jQuery('#toeTplMsg').html('<?php langBup::_e('Template Updated. Reload page to see results.')?>');
+                    jQuery('#toeTplMsg').html('<?php _e('Template Updated. Reload page to see results.', BUP_LANG_CODE)?>');
 					toeMarkSelectedTpl(res.data.value);
 				}
             }
@@ -68,8 +68,8 @@
                     <div class="toeTplOption">
                         <b><?php echo $t->name?></b><br />
                         <img class="toeTplPicturePrev" src="<?php echo $t->prevImg?>" /><br />
-                        <a href="<?php echo $code?>" class="toeTplActivateLink"><?php langBup::_e('Activate')?></a>
-                        <a href="<?php echo $code?>" class="toeTplDeactivateLink"><?php langBup::_e('Deactivate')?></a><br /><br />
+                        <a href="<?php echo $code?>" class="toeTplActivateLink"><?php _e('Activate', BUP_LANG_CODE)?></a>
+                        <a href="<?php echo $code?>" class="toeTplDeactivateLink"><?php _e('Deactivate', BUP_LANG_CODE)?></a><br /><br />
                         <div><?php echo $t->description?></div>
                     </div>
                 </td>

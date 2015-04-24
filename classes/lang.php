@@ -52,7 +52,7 @@ class langBup {
      */
     static public function _($msgid)
     {
-        return __($msgid, 'supsystic-backup');
+        return __($msgid, BUP_LANG_CODE);
 	}
 
     /**

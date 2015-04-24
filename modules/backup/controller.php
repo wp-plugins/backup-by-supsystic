@@ -53,7 +53,7 @@ class backupControllerBup extends controllerBup {
             return $response->ajaxExec();
         }
 
-        if(!$this->_checkExtensions($response)) {
+        if($this->getModel()->isFilesystemRequired() && !$this->_checkExtensions($response)) {
             return $response->ajaxExec();
         }
 
@@ -75,12 +75,12 @@ class backupControllerBup extends controllerBup {
                 $warehouse = frameBup::_()->getModule('warehouse')->getPath();
                 $dir = frameBup::_()->getModule('warehouse')->getTemporaryPath();
 
-                $log->string('Clear out old temporary files');
+                $log->string(__('Clear out old temporary files', BUP_LANG_CODE));
                 if (file_exists($file = $dir . '/stacks.dat')) {
                     if (@unlink($file)) {
-                        $log->string(sprintf('%s successfully deleted', basename($file)));
+                        $log->string(__(sprintf('%s successfully deleted', basename($file)), BUP_LANG_CODE));
                     } else {
-                        $log->string(sprintf('Cannot delete file %s. If you notice a problem with archives - delete the file manually', $file));
+                        $log->string(__(sprintf('Cannot delete file %s. If you notice a problem with archives - delete the file manually', $file), BUP_LANG_CODE));
                     }
                 }
                 $tmpDirFiles = glob($dir . '/*');
@@ -88,9 +88,9 @@ class backupControllerBup extends controllerBup {
                     foreach ($tmpDirFiles as $tmp) {
                         if (substr(basename($tmp), 0, 3) === 'BUP') {
                             if (@unlink($tmp)) {
-                                $log->string(sprintf('%s successfully deleted', $tmp));
+                                $log->string(__(sprintf('%s successfully deleted', $tmp), BUP_LANG_CODE));
                             } else {
-                                $log->string(sprintf('Cannot delete file %s', $tmp));
+                                $log->string(__(sprintf('Cannot delete file %s', $tmp), BUP_LANG_CODE));
                             }
                         }
                     }
@@ -106,12 +106,12 @@ class backupControllerBup extends controllerBup {
                     'per_stack' => BUP_FILES_PER_STACK,
                 ));
 
-                $log->string('Send request to generate temporary file stacks');
+                $log->string(__('Send request to generate temporary file stacks', BUP_LANG_CODE));
 
                 return $response->ajaxExec();
             }
 
-            $log->string(sprintf('Create a backup of the file system: %s', $filename['zip']));
+            $log->string(__(sprintf('Create a backup of the file system: %s', $filename['zip']), BUP_LANG_CODE));
             $this->getModel()->getFilesystem()->create($filename['zip']);
             $cloud[] = $filename['zip'];
         }
@@ -120,18 +120,18 @@ class backupControllerBup extends controllerBup {
             // Disallow to do backups while backup already in proccess.
             $this->lock();
 
-            $log->string(sprintf('Create a backup of the database: %s', $filename['sql']));
+            $log->string(__(sprintf('Create a backup of the database: %s', $filename['sql']), BUP_LANG_CODE));
             $this->getModel()->getDatabase()->create($filename['sql']);
             $dbErrors = $this->getModel()->getDatabase()->getErrors();
             if(!empty($dbErrors)) {
-                $log->string(sprintf('Errors during creation of database backup, errors count %d', count($dbErrors)));
+                $log->string(__(sprintf('Errors during creation of database backup, errors count %d', count($dbErrors)), BUP_LANG_CODE));
                 $response->addError( $dbErrors );
                 return $response->ajaxExec();
             }
             $cloud[] = $filename['sql'];
         }
 
-        $log->string('Backup complete');
+        $log->string(__('Backup complete', BUP_LANG_CODE));
 
         $destination = $this->getModel()->getConfig('dest');
         $handlers    = $this->getModel()->getDestinationHandlers();
@@ -140,62 +140,62 @@ class backupControllerBup extends controllerBup {
 
             $cloud = array_map('basename', $cloud);
 
-            $log->string(sprintf('Upload to the "%s" required', ucfirst($destination)));
+            $log->string(__(sprintf('Upload to the "%s" required', ucfirst($destination)), BUP_LANG_CODE));
             $log->string(sprintf('Files to upload: %s', rtrim(implode(', ', $cloud), ', ')));
             $handler = $handlers[$destination];
             $result  = call_user_func_array($handler, array($cloud));
             if ($result === true || $result == 200 || $result == 201) {
-                $log->string(sprintf('Successfully uploaded to the "%s"', ucfirst($destination)));
+                $log->string(__(sprintf('Successfully uploaded to the "%s"', ucfirst($destination)), BUP_LANG_CODE));
 
                 $path = frameBup::_()->getModule('warehouse')->getPath();
                 $path = untrailingslashit($path);
 
                 foreach ($cloud as $file) {
-                    $log->string(sprintf('Removing %s from the local storage.', $file));
+                    $log->string(__(sprintf('Removing %s from the local storage.', $file), BUP_LANG_CODE));
                     if (@unlink($path . '/' . $file)) {
-                        $log->string(sprintf('%s successfully removed.', $file));
+                        $log->string(__(sprintf('%s successfully removed.', $file), BUP_LANG_CODE));
                     } else {
-                        $log->string(sprintf('Failed to remove %s', $file));
+                        $log->string(__(sprintf('Failed to remove %s', $file), BUP_LANG_CODE));
                     }
                 }
             } else {
                 switch ($result) {
                     case 401:
-                        $error = 'Authentication required.';
+                        $error = __('Authentication required.', BUP_LANG_CODE);
                         break;
                     case 404:
-                        $error = 'File not found';
+                        $error = __('File not found', BUP_LANG_CODE);
                         break;
                     case 500:
-                        $error = is_object($handler[0]) ? $handler[0]->getErrors() : 'Unexpected error (500)';
+                        $error = is_object($handler[0]) ? $handler[0]->getErrors() : __('Unexpected error (500)', BUP_LANG_CODE);
                         break;
                     default:
-                        $error = 'Unexpected error';
+                        $error = __('Unexpected error', BUP_LANG_CODE);
                 }
 
-                $log->string(
+                $log->string(__(
                     sprintf(
                         'Cannot upload to the "%s": %s',
                         ucfirst($destination),
                         is_array($error) ? array_pop($error) : $error
                     )
-                );
+                , BUP_LANG_CODE));
             }
         }
 
 
 
-        $response->addMessage(langBup::_('Backup complete'));
+        $response->addMessage(__('Backup complete', BUP_LANG_CODE));
 
         // Allow to do new backups.
         $this->unlock();
 
         if (frameBup::_()->getModule('options')->get('email_ch') == 1) {
             $email = frameBup::_()->getModule('options')->get('email');
-            $subject = 'Backup by Supsystic Notifications';
+            $subject = __('Backup by Supsystic Notifications', BUP_LANG_CODE);
 
-            $log->string('Email notification required.');
-            $log->string(sprintf('Sending to %s', $email));
+            $log->string(__('Email notification required.', BUP_LANG_CODE));
+            $log->string(sprintf(__('Sending to', BUP_LANG_CODE) . '%s', $email));
 
             $message = $log->getContents();
 
@@ -225,7 +225,7 @@ class backupControllerBup extends controllerBup {
             return;
         }
 
-        $log->string(sprintf('Trying to generate a stack of %s files', count($request['files'])));
+        $log->string(__(sprintf('Trying to generate a stack of %s files', count($request['files'])), BUP_LANG_CODE));
 
         $filesystem = $this->getModel()->getFilesystem();
         $filename = $filesystem->getTemporaryArchive($request['files']);
@@ -236,10 +236,10 @@ class backupControllerBup extends controllerBup {
         }
 
         if ($filename === null) {
-            $log->string('Unable to create the temporary archive');
-            $response->addError(langBup::_('Unable to create the temporary archive'));
+            $log->string(__('Unable to create the temporary archive', BUP_LANG_CODE));
+            $response->addError(__('Unable to create the temporary archive', BUP_LANG_CODE));
         } else {
-            $log->string(sprintf('Temporary stack %s successfully generated', $filename));
+            $log->string(__(sprintf('Temporary stack %s successfully generated', $filename), BUP_LANG_CODE));
             $response->addData(array('filename' => $filename));
         }
 
@@ -281,7 +281,7 @@ class backupControllerBup extends controllerBup {
 		if (false === $result) {
             $errors = array_merge($model->getDatabase()->getErrors(), $model->getFilesystem()->getErrors());
             if (empty($errors)) {
-                $errors = langBup::_('Unable to restore from ' . $filename);
+                $errors = __('Unable to restore from ' . $filename, BUP_LANG_CODE);
             }
 			$response->addError($errors);
 		}
@@ -289,12 +289,12 @@ class backupControllerBup extends controllerBup {
             $response->addError($result['error']);
         }
         elseif(is_array($result) && !empty($result)) {
-            $content = 'Unable to restore backup files. Check folder or files writing permissions. Try to set 777 permissions to the: <br>'. implode('<br>', $result);
+            $content = __('Unable to restore backup files. Check folder or files writing permissions. Try to set 766 permissions to the:', BUP_LANG_CODE) . ' <br>'. implode('<br>', $result);
             $response->addError($content);
         }
 		else {
 			$response->addData($result);
-			$response->addMessage(langBup::_('Done!'));
+			$response->addMessage(__('Done!', BUP_LANG_CODE));
 		}
 
         $response->addData(array('result' => $result));
@@ -339,10 +339,10 @@ class backupControllerBup extends controllerBup {
         }
 
 		if ($model->remove($request['filename']) === true) {
-			$response->addMessage(langBup::_('Backup successfully removed'));
+			$response->addMessage(__('Backup successfully removed', BUP_LANG_CODE));
 		}
 		else {
-			$response->addError(langBup::_('Unable to delete backup'));
+			$response->addError(__('Unable to delete backup', BUP_LANG_CODE));
 		}
 
 		$response->ajaxExec();
@@ -355,9 +355,24 @@ class backupControllerBup extends controllerBup {
 
         $this->unlock();
 
-        $response->addMessage(langBup::_('Successfully!'));
+        $response->addMessage(__('Successfully!', BUP_LANG_CODE));
 
         return $response->ajaxExec();
+    }
+
+    public function saveRestoreSettingAction(){
+        $request     = reqBup::get('post');
+        $response    = new responseBup();
+        $settingKey = (!empty($request['setting-key'])) ? trim($request['setting-key']) : null;
+        $value = (!empty($request['value'])) ? 1 : 0;
+        $result = frameBup::_()->getTable('options')->update(array('value' => $value), array('code' => $settingKey));
+
+        if($result)
+            $response->addMessage(__('Setting saved!', BUP_LANG_CODE));
+        else
+            $response->addError(__('Database error, please try again', BUP_LANG_CODE));
+
+        $response->ajaxExec();
     }
 
 	/**
@@ -380,11 +395,11 @@ class backupControllerBup extends controllerBup {
 	}
 	private function _checkExtensions($res) {
 		if(!function_exists('gzopen')) {
-			$res->addError(langBup::_('There are no zlib extension on your server. You need to install it. How to install check this link <a target="_blank" href="http://php.net/manual/en/zlib.installation.php">http://php.net/manual/en/zlib.installation.php</a>'));
+			$res->addError(__('There are no zlib extension on your server. You need to install it. How to install check this link <a target="_blank" href="http://php.net/manual/en/zlib.installation.php">http://php.net/manual/en/zlib.installation.php</a>', BUP_LANG_CODE));
 			return false;
 		}
 		if(!class_exists('ZipArchive')) {
-			$res->addError(langBup::_('There are no zib extension on your server. You need to install it. How to install check this link <a target="_blank" href="http://php.net/manual/en/book.zip.php">http://php.net/manual/en/book.zip.php</a>'));
+			$res->addError(__('There are no zib extension on your server. You need to install it. How to install check this link <a target="_blank" href="http://php.net/manual/en/book.zip.php">http://php.net/manual/en/book.zip.php</a>', BUP_LANG_CODE));
 			return false;
 		}
 		return true;

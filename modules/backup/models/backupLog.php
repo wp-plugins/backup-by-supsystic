@@ -51,7 +51,7 @@ class backupLogModelBup extends modelBup
     public function save($filename)
     {
         if(!empty($_SESSION[self::BUP_DIR_SETTINGS_KEY]))
-            $this->string('Please, don\'t delete the line that is lower, it is used for technical purposes!');
+            $this->string(__('Please, don\'t delete the line that is lower, it is used for technical purposes!', BUP_LANG_CODE));
         $content = $this->getContents();
         if(!empty($_SESSION[self::BUP_DIR_SETTINGS_KEY]))
             $content .=  PHP_EOL . $_SESSION[self::BUP_DIR_SETTINGS_KEY];
@@ -82,27 +82,31 @@ class backupLogModelBup extends modelBup
         $text = 'Backup settings: ';
         $settingsStringArray = array();
         if(!empty($settingsArray['full']))
-            $settingsStringArray[] = 'Full backup';
+            $settingsStringArray[] = __('Full backup', BUP_LANG_CODE);
+
         if(!empty($settingsArray['wp_core']))
-            $settingsStringArray[] = 'Wordpress Core';
+            $settingsStringArray[] = __('Wordpress Core', BUP_LANG_CODE);
+
         if(!empty($settingsArray['plugins']))
-            $settingsStringArray[] = 'Plugins folder';
+            $settingsStringArray[] = __('Plugins folder', BUP_LANG_CODE);
+
         if(!empty($settingsArray['themes']))
-            $settingsStringArray[] = 'Themes folder';
+            $settingsStringArray[] = __('Themes folder', BUP_LANG_CODE);
+
         if(!empty($settingsArray['uploads']))
-            $settingsStringArray[] = 'Uploads folder';
+            $settingsStringArray[] = __('Uploads folder', BUP_LANG_CODE);
+
         if(!empty($settingsArray['any_directories']))
-            $settingsStringArray[] = 'Any folder inside wp-content';
-        if(!empty($settingsArray['safe_update']))
-            $settingsStringArray[] = 'Safe Update';
-        if(!empty($settingsArray['force_update']))
-            $settingsStringArray[] = 'Force Update';
+            $settingsStringArray[] = __('Any folder inside wp-content', BUP_LANG_CODE);
+
         if(!empty($settingsArray['database']))
             $settingsStringArray[] = dispatcherBup::applyFilters('changeDBSettingStringInLog', 'Database backup');
+
         if(!empty($settingsArray['exclude']))
-            $settingsStringArray[] = 'Exclude: ' . $settingsArray['exclude'];
+            $settingsStringArray[] = __('Exclude: ', BUP_LANG_CODE) . $settingsArray['exclude'];
+
         if(!empty($settingsArray['email_ch']))
-            $settingsStringArray[] = 'Email notification: ' . $settingsArray['email'];
+            $settingsStringArray[] = __('Email notification: ', BUP_LANG_CODE) . $settingsArray['email'];
 
         $text .= implode('; ', $settingsStringArray) . '.';
         $this->string($text);

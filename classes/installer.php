@@ -224,8 +224,8 @@ class installerBup {
 	}
 	static protected function _addPageToWP($post_title, $post_parent = 0) {
 		return wp_insert_post(array(
-			 'post_title' => langBup::_($post_title),
-			 'post_content' => langBup::_($post_title. ' Page Content'),
+			 'post_title' => __($post_title, BUP_LANG_CODE),
+			 'post_content' => __($post_title. ' Page Content', BUP_LANG_CODE),
 			 'post_status' => 'publish',
 			 'post_type' => 'page',
 			 'post_parent' => $post_parent,

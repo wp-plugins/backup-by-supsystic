@@ -8,7 +8,7 @@ class templatesBup extends moduleBup {
     protected $_styles = array();
     public function getTabs(){
         $tabs = array();
-        $tab = new tabBup(langBup::_('Templates'), $this->getCode());
+        $tab = new tabBup(__('Templates', BUP_LANG_CODE), $this->getCode());
         $tab->setView('templatesTab');
 		$tab->setSortOrder(1);
         $tabs[] = $tab;

@@ -17,7 +17,7 @@ class optionsBup extends moduleBup {
      */
     public function getTabs(){
         $tabs = array();
-        $tab = new tabBup(langBup::_('General'), $this->getCode());
+        $tab = new tabBup(__('General', BUP_LANG_CODE), $this->getCode());
         $tab->setView('optionTab');
         $tab->setSortOrder(-99);
         $tabs[] = $tab;

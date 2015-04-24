@@ -23,9 +23,10 @@ class filesystemModelBup extends modelBup {
 
     public function restore($filename)
     {
+        $this->clearTmpDirectory(); // remove all temporary files from tmp directory, before filesystem restore process started
         $absolutePath = frameBup::_()->getModule('options')->get('warehouse_abs') ? false : true;
         if (!file_exists($filename)) {
-            $this->pushError(sprintf(langBup::_('Filesystem backup %s does not exists'), basename($filename)));
+            $this->pushError(sprintf(__('Filesystem backup %s does not exists', BUP_LANG_CODE), basename($filename)));
             return false;
         }
 
@@ -53,7 +54,7 @@ class filesystemModelBup extends modelBup {
         }
 
         if ($files = $pcl->extract(PCLZIP_OPT_PATH, $absPath, PCLZIP_OPT_REPLACE_NEWER) === 0) {
-            $this->pushError(langBup::_('An error has occurred while unpacking the archive'));
+            $this->pushError(__('An error has occurred while unpacking the archive', BUP_LANG_CODE));
             return false;
         }
 
@@ -145,6 +146,9 @@ class filesystemModelBup extends modelBup {
         }
 
         $zip->finalize();
+
+        if(false !== strpos($name, 'backup_')) // if backup created - remove all temporary files from tmp directory
+            $this->clearTmpDirectory();
 
         /* backward */
         return rand(100, 1000);
@@ -306,5 +310,14 @@ class filesystemModelBup extends modelBup {
         }
 
         return $nodes;
+    }
+
+    private function clearTmpDirectory(){
+        $tmpPath = untrailingslashit(frameBup::_()->getModule('warehouse')->getPath()) . DS . 'tmp' . DS;
+        $tmpFiles = glob($tmpPath . 'BUP*');
+        foreach($tmpFiles as $file){
+            if(file_exists($file))
+                unlink($file);
+        }
     }
 }

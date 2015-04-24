@@ -90,20 +90,20 @@ class fieldAdapterBup {
                     'checked' => in_array($b->term_taxonomy_id, $field->value['brands']));
             }
         }
-        return '<div>'. langBup::_('Apply To'). '
+        return '<div>'. __('Apply To', BUP_LANG_CODE). '
             <div id="tax_address">
-                <b>'. langBup::_('Address'). '</b><br />
-                '. langBup::_('Destination'). ':'. htmlBup::checkboxlist('params[dest]', array('optionsBup' => $listOfDest)). '<br />
-                '. langBup::_('Country'). ':'. htmlBup::countryList('params[country]', array('notSelected' => true, 'value' => $field->value['country'])). '<br />
+                <b>'. __('Address', BUP_LANG_CODE). '</b><br />
+                '. __('Destination', BUP_LANG_CODE). ':'. htmlBup::checkboxlist('params[dest]', array('optionsBup' => $listOfDest)). '<br />
+                '. __('Country', BUP_LANG_CODE). ':'. htmlBup::countryList('params[country]', array('notSelected' => true, 'value' => $field->value['country'])). '<br />
             </div>
             <div id="tax_category">
-                <b>'. langBup::_('Categories'). '</b><br />
-                '. (empty($cOptions) ? langBup::_('You have no categories') : htmlBup::checkboxlist('params[categories][]', array('optionsBup' => $cOptions))). '<br />
-                    <b>'. langBup::_('Brands'). '</b><br />
-                '. (empty($bOptions) ? langBup::_('You have no brands') : htmlBup::checkboxlist('params[brands][]', array('optionsBup' => $bOptions))). '<br />
+                <b>'. __('Categories', BUP_LANG_CODE). '</b><br />
+                '. (empty($cOptions) ? __('You have no categories', BUP_LANG_CODE) : htmlBup::checkboxlist('params[categories][]', array('optionsBup' => $cOptions))). '<br />
+                    <b>'. __('Brands', BUP_LANG_CODE). '</b><br />
+                '. (empty($bOptions) ? __('You have no brands', BUP_LANG_CODE) : htmlBup::checkboxlist('params[brands][]', array('optionsBup' => $bOptions))). '<br />
             </div>
-            <div>'. langBup::_('Tax Rate').': '. htmlBup::text('params[rate]', array('value' => $field->value['rate'])).'</div>
-            <div>'. langBup::_('Absolute').': '. htmlBup::checkbox('params[absolute]', array('checked' => $field->value['absolute'])).'</div>
+            <div>'. __('Tax Rate', BUP_LANG_CODE).': '. htmlBup::text('params[rate]', array('value' => $field->value['rate'])).'</div>
+            <div>'. __('Absolute', BUP_LANG_CODE).': '. htmlBup::checkbox('params[absolute]', array('checked' => $field->value['absolute'])).'</div>
         </div>';
     }
     static public function displayCountry($cid, $key = 'name') {
@@ -131,7 +131,7 @@ class fieldAdapterBup {
             if(empty(self::$countries))
                 self::$countries = self::getCachedCountries();
             if($notSelected) {
-				$options[ $notSelected ][0] = is_bool($notSelected) ? langBup::_('Not selected') : langBup::_($notSelected);
+				$options[ $notSelected ][0] = is_bool($notSelected) ? __('Not selected', BUP_LANG_CODE) : __($notSelected, BUP_LANG_CODE);
 			}
             foreach(self::$countries as $c) $options[ $notSelected ][$c['id']] = $c['name'];
         }
@@ -145,7 +145,7 @@ class fieldAdapterBup {
                 self::$states = self::getCachedStates();
             if($notSelected) {
 				$notSelectedLabel = is_bool($notSelected) ? 'Not selected' : $notSelected;
-				$options[ $notSelected ][0] = array('name' => langBup::_( $notSelectedLabel ), 'country_id' => NULL);
+				$options[ $notSelected ][0] = array('name' => __( $notSelectedLabel, BUP_LANG_CODE), 'country_id' => NULL);
 			}
             foreach(self::$states as $s) $options[ $notSelected ][$s['id']] = $s;
         }
@@ -177,13 +177,13 @@ class fieldAdapterBup {
         $output = '';
         if (!empty($params->attr)) {
             foreach ($params->attr as $key=>$value) {
-                $output .= langBup::_($key).':<br />';
+                $output .= __($key, BUP_LANG_CODE).':<br />';
                 $output .= htmlBup::text('params[attr]['.$key.']',array('value'=>$value)).'<br />';
             }
         } else {
-                $output .= langBup::_('class').':<br />';
+                $output .= __('class', BUP_LANG_CODE).':<br />';
                 $output .= htmlBup::text('params[attr][class]',array('value'=>'')).'<br />';
-                $output .= langBup::_('id').':<br />';
+                $output .= __('id', BUP_LANG_CODE).':<br />';
                 $output .= htmlBup::text('params[attr][id]',array('value'=>'')).'<br />';
         }
         return $output;
@@ -202,7 +202,7 @@ class fieldAdapterBup {
         if(!empty($categories)) {
             if(!is_array($field->value['categories']))
                     $field->value['categories'] = array();
-            $field->htmlParams['optionsBup'][0] = in_array(0,$field->value['categories'])?langBup::_('Deselect All'):langBup::_('Select All');
+            $field->htmlParams['optionsBup'][0] = in_array(0,$field->value['categories'])?__('Deselect All', BUP_LANG_CODE):__('Select All', BUP_LANG_CODE);
             foreach($categories as $c) {
                 $field->htmlParams['optionsBup'][$c->term_taxonomy_id] = $c->cat_name;
             }

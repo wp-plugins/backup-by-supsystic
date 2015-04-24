@@ -31,10 +31,10 @@ class modInstallerBup {
                     self::_installTables($module);
                     return true;
                 } else {
-                    errorsBup::push(sprintf(__('Move files for %s failed'), $module['code']), errorsBup::MOD_INSTALL);
+                    errorsBup::push(sprintf(__('Move files for %s failed'), $module['code'], BUP_LANG_CODE), errorsBup::MOD_INSTALL);
                 }
             } else
-                errorsBup::push(sprintf(__('%s is not plugin module'), $module['code']), errorsBup::MOD_INSTALL);
+                errorsBup::push(sprintf(__('%s is not plugin module', BUP_LANG_CODE), $module['code']), errorsBup::MOD_INSTALL);
         }
         return false;
     }
@@ -125,7 +125,7 @@ class modInstallerBup {
                         self::activate($modDataArr);
                     } else {                                           //  if not - install it
                         if(!self::install($modDataArr, $locations['plugDir'])) {
-                            errorsBup::push(sprintf(__('Install %s failed'), $modDataArr['code']), errorsBup::MOD_INSTALL);
+                            errorsBup::push(sprintf(__('Install %s failed', BUP_LANG_CODE), $modDataArr['code']), errorsBup::MOD_INSTALL);
                         }
                     }
                 }

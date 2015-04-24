@@ -310,7 +310,7 @@ class gdriveModelBup extends modelBup {
         $domain = $this->getDomain();
 
         if (!$domain) {
-            $this->pushError('Unable to get parent folder ID.');
+            $this->pushError(__('Unable to get parent folder ID.', BUP_LANG_CODE));
 
             return 500;
         }

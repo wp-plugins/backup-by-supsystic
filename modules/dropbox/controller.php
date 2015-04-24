@@ -114,7 +114,7 @@ class dropboxControllerBup extends controllerBup {
 		session_destroy();
         $this->model->removeToken();
 
-		$response->addMessage(langBup::_('Please, wait...'));
+		$response->addMessage(__('Please, wait...', BUP_LANG_CODE));
 		$response->ajaxExec();
 	}
 
@@ -127,10 +127,10 @@ class dropboxControllerBup extends controllerBup {
 		$curl = curl_version();
 
 		$messages = array(
-			langBup::_('Your server not meet the requirements Dropbox SDK' . PHP_EOL),
-			langBup::_(sprintf('Your PHP version: %s (5.3.1 or higher required)', PHP_VERSION)),
-			langBup::_(sprintf('cURL extension: %s (cURL extension is required)', extension_loaded('curl') ? 'installed' : 'not installed')),
-			langBup::_(sprintf('cURL SSL version: %s (OpenSSL is required)', $curl['ssl_version'])),
+			__('Your server not meet the requirements Dropbox SDK' . PHP_EOL, BUP_LANG_CODE),
+			__(sprintf('Your PHP version: %s (5.3.1 or higher required)', PHP_VERSION), BUP_LANG_CODE),
+			__(sprintf('cURL extension: %s (cURL extension is required)', extension_loaded('curl') ? 'installed' : 'not installed'), BUP_LANG_CODE),
+			__(sprintf('cURL SSL version: %s (OpenSSL is required)', $curl['ssl_version']), BUP_LANG_CODE),
 		);
 
 		return $this->render('notSupport', array(
@@ -164,13 +164,13 @@ class dropboxControllerBup extends controllerBup {
 
 		switch($result) {
 			case 200:
-				$response->addMessage(langBup::_('Done!'));
+				$response->addMessage(__('Done!', BUP_LANG_CODE));
 				break;
 			case 401:
-				$response->addError(langBup::_('Authentication required'));
+				$response->addError(__('Authentication required', BUP_LANG_CODE));
 				break;
 			case 404:
-				$response->addError(langBup::_('Nothing to upload'));
+				$response->addError(__('Nothing to upload', BUP_LANG_CODE));
 				break;
 			case 500:
 				$response->addError($this->model->getErrors());
@@ -198,11 +198,11 @@ class dropboxControllerBup extends controllerBup {
         }
 
 		if(!isset($request['file']) OR empty($request['file'])) {
-			$response->addError(langBup::_('Nothing to delete'));
+			$response->addError(__('Nothing to delete', BUP_LANG_CODE));
 		}
 
 		if($this->model->remove($request['file']) === true) {
-			$response->addMessage(langBup::_('File successfully deleted'));
+			$response->addMessage(__('File successfully deleted', BUP_LANG_CODE));
 		}
 		else {
 			$response->addError($this->model->getErrors());
@@ -221,7 +221,7 @@ class dropboxControllerBup extends controllerBup {
 		$response = new responseBup();
 
 		if(!isset($request['file']) OR empty($request['file'])) {
-			$response->addError(langBup::_('There was an error during recovery'));
+			$response->addError(__('There was an error during recovery', BUP_LANG_CODE));
 		}
 
 		if($this->model->download($request['file']) === true) {

@@ -7,7 +7,7 @@ class optionsControllerBup extends controllerBup {
 		$post = reqBup::get('post');
 		
 		if ($result = $this->getModel()->saveGroup($post)) {
-			$res->addMessage(langBup::_('Save Complete'));
+			$res->addMessage(__('Save Complete', BUP_LANG_CODE));
 			$res->addData($result);
 		} else 
 			$res->pushError ($this->getModel('options')->getErrors());
@@ -18,7 +18,7 @@ class optionsControllerBup extends controllerBup {
 		$res = new responseBup();
 		$post = reqBup::get('post');
 		if ($this->getModel()->saveMainFromDestGroup($post) && $this->getModel()->saveGroup($post)) {
-			$res->addMessage(langBup::_('Save Complete'));
+			$res->addMessage(__('Save Complete', BUP_LANG_CODE));
 			$res->addData(true);
 		} else 
 			$res->pushError ($this->getModel('options')->getErrors());

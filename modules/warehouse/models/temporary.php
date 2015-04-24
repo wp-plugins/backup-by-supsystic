@@ -66,9 +66,7 @@ class temporaryModelBup extends modelBup
         if (!$files || is_array($files)) {
             $this->pushError(
                 sprintf(
-                    langBup::_(
-                        'Failed to clear temporary folder by pattern "%s"'
-                    ),
+                    __('Failed to clear temporary folder by pattern "%s"', BUP_LANG_CODE),
                     htmlspecialchars($pattern)
                 )
             );

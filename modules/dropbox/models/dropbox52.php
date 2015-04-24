@@ -279,7 +279,7 @@ class dropbox52ModelBup extends modelBup {
     public function remove($filepath) {
 
         if (!$this->isAuthenticated()) {
-            $this->pushError(langBup::_('Authentication required'));
+            $this->pushError(__('Authentication required', BUP_LANG_CODE));
             return false;
         }
 
@@ -314,7 +314,7 @@ class dropbox52ModelBup extends modelBup {
      */
     public function download($filename, $returnDataString = false) {
         if (!$this->isAuthenticated()) {
-            $this->pushError(langBup::_('Authentication required'));
+            $this->pushError(__('Authentication required', BUP_LANG_CODE));
             return false;
         }
 
@@ -338,7 +338,7 @@ class dropbox52ModelBup extends modelBup {
             return $response;
 
         if (!file_put_contents($this->getBackupsPath() . $filename, $response)) {
-            $this->pushError(langBup::_(sprintf('Can\'t download the file: %', $filename)));
+            $this->pushError(__(sprintf('Can\'t download the file: %', $filename), BUP_LANG_CODE));
             return false;
         }
 

@@ -28,7 +28,7 @@
 		<tr class="tabStr">
 			<td align="right" style="height:20px !important; margin:0px !important; padding:0px !important; " ><?php echo ucfirst($name); ?></td>
             <td width="162">
-				<?php echo htmlBup::submit($el, array('value' => langBup::_('Restore'), 'attrs' => 'class="button button-primary button-small restoreBup" id="'.$this->storageData[0].'"'))?>
+				<?php echo htmlBup::submit($el, array('value' => __('Restore', BUP_LANG_CODE), 'attrs' => 'class="button button-primary button-small restoreBup" id="'.$this->storageData[0].'"'))?>
                 <a class="button button-primary button-small bupButDownload" href="<?php echo substr(BUP_URL, 0, strlen(BUP_URL)-1).frameBup::_()->getModule('options')->get('warehouse').$el; ?>" title="download">Download</a> <a class="delBackup" id="del|<?php echo $this->storageData[0].'|'.$el,'|'.$name; ?>" href="javascript:void (0)" title="delete"></a>
             </td>
 		</tr>

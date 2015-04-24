@@ -164,7 +164,7 @@ class databaseModelBup extends modelBup
 			}
             if(empty($query) && empty($row) && $decryptKeyExist && $iteratorEmptyRow > 20){
                 do_action('bupClearSecretKeyToDecryptDb');
-                return array('error' => 'Secret key for decrypt DB data wrong! Please, try again.');
+                return array('error' => __('Secret key for decrypt DB data wrong! Please, try again.', BUP_LANG_CODE));
             }
 		}
 		if($queriesStarted) {	// If queries was started - then let's finish it's execution correctly
@@ -182,7 +182,7 @@ class databaseModelBup extends modelBup
                 $this->query('START TRANSACTION');
             }
             else {
-                $this->pushError(langBup::_('Your MySQL server does not support transactions, "safe update" unavailable'));
+                $this->pushError(__('Your MySQL server does not support transactions, "safe update" unavailable', BUP_LANG_CODE));
                 return false;
             }
         }
@@ -277,16 +277,16 @@ class databaseModelBup extends modelBup
                 }
 
                 if (!feof($handle)) {
-                    $this->pushError(langBup::_("Error: unexpected fgets() fail"));
+                    $this->pushError(__("Error: unexpected fgets() fail", BUP_LANG_CODE));
                 }
 
                 fclose($handle);
             } else {
-                $this->pushError(langBup::_('Unable to clear the database before restoring'));
+                $this->pushError(__('Unable to clear the database before restoring', BUP_LANG_CODE));
                 $ret = false;
             }
         } else {
-            $this->pushError(langBup::_(sprintf('File not found: %s', $source)));
+            $this->pushError(__(sprintf('File not found: %s', $source), BUP_LANG_CODE));
             $ret = false;
         }
 
@@ -311,7 +311,7 @@ class databaseModelBup extends modelBup
                     break;
             }
         } else {
-            $this->pushError(langBup::_('Can not find file '.$source));
+            $this->pushError(__('Can not find file '.$source, BUP_LANG_CODE));
             $ret = false;
         }
         return $ret;
@@ -334,27 +334,27 @@ class databaseModelBup extends modelBup
 
         if($metdata['dbrev'] != $wp_db_version) {
             $this->pushError(
-                langBup::_('Revision of backup and your database do not match. '
+                __('Revision of backup and your database do not match. '
                     . 'You must enable the Force Update options to update '
-                    . '(at one\'s own risk)')
+                    . '(at one\'s own risk)', BUP_LANG_CODE)
             );
             return false;
         }
 
         if($metdata['wpcrv'] != $wp_version) {
             $this->pushError(
-                langBup::_('This backup was made on another version of WordPress. '
+                __('This backup was made on another version of WordPress. '
                     . 'You must enable the Force Update options to update '
-                    . '(at one\'s own risk)')
+                    . '(at one\'s own risk)', BUP_LANG_CODE)
             );
             return false;
         }
 
         if($metdata['plgnv'] != BUP_VERSION) {
             $this->pushError(
-                langBup::_('Backup was created with a different version of the plugin. '
+                __('Backup was created with a different version of the plugin. '
                     . 'You must enable the Force Update options to update '
-                    . '(at one\'s own risk)')
+                    . '(at one\'s own risk)', BUP_LANG_CODE)
             );
             return false;
         }
@@ -386,7 +386,7 @@ class databaseModelBup extends modelBup
                 $this->query('START TRANSACTION');
             }
             else {
-                $this->pushError(langBup::_('Your MySQL server does not support transactions, "safe update" unavailable'));
+                $this->pushError(__('Your MySQL server does not support transactions, "safe update" unavailable', BUP_LANG_CODE));
                 return false;
             }
         }

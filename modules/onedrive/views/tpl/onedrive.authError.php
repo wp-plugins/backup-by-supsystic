@@ -1,7 +1,7 @@
 <div id="bupOnedriveWrapper">
     <div id="bupOnedriveAlerts"></div>
     <h3>
-        <?php echo langBup::_('Authentication failed.'); ?>
+        <?php echo __('Authentication failed.', BUP_LANG_CODE); ?>
     </h3>
 
     <?php foreach ($errors as $error): ?>

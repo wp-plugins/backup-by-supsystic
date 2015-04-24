@@ -152,6 +152,10 @@ jQuery(document).ready(function($) {
 		BackupModule.upload(providerModule, providerAction, files, id);
 
 	});
+
+	j('.bupSaveRestoreSetting').on('click', function(clickEvent) {
+		BackupModule.saveRestoreSetting(clickEvent);
+	});
 });
 
 /**
@@ -273,6 +277,26 @@ var BackupModule = {
 				action:  providerAction, // Action
 				reqType: 'ajax',         // Request type
 				sendArr: files           // Files
+			}
+		});
+	},
+	saveRestoreSetting: function(clickEvent){
+		var key = j(clickEvent.currentTarget).data('setting-key');
+		var value = j(clickEvent.currentTarget).attr('checked');
+
+		jQuery.sendFormBup({
+			msgElID: 'bupRestorePresetsMsg',
+			data: {
+				'page':    'backup', // Module
+				'action':  'saveRestoreSettingAction', // Action
+				'reqType': 'ajax',         // Request type
+				'setting-key': key,
+				'value': value
+
+				},
+			onSuccess: function(response) {
+					if(response.error)
+						document.location.reload();
 			}
 		});
 	}

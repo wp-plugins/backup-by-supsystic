@@ -163,7 +163,7 @@ class htmlBup {
         $out = '';
         if(strpos($params['url'], 'pl='. BUP_CODE) === false)
 			$params['url'] = uriBup::_(array('baseUrl' => $params['url'], 'pl' => BUP_CODE));
-        $out .= self::button(array('value' => langBup::_( empty($params['buttonName']) ? 'Upload' :  $params['buttonName'] ), 'attrs' => 'id="toeUploadbut_'.$name.'" class="button button-large"'));
+        $out .= self::button(array('value' => __( empty($params['buttonName']) ? 'Upload' :  $params['buttonName'] , BUP_LANG_CODE), 'attrs' => 'id="toeUploadbut_'.$name.'" class="button button-large"'));
         $display = (empty($params['value']) ? 'style="display: none;"' : '');
         if($params['preview'])
             $out .= self::img($params['value'], 0, array('attrs' => 'id="prev_'.$name.'" '.$display.' class="previewpicture"'));
@@ -374,7 +374,7 @@ class htmlBup {
                     $paramsForText = array(
                         'value' => $value,
                     );
-                    $res .= langBup::_($p['label']). htmlBup::text($name. '['. $i. ']['. $key. ']', $paramsForText);
+                    $res .= __($p['label'], BUP_LANG_CODE). htmlBup::text($name. '['. $i. ']['. $key. ']', $paramsForText);
                 }
                 $res .= $remove. '</div>';
                 $i++;

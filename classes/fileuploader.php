@@ -22,7 +22,7 @@
          * @return string error message
          */
 		public function getError() {
-			return langBup::_($this->_error);
+			return __($this->_error, BUP_LANG_CODE);
 		}
         public function __construct() {
             

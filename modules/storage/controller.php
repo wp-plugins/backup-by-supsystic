@@ -10,7 +10,7 @@ class storageControllerBup extends controllerBup {
 		$list = $this->getModel()->getList(reqBup::get('post'));
 		$res->addData('list', $list);
 		$res->addData('count', $this->getModel()->getCount());
-		//$res->addMessage(langBup::_('Done'));
+		//$res->addMessage(__('Done', BUP_LANG_CODE));
 		return $res->ajaxExec();
 	}
 	public function getPermissions() {

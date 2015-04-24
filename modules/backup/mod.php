@@ -98,7 +98,7 @@ class backupBup extends moduleBup {
 	 */
 	public function registerModuleTab($tabs) {
 		$tabs['bupLog'] = array(
-			'title'   => 'Log',
+			'title'   => __('Restore', BUP_LANG_CODE),
 			'content' => array($this->getController(), 'indexAction'),
             'faIcon' => 'fa-database',
             'sort_order' => 20,

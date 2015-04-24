@@ -127,7 +127,7 @@ class dropboxBup extends moduleBup {
 	public function registerNotSupport($tabs) {
 		$tabs['dropbox'] = array(
 			'title'   => $this->config['tabs']['title'],
-			'content' => langbup::_('Your server does not support the Dropbox without cURL extension'),
+			'content' => __('Your server does not support the Dropbox without cURL extension', BUP_LANG_CODE),
             'faIcon' => 'fa-dropbox',
 		);
 

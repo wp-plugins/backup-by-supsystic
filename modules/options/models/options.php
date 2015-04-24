@@ -4,7 +4,7 @@ class optionsModelBup extends modelBup {
 
 
 	public function saveGroup($d = array()) {
-		$clearArr = array('opt_values' => array('full' => 0, 'plugins' => 0, 'themes' =>0 , 'uploads' => 0, 'database' => 0, 'any_directories' => 0, 'safe_update' => 0, 'force_update' => 0, 'wp_core' => 0));
+		$clearArr = array('opt_values' => array('full' => 0, 'plugins' => 0, 'themes' =>0 , 'uploads' => 0, 'database' => 0, 'any_directories' => 0, 'wp_core' => 0));
 
 		if(isset($d['opt_values']) && is_array($d['opt_values']) && !empty($d['opt_values'])) {
 
@@ -24,7 +24,7 @@ class optionsModelBup extends modelBup {
 				// if ($code == 'email_ch') continue;
 				if ($code == 'email') {
 					if (!$this->validateEmail($value)) {
-                        $this->pushError(langBup::_('Incorrect email address'));
+                        $this->pushError(__('Incorrect email address', BUP_LANG_CODE));
                         continue;
                     }
                 }
@@ -36,7 +36,7 @@ class optionsModelBup extends modelBup {
 
 			return !$this->haveErrors();
 		} else
-			$this->pushError(langBup::_('No change'));
+			$this->pushError(__('No change', BUP_LANG_CODE));
 	}
 
 	public function set($value, $code){
@@ -54,11 +54,11 @@ class optionsModelBup extends modelBup {
 			if (utilsBup::checkPRO() || $d['dest_opt'] == 0){
 				$this->set($d['dest_opt'], 'glb_dest');
 			} else {
-				$this->pushError(langBup::_('PRO version is not activated'));
+				$this->pushError(__('PRO version is not activated', BUP_LANG_CODE));
 			}
 			return !$this->haveErrors();
 		} else
-			$this->pushError(langBup::_('No selected options'));
+			$this->pushError(__('No selected options', BUP_LANG_CODE));
 	}
 
 // ---- old -----
@@ -243,12 +243,12 @@ class optionsModelBup extends modelBup {
 						$this->_setByCode($d['code'], $d['opt_values'][ $d['code'] ]);
 					return true;
 				} else
-					$this->pushError(langBup::_('Option '. $d['code']. ' update Failed'));
+					$this->pushError(__('Option '. $d['code']. ' update Failed', BUP_LANG_CODE));
 			} else {
-				$this->pushError(langBup::_('Invalid option ID or Code'));
+				$this->pushError(__('Invalid option ID or Code', BUP_LANG_CODE));
 			}
 		} else
-			$this->pushError(langBup::_('Empty data to save option'));
+			$this->pushError(__('Empty data to save option', BUP_LANG_CODE));
         return false;
     }
 	public function saveCodeVal($code, $val) {
@@ -273,7 +273,7 @@ class optionsModelBup extends modelBup {
 			}
 			return !$this->haveErrors();
 		} else
-			$this->pushError(langBup::_('Empty data to setup'));
+			$this->pushError(__('Empty data to setup', BUP_LANG_CODE));
 	}*/
 	public function saveBgImg($d = array()) {
 		if(!empty($d) && isset($d['bg_image']) && !empty($d['bg_image'])) {
@@ -288,7 +288,7 @@ class optionsModelBup extends modelBup {
 			} else
 				 $this->pushError( $uploader->getError() );
 		} else
-			$this->pushError(langBup::_('Empty data to setup'));
+			$this->pushError(__('Empty data to setup', BUP_LANG_CODE));
 		return false;
 	}
 	public function saveLogoImg($d = array()) {
@@ -304,7 +304,7 @@ class optionsModelBup extends modelBup {
 			} else
 				 $this->pushError( $uploader->getError() );
 		} else
-			$this->pushError(langBup::_('Empty data to setup'));
+			$this->pushError(__('Empty data to setup', BUP_LANG_CODE));
 		return false;
 	}
 	public function setTplDefault($d = array()) {
@@ -318,11 +318,11 @@ class optionsModelBup extends modelBup {
 						return $newValue;
 					}
 				} else
-					$this->pushError(langBup::_('There is no default for this option and current template'));
+					$this->pushError(__('There is no default for this option and current template', BUP_LANG_CODE));
 			} else
-				$this->pushError(langBup::_('There is no default for this option and current template'));
+				$this->pushError(__('There is no default for this option and current template', BUP_LANG_CODE));
 		} else
-			$this->pushError(langBup::_('Empty option code'));
+			$this->pushError(__('Empty option code', BUP_LANG_CODE));
 		return false;
 	}
 	public function setBgImgDefault($d = array()) {
@@ -341,11 +341,11 @@ class optionsModelBup extends modelBup {
 						return $this->getModule()->getBgImgFullPath();
 					}
 				} else
-					$this->pushError(langBup::_('There is no default for this option and current template'));
+					$this->pushError(__('There is no default for this option and current template', BUP_LANG_CODE));
 			} else
-				$this->pushError(langBup::_('There is no default for this option and current template'));
+				$this->pushError(__('There is no default for this option and current template', BUP_LANG_CODE));
 		} else
-			$this->pushError(langBup::_('Empty option code'));
+			$this->pushError(__('Empty option code', BUP_LANG_CODE));
 		return false;
 	}
 	public  function removeBgImg($d = array()) {
@@ -355,7 +355,7 @@ class optionsModelBup extends modelBup {
 		) {
 			return true;
 		} else
-			$this->pushError(langBup::_('Unable to remove image'));
+			$this->pushError(__('Unable to remove image', BUP_LANG_CODE));
 	}
 	public function setLogoDefault($d = array()) {
 		$code = isset($d['code']) ? $d['code'] : '';
@@ -373,11 +373,11 @@ class optionsModelBup extends modelBup {
 						return $this->getModule()->getLogoImgFullPath();
 					}
 				} else
-					$this->pushError(langBup::_('There is no default for this option and current template'));
+					$this->pushError(__('There is no default for this option and current template', BUP_LANG_CODE));
 			} else
-				$this->pushError(langBup::_('There is no default for this option and current template'));
+				$this->pushError(__('There is no default for this option and current template', BUP_LANG_CODE));
 		} else
-			$this->pushError(langBup::_('Empty option code'));
+			$this->pushError(__('Empty option code', BUP_LANG_CODE));
 		return false;
 	}
 	public function removeLogoImg($d = array()) {
@@ -387,7 +387,7 @@ class optionsModelBup extends modelBup {
 		) {
 			return true;
 		} else
-			$this->pushError(langBup::_('Unable to remove image'));
+			$this->pushError(__('Unable to remove image', BUP_LANG_CODE));
 	}
 	public function setTitleParamsDefault($d = array()) {
 		$res = true;

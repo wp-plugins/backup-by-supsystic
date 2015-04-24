@@ -1,7 +1,7 @@
 <div id="bupOnedriveWrapper">
     <div id="bupOnedriveAlerts"></div>
     <h3>
-        <?php echo langBup::_('An error has been occured.'); ?>
+        <?php echo __('An error has been occured.', BUP_LANG_CODE); ?>
     </h3>
 
     <?php foreach ($errors as $error): ?>
@@ -10,7 +10,7 @@
 
     <div>
         <button class="onedriveLogout button button-primary">
-            <?php echo langBup::_('Logout'); ?>
+            <?php echo __('Logout', BUP_LANG_CODE); ?>
         </button>
     </div>
 

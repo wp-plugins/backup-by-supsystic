@@ -260,7 +260,7 @@ abstract class tableBup {
         $fields = $this->_getQueryString($data, ',', true);
 
         if(empty($fields)) {
-            $this->_addError(langBup::_('Nothig to update'));
+            $this->_addError(__('Nothig to update', BUP_LANG_CODE));
             return false;
         }
         
@@ -277,7 +277,7 @@ abstract class tableBup {
             else
                 return true;
         } else
-			$this->_addError(langBup::_('Database error. Please contact your developer.'));
+			$this->_addError(__('Database error. Please contact your developer.', BUP_LANG_CODE));
         return false;
     }
     public function insert($data) {

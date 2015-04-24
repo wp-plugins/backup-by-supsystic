@@ -396,7 +396,7 @@ class onedriveModelBup extends modelBup
         $skydrive = new skydriveBup($this->getAccessToken());
 
         if (!$this->isAuthenticated()) {
-            $this->pushError(langBup::_('Authorization required.'));
+            $this->pushError(__('Authorization required.', BUP_LANG_CODE));
 
             return false;
         }
@@ -405,7 +405,7 @@ class onedriveModelBup extends modelBup
             $data = $skydrive->download($fileId);
 
             if (!is_array($data)) {
-                $this->pushError('Enexpected error.');
+                $this->pushError(__('Enexpected error.', BUP_LANG_CODE));
 
                 return false;
             }
@@ -419,7 +419,7 @@ class onedriveModelBup extends modelBup
                     return $file['data'];
 
                 if (!file_put_contents($filename, $file['data'])) {
-                    $this->pushError(langBup::_('Failed to save downloaded file.'));
+                    $this->pushError(__('Failed to save downloaded file.', BUP_LANG_CODE));
 
                     return false;
                 }

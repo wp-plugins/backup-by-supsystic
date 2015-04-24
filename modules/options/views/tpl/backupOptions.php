@@ -22,75 +22,51 @@
 
             <div id="bupMainOption" style="display: none;">
                 <hr/>
-                <h3>Backup Presets:</h3>
+                <h3><?php _e('Backup Presets:', BUP_LANG_CODE) ?></h3>
                 <table class="form-table">
                     <tr>
-                        <th class="col-w-30perc">Full backup</th>
+                        <th class="col-w-30perc"><?php _e('Full backup', BUP_LANG_CODE) ?></th>
                         <td class="col-w-1perc">
-                            <i class="fa fa-question supsystic-tooltip" title="Full backup"></i>
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('Full backup', BUP_LANG_CODE) ?>"></i>
                         </td class="col-w-1perc">
                         <td class="col-w-1perc">
                             <?php echo htmlBup::checkbox('opt_values[full]', array('attrs'=>'class="bupCheckbox bupFull" id="bupFullBackup"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('full') ? 'checked' : '' )); ?>
                         </td>
                     </tr>
                     <tr>
-                        <th class="col-w-30perc">Wordpress Core</th>
+                        <th class="col-w-30perc"><?php _e('Wordpress Core', BUP_LANG_CODE) ?></th>
                         <td class="col-w-1perc">
-                            <i class="fa fa-question supsystic-tooltip" title="All folders and files backup in the root directory, where the WordPress is installed, except the /wp-content folder."></i>
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('All folders and files backup in the root directory, where the WordPress is installed, except the /wp-content folder.', BUP_LANG_CODE) ?>"></i>
                         </td>
                         <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[wp_core]', array('attrs'=>'class="bupCheckbox bupFull"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('wp_core') ? 'checked' : '' )); ?></td>
                     </tr>
                     <tr>
-                        <th class="col-w-30perc">Plugins folder</th>
+                        <th class="col-w-30perc"><?php _e('Plugins folder', BUP_LANG_CODE) ?></th>
                         <td class="col-w-1perc">
-                            <i class="fa fa-question supsystic-tooltip" title="Plugins folder"></i>
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('Plugins folder', BUP_LANG_CODE) ?>"></i>
                         </td>
                         <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[plugins]', array('attrs'=>'class="bupCheckbox bupFull"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('plugins') ? 'checked' : '')); ?></td>
                     </tr>
                     <tr>
-                        <th class="col-w-30perc">Themes folder</th>
+                        <th class="col-w-30perc"><?php _e('Themes folder', BUP_LANG_CODE) ?></th>
                         <td class="col-w-1perc">
-                            <i class="fa fa-question supsystic-tooltip" title="Themes folder"></i>
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('Themes folder', BUP_LANG_CODE) ?>"></i>
                         </td>
                         <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[themes]', array('attrs'=>'class="bupCheckbox bupFull"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('themes') ? 'checked' : '')); ?></td>
                     </tr>
                     <tr>
-                        <th class="col-w-30perc">Uploads folder</th>
+                        <th class="col-w-30perc"><?php _e('Uploads folder', BUP_LANG_CODE) ?></th>
                         <td class="col-w-1perc">
-                            <i class="fa fa-question supsystic-tooltip" title="Uploads folder"></i>
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('Uploads folder', BUP_LANG_CODE) ?>"></i>
                         </td>
                         <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[uploads]', array('attrs'=>'class="bupCheckbox bupFull"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('uploads') ? 'checked' : '')); ?></td>
                     </tr>
                     <tr>
-                        <th class="col-w-30perc">Any folder inside wp-content</th>
+                        <th class="col-w-30perc"><?php _e('Any folder inside wp-content', BUP_LANG_CODE) ?></th>
                         <td class="col-w-1perc">
-                            <i class="fa fa-question supsystic-tooltip" title="Any folder inside wp-content"></i>
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('Any folder inside wp-content', BUP_LANG_CODE) ?>"></i>
                         </td>
                         <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[any_directories]', array('attrs'=>'class="bupCheckbox bupFull"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('any_directories') ? 'checked' : '')); ?></td>
-                    </tr>
-                    <tr>
-                        <th class="col-w-30perc"><?php langBup::_e('Safe Update'); ?></th>
-                        <td class="col-w-1perc">
-                            <i class="fa fa-question supsystic-tooltip" title="If the ckeckbox is set up, the database backup will be performed. This will let the database backup work in the transaction mode, i.e. should there occur any failure during the data base recovery, no data from the data-base backup will be transferred to the data-base. The data-base backup recovery will occur if and only there were no failures during the process. If the ckeckbox is not set up the data-base backup will be performed without transaction mode. "></i>
-                        </td>
-                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[safe_update]', array(
-                                'attrs'   => 'class="bupCheckbox"',
-                                'value'   => '1',
-                                'checked' => frameBup::_()->getModule('options')->get('safe_update') == 1 ? 'checked' : '',
-                            )); ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="col-w-30perc"><?php langBup::_e('Force Update'); ?></th>
-                        <td class="col-w-1perc">
-                            <i class="fa fa-question supsystic-tooltip" title="When backup is performed, the labels are usually put at the beginning of the file dump, such as: WordPress version for the backup; WordPress data-base version for the backup; the plugin version for the backup. At recovering, if the force has been off, the backup will not be performed, because it will constantly pop up with the message, that the version is incorrect (the version of WordPress, the version of WordPress data-base or the plugin version). If the force has been on, there will be no such system check and the recovery will be performed."></i>
-                        </td>
-                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[force_update]', array(
-                                'attrs'   => 'class="bupCheckbox"',
-                                'value'   => '1',
-                                'checked' => frameBup::_()->getModule('options')->get('force_update') == 1 ? 'checked' : '',
-                            )); ?>
-                        </td>
                     </tr>
                 </table>
 
@@ -98,11 +74,11 @@
 
                 <table style="width: 100%">
                     <tr>
-                        <td width="200"><i class="fa fa-question supsystic-tooltip" title="Database backup"></i>Database backup</td>
+                        <td width="200"><i class="fa fa-question supsystic-tooltip" title="<?php _e('Database backup', BUP_LANG_CODE) ?>"></i><?php _e('Database backup', BUP_LANG_CODE) ?></td>
                         <td><?php echo htmlBup::checkbox('opt_values[database]', array('attrs'=>'class="bupCheckbox bupFull bupDatabaseCheckbox"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('database') ? 'checked' : '')); ?></td>
                     </tr>
                     <tr class="bupSecretKeyDBRow" style="display: none">
-                        <td width="200"><i class="fa fa-question supsystic-tooltip" title="Secret key for encrypting DB data"></i>Secret key for DB</td>
+                        <td width="200"><i class="fa fa-question supsystic-tooltip" title="<?php _e('Secret key for encrypting DB data', BUP_LANG_CODE) ?>"></i><?php _e('Secret key for DB', BUP_LANG_CODE) ?></td>
                         <?php echo dispatcherBup::applyFilters('getInputForSecretKeyEncryptDb', '') ?>
                     </tr>
                 </table>
@@ -112,8 +88,8 @@
                 <!-- <div class="excludeOpt"> -->
                 <table style="width: 100%">
                     <tr>
-                        <td width="200"><i class="fa fa-question supsystic-tooltip" title="Specify and enter files and folders names which must not be backed up."></i><?php echo langBup::_('Exclude:'); ?></td>
-                        <td><?php echo htmlBup::text( 'opt_values[exclude]', array('attrs'=>'class="excludeInput" title="If entering multiple files/directories, then separate them with commas."', 'value' => frameBup::_()->getModule('options')->get('exclude')) ); ?></td>
+                        <td width="200"><i class="fa fa-question supsystic-tooltip" title="<?php _e('Specify and enter files and folders names which must not be backed up.', BUP_LANG_CODE) ?>"></i><?php echo __('Exclude:', BUP_LANG_CODE); ?></td>
+                        <td><?php echo htmlBup::text( 'opt_values[exclude]', array('attrs'=>'class="excludeInput" title="' . __(' If entering multiple files/directories, then separate them with commas.', BUP_LANG_CODE) . '"', 'value' => frameBup::_()->getModule('options')->get('exclude')) ); ?></td>
                     </tr>
                 </table>
                 <!-- </div> -->
@@ -123,7 +99,7 @@
                 <!-- <div class="emailOpt"> -->
                 <table style="min-height: 45px;">
                     <tr>
-                        <td width="200"><i class="fa fa-question supsystic-tooltip" title="Email notification"></i><?php echo langBup::_('Email notification:'); ?></td>
+                        <td width="200"><i class="fa fa-question supsystic-tooltip" title="<?php _e('Email notification', BUP_LANG_CODE) ?>"></i><?php echo __('Email notification:', BUP_LANG_CODE); ?></td>
                         <td>
                             <?php echo htmlBup::checkbox('__toggleEmailCheckbox', array('attrs'=>'class="bupCheckboxNotUnCheck emailCh"', 'checked' => frameBup::_()->getModule('options')->get('email_ch') == 1 ? 'checked' : '')); ?> <span  class="emailAddress" <?php echo frameBup::_()->getModule('options')->get('email_ch') ? '' : 'style="display:none"' ?>><?php echo htmlBup::text( 'opt_values[email]', array('attrs'=>'class="excludeInput" placeholder="example@mail.com" title=""', 'value' => frameBup::_()->getModule('options')->get('email')) );  ?></span>
                         </td>
@@ -136,7 +112,7 @@
                 <table style="width:100%;">
                     <tr>
                         <td  width="200">
-                            <i class="fa fa-question supsystic-tooltip" title="Specify the path where the data is to be backed up. It 'Use relative path' ckeckbox has been set up, the path will be set against in the root directory, where the WordPress is installed. If 'Use relative path' checkbox has been of, the full path to the disk root should be specified."></i><?php langBup::_e('Warehouse:'); ?>
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('Specify the path where the data is to be backed up. It \'Use relative path\' ckeckbox has been set up, the path will be set against in the root directory, where the WordPress is installed. If \'Use relative path\' checkbox has been of, the full path to the disk root should be specified.', BUP_LANG_CODE) ?>"></i><?php _e('Warehouse:', BUP_LANG_CODE); ?>
                         </td>
                         <td>
                             <?php
@@ -160,7 +136,7 @@
                 <table style="width:100%;">
                     <tr>
                         <td  width="200">
-                            <i class="fa fa-question supsystic-tooltip" title="If the checkbox has been set up, then the backup path must be specified in the Warehouse field against the root directory, where the WordPress is installed. if the checkbox has been off, then the backup path must be specified in the Warehouse field against the disk root."></i><?php langBup::_e('Use relative path:'); ?>
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('If the checkbox has been set up, then the backup path must be specified in the Warehouse field against the root directory, where the WordPress is installed. if the checkbox has been off, then the backup path must be specified in the Warehouse field against the disk root."', BUP_LANG_CODE) ?>></i><?php _e('Use relative path:', BUP_LANG_CODE); ?>
                         </td>
                         <td>
                             <?php

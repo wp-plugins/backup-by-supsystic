@@ -128,7 +128,7 @@ class fieldBup {
 			if ($this->name == 'default_value') {
 				$optionsFromDb = frameBup::_()->getModule('optionsBup')->getHelper()->getOptions($id);
 				if (!empty($optionsFromDb)) {
-					$options = array(0 => langBup::_('Select'));
+					$options = array(0 => __('Select', BUP_LANG_CODE));
 					foreach($optionsFromDb as $k => $v)
 						$options[$k] = $v;
 					$method = 'selectbox';
@@ -167,7 +167,7 @@ class fieldBup {
 					}
 				}
 				if(empty($value))
-					$value = langBup::_('N/A');
+					$value = __('N/A', BUP_LANG_CODE);
 				else
 					$value = implode('<br />', $value);
 				break;
@@ -176,12 +176,12 @@ class fieldBup {
 				if(!empty($options) && !empty($options[ $this->value ])) {
 					$value = $options[ $this->value ];
 				} else {
-					$value = langBup::_('N/A');
+					$value = __('N/A', BUP_LANG_CODE);
 				}
 				break;
 			default:
 				if ($this->value == '') {
-					$value = langBup::_('N/A');
+					$value = __('N/A', BUP_LANG_CODE);
 				} else {
 					if(is_array($this->value)) {
 						$options = $this->getHtmlParam('optionsBup');
@@ -274,23 +274,23 @@ class fieldBup {
 			$add_option = '';
 			switch ($tag) {
 				case 5: 
-					$add_option = langBup::_('Add Checkbox');
+					$add_option = __('Add Checkbox', BUP_LANG_CODE);
 					$options_tag = '';
 					$image_tag = ' style="display:none"';
 				break;
 				case 9: 
-					$add_option = langBup::_('Add Item');
+					$add_option = __('Add Item', BUP_LANG_CODE);
 					$options_tag = '';
 					$image_tag = ' style="display:none"';
 				break;
 				case 12:
-					$add_option = langBup::_('Add Item');
+					$add_option = __('Add Item', BUP_LANG_CODE);
 					$options_tag = '';
 					$image_tag = ' style="display:none"';
 				break;
 				case 10:
 					$options_tag = '';
-					$add_option = langBup::_('Add Radio Button');
+					$add_option = __('Add Radio Button', BUP_LANG_CODE);
 					$image_tag = ' style="display:none"';
 				break;
 				case 8:
@@ -308,20 +308,20 @@ class fieldBup {
 					$output .= fieldAdapterBup::_($id,'getExtraFieldOptions',fieldAdapterBup::STR);
 				$output .= '</div>';
 
-				$output .= '<div class="options image_tag"'.$image_tag.'>'.langBup::_('Dimensions').':<br />';
+				$output .= '<div class="options image_tag"'.$image_tag.'>'.__('Dimensions', BUP_LANG_CODE).':<br />';
 					$params->width?$width = $params->width:'';
 					$params->height?$height = $params->height:'';
-					$output .= langBup::_('width').':<br />';
+					$output .= __('width', BUP_LANG_CODE).':<br />';
 					$output .= htmlBup::text('params[width]',array('value'=>$width)).'<br />';
-					$output .= langBup::_('height').':<br />';
+					$output .= __('height', BUP_LANG_CODE).':<br />';
 					$output .= htmlBup::text('params[height]',array('value'=>$height)).'<br />';
 				$output .= '</div>';
 			}
 			if($this->adapt['htmlParams']) {
 				$output .= fieldAdapterBup::_($this, $this->adapt['htmlParams'], fieldAdapterBup::STR);
 			} else {
-				$output .= '<a href="javascript:void(0);" class="set_properties">'.langBup::_('Click to set field "id" and "class"').'</a>';
-				$output .= '<div class="attributes" style="display:none;">'.langBup::_('Attributes').':<br />';
+				$output .= '<a href="javascript:void(0);" class="set_properties">'.__('Click to set field "id" and "class"', BUP_LANG_CODE).'</a>';
+				$output .= '<div class="attributes" style="display:none;">'.__('Attributes', BUP_LANG_CODE).':<br />';
 				$output .= fieldAdapterBup::_($params,'getFieldAttributes',  fieldAdapterBup::STR);
 				$output .= '</div>';
 			}
@@ -399,7 +399,7 @@ class fieldBup {
 
 	   if (!file_exists($config_xml)) {
 		   // if there is no configuration file for this $module
-		   return langBup::_('There are no configuration options for this module');
+		   return __('There are no configuration options for this module', BUP_LANG_CODE);
 	   }
 	   $output = '';
 	   // reading params structure
@@ -475,9 +475,9 @@ class fieldBup {
 						 $htmlParams = array_merge($htmlParams, $configOptions[$key]['htmlParams']);
 					 }
 				  // output label and html element
-					 $output .= '<label>'.langBup::_($configOptions[$key]['label']);
+					 $output .= '<label>'.__($configOptions[$key]['label'], BUP_LANG_CODE);
 					 if ($configOptions[$key]['description'] != '') {
-						 $output .= '<a class="toeOptTip" tip="'.langBup::_($configOptions[$key]['description']).'"></a>';
+						 $output .= '<a class="toeOptTip" tip="'.__($configOptions[$key]['description'], BUP_LANG_CODE).'"></a>';
 					 }
 					 $output .= '</label><br />';
 					 $output .= htmlBup::$method($name,$htmlParams).'<br />';

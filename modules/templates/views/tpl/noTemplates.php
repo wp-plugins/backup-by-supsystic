@@ -1,1 +1,1 @@
-<?php langBup::_e('No Templates were found')?>
+<?php _e('No Templates were found', BUP_LANG_CODE)?>

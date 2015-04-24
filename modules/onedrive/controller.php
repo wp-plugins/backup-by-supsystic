@@ -73,7 +73,7 @@ class onedriveControllerBup extends controllerBup
 
         $response = new responseBup();
         $response->addMessage(
-            langBup::_('Please, wait...')
+            __('Please, wait...', BUP_LANG_CODE)
         );
 
         return $response->ajaxExec();
@@ -101,7 +101,7 @@ class onedriveControllerBup extends controllerBup
             $response->addError($onedrive->getErrors());
         } else {
             $response->addMessage(
-                langBup::_('Deleted successfully')
+                __('Deleted successfully', BUP_LANG_CODE)
             );
         }
 
@@ -119,12 +119,12 @@ class onedriveControllerBup extends controllerBup
         switch ($drive->upload($files)) {
             case 401:
                 $response->addError(
-                    langBup::_('Authorization required.')
+                    __('Authorization required.', BUP_LANG_CODE)
                 );
                 break;
             case 201:
                 $response->addMessage(
-                    langBup::_('Uploaded successfully.')
+                    __('Uploaded successfully.', BUP_LANG_CODE)
                 );
                 break;
             default:
@@ -132,7 +132,7 @@ class onedriveControllerBup extends controllerBup
                     $response->addError($drive->getErrors());
                 } else {
                     $response->addError(
-                        langBup::_('Unexpected error.')
+                        __('Unexpected error.', BUP_LANG_CODE)
                     );
                 }
         }
@@ -147,7 +147,7 @@ class onedriveControllerBup extends controllerBup
         $onedrive = $this->getModel();
 
         if ($onedrive->download($request['file_id'])) {
-            $response->addMessage('File downloaded.');
+            $response->addMessage(__('File downloaded.', BUP_LANG_CODE));
         } else {
             $response->addError($onedrive->getErrors());
         }

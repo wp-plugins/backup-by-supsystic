@@ -59,7 +59,7 @@
 
 
     define('BUP_PLUGIN_INSTALLED', true);
-    define('BUP_VERSION', '1.2.1');
+    define('BUP_VERSION', '1.2.2');
 	define('BUP_S_VERSION', BUP_VERSION);
     define('BUP_USER', 'user');
 

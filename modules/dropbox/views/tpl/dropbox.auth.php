@@ -5,6 +5,6 @@
         }?>
     </div>
     <a href="<?php echo $authUrl; ?>" class="button button-primary button-large dropboxAuthenticate">
-        <?php langBup::_e('Authenticate'); ?>
+        <?php _e('Authenticate', BUP_LANG_CODE); ?>
     </a>
 </div>

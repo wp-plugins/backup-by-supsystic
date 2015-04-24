@@ -4,12 +4,12 @@ class adminmenuControllerBup extends controllerBup {
         $res = new responseBup();
         $data = reqBup::get('post');
         $fields = array(
-            'name' => new fieldBupBup('name', langBup::_('Your name field is required.'), '', '', 'Your name', 0, array(), 'notEmpty'),
-            'website' => new fieldBupBup('website', langBup::_('Your website field is required.'), '', '', 'Your website', 0, array(), 'notEmpty'),
-            'email' => new fieldBupBup('email', langBup::_('Your e-mail field is required.'), '', '', 'Your e-mail', 0, array(), 'notEmpty, email'),
-            'subject' => new fieldBupBup('subject', langBup::_('Subject field is required.'), '', '', 'Subject', 0, array(), 'notEmpty'),
-            'category' => new fieldBupBup('category', langBup::_('You must select a valid category.'), '', '', 'Category', 0, array(), 'notEmpty'),
-            'message' => new fieldBupBup('message', langBup::_('Message field is required.'), '', '', 'Message', 0, array(), 'notEmpty'),
+            'name' => new fieldBupBup('name', __('Your name field is required.', BUP_LANG_CODE), '', '', 'Your name', 0, array(), 'notEmpty'),
+            'website' => new fieldBupBup('website', __('Your website field is required.', BUP_LANG_CODE), '', '', 'Your website', 0, array(), 'notEmpty'),
+            'email' => new fieldBupBup('email', __('Your e-mail field is required.', BUP_LANG_CODE), '', '', 'Your e-mail', 0, array(), 'notEmpty, email'),
+            'subject' => new fieldBupBup('subject', __('Subject field is required.', BUP_LANG_CODE), '', '', 'Subject', 0, array(), 'notEmpty'),
+            'category' => new fieldBupBup('category', __('You must select a valid category.', BUP_LANG_CODE), '', '', 'Category', 0, array(), 'notEmpty'),
+            'message' => new fieldBupBup('message', __('Message field is required.', BUP_LANG_CODE), '', '', 'Message', 0, array(), 'notEmpty'),
         );
         foreach($fields as $f) {
             $f->setValue($data[$f->name]);
@@ -25,7 +25,7 @@ class adminmenuControllerBup extends controllerBup {
             }
 			$headers[] = 'From: '. $fields['name']->value. ' <'. $fields['email']->value. '>';
             wp_mail('support@supsystic.team.zendesk.com', 'Supsystic Ecommerce Contact Dev', $msg, $headers);
-            $res->addMessage(langBup::_('Done'));
+            $res->addMessage(__('Done', BUP_LANG_CODE));
         }
         $res->ajaxExec();
     }

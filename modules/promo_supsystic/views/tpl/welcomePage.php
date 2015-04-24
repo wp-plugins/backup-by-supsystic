@@ -88,9 +88,9 @@ jQuery(document).ready(function(){
     <div class="container">
         <form id="bupWelcomePageFindUsForm">
             <h1>
-                <?php langBup::_e('Welcome to')?>
+                <?php _e('Welcome to', BUP_LANG_CODE)?>
                 <?php echo BUP_S_WP_PLUGIN_NAME?>
-                <?php langBup::_e('Version')?>
+                <?php _e('Version', BUP_LANG_CODE)?>
                 <?php echo BUP_S_VERSION?>!
             </h1>
             <div class="clear"></div>

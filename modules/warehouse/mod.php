@@ -70,7 +70,7 @@ class warehouseBup extends moduleBup
         $path = apply_filters('bup_not_writable_path', null);
 
         $message = sprintf(
-            langBup::_('Folder "%s" is not writable.'),
+            __('Folder "%s" is not writable.', BUP_LANG_CODE),
             $path
         );
 
@@ -82,7 +82,7 @@ class warehouseBup extends moduleBup
         $path = apply_filters('bup_cant_create_path', null);
 
         $message = sprintf(
-            langBup::_('Can\'t create warehouse directory "%s".'),
+            __('Can\'t create warehouse directory "%s".', BUP_LANG_CODE),
             $path
         );
 

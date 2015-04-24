@@ -106,9 +106,9 @@ class amazonBup extends moduleBup {
     public function registerNotSupportTab($tabs) {
         $tabs['amazon'] = array(
             'title'   => $this->config['title'],
-            'content' => langBup::_(sprintf('To use this module you need '
+            'content' => __(sprintf('To use this module you need '
                     . 'PHP version <code>5.3.3</code> or higher, your PHP version: '
-                    . '<code>%s</code>', PHP_VERSION)),
+                    . '<code>%s</code>', PHP_VERSION), BUP_LANG_CODE),
             'faIcon' => 'fa-font',
         );
 
