@@ -91,10 +91,6 @@ class SSLTester
         return $anyFailed;
     }
 
-    private static function testPinnedCert()
-    {
-    }
-
     private static function testAllowed($url)
     {
         $curl = RequestUtil::mkCurl("test-ssl", $url);

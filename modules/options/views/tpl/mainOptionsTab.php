@@ -36,6 +36,15 @@
                                 <?php endif; ?>
                             </p>
                         </div>
+
+                        <div class="bupPluginReviewBlock" style="display: <?php echo $this->reviewBlockDisplay?>">
+                            <p>
+                                <?php _e('Like Backup By Supsystic and can spare one minute?', BUP_LANG_CODE); ?><br/>
+                                <a href="https://wordpress.org/support/view/plugin-reviews/backup-by-supsystic?rate=5#postform" class="bupDoNotShowReviewBlock" target="_blank">
+                                    <?php _e('Please, help by giving a positive review at wordpress.org', BUP_LANG_CODE); ?>
+                                </a>
+                            </p>
+                        </div>
                         <div class="main-progress-bar" style="display:none;">
                             <div class="progress-bar devblue shine">
                                 <span style="width: 0%;"><b id="bupCompletePercent"></b></span>
@@ -46,6 +55,8 @@
                             <p id="inProcessMessage" class="bupErrorMsg" style="<?php echo $style; ?>">
                                 <?php _e('Backup already in process.', BUP_LANG_CODE) ?>
                             </p>
+                        </div>
+
                     </td>
                 </tr>
             </table>

@@ -44,11 +44,12 @@ final class Curl
             $this->set(CURLOPT_SSL_CIPHER_LIST, $sslCiphersuiteList);
         }
 
+        list($rootCertsFilePath, $rootCertsFolderPath) = RootCertificates::getPaths();
         // Certificate file.
-        $this->set(CURLOPT_CAINFO, __DIR__.'/certs/trusted-certs.crt');
+        $this->set(CURLOPT_CAINFO, $rootCertsFilePath);
         // Certificate folder.  If not specified, some PHP installations will use
         // the system default, even when CURLOPT_CAINFO is specified.
-        $this->set(CURLOPT_CAPATH, __DIR__.'/certs/');
+        $this->set(CURLOPT_CAPATH, $rootCertsFolderPath);
 
         // Limit vulnerability surface area.  Supported in cURL 7.19.4+
         if (defined('CURLOPT_PROTOCOLS')) $this->set(CURLOPT_PROTOCOLS, CURLPROTO_HTTPS);

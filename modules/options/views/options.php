@@ -30,6 +30,7 @@ class optionsViewBup extends viewBup {
         $this->assign('activeTabForCssClass', $activeTabForCssClass);
         parent::display('optionsAdminPage');
     }
+
 	public function sortTabsClb($a, $b) {
 		if(isset($a['sort_order']) && isset($b['sort_order'])) {
 			if($a['sort_order'] > $b['sort_order'])
@@ -45,8 +46,10 @@ class optionsViewBup extends viewBup {
             $this->assign('optModel', $this->getModel());
         $backupPlaces = dispatcherBup::applyFilters('getBackupDestination', array());
         $backupDest = frameBup::_()->getModule('options')->get('glb_dest');
+        $reviewBlockDisplay = $this->getModel('options')->showReviewBlock();
         $this->assign('backupPlaces', $backupPlaces);
         $this->assign('backupDest', $backupDest);
+        $this->assign('reviewBlockDisplay', $reviewBlockDisplay);
         $this->assign('backupOptions', parent::getContent('backupOptions'));
         return parent::getContent('mainOptionsTab');
     }

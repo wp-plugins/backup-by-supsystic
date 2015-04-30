@@ -26,8 +26,8 @@ final class AuthInfo
             throw new AuthInfoLoadException("File doesn't exist: \"$path\"");
         }
 
-        $str = file_get_contents($path);
-        $jsonArr = json_decode($str, true);
+        $str = Util::stripUtf8Bom(file_get_contents($path));
+        $jsonArr = json_decode($str, true, 10);
 
         if (is_null($jsonArr)) {
             throw new AuthInfoLoadException("JSON parse error: \"$path\"");

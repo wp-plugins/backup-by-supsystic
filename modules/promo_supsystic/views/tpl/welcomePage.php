@@ -95,8 +95,8 @@ jQuery(document).ready(function(){
             </h1>
             <div class="clear"></div>
             <div class="about-message">
-                This is first start up of the <?php echo BUP_S_WP_PLUGIN_NAME?> plugin.<br />
-                If you are newbie - check all features on that page, if you are guru - please correct us.
+                <?php _e('This is first start up of the ' . BUP_S_WP_PLUGIN_NAME .' plugin.', BUP_LANG_CODE); ?><br />
+                <?php _e('If you are newbie - check all features on that page, if you are guru - please correct us.', BUP_LANG_CODE); ?>
             </div>
             <div class="plug-icon-shell">
                 <a target="_blank" href="https://supsystic.com/"><img src="<?php echo $this->getModule()->getModPath(). 'img/plug-icon.png'?>" /></a><br />
@@ -106,7 +106,7 @@ jQuery(document).ready(function(){
             <div class="clear"></div>
             <div class="spacer"></div>
     
-            <h2>Where did you find us?</h2>
+            <h2><?php _e('Where did you find us?', BUP_LANG_CODE); ?></h2>
             <?php foreach($this->askOptions as $askId => $askOpt) { ?>
                 <label><?php echo htmlBup::radiobutton('where_find_us', array('value' => $askId))?>&nbsp;<?php echo $askOpt['label']?></label>
                 <?php if($askId == 4 /*Find on the web*/) { ?>
@@ -121,31 +121,31 @@ jQuery(document).ready(function(){
 
             <div class="clear"></div>
             
-            <div class="about-message">What to do next? Check below section:</div>
+            <div class="about-message"><?php _e('What to do next? Check below section:', BUP_LANG_CODE); ?></div>
             <div class="clear"></div>
             
             <div class="col-3">
-                <h3>Boost us:</h3>
-                <p>It's amazing when you boost development with your feedback and ratings. So we create special <a target="_blank" href="https://supsystic.com/">boost page</a> to help you to help us.</p>
+                <h3><?php _e('Boost us:', BUP_LANG_CODE); ?></h3>
+                <p><?php _e('It\'s amazing when you boost development with your feedback and ratings. So we create special <a target="_blank" href="https://supsystic.com/">boost page</a> to help you to help us.', BUP_LANG_CODE); ?></p>
             </div>
     
             <div class="col-3">
-                <h3>Documentation:</h3>
-                <p>Check <a target="_blank" href="https://supsystic.com/">documentation</a> and FAQ section. If you can't solve your problems - <a target="_blank" href="http://supsystic.com/contacts/">contact us</a>.</p>
+                <h3><?php _e('Documentation:', BUP_LANG_CODE); ?></h3>
+                <p><?php _e('Check <a target="_blank" href="https://supsystic.com/">documentation</a> and FAQ section. If you can\'t solve your problems - <a target="_blank" href="http://supsystic.com/contacts/">contact us</a>.', BUP_LANG_CODE); ?></p>
             </div>
     
             <div class="col-3">
-                <h3>Full Features List:</h3>
-                <p>There are so many features, so we can't post it here. Like:</p>
+                <h3><?php _e('Full Features List:', BUP_LANG_CODE); ?></h3>
+                <p><?php _e('There are so many features, so we can\'t post it here. Like:', BUP_LANG_CODE); ?></p>
                 <ul>
-                  <li>Files and Database backup</li>
-                  <li>Backup to the Dropbox</li>
-                  <li>FTP backup</li>
-                  <li>Custom backup</li>
-                  <li>Backup in archive</li>
-                  <li>Restore backups anywhere</li>
+                  <li><?php _e('Files and Database backup', BUP_LANG_CODE); ?></li>
+                  <li><?php _e('Backup to the Dropbox', BUP_LANG_CODE); ?></li>
+                  <li><?php _e('FTP backup', BUP_LANG_CODE); ?></li>
+                  <li><?php _e('Custom backup', BUP_LANG_CODE); ?></li>
+                  <li><?php _e('Backup in archive', BUP_LANG_CODE); ?></li>
+                  <li><?php _e('Restore backups anywhere', BUP_LANG_CODE); ?></li>
                 </ul>
-                <p>So check full features list <a target="_blank" href="https://supsystic.com/">here</a>.</p>
+                <p><?php _e('So check full features list <a target="_blank" href="https://supsystic.com/">here</a>.', BUP_LANG_CODE); ?></p>
                 
             </div>
             <div class="clear"></div>
@@ -153,7 +153,7 @@ jQuery(document).ready(function(){
 			<?php echo htmlBup::hidden('pl', array('value' => BUP_CODE))?>
             <?php echo htmlBup::hidden('page', array('value' => 'promo_supsystic'))?>
 			<?php echo htmlBup::hidden('action', array('value' => 'bupSendInfo'))?>
-            <?php echo htmlBup::submit('gonext', array('value' => 'Thank for check info. Start using plugin.', 'attrs' => 'class="button button-primary button-hero"'))?>
+            <?php echo htmlBup::submit('gonext', array('value' => __('Thank for check info. Start using plugin.', BUP_LANG_CODE), 'attrs' => 'class="button button-primary button-hero"'))?>
             <?php echo htmlBup::hidden('original_page', array('value' => reqBup::getVar('page')))?>
             
            <!-- <a class="button button-primary button-hero bupSendInfo" href="javascript:void(0)">Thank for check info. Start using plugin.</a>-->

@@ -116,9 +116,13 @@ class frameBup {
         register_activation_hook( BUP_DIR. DS. BUP_MAIN_FILE, array('utilsBup', 'activatePlugin')  ); //See classes/install.php file
 
         add_action('admin_notices', array('errorsBup', 'displayOnAdmin'));
-
+        add_action('init', array($this, 'connectLang'));
 		//var_dump($this->getActivationErrors());
         //$operationTime = microtime(true) - $startTime;
+    }
+
+    public function connectLang() {
+        load_plugin_textdomain(BUP_LANG_CODE, false, BUP_PLUG_NAME. '/lang');
     }
 
     /**

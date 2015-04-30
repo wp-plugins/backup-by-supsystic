@@ -79,7 +79,7 @@ class backupLogModelBup extends modelBup
      * @param array $settingsArray
      */
     public function writeBackupSettings($settingsArray){
-        $text = 'Backup settings: ';
+        $text = __('Backup settings: ', BUP_LANG_CODE);
         $settingsStringArray = array();
         if(!empty($settingsArray['full']))
             $settingsStringArray[] = __('Full backup', BUP_LANG_CODE);

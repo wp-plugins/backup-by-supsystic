@@ -55,16 +55,18 @@ abstract class controllerBup {
 		if(empty($name)) $name = $this->getCode();
 		$parentModule = frameBup::_()->getModule( $this->getCode() );
 		$className = '';
-		if(import($parentModule->getModDir(). 'models'. DS. $name. '.php')) {
-			$className = toeGetClassNameBup($name. 'Model');
-		}
-		
-		if($className) {
-			$model = new $className();
-			$model->setCode( $this->getCode() );
-			return $model;
-		}
-		return NULL;
+        if(is_a($parentModule, 'moduleBup')) {
+            if (import($parentModule->getModDir() . 'models' . DS . $name . '.php')) {
+                $className = toeGetClassNameBup($name . 'Model');
+            }
+
+            if ($className) {
+                $model = new $className();
+                $model->setCode($this->getCode());
+                return $model;
+            }
+        }
+        return NULL;
 	}
 	protected function _createView($name = '') {
 		if(empty($name)) $name = $this->getCode();

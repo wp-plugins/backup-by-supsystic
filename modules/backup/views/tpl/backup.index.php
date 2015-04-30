@@ -5,7 +5,7 @@
                 <div id="bupRestorePresetsMsg"></div>
                 <table class="bup-form-table-restore-presets form-table">
                     <tr>
-                        <th colspan="3">Restore Presets:</th>
+                        <th colspan="3"><?php _e('Restore Presets:', BUP_LANG_CODE); ?></th>
                     </tr>
                     <tr>
                         <th class="col-w-30perc"><?php _e('Safe Update', BUP_LANG_CODE); ?></th>
@@ -381,19 +381,20 @@
                 ?>
             </div>
             <!-- Log modal window start  -->
-            <div id="bupShowLogDlg" title="Backup Log:">
+            <div id="bupShowLogDlg" title="<?php _e('Backup Log:', BUP_LANG_CODE); ?>">
                 <p id="bupLogText"></p>
             </div>
             <!-- Log modal window end  -->
 
             <!-- Migrate promo modal window start  -->
-            <div id="bupShowMigratePromoDlg" title="Get PRO Verion!" style="display: none">
+            <div id="bupShowMigratePromoDlg" title="<?php _e('Get PRO Verion!', BUP_LANG_CODE); ?>" style="display: none">
                 <p id="bupMigratePromoText" class="supsystic-plugin">
                     <?php _e('Please, be advised, that this option is available only in PRO version. You can', BUP_LANG_CODE)?>
                     <a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank"><?php _e('Get PRO', BUP_LANG_CODE)?></a>
                 </p>
             </div>
             <!-- Migrate promo modal window end  -->
+            <?php echo dispatcherBup::applyFilters('getInputsForReplaceMigrationData', '')?>
 
             <?php echo dispatcherBup::applyFilters('getModalWindowForSecretKeyEncryptDB', '');?>
         </div>

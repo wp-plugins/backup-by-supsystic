@@ -399,7 +399,7 @@ class backupControllerBup extends controllerBup {
 			return false;
 		}
 		if(!class_exists('ZipArchive')) {
-			$res->addError(__('There are no zib extension on your server. You need to install it. How to install check this link <a target="_blank" href="http://php.net/manual/en/book.zip.php">http://php.net/manual/en/book.zip.php</a>', BUP_LANG_CODE));
+			$res->addError(__('There are no ZipArchive library on your server. You need to install it. How to install check this link <a target="_blank" href="http://php.net/manual/en/book.zip.php">http://php.net/manual/en/book.zip.php</a>', BUP_LANG_CODE));
 			return false;
 		}
 		return true;

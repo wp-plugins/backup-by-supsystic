@@ -78,6 +78,12 @@ var goToOptionsTab = false;
 
 
 jQuery(document).ready(function($){
+	jQuery('.bupDoNotShowReviewBlock').on('click', function(){
+		jQuery.sendFormBup({
+			data: {page: 'options', action: 'doNotShowReviewBlock', reqType: 'ajax'}
+		});
+	});
+
 	if(bupPageTitle !== 'Overview'){
 		var title = jQuery('head title').html();
 		title = title.replace('Overview', bupPageTitle);

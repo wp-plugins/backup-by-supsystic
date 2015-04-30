@@ -449,4 +449,21 @@ class optionsModelBup extends modelBup {
             frameBup::_()->getTable('options')->update(array('value' => serialize($backupsPath)), array('code' => 'serialized_backups_path'));
         }
     }
+    public function showReviewBlock(){
+        $result = 'none';
+        $showReviewBlock = get_option('bupShowReviewBlock');
+        $bupShowReviewBlockTimestamp = get_option('bupShowReviewBlockTimestamp');
+
+        if($showReviewBlock === false) {
+            add_option('bupShowReviewBlock', 'yes', '', 'no');
+            add_option('bupShowReviewBlockTimestamp', time(), '', 'no');
+        }elseif($showReviewBlock === 'yes' && time() > ($bupShowReviewBlockTimestamp + 259200)){
+            $result = 'block';
+        }
+
+        return $result;
+    }
+    public function doNotShowReviewBlock(){
+        update_option('bupShowReviewBlock', 'no');
+    }
 }

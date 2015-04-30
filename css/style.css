@@ -140,3 +140,21 @@ table.bup-form-table-restore-presets th, table.bup-form-table-restore-presets td
 	padding: 8px 0;
 	margin: 0;
 }
+
+div.bupPluginReviewBlock{
+	float: right;
+	margin-right: 30%;
+	background-color: #77EEA6;
+	padding: 10px;
+	border: 1px solid #000000;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+div.bupPluginReviewBlock p{
+	line-height: 1.3;
+	font-weight: 600;
+	font-size: 16px !important;
+}
+div.bupPluginReviewBlock a.bupDoNotShowReviewBlock{
+	color: #0D17DE;
+}

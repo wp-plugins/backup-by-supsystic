@@ -2,11 +2,11 @@
 class promo_supsysticViewBup extends viewBup {
 	public function showWelcomePage() {
 		$this->assign('askOptions', array(
-			1 => array('label' => 'Google'),
-			2 => array('label' => 'Wordpress.org'),
-			3 => array('label' => 'Refer a friend'),
-			4 => array('label' => 'Find on the web'),
-			5 => array('label' => 'Other way...'),
+			1 => array('label' => __('Google', BUP_LANG_CODE)),
+			2 => array('label' => __('Wordpress.org', BUP_LANG_CODE)),
+			3 => array('label' => __('Refer a friend', BUP_LANG_CODE)),
+			4 => array('label' => __('Find on the web', BUP_LANG_CODE)),
+			5 => array('label' => __('Other way...', BUP_LANG_CODE)),
 		));
 		parent::display('welcomePage');
 	}

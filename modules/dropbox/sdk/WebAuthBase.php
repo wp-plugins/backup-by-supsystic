@@ -55,7 +55,7 @@ class WebAuthBase extends AuthBase
 
         if ($tokenType !== "Bearer" && $tokenType !== "bearer") {
             throw new Exception_BadResponse("Unknown \"token_type\"; expecting \"Bearer\", got  "
-                                            .Client::q($tokenType));
+                                            .Util::q($tokenType));
         }
 
         return array($accessToken, $userId);

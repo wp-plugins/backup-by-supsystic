@@ -2,8 +2,8 @@
 Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/backup-plugin
 Tags: backup, back up, restoration, db backup, dump, migrate, email, FTP, mysql backup, database backup, db backup, full backup, restore, transfer, website backup, wordpress backup, migration, backup plugins, backup posts, backup pages 
-Tested up to: 4.2
-Stable tag: 1.2.2
+Tested up to: 4.2.1
+Stable tag: 1.2.4
 
 Online backup, restoration or migrate solution. Custom backup files and database to the FTP, DropBox, Google Drive or Amazon S3. Backup secure option
 
@@ -223,22 +223,30 @@ Temporarily restoring backup on the test servers is a unique feature provided by
 
 == Changelog ==
 
-= 1.2.2 = 24/04/2015
+= 1.2.4 24/04/2015 =
+ * Changes for language translate. Added de_CH lang files
+ * Fixed bug with backup schedule module
+ * Fixed website migration option
+ * Backup to DropBox fixed
+ * Minor bug fixes
+
+= 1.2.2 24/04/2015 =
  * Clearing TMP directory after backup was created & before restore filesystem process was started
  * Minor bugs fix
  * Added backup translation file and option
 
-= 1.2.1 = 20/04/2015
+
+= 1.2.1 20/04/2015 =
  * Code improvements
  * Added backup to FTP on the other server
  * Minor issues fix
 
-= 1.2.0 = 15/04/2015
+= 1.2.0 15/04/2015 =
  * Backup encryption for security reason
  * Fixed bugs in WordPress migration option
  * Added video tutorial How to Backup the first time users
 
-= 1.1.0 = 01/04/2015
+= 1.1.0 01/04/2015 =
  * Added check, when restoration process starting and notice, if restoring directory or files don't have permission to write
  * Code improvements
  * Minor issues fix
