@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Backup by Supsystic 1.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-30 17:40+0500\n"
+"POT-Creation-Date: 2015-05-04 22:10+0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: supsystic.com <supsystic.team@gmail.com>\n"
@@ -708,7 +708,7 @@ msgid "Sending to"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:300
-#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:19
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:20
 msgid "Every hour"
 msgstr ""
 
@@ -717,17 +717,17 @@ msgid "Twice a day"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:302
-#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:27
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:28
 msgid "Every day"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:303
-#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:31
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:32
 msgid "Every week"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:304
-#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:35
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:36
 msgid "Every month"
 msgstr ""
 
@@ -887,28 +887,28 @@ msgid ""
 "you're non authorized on both of them."
 msgstr ""
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:10
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:11
 msgid "Schedule Name:"
 msgstr ""
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:11
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:12
 msgid "Enable Schedule"
 msgstr ""
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:12
-#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:52
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:13
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:53
 msgid "Save Schedule"
 msgstr ""
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:15
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:16
 msgid "Schedule Settings"
 msgstr ""
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:23
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:24
 msgid "Every twice a day"
 msgstr ""
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:40
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:41
 msgid "Backup Presets"
 msgstr ""
 
@@ -1095,16 +1095,19 @@ msgstr ""
 
 #: modules/backup/controller.php:398
 msgid ""
-"There are no zlib extension on your server. You need to install it. How to "
-"install check this link <a target=\"_blank\" href=\"http://php.net/manual/en/"
-"zlib.installation.php\">http://php.net/manual/en/zlib.installation.php</a>"
+"There are no zlib extension on your server. This mean that you can make only "
+"database backup.<br/>Check this link <a target=\"_blank\" href=\"http://php."
+"net/manual/en/zlib.installation.php\">http://php.net/manual/en/zlib."
+"installation.php</a> or contact your hosting provider and ask them to "
+"resolve this issue for you."
 msgstr ""
 
-#: modules/backup/controller.php:402
+#: modules/backup/controller.php:406
 msgid ""
-"There are no ZipArchive library on your server. You need to install it. How "
-"to install check this link <a target=\"_blank\" href=\"http://php.net/manual/"
-"en/book.zip.php\">http://php.net/manual/en/book.zip.php</a>"
+"There are no ZipArchive library on your server. This mean that you can make "
+"only database backup.<br/>Check this link <a target=\"_blank\" href=\"http://"
+"php.net/manual/en/book.zip.php\">http://php.net/manual/en/book.zip.php</a> "
+"or contact your hosting provider and ask them to resolve this issue for you."
 msgstr ""
 
 #: modules/backup/models/backupLog.php:54
@@ -1514,31 +1517,31 @@ msgid ""
 "them."
 msgstr ""
 
-#: modules/options/views/tpl/mainOptionsTab.php:24
+#: modules/options/views/tpl/mainOptionsTab.php:25
 msgid "Where to Backup:"
 msgstr ""
 
-#: modules/options/views/tpl/mainOptionsTab.php:26
+#: modules/options/views/tpl/mainOptionsTab.php:27
 msgid "Available space:"
 msgstr ""
 
-#: modules/options/views/tpl/mainOptionsTab.php:34
+#: modules/options/views/tpl/mainOptionsTab.php:35
 msgid "An errors has been occured while initialize warehouse module."
 msgstr ""
 
-#: modules/options/views/tpl/mainOptionsTab.php:42
+#: modules/options/views/tpl/mainOptionsTab.php:43
 msgid "Like Backup By Supsystic and can spare one minute?"
 msgstr ""
 
-#: modules/options/views/tpl/mainOptionsTab.php:44
+#: modules/options/views/tpl/mainOptionsTab.php:45
 msgid "Please, help by giving a positive review at wordpress.org"
 msgstr ""
 
-#: modules/options/views/tpl/mainOptionsTab.php:52
+#: modules/options/views/tpl/mainOptionsTab.php:53
 msgid "Show Log"
 msgstr ""
 
-#: modules/options/views/tpl/mainOptionsTab.php:56
+#: modules/options/views/tpl/mainOptionsTab.php:57
 msgid "Backup already in process."
 msgstr ""
 

@@ -5,8 +5,11 @@
         ?>
         <form class="cspNiceStyle" id="bupAdminMainForm">
             <div class="description" style="border-bottom: 1px dashed #e3e3e3; padding-bottom: 10px; margin-bottom: 10px">
-                <?php _e('To restore website backup, be sure that all files and folders in the core directory have writing permissions. Backup restoration can rewrite some of them.', BUP_LANG_CODE) ?>
+                <p> <?php _e('To restore website backup, be sure that all files and folders in the core directory have writing permissions. Backup restoration can rewrite some of them.', BUP_LANG_CODE) ?></p>
             </div>
+			<?php if($this->zipNotExtMsg !== true) {?>
+				<p class="bupErrorMsg"><?php echo $this->zipNotExtMsg; ?></p>
+			<?php }?>
             <div id="BUP_MESS_MAIN"></div>
             <table width="100%">
                 <tr class="cspAdminOptionRow cspTblRow">

@@ -53,7 +53,7 @@ class backupControllerBup extends controllerBup {
             return $response->ajaxExec();
         }
 
-        if($this->getModel()->isFilesystemRequired() && !$this->_checkExtensions($response)) {
+        if($this->getModel()->isFilesystemRequired() && !$this->checkExtensions($response)) {
             return $response->ajaxExec();
         }
 
@@ -393,14 +393,22 @@ class backupControllerBup extends controllerBup {
 	public function render($template, $data = array()) {
 		return $this->getView()->getContent('backup.' . $template, $data);
 	}
-	private function _checkExtensions($res) {
+	public function checkExtensions($res=false) {
 		if(!function_exists('gzopen')) {
-			$res->addError(__('There are no zlib extension on your server. You need to install it. How to install check this link <a target="_blank" href="http://php.net/manual/en/zlib.installation.php">http://php.net/manual/en/zlib.installation.php</a>', BUP_LANG_CODE));
-			return false;
+            $msg = __('There are no zlib extension on your server. This mean that you can make only database backup.<br/>Check this link <a target="_blank" href="http://php.net/manual/en/zlib.installation.php">http://php.net/manual/en/zlib.installation.php</a> or contact your hosting provider and ask them to resolve this issue for you.', BUP_LANG_CODE);
+            if(is_a($res, 'responseBup')){
+                $res->addError($msg);
+                $msg = false;
+            }
+			return $msg;
 		}
 		if(!class_exists('ZipArchive')) {
-			$res->addError(__('There are no ZipArchive library on your server. You need to install it. How to install check this link <a target="_blank" href="http://php.net/manual/en/book.zip.php">http://php.net/manual/en/book.zip.php</a>', BUP_LANG_CODE));
-			return false;
+            $msg = __('There are no ZipArchive library on your server. This mean that you can make only database backup.<br/>Check this link <a target="_blank" href="http://php.net/manual/en/book.zip.php">http://php.net/manual/en/book.zip.php</a> or contact your hosting provider and ask them to resolve this issue for you.', BUP_LANG_CODE);
+            if(is_a($res, 'responseBup')){
+                $res->addError($msg);
+                $msg = false;
+            }
+            return $msg;
 		}
 		return true;
 	}

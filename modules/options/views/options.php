@@ -47,6 +47,11 @@ class optionsViewBup extends viewBup {
         $backupPlaces = dispatcherBup::applyFilters('getBackupDestination', array());
         $backupDest = frameBup::_()->getModule('options')->get('glb_dest');
         $reviewBlockDisplay = $this->getModel('options')->showReviewBlock();
+		$zipNotExtMsg = frameBup::_()->getModule('backup')->getController()->checkExtensions();
+        $zipExtExist = ($zipNotExtMsg !== true) ? 'disabled' : true;
+
+        $this->assign('zipExtExist', $zipExtExist);
+        $this->assign('zipNotExtMsg', $zipNotExtMsg);
         $this->assign('backupPlaces', $backupPlaces);
         $this->assign('backupDest', $backupDest);
         $this->assign('reviewBlockDisplay', $reviewBlockDisplay);

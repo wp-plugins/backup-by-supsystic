@@ -30,7 +30,7 @@
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Full backup', BUP_LANG_CODE) ?>"></i>
                         </td class="col-w-1perc">
                         <td class="col-w-1perc">
-                            <?php echo htmlBup::checkbox('opt_values[full]', array('attrs'=>'class="bupCheckbox bupFull" id="bupFullBackup"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('full') ? 'checked' : '' )); ?>
+                            <?php echo htmlBup::checkbox('opt_values[full]', array('attrs'=>'class="bupCheckbox bupFull" id="bupFullBackup" ' . $this->zipExtExist, 'value' => 1, 'checked' => (frameBup::_()->getModule('options')->get('full') && $this->zipExtExist === true) ? 'checked' : '' )); ?>
                         </td>
                     </tr>
                     <tr>
@@ -38,35 +38,35 @@
                         <td class="col-w-1perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('All folders and files backup in the root directory, where the WordPress is installed, except the /wp-content folder.', BUP_LANG_CODE) ?>"></i>
                         </td>
-                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[wp_core]', array('attrs'=>'class="bupCheckbox bupFull"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('wp_core') ? 'checked' : '' )); ?></td>
+                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[wp_core]', array('attrs'=>'class="bupCheckbox bupFull" ' . $this->zipExtExist, 'value' => 1, 'checked' => (frameBup::_()->getModule('options')->get('wp_core') && $this->zipExtExist === true) ? 'checked' : '' )); ?></td>
                     </tr>
                     <tr>
                         <th class="col-w-30perc"><?php _e('Plugins folder', BUP_LANG_CODE) ?></th>
                         <td class="col-w-1perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Plugins folder', BUP_LANG_CODE) ?>"></i>
                         </td>
-                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[plugins]', array('attrs'=>'class="bupCheckbox bupFull"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('plugins') ? 'checked' : '')); ?></td>
+                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[plugins]', array('attrs'=>'class="bupCheckbox bupFull" ' . $this->zipExtExist, 'value' => 1, 'checked' => (frameBup::_()->getModule('options')->get('plugins') && $this->zipExtExist === true) ? 'checked' : '')); ?></td>
                     </tr>
                     <tr>
                         <th class="col-w-30perc"><?php _e('Themes folder', BUP_LANG_CODE) ?></th>
                         <td class="col-w-1perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Themes folder', BUP_LANG_CODE) ?>"></i>
                         </td>
-                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[themes]', array('attrs'=>'class="bupCheckbox bupFull"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('themes') ? 'checked' : '')); ?></td>
+                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[themes]', array('attrs'=>'class="bupCheckbox bupFull" ' . $this->zipExtExist, 'value' => 1, 'checked' => (frameBup::_()->getModule('options')->get('themes') && $this->zipExtExist === true) ? 'checked' : '')); ?></td>
                     </tr>
                     <tr>
                         <th class="col-w-30perc"><?php _e('Uploads folder', BUP_LANG_CODE) ?></th>
                         <td class="col-w-1perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Uploads folder', BUP_LANG_CODE) ?>"></i>
                         </td>
-                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[uploads]', array('attrs'=>'class="bupCheckbox bupFull"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('uploads') ? 'checked' : '')); ?></td>
+                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[uploads]', array('attrs'=>'class="bupCheckbox bupFull" ' . $this->zipExtExist, 'value' => 1, 'checked' => (frameBup::_()->getModule('options')->get('uploads') && $this->zipExtExist === true) ? 'checked' : '')); ?></td>
                     </tr>
                     <tr>
                         <th class="col-w-30perc"><?php _e('Any folder inside wp-content', BUP_LANG_CODE) ?></th>
                         <td class="col-w-1perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Any folder inside wp-content', BUP_LANG_CODE) ?>"></i>
                         </td>
-                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[any_directories]', array('attrs'=>'class="bupCheckbox bupFull"', 'value' => 1, 'checked' => frameBup::_()->getModule('options')->get('any_directories') ? 'checked' : '')); ?></td>
+                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[any_directories]', array('attrs'=>'class="bupCheckbox bupFull" ' . $this->zipExtExist, 'value' => 1, 'checked' => (frameBup::_()->getModule('options')->get('any_directories') && $this->zipExtExist === true) ? 'checked' : '')); ?></td>
                     </tr>
                 </table>
 
