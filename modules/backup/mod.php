@@ -185,7 +185,7 @@ class backupBup extends moduleBup {
 
     public function addLocalFTPBupDestination($tabs){
         $tabs['ftp'] = array(
-            'title'   => 'FTP',
+            'title'   => __('Local Backup', BUP_LANG_CODE),
             'faIcon' => 'fa-server',
         );
 
