@@ -203,20 +203,14 @@ class installerBup {
 	static public function delete() {
 		global $wpdb;
 		$wpPrefix = $wpdb->prefix;
-		$deleteOptions = reqBup::getVar('deleteOptions');
 
-		if(is_null($deleteOptions)) {
-			frameBup::_()->getModule('options')->getView()->displayDeactivatePage();
-			exit;
-		}
-		if((bool) $deleteOptions) {
-			$wpdb->query("DROP TABLE IF EXISTS `".$wpPrefix.BUP_DB_PREF."modules`");
-			$wpdb->query("DROP TABLE IF EXISTS `".$wpPrefix.BUP_DB_PREF."modules_type`");
-			$wpdb->query("DROP TABLE IF EXISTS `".$wpPrefix.BUP_DB_PREF."options`");
-			$wpdb->query("DROP TABLE IF EXISTS `".$wpPrefix.BUP_DB_PREF."options_categories`");
-			$wpdb->query("DROP TABLE IF EXISTS `".$wpPrefix.BUP_DB_PREF."htmltype`");
-			$wpdb->query("DROP TABLE IF EXISTS `".$wpPrefix.BUP_DB_PREF."log`");
-		}
+        $wpdb->query("DROP TABLE IF EXISTS `".$wpPrefix.BUP_DB_PREF."modules`");
+        $wpdb->query("DROP TABLE IF EXISTS `".$wpPrefix.BUP_DB_PREF."modules_type`");
+        $wpdb->query("DROP TABLE IF EXISTS `".$wpPrefix.BUP_DB_PREF."options`");
+        $wpdb->query("DROP TABLE IF EXISTS `".$wpPrefix.BUP_DB_PREF."options_categories`");
+        $wpdb->query("DROP TABLE IF EXISTS `".$wpPrefix.BUP_DB_PREF."htmltype`");
+        $wpdb->query("DROP TABLE IF EXISTS `".$wpPrefix.BUP_DB_PREF."log`");
+
 		//frameBup::_()->getModule('schedule')->getModel()->unSetSchedule(frameBup::_()->getModule('options')->getEvery());
 		
 		delete_option(BUP_DB_PREF. 'db_version');

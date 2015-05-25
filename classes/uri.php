@@ -12,6 +12,8 @@ class uriBup {
         global $wp_rewrite;
         $link = '';
 		if(is_string($params) && strpos($params, 'http') === 0) {
+			if(self::isHttps())
+				$params = self::makeHttps($params);
 			return $params;
 		} elseif(is_array($params) && isset($params['page_id'])) {
             if(is_null($wp_rewrite)) {
@@ -102,6 +104,10 @@ class uriBup {
 			$link = str_replace('http:', 'https:', $link);
 		}
 		return $link;
+	}
+	static public function isHttps() {
+		return is_ssl();
+		//return (isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on');
 	}
 }
 

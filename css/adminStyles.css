@@ -122,7 +122,9 @@ label, span, input, button {
 #lBackupBlock{ margin:0px 0px 0px 10px;}
 
 .excludeOpt{ margin:0px 0px 0px 4px; }
-.excludeInput, .input-regular, .bupSecretKeyForCryptDB { width:250px !important; display:inline !important; }
+.excludeInput, .input-regular { width:250px !important; display:inline !important; }
+
+.bupSecretKeyForCryptDB {width: 100%}
 
 .log_scroll{ width:500px; padding:5px 3px; }
 .logBlock{ text-align:left; width:900px; }
@@ -157,3 +159,22 @@ label, span, input, button {
 .bupApplyNow{ color:#09F !important; }
 .bupMargDest{ margin:0px 0px 12px 0px; }
 .bupMsgDest{ margin:0px 0px 8px 0px; }
+
+div.supsystic-item div.toeBupOptResponsive {
+	display: inline-block; width: 33%; vertical-align: top !important; padding-right: 2%; min-width: 375px;
+}
+
+/* =Media Queries
+-------------------------------------------------------------- */
+
+@media screen and (min-width:100px) and (max-width:1100px) {
+	div.supsystic-item div.toeBupOptResponsive {
+		display: block; width: 100%;
+	}
+}
+
+@media screen and (max-width: 782px) {
+	div.supsystic-item div.toeBupOptResponsive .form-table td, .form-table th {
+		display: table-cell;
+	}
+}

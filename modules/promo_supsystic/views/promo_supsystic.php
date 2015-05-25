@@ -70,4 +70,23 @@ class promo_supsysticViewBup extends viewBup {
             'PHP CURL Support' => array('value' => extension_loaded('curl') ? __('Yes', BUP_LANG_CODE) : __('No', BUP_LANG_CODE), 'error' => !extension_loaded('curl')),
 		);
 	}
+    public function showReviewAdminNotice() {
+        if (is_admin() && frameBup::_()->isPluginAdminPage()) {
+            $showReviewBlock = get_option('bupShowReviewBlockV2'); // v2 because was v1 and it don't using now
+            $bupShowReviewBlockTimestamp = get_option('bupShowReviewBlockTimestampV2');
+            $sendStatAfterSevenDays = get_option('sendStatAfterSevenDays');
+
+            if ($showReviewBlock === false) {
+                add_option('bupShowReviewBlockV2', 'yes');
+                add_option('sendStatAfterSevenDays', 'yes');
+                add_option('bupShowReviewBlockTimestampV2', time());
+            } elseif ($showReviewBlock === 'yes' && time() > ($bupShowReviewBlockTimestamp + 86400 * 7)) {
+                if ($sendStatAfterSevenDays === 'yes') {
+                    $this->getModel()->sendUsageStat(array('code' => 'seven_days_passed', 'visits' => 1,));
+                    update_option('sendStatAfterSevenDays', 'no');
+                }
+                echo parent::getContent('reviewNotice');
+            }
+        }
+    }
 }

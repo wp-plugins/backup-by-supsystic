@@ -5,7 +5,9 @@
         ?>
         <form class="cspNiceStyle" id="bupAdminMainForm">
             <div class="description" style="border-bottom: 1px dashed #e3e3e3; padding-bottom: 10px; margin-bottom: 10px">
-                <p> <?php _e('To restore website backup, be sure that all files and folders in the core directory have writing permissions. Backup restoration can rewrite some of them.', BUP_LANG_CODE) ?></p>
+                <p style="white-space: normal !important;">
+                    <?php _e('To restore website backup, be sure that all files and folders in the core directory have writing permissions. Backup restoration can rewrite some of them.', BUP_LANG_CODE) ?>
+                </p>
             </div>
 			<?php if($this->zipNotExtMsg !== true) {?>
 				<p class="bupErrorMsg"><?php echo $this->zipNotExtMsg; ?></p>
@@ -40,20 +42,13 @@
                             </p>
                         </div>
 
-                        <div class="bupPluginReviewBlock" style="display: <?php echo $this->reviewBlockDisplay?>">
-                            <p>
-                                <?php _e('Like Backup By Supsystic and can spare one minute?', BUP_LANG_CODE); ?><br/>
-                                <a href="https://wordpress.org/support/view/plugin-reviews/backup-by-supsystic?rate=5#postform" class="bupDoNotShowReviewBlock" target="_blank">
-                                    <?php _e('Please, help by giving a positive review at wordpress.org', BUP_LANG_CODE); ?>
-                                </a>
-                            </p>
-                        </div>
                         <div class="main-progress-bar" style="display:none;">
                             <div class="progress-bar devblue shine">
                                 <span style="width: 0%;"><b id="bupCompletePercent"></b></span>
                             </div>
                             <span class="bupShowLog bupShowLogDlg"><?php _e('Show Log', BUP_LANG_CODE) ?></span>
                         </div>
+
                         <div id="BUP_SHOW_LOG" style="display: none;">
                             <p id="inProcessMessage" class="bupErrorMsg" style="<?php echo $style; ?>">
                                 <?php _e('Backup already in process.', BUP_LANG_CODE) ?>

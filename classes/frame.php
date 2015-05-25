@@ -297,6 +297,7 @@ class frameBup {
      * @see wp_enqueue_script definition
      */
     public function addScript($handle, $src = '', $deps = array(), $ver = false, $in_footer = false, $vars = array()) {
+		$src = empty($src) ? $src : uriBup::_($src);
         if($this->_scriptsInitialized) {
             wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
         } else {

@@ -1,0 +1,1748 @@
+# WordPress Blank Pot
+# Copyright (C) 2014 ...
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Backup by Supsystic 1.2.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-05-04 22:10+0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Theo van den Beld <theo@scanpen.eu>\n"
+"Language-Team: supsystic.com <supsystic.team@gmail.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: classes/field.php:131
+msgid "Select"
+msgstr "Selecteer"
+
+#: classes/field.php:170 classes/field.php:179 classes/field.php:184
+msgid "N/A"
+msgstr "N.V.T."
+
+#: classes/field.php:277
+msgid "Add Checkbox"
+msgstr "Voeg Checkbox toe"
+
+#: classes/field.php:282 classes/field.php:287
+msgid "Add Item"
+msgstr "Onderdeel toevoegen"
+
+#: classes/field.php:293
+msgid "Add Radio Button"
+msgstr "Radio knop toevoegen"
+
+#: classes/field.php:311
+msgid "Dimensions"
+msgstr "Dementies"
+
+#: classes/field.php:314
+msgid "width"
+msgstr "breedte"
+
+#: classes/field.php:316
+msgid "height"
+msgstr "hoogte"
+
+#: classes/field.php:323
+msgid "Click to set field \"id\" and \"class\""
+msgstr "Klik om de velden \"id en \"class\" in te stellen"
+
+#: classes/field.php:324
+msgid "Attributes"
+msgstr "Kenmerken"
+
+#: classes/field.php:402
+msgid "There are no configuration options for this module"
+msgstr "Er zijn geen configurabele opties voor deze module"
+
+#: classes/fieldAdapter.php:93
+msgid "Apply To"
+msgstr "Toepassen op"
+
+#: classes/fieldAdapter.php:95
+msgid "Address"
+msgstr "Adres"
+
+#: classes/fieldAdapter.php:96
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:30
+msgid "Destination"
+msgstr "Doel"
+
+#: classes/fieldAdapter.php:97
+msgid "Country"
+msgstr "Land"
+
+#: classes/fieldAdapter.php:100
+msgid "Categories"
+msgstr "Categoriën"
+
+#: classes/fieldAdapter.php:101
+msgid "You have no categories"
+msgstr "U heeft geen categoriën"
+
+#: classes/fieldAdapter.php:102
+msgid "Brands"
+msgstr "Merken"
+
+#: classes/fieldAdapter.php:103
+msgid "You have no brands"
+msgstr "U heeft geen merken"
+
+#: classes/fieldAdapter.php:105
+msgid "Tax Rate"
+msgstr "Belasting percentage"
+
+#: classes/fieldAdapter.php:106
+msgid "Absolute"
+msgstr "Absoluut"
+
+#: classes/fieldAdapter.php:134
+msgid "Not selected"
+msgstr "Niet geselecteerd"
+
+#: classes/fieldAdapter.php:184
+msgid "class"
+msgstr "class"
+
+#: classes/fieldAdapter.php:186
+msgid "id"
+msgstr "id"
+
+#: classes/frame.php:138
+msgid "You have no permissions to view this page"
+msgstr "U heeft geen bevoegdheden om deze pagina te bekijken"
+
+#: classes/html.php:166
+msgid "Upload"
+msgstr "Upload"
+
+#: classes/installer.php:228
+msgid " Page Content"
+msgstr "Pagina Inhoud"
+
+#: classes/modInstaller.php:34
+#, php-format
+msgid "Move files for %s failed"
+msgstr "Bestanden verpaatsen voor %s mislukt"
+
+#: classes/modInstaller.php:37
+#, php-format
+msgid "%s is not plugin module"
+msgstr "%s is geen plugin module"
+
+#: classes/modInstaller.php:76
+msgid "Can not create module directory. Try to set permission to "
+msgstr "Kan de module directory niet maken. Probeer de permissies aan te passen naar"
+
+#: classes/modInstaller.php:103
+msgid "No modules were found in XML file"
+msgstr "Geen modules gevonden in het XML bestand"
+
+#: classes/modInstaller.php:107
+msgid "Invalid XML file"
+msgstr "Ongeldig XML bestand"
+
+#: classes/modInstaller.php:109
+msgid "No XML file were found"
+msgstr "Er is geen XML bestand gevonden"
+
+#: classes/modInstaller.php:128
+#, php-format
+msgid "Install %s failed"
+msgstr "Installatie van %s mislukt"
+
+#: classes/modInstaller.php:134
+msgid "Error Activate module"
+msgstr "Fout bij het activeren van de module"
+
+#: classes/modInstaller.php:164
+msgid "Error Deactivation module"
+msgstr "Fout bij het deactiveren van de module"
+
+#: classes/modInstaller.php:185
+msgid "Error Activating module"
+msgstr "Fout bij het activeren van de module"
+
+#: classes/table.php:263
+msgid "Nothig to update"
+msgstr "Niets om bij te werken"
+
+#: classes/table.php:280
+msgid "Database error. Please contact your developer."
+msgstr "Database fout. Neem contact op met de ontwikkelaar."
+
+#: classes/tables/files.php:7
+msgid "Product ID"
+msgstr "Produkt ID"
+
+#: classes/tables/files.php:8
+msgid "File name"
+msgstr "Bestandsnaam"
+
+#: classes/tables/files.php:9
+msgid "Real Path To File"
+msgstr "Echt pad naar bestand"
+
+#: classes/tables/files.php:10
+msgid "Mime Type"
+msgstr "Mime Type"
+
+#: classes/tables/files.php:11
+msgid "File Size"
+msgstr "Bestandsgrootte"
+
+#: classes/tables/files.php:12
+msgid "Active Download"
+msgstr "Actieve Download"
+
+#: classes/tables/files.php:13
+msgid "Upload Date"
+msgstr "Datum geupload"
+
+#: classes/tables/files.php:14
+msgid "Download Limit"
+msgstr "Download limiet"
+
+#: classes/tables/files.php:15
+msgid "Period Limit"
+msgstr "Periode Limiet"
+
+#: classes/tables/files.php:16
+msgid "Descritpion"
+msgstr "Omschrijving"
+
+#: classes/tables/files.php:17
+msgid "Type ID"
+msgstr "Type ID"
+
+#: classes/tables/htmltype.php:7 classes/tables/log.php:7
+#: classes/tables/modules_type.php:7 classes/tables/options.php:7
+#: classes/tables/options_categories.php:7
+msgid "ID"
+msgstr "ID"
+
+#: classes/tables/htmltype.php:8 classes/tables/options_categories.php:8
+msgid "Method"
+msgstr "Methode"
+
+#: classes/tables/htmltype.php:9 classes/tables/modules.php:12
+#: classes/tables/options.php:11
+msgid "Description"
+msgstr "Omschrijving"
+
+#: classes/tables/log.php:8 classes/tables/modules.php:8
+#: classes/tables/options.php:12
+msgid "Type"
+msgstr "Type"
+
+#: classes/tables/log.php:9
+msgid "Data"
+msgstr "Data"
+
+#: classes/tables/log.php:10
+msgid "Date created"
+msgstr "Creatie datum"
+
+#: classes/tables/log.php:11
+msgid "User ID"
+msgstr "Gebruikers ID"
+
+#: classes/tables/log.php:12
+msgid "Order ID"
+msgstr "Order ID"
+
+#: classes/tables/modules.php:7 classes/tables/modules_type.php:8
+#: classes/tables/options.php:10
+msgid "Label"
+msgstr "Label"
+
+#: classes/tables/modules.php:9
+msgid "Active"
+msgstr "Actief"
+
+#: classes/tables/modules.php:10
+msgid "Params"
+msgstr "Parameters"
+
+#: classes/tables/modules.php:11
+msgid "Has Tab"
+msgstr "Heeft Tab"
+
+#: classes/tables/modules.php:13 classes/tables/options.php:8
+msgid "Code"
+msgstr "Code"
+
+#: classes/tables/modules.php:14
+msgid "External plugin directory"
+msgstr "Externe plugin directory"
+
+#: classes/tables/options.php:9
+msgid "Value"
+msgstr "Waarde"
+
+#: classes/tables/options.php:13
+msgid "Category ID"
+msgstr "Categorie ID"
+
+#: classes/tables/options.php:14
+msgid "Sort Order"
+msgstr "Sorteervolgorde"
+
+#: classes/tables/options.php:15
+msgid "Value Type"
+msgstr "Waarde Type"
+
+#: doc/backup-supsystic-pro/wpUpdater.php:65
+msgid "An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Try again</a>"
+msgstr "Er is een onverwachte HTTP fout opgetreden bij het aanroepen van de API.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Probeer opnieuw</a>"
+
+#: doc/backup-supsystic-pro/wpUpdater.php:70
+msgid "An unknown error occurred"
+msgstr "Er is een onbekende fout opgetreden"
+
+#: doc/backup-supsystic-pro/license/controller.php:9
+#: doc/backup-supsystic-pro/remote_backup/controller.php:76
+#: modules/adminmenu/controller.php:28
+#: modules/options/views/tpl/deactivatePage.php:37
+#: modules/pages/views/tpl/deactivatePage.php:37
+msgid "Done"
+msgstr "Klaar"
+
+#: doc/backup-supsystic-pro/license/controller.php:13
+msgid "Please, try again!"
+msgstr "Probeer het opnieuw!"
+
+#: doc/backup-supsystic-pro/license/mod.php:23
+#, php-format
+msgid "Your license is expired. Once you extend your license - you will be able to Update PRO version. To extend PRO version license - follow <a href=\"%s\" target=\"_blank\">this link</a>, then - go to <a href=\"%s\">License</a> tab anc click on \"Re-activate\" button to re-activate your PRO version."
+msgstr "Uw licentie is verlopen. Zodra u uw licentie heeft vernieuwd kunt u naar de PRO versie updaten. Om uw PRO licentie te vernieuwen - volg <a href=\"%s\" target=\"_blank\">this link</a>, ga dan naar de <a href=\"%s\">License</a> tab en klik op de \"Re-activate\" knop om uw licentie te re-activeren."
+
+#: doc/backup-supsystic-pro/license/mod.php:31
+#, php-format
+msgid "Your license for PRO version of %s plugin - expired. You can <a href=\"%s\" target=\"_blank\">click here</a> to extend your license, then - go to <a href=\"%s\">License</a> tab anc click on \"Re-activate\" button to re-activate your PRO version."
+msgstr "Uw licentie is voor de PRO versie is verlopen. Om uw PRO licentie te vernieuwen - volg <a href=\"%s\" target=\"_blank\">this link</a>, ga dan naar de <a href=\"%s\">License</a> tab en klik op de \"Re-activate\" knop om uw PRO licentie te re-activeren."
+
+#: doc/backup-supsystic-pro/license/mod.php:44
+#: modules/promo_supsystic/views/tpl/adminFooter.php:9
+msgid "License"
+msgstr "Licentie"
+
+#: doc/backup-supsystic-pro/license/models/license.php:54
+msgid "Please enter your License Key"
+msgstr "Geef uw licentie key op"
+
+#: doc/backup-supsystic-pro/license/models/license.php:56
+msgid "Please enter your Email address"
+msgstr "Geef uw email adres op"
+
+#: doc/backup-supsystic-pro/license/models/license.php:130
+msgid "There was a problem with sending request to our autentification server. Please try latter."
+msgstr "Er was een probleem bij het verzenden van het verzoek naar de authenticatie server. Probeer het later nogmaals."
+
+#: doc/backup-supsystic-pro/license/models/license.php:153
+#, php-format
+msgid "License for plugin %s will expire today."
+msgstr "Uw licentie voor de %s plugin verloopt vandaag."
+
+#: doc/backup-supsystic-pro/license/models/license.php:155
+#, php-format
+msgid "License for plugin %s will expire tomorrow."
+msgstr "Uw licentie voor de %s plugin verloopt morgen."
+
+#: doc/backup-supsystic-pro/license/models/license.php:157
+#, php-format
+msgid "License for plugin %s will expire in %d days."
+msgstr "Uw licentie voor de %s plugin verloopt over %d dagen."
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:4
+#, php-format
+msgid "Congradulations! PRO version of %s plugin is activated and working fine!"
+msgstr "Gefeliciteerd, uw PRO versie van de %s plugin is succesvol geactiveerd!"
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:6
+#, php-format
+msgid "Your license for PRO version of %s plugin - expired. You can <a href=\"%s\" target=\"_blank\">click here</a> to extend your license, then - click on \"Re-activate\" button to re-activate your PRO version."
+msgstr "Uw licentie voor de PRO versie is van de %s plugin - is verlopen. Om uw PRO licentie te vernieuwen - volg <a href=\"%s\" target=\"_blank\">this link</a>, ga dan naar de <a href=\"%s\">License</a> tab en klik op de \"Re-activate\" knop om uw PRO licentie te re-activeren."
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:8
+#, php-format
+msgid "Congradulations! You have successfully installed PRO version of %s plugin. Final step to finish Your PRO version setup - is to enter your Email and License Key on this page. This will activate Your copy of software on this site."
+msgstr "Uw heeft de PRO versie van de %s plugin succesvol geïnstalleerd. Als laatste stap van de installatie kunt u nu uw email adres en licentie key opgeven op deze pagina. Daarna is uw plugin geactiveerd voor deze site."
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:20
+#: modules/promo_supsystic/mod.php:68
+msgid "Email"
+msgstr "Email"
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:23
+msgid "Your email address, used on checkout procedure on <a href=\"%\" target=\"_blank\">%s</a>"
+msgstr "Het Email adres dat u gebruikt heeft bij de betaling is <a href=\"%\" target=\"_blank\">%s</a>"
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:31
+msgid "License Key"
+msgstr "Licentie code"
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:34
+msgid "Your License Key from your account on <a href=\"%\" target=\"_blank\">%s</a>"
+msgstr "Uw licentie code van uw account op <a href=\"%\" target=\"_blank\">%s</a>"
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:47
+msgid "Re-activate"
+msgstr "Heractiveer"
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:49
+#: modules/templates/views/tpl/templatesTab.php:71
+msgid "Activate"
+msgstr "Activeer"
+
+#: doc/backup-supsystic-pro/migration/controller.php:10
+msgid "This log created by Migration module, on site: "
+msgstr "Deze log is gecreëerd door de Migratie module op deze site:"
+
+#: doc/backup-supsystic-pro/migration/controller.php:38
+#: doc/backup-supsystic-pro/migration/controller.php:54
+msgid "Backup files don't exist!"
+msgstr "Backup bestanden bestaan niet!"
+
+#: doc/backup-supsystic-pro/migration/models/migration.php:98
+msgid "Entered secret key for decrypt/encrypt DB data wrong! Please, try again."
+msgstr "De ingevoerde geheime sleutel om de database informatie te coderen / decoderen is onjuist, probeer het opnieuw."
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:22
+#: doc/backup-supsystic-pro/migration/views/migration.php:47
+#: doc/backup-supsystic-pro/migration/views/migration.php:75
+#: doc/backup-supsystic-pro/migration/views/migration.php:99
+#: doc/backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:49
+#: modules/backup/views/tpl/backup.index.php:115
+#: modules/backup/views/tpl/backup.index.php:178
+#: modules/backup/views/tpl/backup.index.php:241
+#: modules/backup/views/tpl/backup.index.php:292
+#: modules/backup/views/tpl/backup.index.php:354
+msgid "Migrate"
+msgstr "Migreer"
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:113
+msgid "Find"
+msgstr "Zoek"
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:114
+msgid "Replace"
+msgstr "vervang"
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:117
+msgid "Site URL"
+msgstr "Site URL"
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:122
+msgid "WordPress directory"
+msgstr "WordPress directory"
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:124
+msgid "New WP directory"
+msgstr "Nieuwe WP directory"
+
+#: doc/backup-supsystic-pro/remote_backup/controller.php:58
+#: modules/amazon/controller.php:138 modules/backup/controller.php:297
+#: modules/dropbox/controller.php:167 modules/gdrive/controller.php:117
+msgid "Done!"
+msgstr "Klaar!"
+
+#: doc/backup-supsystic-pro/remote_backup/controller.php:62
+msgid "Please, check connecting params!"
+msgstr "Controleer uw verbindingsinstellingen!"
+
+#: doc/backup-supsystic-pro/remote_backup/controller.php:78
+#: doc/backup-supsystic-pro/remote_backup/controller.php:95
+#: doc/backup-supsystic-pro/remote_backup/controller.php:112
+msgid "Error, please try again"
+msgstr "Fout, probeer het nogmaals"
+
+#: doc/backup-supsystic-pro/remote_backup/controller.php:93
+#: modules/backup/controller.php:342
+msgid "Backup successfully removed"
+msgstr "Backup succesvol verwijderd"
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:16
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:47
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:16
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:45
+msgid "Host name is wrong!"
+msgstr "Host naam klopt niet"
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:19
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:19
+msgid "User or password don't be empty!"
+msgstr "Gebruikersnaam en/of password mag niet leeg zijn! "
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:31
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:31
+msgid "Wrong path on remote server!"
+msgstr "Verkeerd pad op de bestemmingsserver."
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:44
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:42
+msgid "Invalid login or password!"
+msgstr "Onjuiste login of wachtwoord."
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:140
+msgid "There are no FTP extension on your server. You need to install it. How to install check this link <a target=\"_blank\" href=\"http://php.net/manual/en/book.ftp.php\">http://php.net/manual/en/book.ftp.php</a>"
+msgstr "Er is geen FTP extentie op uw server, u moet deze installeren. Voor uitleg volgt u deze link: <a target=\"_blank\" href=\"http://php.net/manual/en/book.ftp.php\">http://php.net/manual/en/book.ftp.php</a>"
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:145
+msgid "There are no FTPS extension on your server. You need to install it. How to install check this link <a target=\"_blank\" href=\"http://php.net/manual/en/function.ftp-ssl-connect.php\">http://php.net/manual/en/function.ftp-ssl-connect.php</a>"
+msgstr "Er is geen FTPS extentie op uw server, u moet deze installeren. Voor uitleg volgt u deze link <a target=\"_blank\" href=\"http://php.net/manual/en/function.ftp-ssl-connect.php\">http://php.net/manual/en/function.ftp-ssl-connect.php</a>"
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:156
+msgid "There are no SFTP(Secure Shell2) extension on your server. You need to install it. How to install check this link <a target=\"_blank\" href=\"http://php.net/manual/en/book.ssh2.php\">http://php.net/manual/en/book.ssh2.php</a>"
+msgstr "Er is geen SFTP (Secure Shell2) extentie op uw server, u moet deze installeren. Voor uitleg volg deze link: <a target=\"_blank\" href=\"http://php.net/manual/en/book.ssh2.php\">http://php.net/manual/en/book.ssh2.php</a>"
+
+#: doc/backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:27
+#: modules/adminmenu/views/adminmenu.php:17 modules/backup/mod.php:101
+#: modules/backup/views/tpl/backup.index.php:92
+#: modules/backup/views/tpl/backup.index.php:160
+#: modules/backup/views/tpl/backup.index.php:223
+#: modules/backup/views/tpl/backup.index.php:279
+#: modules/backup/views/tpl/backup.index.php:336 modules/log/mod.php:20
+#: modules/storage/views/tpl/storageBlock.php:31
+msgid "Restore"
+msgstr "Terugzetten"
+
+#: doc/backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:33
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:63
+#: modules/backup/views/tpl/backup.index.php:104
+#: modules/backup/views/tpl/backup.index.php:168
+#: modules/backup/views/tpl/backup.index.php:229
+#: modules/backup/views/tpl/backup.index.php:282
+#: modules/backup/views/tpl/backup.index.php:344
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: doc/backup-supsystic-pro/remote_backup/views/tpl/remoteFtpAuth.php:25
+msgid "Store params"
+msgstr "Configuratie paremeters opslaan"
+
+#: doc/backup-supsystic-pro/remote_backup/views/tpl/remoteFtpLogout.php:3
+#: modules/amazon/views/tpl/amazon.index.php:4
+#: modules/dropbox/views/tpl/dropbox.index.php:4
+#: modules/gdrive/views/tpl/gdrive.index.php:5
+#: modules/onedrive/views/tpl/onedrive.error.php:13
+#: modules/onedrive/views/tpl/onedrive.index.php:6
+msgid "Logout"
+msgstr "Uitloggen"
+
+#: doc/backup-supsystic-pro/schedule/controller.php:36
+msgid "Schedule successfully removed!"
+msgstr "Schema succesvol verwijderd!"
+
+#: doc/backup-supsystic-pro/schedule/controller.php:47
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:241
+#: modules/backup/controller.php:134 modules/backup/controller.php:188
+msgid "Backup complete"
+msgstr "Backup voltooid"
+
+#: doc/backup-supsystic-pro/schedule/mod.php:16
+msgid "Once Weekly"
+msgstr "Eens per week"
+
+#: doc/backup-supsystic-pro/schedule/mod.php:21
+msgid "Once a month"
+msgstr "Eens per maand"
+
+#: doc/backup-supsystic-pro/schedule/mod.php:43
+#: doc/backup-supsystic-pro/schedule/mod.php:71
+#: modules/adminmenu/views/adminmenu.php:16
+msgid "Schedule"
+msgstr "Schema"
+
+#: doc/backup-supsystic-pro/schedule/mod.php:49
+msgid "Schedule Edit"
+msgstr "Bewerk Schema"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:48
+msgid "Schedule successfully edited!"
+msgstr "Schema succesvol bewerkt!"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:54
+msgid "Cannot create schedule \""
+msgstr "Kan het schema niet maken"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:54
+msgid "Name will be unique, \""
+msgstr "Naam moet uniek zijn, "
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:54
+msgid "exist in DB."
+msgstr "Bestaat in het database"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:59
+msgid "Schedule successfully created!"
+msgstr "Schema succesvol aangemaakt!"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:73
+msgid "Schedule must have name!"
+msgstr "Schema moet een naam hebben!"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:114
+msgid "Please try again!"
+msgstr "Probeer het nogmaals!"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:154
+msgid "Start backup schedule:"
+msgstr "Start backup schema:"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:160
+msgid "files scanned."
+msgstr "bestanden gecontroleerd."
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:162
+msgid "Create a backup of the file system:"
+msgstr "Maak een backup van het bestandssysteem:"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:167
+msgid "Create a backup of the database:"
+msgstr "Maak een backup van het database:"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:171
+msgid "Errors during creation of database backup, errors count"
+msgstr "Fouten tijdens het maken van de database backup, aantal fouten"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:178
+msgid "Upload to the"
+msgstr "Upload naar de"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:178
+msgid "required"
+msgstr "vereist"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:179
+msgid "Files to upload:"
+msgstr "Betstanden te uploaden:"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:186
+msgid "Successfully uploaded to the"
+msgstr "Succesvol geupload naar de"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:202
+#: modules/backup/controller.php:164
+msgid "Authentication required."
+msgstr "Authenticatie vereist."
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:205
+#: modules/backup/controller.php:167 modules/dropbox/models/dropbox.php:274
+msgid "File not found"
+msgstr "Bestand niet gevonden"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:208
+#: modules/backup/controller.php:170
+msgid "Unexpected error (500)"
+msgstr "Onverwachte fout (500)"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:211
+#: modules/backup/controller.php:173
+msgid "Unexpected error"
+msgstr "Onverwachte fout"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:229
+#: modules/backup/controller.php:195
+msgid "Backup by Supsystic Notifications"
+msgstr "Backup van Supsystic Notificatie"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:231
+msgid ". Backup Error!"
+msgstr ". Backup fout!"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:232
+#: modules/backup/controller.php:197
+msgid "Email notification required."
+msgstr "Email notificatie vereist."
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:233
+#: modules/backup/controller.php:198
+msgid "Sending to"
+msgstr "Sturen naar"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:300
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:20
+msgid "Every hour"
+msgstr "Ieder uur"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:301
+msgid "Twice a day"
+msgstr "Tweemaal per dag"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:302
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:28
+msgid "Every day"
+msgstr "Iedere dag"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:303
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:32
+msgid "Every week"
+msgstr "Iedere week"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:304
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:36
+msgid "Every month"
+msgstr "Iedere maand"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:312
+msgid "FTP"
+msgstr "FTP"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:313
+msgid "OneDrive"
+msgstr "OneDrive"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:314
+msgid "Google Drive"
+msgstr "Google Drive"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:315
+msgid "Dropbox"
+msgstr "Dropbox"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:316
+msgid "Amazon S3"
+msgstr "Amazon S3"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:329
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:36
+#: modules/backup/models/backupLog.php:88
+#: modules/options/views/tpl/backupOptions.php:37
+msgid "Wordpress Core"
+msgstr "Wordpress Core"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:331
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:43
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:45
+#: modules/backup/models/backupLog.php:91
+#: modules/options/views/tpl/backupOptions.php:44
+#: modules/options/views/tpl/backupOptions.php:46
+msgid "Plugins folder"
+msgstr "Plugin map"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:333
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:50
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:52
+#: modules/backup/models/backupLog.php:94
+#: modules/options/views/tpl/backupOptions.php:51
+#: modules/options/views/tpl/backupOptions.php:53
+msgid "Themes folder"
+msgstr "Thema map"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:335
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:57
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:59
+#: modules/backup/models/backupLog.php:97
+#: modules/options/views/tpl/backupOptions.php:58
+#: modules/options/views/tpl/backupOptions.php:60
+msgid "Uploads folder"
+msgstr "Upload map"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:337
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:64
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:66
+#: modules/backup/models/backupLog.php:100
+#: modules/options/views/tpl/backupOptions.php:65
+#: modules/options/views/tpl/backupOptions.php:67
+msgid "Any folder inside wp-content"
+msgstr "Alle subfolders in wp-content"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:339
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:76
+#: modules/options/views/tpl/backupOptions.php:77
+msgid "Database backup"
+msgstr "Database backup"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:27
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:29
+#: modules/backup/models/backupLog.php:85
+#: modules/options/views/tpl/backupOptions.php:28
+#: modules/options/views/tpl/backupOptions.php:30
+msgid "Full backup"
+msgstr "Volledige backup"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:38
+#: modules/options/views/tpl/backupOptions.php:39
+msgid "All folders and files backup in the root directory, where the WordPress is installed, except the /wp-content folder."
+msgstr "Alle mappen en bestanden in de Wordpress installatie map, uitgezonderd de /wp-content folder."
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:80
+#: modules/options/views/tpl/backupOptions.php:81
+msgid "Secret key for encrypting DB data"
+msgstr "Geheime sleutel voor het coderen van de database data"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:80
+#: modules/options/views/tpl/backupOptions.php:81
+msgid "Secret key for DB"
+msgstr "Geheime sleutel voor de database"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:90
+#: modules/options/views/tpl/backupOptions.php:91
+msgid "Specify and enter files and folders names which must not be backed up."
+msgstr "Geef de namen bestanden en mappen op die uitgezonderd moeten worden van de backup "
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:90
+#: modules/options/views/tpl/backupOptions.php:91
+msgid "Exclude:"
+msgstr "Uitzonderen:"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:91
+msgid "If entering multiple files/directories, then separate them with commas."
+msgstr "Wanneer u meerdere bestanden/directories opgeeft, scheidt ze dan met een komma."
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:101
+#: modules/options/views/tpl/backupOptions.php:102
+msgid "Email notification"
+msgstr "Email notificatie"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:101
+#: modules/options/views/tpl/backupOptions.php:102
+msgid "Email notification:"
+msgstr "Email notificatie:"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:114
+#: modules/options/views/tpl/backupOptions.php:115
+msgid "Specify the path where the data is to be backed up. It 'Use relative path' ckeckbox has been set up, the path will be set against in the root directory, where the WordPress is installed. If 'Use relative path' checkbox has been of, the full path to the disk root should be specified."
+msgstr "Specifeer het pad waar de backup moet worden opgeslagen. Als 'Use relative path' is aangevinkt, wordt het pad vanaf de root directory van de wordpress installatie gezet. Als 'User relative path' is uitgevinkt, wordt het pad vanaf de root directory van de harddisk gezet. "
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:114
+#: modules/options/views/tpl/backupOptions.php:115
+msgid "Warehouse:"
+msgstr "Magazijn:"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:138
+msgid "If the checkbox has been set up, then the backup path must be specified in the Warehouse field against the root directory, where the WordPress is installed. if the checkbox has been off, then the backup path must be specified in the Warehouse field against the disk root."
+msgstr "Als de checkbox is aangevinkt, dat moet het pad in het Magazijn veld gezet worden naar de root directory van de Wordpress installatie, als de checkbox niet is aangevinkt moet het backup pad gespecificeerd worden vanaf de disk root."
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:138
+#: modules/options/views/tpl/backupOptions.php:139
+msgid "Use relative path:"
+msgstr "Gebruik relatief pad:"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:4
+msgid ""
+"Backup schedule will upload data to the cloud services. To make the work of backup scheduler smooth and correct, you need to be constantly authorized on these services.\n"
+"            Mind that if you're logged in on the page where back up is being launched manually, you're automatically authorized on the editing page of the back up plugin and vice versa. If you're logged out any of these pages, you're non authorized on both of them."
+msgstr ""
+"Het backup schema zal de data naar de cloud uploaden. Om de backup planner correct te laten functioneren dient u continue geautoriseerd te zijn bij deze dienst(en).\n"
+"Bedenk dat wanneer u bent ingelogd op de pagina waarvan de backup manueel gestart is, u automatisch geautoriseerd ben op de aanpassings pagina van de plugin en vice versa. Wanneer u bent uitgelogd bent op één van deze pagina's, bent u op beide niet geautoriseerd. "
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:11
+msgid "Schedule Name:"
+msgstr "Schema naam:"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:12
+msgid "Enable Schedule"
+msgstr "Activeer Schema"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:13
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:53
+msgid "Save Schedule"
+msgstr "Bewaar Schema"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:16
+msgid "Schedule Settings"
+msgstr "Schema instellingen"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:24
+msgid "Every twice a day"
+msgstr "Tweemaal daags"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:41
+msgid "Backup Presets"
+msgstr "Backup pre-instellingen"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:8
+msgid "Create new schedule"
+msgstr "Maak nieuw schema"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:17
+msgid ""
+"<span class=\"bupWarningRed\">Warning:</span> The plugin can not increase the standard work time of the script, please contact your hosting provider.<br />\n"
+"                        Detailed description <a class=\"bupBlueLink\" target=\"_blank\" href=\"http://www.php.net/manual/en/info.configuration.php#ini.max-execution-time\">here</a><br />Current max_execution_time = "
+msgstr ""
+"<span class=\"bupWarningRed\">Warning:</span> De plugin kan de standaard werktijd van het script niet verhogen, neem contact op met uw hosting provider.<br />\n"
+"                        Gedetailleerde omschrijving <a class=\"bupBlueLink\" target=\"_blank\" href=\"http://www.php.net/manual/en/info.configuration.php#ini.max-execution-time\">hier</a><br />Current max_execution_time = "
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:28
+msgid "Schedules"
+msgstr "Schema's"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:29
+msgid "Periodicity"
+msgstr "Interval"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:31
+msgid "Backup content"
+msgstr "Backup inhoud"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:57
+msgid "Edit"
+msgstr "Bewerk"
+
+#: modules/adminmenu/controller.php:7
+msgid "Your name field is required."
+msgstr "Het 'Uw naam' veld is  verplicht."
+
+#: modules/adminmenu/controller.php:8
+msgid "Your website field is required."
+msgstr "Het 'Uw website' veld is verplicht."
+
+#: modules/adminmenu/controller.php:9
+msgid "Your e-mail field is required."
+msgstr "Het 'Uw Email' veld is verplicht."
+
+#: modules/adminmenu/controller.php:10
+msgid "Subject field is required."
+msgstr "Het 'Onderwerp' veld is verplicht."
+
+#: modules/adminmenu/controller.php:11
+msgid "You must select a valid category."
+msgstr "U moet een geldige categorie selecteren."
+
+#: modules/adminmenu/controller.php:12
+msgid "Message field is required."
+msgstr "Berichtenveld is verplicht."
+
+#: modules/adminmenu/mod.php:10
+msgid "Settings"
+msgstr "Instellingen"
+
+#: modules/adminmenu/views/adminmenu.php:14 modules/promo_supsystic/mod.php:33
+msgid "Overview"
+msgstr "Overzicht"
+
+#: modules/adminmenu/views/adminmenu.php:15
+#: modules/options/views/options.php:7
+msgid "Backup"
+msgstr "Backup"
+
+#: modules/adminmenu/views/adminmenu.php:21
+#: modules/adminmenu/views/adminmenu.php:27
+#: modules/adminmenu/views/adminmenu.php:30
+msgid "Backup by Supsystic"
+msgstr "Backup door Supsystic"
+
+#: modules/amazon/controller.php:75
+msgid "Credentials are stored in the database"
+msgstr "Credentials zijn opgeslagen in het database"
+
+#: modules/amazon/controller.php:78
+msgid "Invalid or empty credentials"
+msgstr "Ongeldige of lege credentials"
+
+#: modules/amazon/controller.php:83
+msgid "Bucket stored in the database"
+msgstr "Inhoud bucket opgeslagen in het database"
+
+#: modules/amazon/controller.php:86
+msgid "Invalid bucket"
+msgstr "Ongeldige bucket"
+
+#: modules/amazon/controller.php:105 modules/dropbox/controller.php:117
+#: modules/onedrive/controller.php:76
+msgid "Please, wait..."
+msgstr "Even geduld a.u.b."
+
+#: modules/amazon/controller.php:141
+msgid "You did not specify credentials or credentials are invalid"
+msgstr "U heeft uw credentials niet opgegeven of ze zijn ongeldig"
+
+#: modules/amazon/controller.php:144
+msgid "Bucket not found"
+msgstr "Bucket niet gevonden"
+
+#: modules/amazon/controller.php:174 modules/dropbox/controller.php:205
+#: modules/gdrive/controller.php:154
+msgid "File successfully deleted"
+msgstr "Bestand succesvol verwijderd"
+
+#: modules/amazon/controller.php:177
+msgid "Not enough input parameters"
+msgstr "Niet genoeg input parameters"
+
+#: modules/amazon/controller.php:180
+msgid "File not found on server"
+msgstr "Bestand niet gevonden op de server"
+
+#: modules/amazon/controller.php:183
+msgid "Failed to delete the selected file"
+msgstr "Verwijderen geselecteerd bestand mislukt"
+
+#: modules/amazon/controller.php:206
+msgid "File not found on Amazon S3"
+msgstr "Bestand niet gevonden op Amazon S3"
+
+#: modules/amazon/controller.php:221
+msgid "Enter your AWS Access Key, Secret Key and Bucket name"
+msgstr "Geeft uw AWS togangscode, geheime code en denaam van de bucket op."
+
+#: modules/amazon/controller.php:224
+msgid "Access Key"
+msgstr "Toegangssleutel"
+
+#: modules/amazon/controller.php:230
+msgid "Secret Key"
+msgstr "Geheime sleutel"
+
+#: modules/amazon/controller.php:236
+msgid "Bucket"
+msgstr "Bcuket"
+
+#: modules/amazon/controller.php:246
+msgid "Store credentials"
+msgstr "Winkel credentials"
+
+#: modules/backup/controller.php:78
+msgid "Clear out old temporary files"
+msgstr "Verwijder oude tijdelijke bestanden "
+
+#: modules/backup/controller.php:109
+msgid "Send request to generate temporary file stacks"
+msgstr "Stuur aanvraag om tijdelijke bestands stacks aan te maken"
+
+#: modules/backup/controller.php:239 modules/backup/controller.php:240
+msgid "Unable to create the temporary archive"
+msgstr "Kan geen tijdelijk archief aanmaken"
+
+#: modules/backup/controller.php:284
+msgid "Unable to restore from "
+msgstr "Kan niet terugzetten van "
+
+#: modules/backup/controller.php:292
+msgid "Unable to restore backup files. Check folder or files writing permissions. Try to set 766 permissions to the:"
+msgstr "Kan de backup bestanden niet terugzetten. Controleer permissies van de mappen en/of bestanden. Probeer 766 de permissies te zetten naar de: "
+
+#: modules/backup/controller.php:345
+msgid "Unable to delete backup"
+msgstr "Kan de backup niet verwijderen"
+
+#: modules/backup/controller.php:358
+msgid "Successfully!"
+msgstr "Succesvol!"
+
+#: modules/backup/controller.php:371
+msgid "Setting saved!"
+msgstr "Instellingen opgeslagen!"
+
+#: modules/backup/controller.php:373
+msgid "Database error, please try again"
+msgstr "Database fout, probeer het opnieuw"
+
+#: modules/backup/controller.php:398
+msgid "There are no zlib extension on your server. This mean that you can make only database backup.<br/>Check this link <a target=\"_blank\" href=\"http://php.net/manual/en/zlib.installation.php\">http://php.net/manual/en/zlib.installation.php</a> or contact your hosting provider and ask them to resolve this issue for you."
+msgstr "Er zijn geen zlib extenties op uw server. Hierdoor kunt u alleen een database backup maken.<br/>Controleer deze link <a target=\"_blank\" href=\"http://php.net/manual/en/zlib.installation.php\">http://php.net/manual/en/zlib.installation.php</a> of neem contact op met uw hosting provider om dit probleem voor u op te lossen."
+
+#: modules/backup/controller.php:406
+msgid "There are no ZipArchive library on your server. This mean that you can make only database backup.<br/>Check this link <a target=\"_blank\" href=\"http://php.net/manual/en/book.zip.php\">http://php.net/manual/en/book.zip.php</a> or contact your hosting provider and ask them to resolve this issue for you."
+msgstr "Er is geen  ZipArchive bibliotheek op uw server. Hierdoor kunt u alleen een database backup maken.<br/>Controleer deze link <a target=\"_blank\" href=\"http://php.net/manual/en/book.zip.php\">http://php.net/manual/en/book.zip.php</a> of neem contact op met uw hosting provider om dit probleem voor u op te lossen."
+
+#: modules/backup/models/backupLog.php:54
+msgid "Please, don't delete the line that is lower, it is used for technical purposes!"
+msgstr "S.v.p. de onderstaande regel niet verwijderen, deze is nodig vanwege technische doeleinden! "
+
+#: modules/backup/models/backupLog.php:82
+msgid "Backup settings: "
+msgstr "Backup instellingen"
+
+#: modules/backup/models/backupLog.php:106
+msgid "Exclude: "
+msgstr "Uitzonderen:"
+
+#: modules/backup/models/backupLog.php:109
+msgid "Email notification: "
+msgstr "Email notificaties"
+
+#: modules/backup/models/database.php:167
+msgid "Secret key for decrypt DB data wrong! Please, try again."
+msgstr "Geheime sleutel voor het ontleutelen van de database gegevens is fout! Probeer het opnieuw."
+
+#: modules/backup/models/database.php:185
+#: modules/backup/models/database.php:389
+msgid "Your MySQL server does not support transactions, \"safe update\" unavailable"
+msgstr "Uw MySQL server staat geen transacties toe, \"safe update\" niet beschikbaar"
+
+#: modules/backup/models/database.php:280
+msgid "Error: unexpected fgets() fail"
+msgstr "Fout: onverwachte fgets() fout"
+
+#: modules/backup/models/database.php:285
+msgid "Unable to clear the database before restoring"
+msgstr "Kan de database niet opschonen voor het terugzetten."
+
+#: modules/backup/models/database.php:314
+msgid "Can not find file "
+msgstr "Kan het bestand niet vinden"
+
+#: modules/backup/models/database.php:337
+msgid "Revision of backup and your database do not match. You must enable the Force Update options to update (at one's own risk)"
+msgstr "Versie van de backup en uw database zijn niet hetzelfde. U moet de 'Forceer Update' opties gebruiken. (Op uw eigen risico!)"
+
+#: modules/backup/models/database.php:346
+msgid "This backup was made on another version of WordPress. You must enable the Force Update options to update (at one's own risk)"
+msgstr "Deze backup is gemaakt met een andere versie van WordPress. U moet de Forceer Update optie gebruiken. (Op uw eigen risico!)"
+
+#: modules/backup/models/database.php:355
+msgid "Backup was created with a different version of the plugin. You must enable the Force Update options to update (at one's own risk)"
+msgstr "Backup is gemaakt met een andere versie van de plugin. U moet de Forceer Update optie gebruiken. (Op uw eigen risico!)"
+
+#: modules/backup/models/filesystem.php:29
+#, php-format
+msgid "Filesystem backup %s does not exists"
+msgstr "Bestandssysteem backup %s bestaat niet"
+
+#: modules/backup/models/filesystem.php:57
+msgid "An error has occurred while unpacking the archive"
+msgstr "Er is een fout opgetreden bij het uitpakken van het archief"
+
+#: modules/backup/views/tpl/backup.index.php:8
+msgid "Restore Presets:"
+msgstr "Herstel instellingen:"
+
+#: modules/backup/views/tpl/backup.index.php:11
+msgid "Safe Update"
+msgstr "Veilige update"
+
+#: modules/backup/views/tpl/backup.index.php:13
+msgid "If the ckeckbox is set up, the database backup will be performed. This will let the database backup work in the transaction mode, i.e. should there occur any failure during the data base recovery, no data from the data-base backup will be transferred to the data-base. The data-base backup recovery will occur if and only there were no failures during the process. If the ckeckbox is not set up the data-base backup will be performed without transaction mode."
+msgstr "Als de checkbox is aangevinkt, wordt de database gebackuped. Dit laat de database backup plaatsvinden in transactie modus. D.w.z. dat mocht er een fout plaatsvinden tijdens de database recovery, er geen data van de backup in de database wordt geschreven. Als deze checkbox niet is aangevinkt zal de de database backup plaatsvinden zonder transactie modus."
+
+#: modules/backup/views/tpl/backup.index.php:23
+msgid "Force Update"
+msgstr "Forceer Update"
+
+# Please doublecheck the English text. It is hard to understand. I tried to tranlate this as good as possible.
+#: modules/backup/views/tpl/backup.index.php:25
+msgid "When backup is performed, the labels are usually put at the beginning of the file dump, such as: WordPress version for the backup; WordPress data-base version for the backup; the plugin version for the backup. At recovering, if the force has been off, the backup will not be performed, because it will constantly pop up with the message, that the version is incorrect (the version of WordPress, the version of WordPress data-base or the plugin version). If the force has been on, there will be no such system check and the recovery will be performed."
+msgstr "Wanneer er een backup wordt gemaakt worden de labels normaal gesproken aan het begin van de bestandsdump gezet, b.v. WordPress versie van de backup; WordPress data-base versie van de backup; the plugin versie van de backup. Bij een recovery, als 'forceer' uit was, wordt de backup niet uitgevoerd. Er komt dan continue een pop-up met het bericht dat de versie incorrect is. (WordPress versie van de backup; WordPress data-base versie van de backup; the plugin versie van de backup.) Wanneer 'forceer' aan was, wordt er geen check uitgevoerd en wordt de recovery gewoon uitgevoerd."
+
+#: modules/backup/views/tpl/backup.index.php:40
+msgid " / Start:"
+msgstr " / Start:"
+
+#: modules/backup/views/tpl/backup.index.php:41
+msgid " / Finish:"
+msgstr " / Einde:"
+
+#: modules/backup/views/tpl/backup.index.php:51
+msgid "Backup to <b>FTP</b> / ID"
+msgstr "Backup naar <b>FTP</b> / ID"
+
+#: modules/backup/views/tpl/backup.index.php:87
+#: modules/backup/views/tpl/backup.index.php:148
+#: modules/backup/views/tpl/backup.index.php:212
+#: modules/backup/views/tpl/backup.index.php:274
+#: modules/backup/views/tpl/backup.index.php:325
+msgid "Filesystem"
+msgstr "Bestandssysteem"
+
+#: modules/backup/views/tpl/backup.index.php:87
+#: modules/backup/views/tpl/backup.index.php:148
+#: modules/backup/views/tpl/backup.index.php:212
+#: modules/backup/views/tpl/backup.index.php:274
+#: modules/backup/views/tpl/backup.index.php:325
+msgid "Database"
+msgstr "Database"
+
+#: modules/backup/views/tpl/backup.index.php:98
+msgid "Download"
+msgstr "Download"
+
+#: modules/backup/views/tpl/backup.index.php:120
+#: modules/backup/views/tpl/backup.index.php:185
+#: modules/backup/views/tpl/backup.index.php:248
+#: modules/backup/views/tpl/backup.index.php:299
+#: modules/backup/views/tpl/backup.index.php:361
+msgid "Show Backup Log"
+msgstr "Laat de backup log zien"
+
+#: modules/backup/views/tpl/backup.index.php:122
+#: modules/backup/views/tpl/backup.index.php:187
+#: modules/backup/views/tpl/backup.index.php:250
+#: modules/backup/views/tpl/backup.index.php:301
+#: modules/backup/views/tpl/backup.index.php:363
+msgid "Log is clear."
+msgstr "Log is leeg"
+
+#: modules/backup/views/tpl/backup.index.php:138
+msgid "Backup to <b>GoogleDrive</b> / ID"
+msgstr "Backup naar <b>GoogleDrive</b> / ID"
+
+#: modules/backup/views/tpl/backup.index.php:202
+msgid "Backup to <b>OneDrive</b> / ID"
+msgstr "Backup naar <b>OneDrive</b> / ID"
+
+#: modules/backup/views/tpl/backup.index.php:265
+msgid "Backup to <b>Amazon S3</b> / ID"
+msgstr "Backup naar <b>Amazon S3</b> / ID"
+
+#: modules/backup/views/tpl/backup.index.php:316
+msgid "Backup to <b>DropBox</b> / ID"
+msgstr "Backup naar <b>DropBox</b> / ID"
+
+#: modules/backup/views/tpl/backup.index.php:379
+msgid "Backups don't exist!"
+msgstr "Backups bestaan niet!"
+
+#: modules/backup/views/tpl/backup.index.php:384
+msgid "Backup Log:"
+msgstr "Backup Log:"
+
+#: modules/backup/views/tpl/backup.index.php:390
+msgid "Get PRO Verion!"
+msgstr "Verkrijg de PRO versie!"
+
+#: modules/backup/views/tpl/backup.index.php:392
+msgid "Please, be advised, that this option is available only in PRO version. You can"
+msgstr "Deze functie is alleen beschikbaar in de PRO versie, U kunt"
+
+#: modules/backup/views/tpl/backup.index.php:393
+#: modules/promo_supsystic/mod.php:103 modules/promo_supsystic/mod.php:109
+msgid "Get PRO"
+msgstr "Verkrijg de PRO versie"
+
+#: modules/dropbox/controller.php:130
+msgid "Your server not meet the requirements Dropbox SDK"
+msgstr "Uw server voldoet niet aan de eisen voor de Dropbox SDK"
+
+#: modules/dropbox/controller.php:170 modules/dropbox/models/dropbox.php:252
+#: modules/dropbox/models/dropbox52.php:282
+#: modules/dropbox/models/dropbox52.php:317 modules/gdrive/controller.php:120
+#: modules/gdrive/controller.php:157 modules/gdrive/controller.php:173
+msgid "Authentication required"
+msgstr "Autorisatie verplicht"
+
+#: modules/dropbox/controller.php:173 modules/gdrive/controller.php:127
+msgid "Nothing to upload"
+msgstr "Niets te uploaden"
+
+#: modules/dropbox/controller.php:201 modules/gdrive/controller.php:150
+msgid "Nothing to delete"
+msgstr "Niets te verwijderen"
+
+#: modules/dropbox/controller.php:224
+msgid "There was an error during recovery"
+msgstr "Er is een fout opgetreden tijdens herstellen"
+
+#: modules/dropbox/mod.php:130
+msgid "Your server does not support the Dropbox without cURL extension"
+msgstr "Uw server ondersteunt geen Dropbox zonder cURL extentie"
+
+#: modules/dropbox/views/tpl/dropbox.auth.php:8
+#: modules/gdrive/views/tpl/gdrive.auth.php:3
+#: modules/onedrive/views/tpl/onedrive.auth.php:3
+msgid "Authenticate"
+msgstr "Authenticeer"
+
+#: modules/gdrive/controller.php:21
+msgid "Your server do not have curl extension installed."
+msgstr "Er is geen cURL extentie op uw server aanwezig"
+
+#: modules/gdrive/controller.php:22
+msgid "This extension is required by Google API SDK."
+msgstr "Deze extentie is verplicht door de Google API SDK."
+
+#: modules/gdrive/controller.php:23
+msgid "Please install it at first."
+msgstr "S.v.p. eerst installeren."
+
+#: modules/gdrive/controller.php:24
+msgid "You can also check following links for more info:"
+msgstr "U kunt de volgende links bezoeken voor meer informatie:"
+
+#: modules/gdrive/controller.php:40
+msgid "For long-term storage of Google Drive authorization, please re-connect our application in your personal account of Google Drive."
+msgstr "Verbind onze applicatie opnieuw in uw persoonlijke Google Drive account om lange termijn authorisatie te bewerkstelligen "
+
+#: modules/gdrive/controller.php:55
+msgid "Your server is not support Google API Client Library."
+msgstr "Uw server heeft geen Support voor de Google Client Library API"
+
+#: modules/gdrive/controller.php:57
+msgid "PHP JSON extension required"
+msgstr "PHP JSAN extentie benodigd"
+
+#: modules/gdrive/controller.php:97
+msgid "Please wait..."
+msgstr "Even geduld a.u.b."
+
+#: modules/gdrive/controller.php:188
+msgid "File not found on Google Drive"
+msgstr "Bestand niet gevonden in Google Drive"
+
+#: modules/gdrive/controller.php:191
+msgid "Failed to download file"
+msgstr "Download van het bestand mislukt"
+
+#: modules/gdrive/models/gdrive.php:313
+msgid "Unable to get parent folder ID."
+msgstr "Kan het ID van de parent map niet verkrijgen"
+
+#: modules/onedrive/controller.php:104
+msgid "Deleted successfully"
+msgstr "Succesvol verwijderd"
+
+#: modules/onedrive/controller.php:122
+#: modules/onedrive/models/onedrive.php:399
+msgid "Authorization required."
+msgstr "Authorisatie vereist"
+
+#: modules/onedrive/controller.php:127
+msgid "Uploaded successfully."
+msgstr "Succesvol geupload"
+
+#: modules/onedrive/controller.php:135
+msgid "Unexpected error."
+msgstr "Onverwachte fout."
+
+#: modules/onedrive/controller.php:150
+msgid "File downloaded."
+msgstr "Bestand gedownload."
+
+#: modules/onedrive/models/onedrive.php:408
+msgid "Enexpected error."
+msgstr "Onverwachte fout."
+
+#: modules/onedrive/models/onedrive.php:422
+msgid "Failed to save downloaded file."
+msgstr "Opslaan van het bestand is mislukt."
+
+#: modules/onedrive/views/tpl/onedrive.authError.php:4
+msgid "Authentication failed."
+msgstr "Authenticatie mislukt."
+
+#: modules/onedrive/views/tpl/onedrive.error.php:4
+msgid "An error has been occured."
+msgstr "Er is een fout opgetreden."
+
+#: modules/options/controller.php:10 modules/options/controller.php:21
+msgid "Save Complete"
+msgstr "Opslaan voltooid"
+
+#: modules/options/mod.php:20
+msgid "General"
+msgstr "Algemeen"
+
+#: modules/options/models/modules.php:32
+msgid "Module Updated"
+msgstr "Module bijgewerkt"
+
+#: modules/options/models/modules.php:47
+msgid "Module Update Failed"
+msgstr "Bijwerken module mislukt"
+
+#: modules/options/models/modules.php:50
+msgid "Error module ID"
+msgstr "Fount in module ID"
+
+#: modules/options/models/options.php:27
+msgid "Incorrect email address"
+msgstr "Onjuist Email adres"
+
+#: modules/options/models/options.php:39
+msgid "No change"
+msgstr "Niets aangepast"
+
+#: modules/options/models/options.php:57
+msgid "PRO version is not activated"
+msgstr "PRO versie is niet geactiveerd"
+
+#: modules/options/models/options.php:61
+msgid "No selected options"
+msgstr "Geen opties geselecteerd"
+
+#: modules/options/models/options.php:246
+msgid "Option "
+msgstr "Optie"
+
+#: modules/options/models/options.php:248
+msgid "Invalid option ID or Code"
+msgstr "Ongeldig optie ID of Code"
+
+#: modules/options/models/options.php:251
+msgid "Empty data to save option"
+msgstr "Leeg data om op te slaan optie "
+
+#: modules/options/models/options.php:291
+#: modules/options/models/options.php:307
+msgid "Empty data to setup"
+msgstr "Empty data to setup"
+
+#: modules/options/models/options.php:321
+#: modules/options/models/options.php:323
+#: modules/options/models/options.php:344
+#: modules/options/models/options.php:346
+#: modules/options/models/options.php:376
+#: modules/options/models/options.php:378
+msgid "There is no default for this option and current template"
+msgstr "Er is geen standaard voor deze optie en huidige template"
+
+#: modules/options/models/options.php:325
+#: modules/options/models/options.php:348
+#: modules/options/models/options.php:380
+msgid "Empty option code"
+msgstr "Lege optie code"
+
+#: modules/options/models/options.php:358
+#: modules/options/models/options.php:390
+msgid "Unable to remove image"
+msgstr "Kan de afbeelding niet verwijderen"
+
+#: modules/options/views/tpl/backupOptions.php:25
+msgid "Backup Presets:"
+msgstr "Backup instellingen"
+
+#: modules/options/views/tpl/backupOptions.php:92
+msgid " If entering multiple files/directories, then separate them with commas."
+msgstr "Wanneer u meerdere bestanden / directories invult, scheidt deze dan met komma's."
+
+#: modules/options/views/tpl/backupOptions.php:139
+msgid "If the checkbox has been set up, then the backup path must be specified in the Warehouse field against the root directory, where the WordPress is installed. if the checkbox has been off, then the backup path must be specified in the Warehouse field against the disk root.\""
+msgstr "Als de checkbox aangevinkt is, moet het backup pad in het warehouse veld ingesteld worden vanaf de root directory van de wordpress installatie. Als de checkbox niet is aangevinkt moet het pad gespecificeerd worden vanaf de root van de disk.\""
+
+#: modules/options/views/tpl/deactivatePage.php:33
+#: modules/pages/views/tpl/deactivatePage.php:33
+msgid "Delete Plugin Data (options, setup data, database tables, etc.)"
+msgstr "Verwijder Plugin Data  (options, setup data, database tables, enz.)"
+
+#: modules/options/views/tpl/mainOptionsTab.php:8
+msgid "To restore website backup, be sure that all files and folders in the core directory have writing permissions. Backup restoration can rewrite some of them."
+msgstr "Zorg dat alle bestanden en folders in de hoofd directory beschreven mogen worden om de backup succesvol terug te kunnen zetten. Het kan voorkomen dat dit nodig is bij het terugzetten van de backup."
+
+#: modules/options/views/tpl/mainOptionsTab.php:25
+msgid "Where to Backup:"
+msgstr "Waar moet de backup naartoe:"
+
+#: modules/options/views/tpl/mainOptionsTab.php:27
+msgid "Available space:"
+msgstr "Beschikbare ruimte:"
+
+#: modules/options/views/tpl/mainOptionsTab.php:35
+msgid "An errors has been occured while initialize warehouse module."
+msgstr "Er is een fout opgetreden bij het initialiseren van de wharehouse module"
+
+#: modules/options/views/tpl/mainOptionsTab.php:43
+msgid "Like Backup By Supsystic and can spare one minute?"
+msgstr "Vindt u Backup By Supsystic een goede plugin en heeft u één minuutje voor ons?"
+
+#: modules/options/views/tpl/mainOptionsTab.php:45
+msgid "Please, help by giving a positive review at wordpress.org"
+msgstr "Help ons door ons een positieve review te geven op wordpress.org"
+
+#: modules/options/views/tpl/mainOptionsTab.php:53
+msgid "Show Log"
+msgstr "Laat log zien"
+
+#: modules/options/views/tpl/mainOptionsTab.php:57
+msgid "Backup already in process."
+msgstr "Backup is al bezig."
+
+#: modules/pages/views/tpl/pagesTab.php:14
+msgid "Pages Options"
+msgstr "Pagina opties"
+
+#: modules/pages/views/tpl/pagesTab.php:17
+msgid "Recreate Pages"
+msgstr "Maak pagina's opniew aan"
+
+#: modules/pages/views/tpl/pagesTab.php:18
+msgid "If you accidently deleted one of plugin page - Login, or Checkout, or Shopping cart for example, just click on this button - and pages, that you deleted, will be created again. Do not use it without emergency."
+msgstr "Als u per ongeluk een plugin pagina verwijderd hebt, bijvoorbeeld de Login, Checkout of Shopping cart, klik dan op onderstaande knop en de pagina's worden opnieuw aangemaakt. Gebruik deze optie alleen in een noodgeval!"
+
+#: modules/promo_supsystic/controller.php:8
+msgid "Information was saved. Thank you!"
+msgstr "Informatie is opgeslagen. Dank u!"
+
+#: modules/promo_supsystic/mod.php:67
+msgid "Name"
+msgstr "Naam"
+
+#: modules/promo_supsystic/mod.php:69
+msgid "Website"
+msgstr "Website"
+
+#: modules/promo_supsystic/mod.php:70
+msgid "Subject"
+msgstr "Onderwerp"
+
+#: modules/promo_supsystic/mod.php:71
+msgid "Topic"
+msgstr "Onderwerp"
+
+#: modules/promo_supsystic/mod.php:72
+msgid "Plugin options"
+msgstr "Plugin opties"
+
+#: modules/promo_supsystic/mod.php:73
+msgid "Report a bug"
+msgstr "Rapporteer een bug"
+
+#: modules/promo_supsystic/mod.php:74
+msgid "Require a new functionallity"
+msgstr "Aanvraag voor nieuwe functionaliteit"
+
+#: modules/promo_supsystic/mod.php:75
+msgid "Other"
+msgstr "Overig"
+
+#: modules/promo_supsystic/mod.php:77
+msgid "Message"
+msgstr "Bericht"
+
+#: modules/promo_supsystic/mod.php:77
+msgid "Hello Supsystic Team!"
+msgstr "Hallo Supsystic Team!"
+
+#: modules/promo_supsystic/mod.php:90
+msgid "Schedule <p class=\"bupAIP\">Available In PRO</p>"
+msgstr "Schema <p class=\"bupAIP\">Beschikbaar In de PRO versie</p>"
+
+#: modules/promo_supsystic/mod.php:99
+msgid "Remote FTP Server"
+msgstr "Remote FTP Server"
+
+#: modules/promo_supsystic/mod.php:99
+msgid "Remote SFTP(SCP) Server"
+msgstr "Remote SFTP(SCP) Server"
+
+#: modules/promo_supsystic/mod.php:99
+msgid "Remote FTPS Server"
+msgstr "Remote FTPS Server"
+
+#: modules/promo_supsystic/mod.php:103 modules/promo_supsystic/mod.php:109
+msgid "Please, be advised, that this option is available only in PRO version. You can "
+msgstr "Deze optie is alleen beschikbaar in de PRO versie. U kunt"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:5
+msgid "Google"
+msgstr "Google"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:6
+msgid "Wordpress.org"
+msgstr "Wordpress.org"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:7
+msgid "Refer a friend"
+msgstr "Beveel aan bij een vriend"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:8
+msgid "Find on the web"
+msgstr "Vind op het web"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:9
+msgid "Other way..."
+msgstr "Een andere manier..."
+
+#: modules/promo_supsystic/views/promo_supsystic.php:33
+msgid "How to get PRO version of plugin for FREE?"
+msgstr "Hoe krijg ik een gratis versie van de plugin?"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:33
+#, php-format
+msgid "You have an incredible opportunity to get PRO version for free. Make Translation of plugin! It will be amazing if you take advantage of this offer! More info you can find here <a target=\"_blank\" href=\"%s\">\"Get PRO version of any plugin for FREE\"</a>"
+msgstr "U heeft de mooie kans om een PRO versie gratis te verkrijgen. Maak een vertaling van een plugin. Het zou geweldig zijn alds u gebruik wilt maken van deze aanbieding! Meer informatie vindt u hier: <a target=\"_blank\" href=\"%s\">\"Gratis PRO versie van elke willekeurige plugin\"</a>"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:34
+msgid "Translation"
+msgstr "Vertaling"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:34
+#, php-format
+msgid "All available languages are provided with the Supsystic Google Maps plugin. If your language isn't available, your plugin will be in English by default.<br /><b>Available Translations: English</b><br />Translate or update a translation Backup WordPress plugin in your language and get a Premium license for FREE. <a target=\"_blank\" href=\"%s\">Contact us</a>."
+msgstr "Alle beschikbare vertalingen zijn geleverd met de Supsystic Google Maps plugin. Wanneer uw taal niet beschikbaar is, is de plugin standaard in het Engels weergegeven. <br /><b>Beschikbare vertalingen: English</b><br />Vertaal of corrigeer een Backup WordPress plugin in uw eigen taal en krijg een Premium licentie gratis! <a target=\"_blank\" href=\"%s\">Neem contact met ons op.</a>."
+
+#: modules/promo_supsystic/views/promo_supsystic.php:51
+#, php-format
+msgid "There were some problem while trying to retrive our news, but you can always check all list <a target=\"_blank\" href=\"%s\">here</a>."
+msgstr "Er waren problemen bij het ophalen van nieuws. U kunt altijd de volledige lijst <a target=\"_blank\" href=\"%s\">hier</a> bekijken."
+
+#: modules/promo_supsystic/views/promo_supsystic.php:61
+#: modules/promo_supsystic/views/promo_supsystic.php:62
+#: modules/promo_supsystic/views/promo_supsystic.php:67
+#: modules/promo_supsystic/views/promo_supsystic.php:69
+#: modules/promo_supsystic/views/promo_supsystic.php:70
+msgid "Yes"
+msgstr "Ja"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:61
+#: modules/promo_supsystic/views/promo_supsystic.php:62
+#: modules/promo_supsystic/views/promo_supsystic.php:67
+#: modules/promo_supsystic/views/promo_supsystic.php:69
+#: modules/promo_supsystic/views/promo_supsystic.php:70
+msgid "No"
+msgstr "Nee"
+
+#: modules/promo_supsystic/views/tpl/adminFooter.php:4
+#: modules/promo_supsystic/views/tpl/welcomePage.php:93
+msgid "Version"
+msgstr "Versie"
+
+#: modules/promo_supsystic/views/tpl/adminFooter.php:9
+msgid "Get"
+msgstr "Haal"
+
+#: modules/promo_supsystic/views/tpl/adminFooter.php:13
+msgid "Support"
+msgstr "Ondersteuning"
+
+#: modules/promo_supsystic/views/tpl/adminSendStatNote.php:9
+msgid "No, don\\'t send"
+msgstr "Nee, stuur niet."
+
+#: modules/promo_supsystic/views/tpl/adminSendStatNote.php:26
+msgid "Yes, send statistics"
+msgstr "Ja, verstuur statistieken"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:5
+msgid "FAQ and Documentation"
+msgstr "Veelgestelde vragen en documentatie"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:17
+msgid "Check all FAQs"
+msgstr "Bekijk alle veelgestelde vragen"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:22
+msgid "Video tutorial"
+msgstr "Video uitleg"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:31
+msgid "Server Settings"
+msgstr "Server instellingen"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:44
+msgid "News"
+msgstr "Nieuws"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:50
+msgid "All news and info"
+msgstr "Al het nieuws en alle informatie"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:55
+msgid "Contact form"
+msgstr "Contact formulier"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:87
+msgid "Send email"
+msgstr "Stuur email"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:96
+msgid "Your email was send, we will try to respond to you as soon as possible. Thank you for support!"
+msgstr "Uw email is verzonden, we proberen zo snel mogelijk te antwoorden. Hartelijk bedankt voor uw hulp! "
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:91
+msgid "Welcome to"
+msgstr "Welkom bij"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:98
+msgid "This is first start up of the "
+msgstr "Dit is de eerste start van de"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:99
+msgid "If you are newbie - check all features on that page, if you are guru - please correct us."
+msgstr "Als u nieuw bent - bekijk alle mogelijkheden op die pagina, als u een guru bent, dan wordt uw correctie op prijs gesteld."
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:109
+msgid "Where did you find us?"
+msgstr "Waar hebt u ons gevonden?"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:124
+msgid "What to do next? Check below section:"
+msgstr "Wat nu? Bekijk de sectie hieronder:"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:128
+msgid "Boost us:"
+msgstr "Help ons:"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:129
+msgid "It's amazing when you boost development with your feedback and ratings. So we create special <a target=\"_blank\" href=\"https://supsystic.com/\">boost page</a> to help you to help us."
+msgstr "Het is geweldig als u onze development verbetert met uw feedback, dus hebben we een speciale <a target=\"_blank\" href=\"https://supsystic.com/\">pagina</a> waarmee u ons kunt helpen u te helpen! "
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:133
+msgid "Documentation:"
+msgstr "Documentatie:"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:134
+msgid "Check <a target=\"_blank\" href=\"https://supsystic.com/\">documentation</a> and FAQ section. If you can't solve your problems - <a target=\"_blank\" href=\"http://supsystic.com/contacts/\">contact us</a>."
+msgstr "Bekijk de <a target=\"_blank\" href=\"https://supsystic.com/\">documentatie</a> en veel gestelde vragen sectie. Kunt u de problemen niet oplossen - <a target=\"_blank\" href=\"http://supsystic.com/contacts/\">neem dan contact met ons op</a>."
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:138
+msgid "Full Features List:"
+msgstr "Lijst met alle mogelijkheden:"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:139
+msgid "There are so many features, so we can't post it here. Like:"
+msgstr "Er zijn zoveel mogelijkheden, dus we kunnen ze hier niet allemaal noemen. Zoals:"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:141
+msgid "Files and Database backup"
+msgstr "Bestanden en database backup "
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:142
+msgid "Backup to the Dropbox"
+msgstr "Backup naar Dropbox"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:143
+msgid "FTP backup"
+msgstr "FTP backup"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:144
+msgid "Custom backup"
+msgstr "Aangepaste backup"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:145
+msgid "Backup in archive"
+msgstr "Backups in het archief"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:146
+msgid "Restore backups anywhere"
+msgstr "Plaats backups overal terug"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:148
+msgid "So check full features list <a target=\"_blank\" href=\"https://supsystic.com/\">here</a>."
+msgstr "Bekijk de lijst met alle mogelijkheden <a target=\"_blank\" href=\"https://supsystic.com/\">hier</a>."
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:156
+msgid "Thank for check info. Start using plugin."
+msgstr "Dank u voor het controleren van de informatie, start het gebruik van de plugin."
+
+#: modules/templates/mod.php:11
+msgid "Templates"
+msgstr "Sjablonen"
+
+#: modules/templates/views/tpl/noTemplates.php:1
+msgid "No Templates were found"
+msgstr "Geen sjablonen gevonden"
+
+#: modules/templates/views/tpl/templatesTab.php:42
+msgid "Template Updated. Reload page to see results."
+msgstr "Sjabloon bijgewerkt, herlaad de pagina om de resultaten te zien."
+
+#: modules/templates/views/tpl/templatesTab.php:72
+msgid "Deactivate"
+msgstr "Deactiveer"
+
+#: modules/warehouse/mod.php:73
+#, php-format
+msgid "Folder \"%s\" is not writable."
+msgstr "Map \"%s\" is niet beschrijfbaar."
+
+#: modules/warehouse/mod.php:85
+#, php-format
+msgid "Can't create warehouse directory \"%s\"."
+msgstr "Kan de warehouse directory \"%s\" niet maken. "
+
+#: modules/warehouse/models/temporary.php:69
+#, php-format
+msgid "Failed to clear temporary folder by pattern \"%s\""
+msgstr "Leegmaken tijdelijke folder mislukt met pattern \"%s\""

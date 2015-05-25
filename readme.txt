@@ -1,15 +1,15 @@
 === Backup by Supsystic ===
 Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/backup-plugin
-Tags: backup, back up, restoration, db backup, dump, migrate, email, FTP, mysql backup, database backup, db backup, full backup, restore, transfer, website backup, wordpress backup, migration, backup plugins, backup posts, backup pages 
+Tags: backup, back up, restoration, db backup, dump, migrate, email, FTP, mysql backup, database backup, db backup, full backup, restore, transfer, website backup, wordpress backup, migration, backup plugins, backup posts, backup pages , backup scheduler
 Tested up to: 4.2.2
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 
 Online backup, restoration or migrate solution. Custom backup files and database to the FTP, DropBox, Google Drive or Amazon S3. Backup secure option
 
 == Description ==
 
-Backup WordPress website to the FTP, DropBox, Google Drive or Local Computer and restore in two clicks. With [Backup plugin by Supsystic](http://supsystic.com/plugins/backup-plugin/ "Backup plugin by Supsytic") make keeping a copy of your site's data on hand extraordinarily simple.
+Backup WordPress website to the FTP, DropBox, Google Drive or Local Computer and restore in two clicks. With [Backup plugin by Supsystic](http://supsystic.com/plugins/backup-plugin?utm_source=wordpress&utm_medium=description&utm_campaign=backup "Backup plugin by Supsytic") make keeping a copy of your site's data on hand extraordinarily simple.
 
 = Backup plugin features =
 
@@ -22,6 +22,7 @@ Backup WordPress website to the FTP, DropBox, Google Drive or Local Computer and
 * Encrypted and Secure backups
 * Backup Logs
 * Secure Backup
+* Backup Scheduler
 
 Why do you need to backup your site?
 Any number of undesirable events can happen:
@@ -36,7 +37,17 @@ Any number of undesirable events can happen:
 
 = Support =
 
-If you have any problem or feature request for the Backup plugin by Supsystic, please [let us know](http://supsystic.com/contact-us/ "Contact Us")!
+If you have any problem or feature request for the Backup plugin by Supsystic, please [let us know](http://supsystic.com/plugins/backup-plugin/#contact?utm_source=wordpress&utm_medium=contactus&utm_campaign=backup "Contact Us")!
+
+= Translations in your language =
+
+You have an incredible opportunity to get PRO version of the backup plugin for free. Make translation of the plugin and get the PRO version!
+
+* English
+* Galician
+* Swiss-German
+* Dutch 
+* French
 
 == Installation ==
 
@@ -56,9 +67,9 @@ To create Amazon S3 backup, at first you need to get your access key ID and secr
 
 = To install a plugin via FTP, you must = 
 
-1. Download the plugin
+1. Download the backup plugin
 2. Unarchive the plugin
-3. Copy the folder with plugin
+3. Copy the backup-by-supsystic folder with plugin
 4. Open ftp \wp-content\plugins\
 5. Paste the plug-ins folder in the folder
 6. Go to admin panel => open item "Plugins" => activate the plugin 
@@ -103,7 +114,7 @@ Choose the backup preset – what exactly you want to backup and how you want to
 3. Copy the folder with plugin
 4. Open ftp \wp-content\plugins\
 5. Paste the plug-ins folder in the folder
-6. Go to admin panel => open item "Plugins" => activate the plugin 
+6. Go to admin panel => open item "Plugins" => activate the Backup by Supsystic plugin 
 
 * Full Backup
 * WordPress Core – all folders and files backup, in the root directory, where the WordPress is installed, except the /wp-content folder
@@ -144,7 +155,11 @@ If the backup you want to restore is on your computer, then upload it to the fol
 
 == Screenshots ==
 
-1. Backup plugin admin interface
+1. [Backup plugin](http://supsystic.com/plugins/backup-plugin?utm_source=wordpress&utm_medium=screenshot&utm_campaign=backup "Backup Plugin") admin interface. Help you effectively backup your website and prepare for any future problems.
+
+2. WordPress backup scheduler. You can backup the sites automatically based on a daily, weekly or monthly schedule.
+
+3. Backup restoration. You can restore a backup in just one simple step, giving you a whole lot of peace of mind.
 
 == Other Notes ==
 
@@ -215,13 +230,24 @@ Temporarily restoring backup on the test servers is a unique feature provided by
 
 *Check other WordPress plugins:*
 
-* [Slider by Supsystic](https://wordpress.org/plugins/slider-by-supsystic/ "Slider plugin")
-* [Grid Gallery](https://wordpress.org/plugins/gallery-by-supsystic/ "Grid Gallery plugin")
-* [Google Maps](https://wordpress.org/plugins/google-maps-easy/ "Google Maps plugin")
-* [Popup plugin](https://wordpress.org/plugins/popup-by-supsystic/ "Popup plugin")
-* [Security and Firewall](https://wordpress.org/plugins/security-by-supsystic/ "Security solution")
+* [Social Share Buttons by Supsystic](https://wordpress.org/plugins/social-share-buttons-by-supsystic/ "Social Share Buttons by Supsystic")
+* [Data Tables Generator by Supsystic](https://wordpress.org/plugins/data-tables-generator-by-supsystic/ "Data Tables Generator by Supsystic")
+* [Google Maps Easy](https://wordpress.org/plugins/google-maps-easy/ "Google Maps Easy")
+* [Gallery by Supsystic](https://wordpress.org/plugins/gallery-by-supsystic/ "Gallery by Supsystic")
+* [Backup by Supsystic](https://wordpress.org/plugins/backup-by-supsystic/ "Backup by Supsystic")
+* [Lightbox by Supsystic](https://wordpress.org/plugins/lightbox-by-supsystic/ "Lightbox by Supsystic")
+* [Slider by Supsystic](https://wordpress.org/plugins/slider-by-supsystic/ "Slider by Supsystic")
+* [PopUp by Supsystic](https://wordpress.org/plugins/popup-by-supsystic/ "PopUp by Supsystic")
+* [Security by Supsystic](https://wordpress.org/plugins/security-by-supsystic/ "Security by Supsystic")
+* [Secure Login by Supsystic](https://wordpress.org/plugins/secure-login-by-supsystic/ "Secure Login by Supsystic")
 
 == Changelog ==
+
+= 1.2.7 / 25.05.2015 =
+ * Backup restoration bug fix
+ * Fix Backup scheduler master
+ * Minor bug fixed
+ * Added Dutch and French languages
 
 = 1.2.6 / 13.05.2015 =
  * Added Galician Language

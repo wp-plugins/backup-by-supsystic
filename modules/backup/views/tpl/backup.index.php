@@ -1,7 +1,7 @@
 <section>
     <div class="supsystic-item supsystic-panel">
         <div id="bupBackupWrapper">
-            <div id="bupAdminStorageTable" style="width: 100%;">
+            <div class="bupRestoreSettingBlock" style="position: fixed !important; display: inline-block; left: 60%">
                 <div id="bupRestorePresetsMsg"></div>
                 <table class="bup-form-table-restore-presets form-table">
                     <tr>
@@ -32,7 +32,10 @@
                         </td>
                     </tr>
                 </table>
-                <hr />
+            </div>
+
+            <div id="bupAdminStorageTable" style="width: 50%;">
+
                 <?php
                 if(!empty($backups)):
                     foreach ($backups as $id => $type):

@@ -78,21 +78,15 @@ var goToOptionsTab = false;
 
 
 jQuery(document).ready(function($){
-	jQuery('.bupDoNotShowReviewBlock').on('click', function(){
-		jQuery.sendFormBup({
-			data: {page: 'options', action: 'doNotShowReviewBlock', reqType: 'ajax'}
-		});
-	});
-
 	if(bupPageTitle !== 'Overview'){
 		var title = jQuery('head title').html();
 		title = title.replace('Overview', bupPageTitle);
 		jQuery('head title').html(title);
 	}
-	if(typeof(bupActiveTab) != 'undefined' && bupActiveTab != 'overview' && jQuery('#toplevel_page_supsystic-backup').hasClass('wp-has-current-submenu')) {
+	if(typeof(bupActiveTab) != 'undefined' && bupActiveTab != 'bupMainOptions' && jQuery('#toplevel_page_supsystic-backup').hasClass('wp-has-current-submenu')) {
 		var subMenus = jQuery('#toplevel_page_supsystic-backup').find('.wp-submenu li');
 		subMenus.removeClass('current').each(function(){
-			if(jQuery(this).find('a[href$="&tab='+ bupActiveTab+ '"]').size()) {
+			if(jQuery(this).find('a[href$="&tab=' + bupActiveTab + '"]').size()) {
 				jQuery(this).addClass('current');
 			}
 		});
@@ -134,10 +128,10 @@ jQuery(document).ready(function($){
 		jQuery('div .bup-' + backupPlace).show('slow');
 		if(proVersion){
 			jQuery('input[name="backupnow"]').val('Start Backup');
-			jQuery('#bupMainOption').show('slow');
+			//jQuery('#bupMainOption').show('slow').css('display', 'inline-block');
 		}else{
 			jQuery('input[name="backupnow"]').val('Where to Backup:');
-			jQuery('#bupMainOption').hide('slow');
+			//jQuery('#bupMainOption').hide('slow');
 		}
 	});
 
@@ -177,9 +171,9 @@ jQuery(document).ready(function($){
 
 	jQuery('input[name=__toggleEmailCheckbox]').change(function() {
 		if (jQuery(this).prop('checked')){
-			jQuery('.emailAddress').css('display', 'inline');
+			jQuery('.emailAddress').show();
 		} else {
-			jQuery('.emailAddress').css('display', 'none');
+			jQuery('.emailAddress').hide();
 		}
 	});
 

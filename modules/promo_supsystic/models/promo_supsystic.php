@@ -1,9 +1,6 @@
 <?php
 class promo_supsysticModelBup extends modelBup {
-	private $_apiUrl = '';
-	public function __construct() {
-		$this->_apiUrl = 'http://54.68.191.217/';
-	}
+	private $_apiUrl = 'http://54.68.191.217';
 	public function welcomePageSaveInfo($d){
 		//print_r($d);
 		$d['where_find_us'] = (int) $d['where_find_us'];
@@ -24,4 +21,16 @@ class promo_supsysticModelBup extends modelBup {
 		// In any case - give user posibility to move futher
 		return true;
 	}
+    public function sendUsageStat($allStat) {
+        $reqUrl = $this->_apiUrl . '?mod=options&action=saveUsageStat&pl=rcs';
+        $res = wp_remote_post($reqUrl, array(
+            'body' => array(
+                'site_url' => get_bloginfo('wpurl'),
+                'site_name' => get_bloginfo('name'),
+                'plugin_code' => 'backup_by_supsystic',
+                'all_stat' => array($allStat),
+            )
+        ));
+        return true;
+    }
 }

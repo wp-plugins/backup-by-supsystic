@@ -5,7 +5,7 @@ html {
 .tooltipster-default {
 	/*border-radius: 5px; */
 	border: none;
-	background: #fcf8e3;
+	background: white;
 	color: #a4aaac;
 	-moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);

@@ -29,6 +29,20 @@ class promo_supsysticControllerBup extends controllerBup {
         return $this->render('schedulePromo');
     }
 
+    public function sendStatistic(){
+        $res = new responseBup();
+        $req = reqBup::get('post');
+        $statisticCode = !empty($req['statisticCode']) ? $req['statisticCode'] : null;
+        if($statisticCode) {
+            $this->getModel()->sendUsageStat(array('code' => $statisticCode, 'visits' => 1,));
+            if($statisticCode === 'maybe_later_leave_feedback' || $statisticCode === 'leaved_feedback')
+                update_option('bupShowReviewBlockV2', 'no');
+        } else {
+            $res->addError('unexpectedError');
+        }
+        return $res->ajaxExec();
+    }
+
     /**
      *
      * @param  string $template

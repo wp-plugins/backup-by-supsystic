@@ -68,6 +68,8 @@
 										$htmlParams['value'] = $fData['def'];
 									if(isset($fData['valid']) && in_array('notEmpty', $fData['valid']))
 										$htmlParams['required'] = true;
+                                    if($htmlType === 'textarea')
+                                        $htmlParams['attrs'] .= ' rows="5"';
 								?>
 							<tr>
 								<th scope="row">

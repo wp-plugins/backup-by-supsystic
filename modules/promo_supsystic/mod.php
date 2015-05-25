@@ -1,6 +1,7 @@
 <?php
 class promo_supsysticBup extends moduleBup {
 	private $_mainLink = '';
+    private $_msgForPro = '';
 	private $_specSymbols = array(
 		'from'	=> array('?', '&'),
 		'to'	=> array('%', '^'),
@@ -8,6 +9,7 @@ class promo_supsysticBup extends moduleBup {
 	public function __construct($d) {
 		parent::__construct($d);
 		$this->getMainLink();
+		$this->_msgForPro = __('Please, be advised, that this option is available only in PRO version. You can ', BUP_LANG_CODE) . '<a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank">' . __('Get PRO', BUP_LANG_CODE) . '</a>';
 	}
 	public function init() {
 		parent::init();
@@ -22,6 +24,7 @@ class promo_supsysticBup extends moduleBup {
 		dispatcherBup::addFilter('adminOptionsTabs', array($this, 'registerOverviewTab'));
 		dispatcherBup::addFilter('mainAdminTabs', array($this, 'addAdminTab'));
 		add_action('admin_footer', array($this, 'displayAdminFooter'), 9);
+        add_action('admin_notices', array($this->getController()->getView(), 'showReviewAdminNotice'));
 	}
 	public function displayAdminFooter() {
 		if(frameBup::_()->isPluginAdminPage()) {
@@ -100,13 +103,12 @@ class promo_supsysticBup extends moduleBup {
         foreach($connectType as $type => $title){
             $destinations[$type] = array(
                 'title' => $title,
-                'content' => __('Please, be advised, that this option is available only in PRO version. You can ', BUP_LANG_CODE) . '<a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank">' . __('Get PRO', BUP_LANG_CODE) . '</a>',
+                'content' => $this->_msgForPro,
             );
         }
         return $destinations;
     }
     public function getPromoSecretKeyEncryptDb(){
-        $promoBlock = '<td>' . __('Please, be advised, that this option is available only in PRO version. You can ', BUP_LANG_CODE) . '<a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank">' . __('Get PRO', BUP_LANG_CODE) . '</a></td>';
-        return $promoBlock;
+        return $this->_msgForPro;
     }
 }
