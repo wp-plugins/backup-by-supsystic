@@ -1,0 +1,2053 @@
+# WordPress Blank Pot
+# Copyright (C) 2014 ...
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Backup by Supsystic 1.2.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-05-25 20:02+0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: supsystic.com <supsystic.team@gmail.com>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
+"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: classes/field.php:131
+msgid "Select"
+msgstr "Выбрать"
+
+#: classes/field.php:170 classes/field.php:179 classes/field.php:184
+msgid "N/A"
+msgstr "N/A"
+
+#: classes/field.php:277
+msgid "Add Checkbox"
+msgstr "Добавить чекбокс"
+
+#: classes/field.php:282 classes/field.php:287
+msgid "Add Item"
+msgstr "Добавить элемент"
+
+#: classes/field.php:293
+msgid "Add Radio Button"
+msgstr "Добавить радио кнопку"
+
+#: classes/field.php:311
+msgid "Dimensions"
+msgstr "Размеры"
+
+#: classes/field.php:314
+msgid "width"
+msgstr "ширина"
+
+#: classes/field.php:316
+msgid "height"
+msgstr "высота"
+
+#: classes/field.php:323
+msgid "Click to set field \"id\" and \"class\""
+msgstr "Нажмите, чтобы установить поля \"id\" и  \"class\""
+
+#: classes/field.php:324
+msgid "Attributes"
+msgstr "Атрибуты "
+
+#: classes/field.php:402
+msgid "There are no configuration options for this module"
+msgstr "Нет опции конфигурации для этого модуля"
+
+#: classes/fieldAdapter.php:93
+msgid "Apply To"
+msgstr "Применить к"
+
+#: classes/fieldAdapter.php:95
+msgid "Address"
+msgstr "Адресс"
+
+#: classes/fieldAdapter.php:96
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:30
+msgid "Destination"
+msgstr "Место назначения"
+
+#: classes/fieldAdapter.php:97
+msgid "Country"
+msgstr "Страна"
+
+#: classes/fieldAdapter.php:100
+msgid "Categories"
+msgstr "Категории"
+
+#: classes/fieldAdapter.php:101
+msgid "You have no categories"
+msgstr "У вас нет категории"
+
+#: classes/fieldAdapter.php:102
+msgid "Brands"
+msgstr "Бренды"
+
+#: classes/fieldAdapter.php:103
+msgid "You have no brands"
+msgstr "У вас нету брендов"
+
+#: classes/fieldAdapter.php:105
+msgid "Tax Rate"
+msgstr "Налоговая ставка"
+
+#: classes/fieldAdapter.php:106
+msgid "Absolute"
+msgstr "Абсолютно"
+
+#: classes/fieldAdapter.php:134
+msgid "Not selected"
+msgstr "Не выбрано"
+
+#: classes/fieldAdapter.php:184
+msgid "class"
+msgstr "class"
+
+#: classes/fieldAdapter.php:186
+msgid "id"
+msgstr "id"
+
+#: classes/frame.php:138
+msgid "You have no permissions to view this page"
+msgstr "У вас нет прав для просмотра этой страницы"
+
+#: classes/html.php:166
+msgid "Upload"
+msgstr "Загрузить"
+
+#: classes/installer.php:222
+msgid " Page Content"
+msgstr "Контент страницы"
+
+#: classes/modInstaller.php:34
+#, php-format
+msgid "Move files for %s failed"
+msgstr "Перемещение файлов %s неудалось"
+
+#: classes/modInstaller.php:37
+#, php-format
+msgid "%s is not plugin module"
+msgstr "%s не является модулем плагина"
+
+#: classes/modInstaller.php:76
+msgid "Can not create module directory. Try to set permission to "
+msgstr ""
+"Невозможно создать каталог модуля. Попробуйте установить права доступа "
+
+#: classes/modInstaller.php:103
+msgid "No modules were found in XML file"
+msgstr "Модули не были найдены в XML файле"
+
+#: classes/modInstaller.php:107
+msgid "Invalid XML file"
+msgstr "Неверный файл XML"
+
+#: classes/modInstaller.php:109
+msgid "No XML file were found"
+msgstr "XML-файл не были найдены"
+
+#: classes/modInstaller.php:128
+#, php-format
+msgid "Install %s failed"
+msgstr "Установка %s не удалось"
+
+#: classes/modInstaller.php:134
+msgid "Error Activate module"
+msgstr "Ошибка активации модуля"
+
+#: classes/modInstaller.php:164
+msgid "Error Deactivation module"
+msgstr "Ошибка деактивации модуля"
+
+#: classes/modInstaller.php:185
+msgid "Error Activating module"
+msgstr "Ошибка активации модуля"
+
+#: classes/table.php:263
+msgid "Nothig to update"
+msgstr "Нечего обновлять"
+
+#: classes/table.php:280
+msgid "Database error. Please contact your developer."
+msgstr "Ошибка базы данных. Пожалуйста, обратитесь к разработчику."
+
+#: classes/tables/files.php:7
+msgid "Product ID"
+msgstr "ID продукта"
+
+#: classes/tables/files.php:8
+msgid "File name"
+msgstr "Имя файла"
+
+#: classes/tables/files.php:9
+msgid "Real Path To File"
+msgstr "Реальный путь к файлу"
+
+#: classes/tables/files.php:10
+msgid "Mime Type"
+msgstr "Тип имитации"
+
+#: classes/tables/files.php:11
+msgid "File Size"
+msgstr "Размер файла"
+
+#: classes/tables/files.php:12
+msgid "Active Download"
+msgstr ""
+
+#: classes/tables/files.php:13
+msgid "Upload Date"
+msgstr "Дата загрузки"
+
+#: classes/tables/files.php:14
+msgid "Download Limit"
+msgstr "Лимит скачиваний"
+
+#: classes/tables/files.php:15
+msgid "Period Limit"
+msgstr "Лимит по времени"
+
+#: classes/tables/files.php:16
+msgid "Descritpion"
+msgstr "Описание"
+
+#: classes/tables/files.php:17
+msgid "Type ID"
+msgstr "Type ID"
+
+#: classes/tables/htmltype.php:7 classes/tables/log.php:7
+#: classes/tables/modules_type.php:7 classes/tables/options.php:7
+#: classes/tables/options_categories.php:7
+msgid "ID"
+msgstr "ID"
+
+#: classes/tables/htmltype.php:8 classes/tables/options_categories.php:8
+msgid "Method"
+msgstr "Метод"
+
+#: classes/tables/htmltype.php:9 classes/tables/modules.php:12
+#: classes/tables/options.php:11
+msgid "Description"
+msgstr "Описание"
+
+#: classes/tables/log.php:8 classes/tables/modules.php:8
+#: classes/tables/options.php:12
+msgid "Type"
+msgstr "Тип"
+
+#: classes/tables/log.php:9
+msgid "Data"
+msgstr "Данные"
+
+#: classes/tables/log.php:10
+msgid "Date created"
+msgstr "Дата создания"
+
+#: classes/tables/log.php:11
+msgid "User ID"
+msgstr "ID пользователя"
+
+#: classes/tables/log.php:12
+msgid "Order ID"
+msgstr "Номер заказа"
+
+#: classes/tables/modules.php:7 classes/tables/modules_type.php:8
+#: classes/tables/options.php:10
+msgid "Label"
+msgstr "Label"
+
+#: classes/tables/modules.php:9
+msgid "Active"
+msgstr "Активный"
+
+#: classes/tables/modules.php:10
+msgid "Params"
+msgstr "Параметры"
+
+#: classes/tables/modules.php:11
+msgid "Has Tab"
+msgstr "Has Tab"
+
+#: classes/tables/modules.php:13 classes/tables/options.php:8
+msgid "Code"
+msgstr "Code"
+
+#: classes/tables/modules.php:14
+msgid "External plugin directory"
+msgstr "Внешний каталог плагина"
+
+#: classes/tables/options.php:9
+msgid "Value"
+msgstr "Значение"
+
+#: classes/tables/options.php:13
+msgid "Category ID"
+msgstr "ID категории"
+
+#: classes/tables/options.php:14
+msgid "Sort Order"
+msgstr "Порядок сортировки"
+
+#: classes/tables/options.php:15
+msgid "Value Type"
+msgstr "Значение типа"
+
+#: doc/backup-supsystic-pro/wpUpdater.php:65
+msgid ""
+"An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?"
+"\" onclick=\"document.location.reload(); return false;\">Try again</a>"
+msgstr ""
+"Произошла непредвиденная HTTP-ошибка во время API запроса. </p> <p><a href="
+"\"?\" onclick=\"document.location.reload(); return false;\">Попробуйте еще "
+"раз</a>"
+
+#: doc/backup-supsystic-pro/wpUpdater.php:70
+msgid "An unknown error occurred"
+msgstr "Произошла неизвестная ошибка"
+
+#: doc/backup-supsystic-pro/license/controller.php:9
+#: doc/backup-supsystic-pro/remote_backup/controller.php:76
+#: modules/adminmenu/controller.php:28
+#: modules/options/views/tpl/deactivatePage.php:37
+#: modules/pages/views/tpl/deactivatePage.php:37
+msgid "Done"
+msgstr "Готово"
+
+#: doc/backup-supsystic-pro/license/controller.php:13
+msgid "Please, try again!"
+msgstr "Пожалуйста, попробуйте еще раз!"
+
+#: doc/backup-supsystic-pro/license/mod.php:23
+#, php-format
+msgid ""
+"Your license is expired. Once you extend your license - you will be able to "
+"Update PRO version. To extend PRO version license - follow <a href=\"%s\" "
+"target=\"_blank\">this link</a>, then - go to <a href=\"%s\">License</a> tab "
+"anc click on \"Re-activate\" button to re-activate your PRO version."
+msgstr ""
+"Срок лицензии истек. После того, как Вы продлите лицензию - Вы сможете "
+"обновить PRO версию. Чтобы продлить лицензию - следуйте <a href=\"%s\" "
+"target=\"_blank\">по этой ссылке</a>,  затем - перейти к  <a href=\"%s"
+"\">Лицензии</a> и нажмите на кнопку \"активировать повторно\" чтобы "
+"активировать ПРО версию повторно."
+
+#: doc/backup-supsystic-pro/license/mod.php:31
+#, php-format
+msgid ""
+"Your license for PRO version of %s plugin - expired. You can <a href=\"%s\" "
+"target=\"_blank\">click here</a> to extend your license, then - go to <a "
+"href=\"%s\">License</a> tab anc click on \"Re-activate\" button to re-"
+"activate your PRO version."
+msgstr ""
+"Ваша лицензия на PRO версии плагина %s - истекла. Вы можете <a href=\"%s\" "
+"target=\"_blank\">нажать здесь</a> чтобы продлить лицензию, затем - перейти "
+"к <a href=\"%s\">Лицензии</a> и нажать на кнопку \"Активировать повторно\" "
+"чтобы активировать заново ПРО версию"
+
+#: doc/backup-supsystic-pro/license/mod.php:44
+#: modules/promo_supsystic/views/tpl/adminFooter.php:9
+msgid "License"
+msgstr "лицензия"
+
+#: doc/backup-supsystic-pro/license/models/license.php:54
+msgid "Please enter your License Key"
+msgstr "Пожалуйста, введите лицензионный ключ"
+
+#: doc/backup-supsystic-pro/license/models/license.php:56
+msgid "Please enter your Email address"
+msgstr "Пожалуйста, введите ваш адрес электронной почты"
+
+#: doc/backup-supsystic-pro/license/models/license.php:132
+msgid ""
+"There was a problem with sending request to our autentification server. "
+"Please try latter."
+msgstr ""
+"Проблема с отправкой запроса на нашем сервере аутентификации. Пожалуйста, "
+"попробуйте позже."
+
+#: doc/backup-supsystic-pro/license/models/license.php:158
+#, php-format
+msgid "License for plugin %s will expire today."
+msgstr "Лицензия для плагина %s истекает сегодня."
+
+#: doc/backup-supsystic-pro/license/models/license.php:160
+#, php-format
+msgid "License for plugin %s will expire tomorrow."
+msgstr "Лицензия плагина %s истекает завтра."
+
+#: doc/backup-supsystic-pro/license/models/license.php:162
+#, php-format
+msgid "<p>License for plugin %s will expire in %d days.</p>"
+msgstr "<p>Лицензия для плагина %s истекает через %d дней.</p>"
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:4
+#, php-format
+msgid ""
+"Congratulations! PRO version of %s plugin is activated and working fine!"
+msgstr "Поздравляем! PRO версия плагина %s активирована и работает нормально!"
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:6
+#, php-format
+msgid ""
+"Your license for PRO version of %s plugin - expired. You can <a href=\"%s\" "
+"target=\"_blank\">click here</a> to extend your license, then - click on "
+"\"Re-activate\" button to re-activate your PRO version."
+msgstr ""
+"Ваша лицензия на PRO версию плагина %s - истекла. Вы можете <a href=\"%s\" "
+"target=\"_blank\">нажать здесь</a> чтобы продлить лицензию, затем - нажмите "
+"на кнопку \"Повторно активировать\" чтобы повторно активировать свою PRO "
+"версию."
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:8
+#, php-format
+msgid ""
+"Congratulations! You have successfully installed PRO version of %s plugin. "
+"Final step to finish Your PRO version setup - is to enter your Email and "
+"License Key on this page. This will activate Your copy of software on this "
+"site."
+msgstr ""
+"Поздравляем! Вы успешно установили PRO версию плагина %s . Заключительный "
+"шаг, чтобы закончить Вашу установку PRO версии - это ввести свой электронный "
+"адрес и лицензионный ключ на этой странице. Это активирует вашу копию "
+"программного обеспечения на этом сайте."
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:20
+#: modules/promo_supsystic/mod.php:71
+msgid "Email"
+msgstr "Email"
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:23
+#, php-format
+msgid ""
+"Your email address, used on checkout procedure on <a href=\"%s\" target="
+"\"_blank\">%s</a>"
+msgstr ""
+"Ваш адрес электронной почты, используемый по процедуре оформления заказа на "
+"<a href=\"%s\" target=\"_blank\">%s</a>"
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:31
+msgid "License Key"
+msgstr "Ключ лицензии"
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:34
+#, php-format
+msgid ""
+"Your License Key from your account on <a href=\"%s\" target=\"_blank\">%s</a>"
+msgstr ""
+"Ваш лицензионный ключ от вашей учетной записи на <a href=\"%s\" target="
+"\"_blank\">%s</a>"
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:47
+msgid "Re-activate"
+msgstr "Активировать повторно"
+
+#: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:49
+#: modules/templates/views/tpl/templatesTab.php:71
+msgid "Activate"
+msgstr "Активировать"
+
+#: doc/backup-supsystic-pro/license/views/tpl/noticeForTrialPro.php:32
+msgid "License for plugin '"
+msgstr "Лицензия для плагина '"
+
+#: doc/backup-supsystic-pro/license/views/tpl/noticeForTrialPro.php:33
+msgid ""
+"We're happy you keep using our product.<br/>Kindly note that testing period "
+"of PRO Version is over in two days. You can <button class=\"button button-"
+"primary button-small bupShowBuyDialog\">Get PRO</button> just for 29$"
+msgstr ""
+"Мы рады что Вы используете наш продукт.<br/>Пожалуйста, обратите внимание, "
+"что тестирование период PRO версии заканчивается через два дня. Вы можете "
+"<button class=\"button button-primary button-small bupShowBuyDialog"
+"\">получить PRO версию</button> всего за 29$"
+
+#: doc/backup-supsystic-pro/migration/controller.php:10
+msgid "This log created by Migration module, on site: "
+msgstr "Этот журнал создан модуль миграции, на сайте:"
+
+#: doc/backup-supsystic-pro/migration/controller.php:38
+#: doc/backup-supsystic-pro/migration/controller.php:54
+msgid "Backup files don't exist!"
+msgstr "Файлы бекапа не существуют"
+
+#: doc/backup-supsystic-pro/migration/models/migration.php:98
+msgid ""
+"Entered secret key for decrypt/encrypt DB data wrong! Please, try again."
+msgstr ""
+"Введен секретный ключ для расшифровки / шифровки БД неправильный!  "
+"Пожалуйста, попробуйте еще раз."
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:22
+#: doc/backup-supsystic-pro/migration/views/migration.php:47
+#: doc/backup-supsystic-pro/migration/views/migration.php:75
+#: doc/backup-supsystic-pro/migration/views/migration.php:99
+#: doc/backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:49
+#: modules/backup/views/tpl/backup.index.php:118
+#: modules/backup/views/tpl/backup.index.php:181
+#: modules/backup/views/tpl/backup.index.php:244
+#: modules/backup/views/tpl/backup.index.php:295
+#: modules/backup/views/tpl/backup.index.php:357
+msgid "Migrate"
+msgstr "Миграция"
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:113
+msgid "Find"
+msgstr "Найти"
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:114
+msgid "Replace"
+msgstr "Заменить"
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:117
+msgid "Site URL"
+msgstr "Ссылка URL"
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:122
+msgid "WordPress directory"
+msgstr "WordPress каталог"
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:124
+msgid "New WP directory"
+msgstr "Новый каталог WP"
+
+#: doc/backup-supsystic-pro/remote_backup/controller.php:58
+#: modules/amazon/controller.php:138 modules/backup/controller.php:297
+#: modules/dropbox/controller.php:167 modules/gdrive/controller.php:117
+msgid "Done!"
+msgstr "Готово!"
+
+#: doc/backup-supsystic-pro/remote_backup/controller.php:62
+msgid "Please, check connecting params!"
+msgstr "Пожалуйста, проверьте подключения параметров!"
+
+#: doc/backup-supsystic-pro/remote_backup/controller.php:78
+#: doc/backup-supsystic-pro/remote_backup/controller.php:95
+#: doc/backup-supsystic-pro/remote_backup/controller.php:112
+msgid "Error, please try again"
+msgstr "Ошибка, попробуйте еще раз"
+
+#: doc/backup-supsystic-pro/remote_backup/controller.php:93
+#: modules/backup/controller.php:342
+msgid "Backup successfully removed"
+msgstr "Бекап успешно удален"
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:16
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:47
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:16
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:45
+msgid "Host name is wrong!"
+msgstr "Имя хоста неправильное!"
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:19
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:19
+msgid "User or password don't be empty!"
+msgstr "Пользователь или пароль не быть пустым!"
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:31
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:31
+msgid "Wrong path on remote server!"
+msgstr "Неправильный путь на удаленном сервере!"
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:44
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:42
+msgid "Invalid login or password!"
+msgstr "Неверный логин или пароль!"
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:140
+msgid ""
+"There are no FTP extension on your server. You need to install it. How to "
+"install check this link <a target=\"_blank\" href=\"http://php.net/manual/en/"
+"book.ftp.php\">http://php.net/manual/en/book.ftp.php</a>"
+msgstr ""
+"Нету FTP-расширения на сервере. Вы должны установить. Как установить его "
+"смотрите по этой ссылке<a target=\"_blank\" href=\"http://php.net/manual/en/"
+"book.ftp.php\">http://php.net/manual/en/book.ftp.php</a>"
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:145
+msgid ""
+"There are no FTPS extension on your server. You need to install it. How to "
+"install check this link <a target=\"_blank\" href=\"http://php.net/manual/en/"
+"function.ftp-ssl-connect.php\">http://php.net/manual/en/function.ftp-ssl-"
+"connect.php</a>"
+msgstr ""
+"Нету FTPS -расширения на сервере. Вы должны установить. Как установить его "
+"смотрите по этой ссылке <a target=\"_blank\" href=\"http://php.net/manual/en/"
+"function.ftp-ssl-connect.php\">http://php.net/manual/en/function.ftp-ssl-"
+"connect.php</a>"
+
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:156
+msgid ""
+"There are no SFTP(Secure Shell2) extension on your server. You need to "
+"install it. How to install check this link <a target=\"_blank\" href="
+"\"http://php.net/manual/en/book.ssh2.php\">http://php.net/manual/en/book."
+"ssh2.php</a>"
+msgstr ""
+"Нету SFTP(Secure Shell2) расширения на вашем сервере. Вы должны установить "
+"его. После установки проверьте эту ссылку <a target=\"_blank\" href=\"http://"
+"php.net/manual/en/book.ssh2.php\">http://php.net/manual/en/book.ssh2.php</a>"
+
+#: doc/backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:27
+#: modules/adminmenu/views/adminmenu.php:17 modules/backup/mod.php:101
+#: modules/backup/views/tpl/backup.index.php:95
+#: modules/backup/views/tpl/backup.index.php:163
+#: modules/backup/views/tpl/backup.index.php:226
+#: modules/backup/views/tpl/backup.index.php:282
+#: modules/backup/views/tpl/backup.index.php:339 modules/log/mod.php:20
+#: modules/storage/views/tpl/storageBlock.php:31
+msgid "Restore"
+msgstr "Восстановить"
+
+#: doc/backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:33
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:63
+#: modules/backup/views/tpl/backup.index.php:107
+#: modules/backup/views/tpl/backup.index.php:171
+#: modules/backup/views/tpl/backup.index.php:232
+#: modules/backup/views/tpl/backup.index.php:285
+#: modules/backup/views/tpl/backup.index.php:347
+msgid "Delete"
+msgstr "Удалить"
+
+#: doc/backup-supsystic-pro/remote_backup/views/tpl/remoteFtpAuth.php:25
+msgid "Store params"
+msgstr "Параметры хранилища"
+
+#: doc/backup-supsystic-pro/remote_backup/views/tpl/remoteFtpLogout.php:3
+#: modules/amazon/views/tpl/amazon.index.php:4
+#: modules/dropbox/views/tpl/dropbox.index.php:4
+#: modules/gdrive/views/tpl/gdrive.index.php:5
+#: modules/onedrive/views/tpl/onedrive.error.php:13
+#: modules/onedrive/views/tpl/onedrive.index.php:6
+msgid "Logout"
+msgstr "Выйти"
+
+#: doc/backup-supsystic-pro/schedule/controller.php:36
+msgid "Schedule successfully removed!"
+msgstr "Расписание успешно удалено!"
+
+#: doc/backup-supsystic-pro/schedule/controller.php:47
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:241
+#: modules/backup/controller.php:134 modules/backup/controller.php:188
+msgid "Backup complete"
+msgstr "Бекап завершён "
+
+#: doc/backup-supsystic-pro/schedule/mod.php:16
+msgid "Once Weekly"
+msgstr "Один раз в неделю"
+
+#: doc/backup-supsystic-pro/schedule/mod.php:21
+msgid "Once a month"
+msgstr "Раз в месяц"
+
+#: doc/backup-supsystic-pro/schedule/mod.php:43
+#: doc/backup-supsystic-pro/schedule/mod.php:71
+#: modules/adminmenu/views/adminmenu.php:16
+msgid "Schedule"
+msgstr "График"
+
+#: doc/backup-supsystic-pro/schedule/mod.php:49
+msgid "Schedule Edit"
+msgstr "Редактировать расписание"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:48
+msgid "Schedule successfully edited!"
+msgstr "Расписание успешно изменено!"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:54
+msgid "Cannot create schedule \""
+msgstr "Невозможно создать расписание \""
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:54
+msgid "Name will be unique, \""
+msgstr "Имя должно быть уникальным, \""
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:54
+msgid "exist in DB."
+msgstr "отсутствует в БД"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:59
+msgid "Schedule successfully created!"
+msgstr "Расписание успешно создано!"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:73
+msgid "Schedule must have name!"
+msgstr "Расписание должно иметь имя!"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:114
+msgid "Please try again!"
+msgstr "Пожалуйста, попробуйте еще раз!"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:154
+msgid "Start backup schedule:"
+msgstr "Начать бекап по расписанию"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:160
+msgid "files scanned."
+msgstr "Файлы сканируются."
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:162
+msgid "Create a backup of the file system:"
+msgstr "Создать резервную копию файловой системы:"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:167
+msgid "Create a backup of the database:"
+msgstr "Создать резервную копию базы данных:"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:171
+msgid "Errors during creation of database backup, errors count"
+msgstr "Ошибки при создании резервной копии базы данных"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:178
+msgid "Upload to the"
+msgstr "Загрузить"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:178
+msgid "required"
+msgstr "требуется"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:179
+msgid "Files to upload:"
+msgstr "Файлы для загрузки:"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:186
+msgid "Successfully uploaded to the"
+msgstr "Успешно загружены"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:202
+#: modules/backup/controller.php:164
+msgid "Authentication required."
+msgstr "Требуется аутентификация."
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:205
+#: modules/backup/controller.php:167 modules/dropbox/models/dropbox.php:274
+msgid "File not found"
+msgstr "Файл не найден"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:208
+#: modules/backup/controller.php:170
+msgid "Unexpected error (500)"
+msgstr "Неожиданная ошибка (500)"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:211
+#: modules/backup/controller.php:173
+msgid "Unexpected error"
+msgstr "Неожиданная ошибка"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:229
+#: modules/backup/controller.php:195
+msgid "Backup by Supsystic Notifications"
+msgstr "Уведомления Бекапа"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:231
+msgid ". Backup Error!"
+msgstr ". Ошибка бекапа!"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:232
+#: modules/backup/controller.php:197
+msgid "Email notification required."
+msgstr "Требуется уведомление по электронной почте"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:233
+#: modules/backup/controller.php:198
+msgid "Sending to"
+msgstr "Отправка"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:300
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:10
+msgid "Every hour"
+msgstr "Каждый час"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:301
+msgid "Twice a day"
+msgstr "Два раза в день"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:302
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:26
+msgid "Every day"
+msgstr "Каждый день"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:303
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:34
+msgid "Every week"
+msgstr "Каждую неделю"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:304
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:42
+msgid "Every month"
+msgstr "Каждый месяц"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:312
+msgid "FTP"
+msgstr "ФТП"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:313
+msgid "OneDrive"
+msgstr "OneDrive"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:314
+msgid "Google Drive"
+msgstr "Google Drive"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:315
+msgid "Dropbox"
+msgstr "Dropbox"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:316
+msgid "Amazon S3"
+msgstr "Amazon S3"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:329
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:92
+#: modules/backup/models/backupLog.php:88
+#: modules/options/views/tpl/backupOptions.php:46
+msgid "Wordpress Core"
+msgstr "Ядро Wordpress "
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:331
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:103
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:106
+#: modules/backup/models/backupLog.php:91
+#: modules/options/views/tpl/backupOptions.php:57
+#: modules/options/views/tpl/backupOptions.php:60
+msgid "Plugins folder"
+msgstr "Папку \"Plugins\""
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:333
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:114
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:117
+#: modules/backup/models/backupLog.php:94
+#: modules/options/views/tpl/backupOptions.php:68
+#: modules/options/views/tpl/backupOptions.php:71
+msgid "Themes folder"
+msgstr "Папку \"Themes \""
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:335
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:125
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:128
+#: modules/backup/models/backupLog.php:97
+#: modules/options/views/tpl/backupOptions.php:79
+#: modules/options/views/tpl/backupOptions.php:82
+msgid "Uploads folder"
+msgstr "Папку \"Uploads\""
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:337
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:136
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:139
+#: modules/backup/models/backupLog.php:100
+#: modules/options/views/tpl/backupOptions.php:90
+#: modules/options/views/tpl/backupOptions.php:93
+msgid "Any folder inside wp-content"
+msgstr "Любую папку внутри папки \"wp-content\""
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:339
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:147
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:150
+#: modules/options/views/tpl/backupOptions.php:101
+#: modules/options/views/tpl/backupOptions.php:104
+msgid "Database backup"
+msgstr "Бекап базы данных"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:4
+msgid "Schedule Settings"
+msgstr "Настройки расписания"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:18
+msgid "Every twice a day"
+msgstr "Каждый день по два раза"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:50
+#: modules/options/views/tpl/backupOptions.php:7
+msgid "Where to backup"
+msgstr "Куда делать бекап"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:74
+#: modules/options/views/tpl/backupOptions.php:29
+msgid "What to backup"
+msgstr "Что будем бекапить"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:81
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:84
+#: modules/backup/models/backupLog.php:85
+#: modules/options/views/tpl/backupOptions.php:35
+#: modules/options/views/tpl/backupOptions.php:38
+msgid "Full backup"
+msgstr "Полный бекап"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:95
+#: modules/options/views/tpl/backupOptions.php:49
+msgid ""
+"All folders and files backup in the root directory, where the WordPress is "
+"installed, except the /wp-content folder."
+msgstr ""
+"Все папки и файлы резервного копирования в корневом каталоге, где установлен "
+"WordPress, за исключением /wp-content folder."
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:158
+#: modules/options/views/tpl/backupOptions.php:112
+msgid "Secret key for DB"
+msgstr "Секретный ключ для БД"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:161
+#: modules/options/views/tpl/backupOptions.php:115
+msgid "Secret key for encrypting DB data"
+msgstr "Секретный ключ для шифрования данных БД"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:178
+#: modules/options/views/tpl/backupOptions.php:131
+msgid "Additional setting"
+msgstr "Дополнительные настройки"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:184
+#: modules/options/views/tpl/backupOptions.php:137
+msgid "Specify and enter files and folders names which must not be backed up."
+msgstr ""
+"Укажите и введите имена файлов и директорий, которые не должны быть "
+"подкреплены."
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:185
+msgid "Exclude:"
+msgstr "Исключить:"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:188
+msgid "If entering multiple files/directories, then separate them with commas."
+msgstr "При вводе нескольких файлов / каталогов, разделите их запятыми."
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:193
+#: modules/options/views/tpl/backupOptions.php:145
+msgid "Email notification"
+msgstr "Уведомление по электронной почте"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:194
+msgid "Email notification:"
+msgstr "Уведомление по электронной почте:"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:208
+#: modules/options/views/tpl/backupOptions.php:159
+msgid ""
+"Specify the path where the data is to be backed up. It 'Use relative path' "
+"ckeckbox has been set up, the path will be set against in the root "
+"directory, where the WordPress is installed. If 'Use relative path' checkbox "
+"has been of, the full path to the disk root should be specified."
+msgstr ""
+"Укажите путь, где данные должны быть подкреплены. Он использует "
+"относительный путь, путь будет установлен в отношении к корневому каталогу, "
+"где установлен WordPress. Если \"Использовать относительный путь\" флажок "
+"должен быть выключеным, полный путь к корню диска должен быть указан."
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:209
+msgid "Warehouse:"
+msgstr "Warehouse:"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:230
+msgid ""
+"If the checkbox has been set up, then the backup path must be specified in "
+"the Warehouse field against the root directory, where the WordPress is "
+"installed. if the checkbox has been off, then the backup path must be "
+"specified in the Warehouse field against the disk root."
+msgstr ""
+"Если флажок установлен, затем резервный путь должен быть указан в поле "
+"Warehouse против корневой директории, где установлен WordPress. "
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:231
+msgid "User relative path:"
+msgstr "Используйте относительный путь:"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:248
+#: modules/options/views/tpl/backupOptions.php:197
+msgid "Path to directory, where will be stored backup files."
+msgstr "Путь к директории, где будут храниться файлы резервных копий."
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:4
+msgid ""
+"Backup schedule will upload data to the cloud services. To make the work of "
+"backup scheduler smooth and correct, you need to be constantly authorized on "
+"these services.\n"
+"            Mind that if you're logged in on the page where back up is being "
+"launched manually, you're automatically authorized on the editing page of "
+"the back up plugin and vice versa. If you're logged out any of these pages, "
+"you're non authorized on both of them."
+msgstr ""
+"Расписание резервного копирования будет загружать данные в облачные сервисы. "
+"Для того, чтобы работа планировщика резервного копирования была гладкой и "
+"правильной, Вы должны быть постоянно авторизированы в этих сервисах. \n"
+"             Помните, что если вы вошли на страницу где бекап запущен "
+"вручную, Вы автоматически авторизируетесь на странице редактирования  "
+"плагина. "
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:15
+msgid "Schedule Name:"
+msgstr "Имя расписания:"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:16
+msgid "Enable Schedule"
+msgstr "Включить расписание"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:17
+msgid "Save Schedule"
+msgstr "Сохранить расписание"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:8
+msgid "Create new schedule"
+msgstr "Создать новое расписание"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:17
+msgid ""
+"<span class=\"bupWarningRed\">Warning:</span> The plugin can not increase "
+"the standard work time of the script, please contact your hosting provider."
+"<br />\n"
+"                        Detailed description <a class=\"bupBlueLink\" target="
+"\"_blank\" href=\"http://www.php.net/manual/en/info.configuration.php#ini."
+"max-execution-time\">here</a><br />Current max_execution_time = "
+msgstr ""
+"<span class=\"bupWarningRed\">ВниманиеПлагин не может увеличить стандартное "
+"время работы скрипта, пожалуйста, обратитесь к хостинг-провайдеру.<br />\n"
+"                        Подробное описание <a class=\"bupBlueLink\" target="
+"\"_blank\" href=\"http://www.php.net/manual/en/info.configuration.php#ini."
+"max-execution-time\">здесь</a><br />Текущие max_execution_time = "
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:28
+msgid "Schedules"
+msgstr "Расписания"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:29
+msgid "Periodicity"
+msgstr "Периодичность"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:31
+msgid "Backup content"
+msgstr "Бекап содержимого"
+
+#: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:57
+msgid "Edit"
+msgstr "Редактировать"
+
+#: modules/adminmenu/controller.php:7
+msgid "Your name field is required."
+msgstr "Ваше поле с именем является обязательным."
+
+#: modules/adminmenu/controller.php:8
+msgid "Your website field is required."
+msgstr "Поле \"сайт\" является обязательным."
+
+#: modules/adminmenu/controller.php:9
+msgid "Your e-mail field is required."
+msgstr "Поле электронной почты является обязательным."
+
+#: modules/adminmenu/controller.php:10
+msgid "Subject field is required."
+msgstr "Поле \"Тема\" является обязательным."
+
+#: modules/adminmenu/controller.php:11
+msgid "You must select a valid category."
+msgstr "Вы должны выбрать правильную категорию."
+
+#: modules/adminmenu/controller.php:12
+msgid "Message field is required."
+msgstr "Поле \"Сообщение\" является обязательным."
+
+#: modules/adminmenu/mod.php:10
+msgid "Settings"
+msgstr "Настройки"
+
+#: modules/adminmenu/views/adminmenu.php:14
+#: modules/options/views/options.php:7
+msgid "Backup"
+msgstr "Бекап"
+
+#: modules/adminmenu/views/adminmenu.php:15 modules/promo_supsystic/mod.php:36
+msgid "Overview"
+msgstr "Инфо"
+
+#: modules/adminmenu/views/adminmenu.php:21
+#: modules/adminmenu/views/adminmenu.php:28
+#: modules/adminmenu/views/adminmenu.php:31
+msgid "Backup by Supsystic"
+msgstr "Backup by Supsystic"
+
+#: modules/amazon/controller.php:75
+msgid "Credentials are stored in the database"
+msgstr "Учетные данные хранятся в базе данных"
+
+#: modules/amazon/controller.php:78
+msgid "Invalid or empty credentials"
+msgstr "Неверный или пустые учетные данные"
+
+#: modules/amazon/controller.php:83
+msgid "Bucket stored in the database"
+msgstr "Bucket хранится в базе данных"
+
+#: modules/amazon/controller.php:86
+msgid "Invalid bucket"
+msgstr "Неверный bucket"
+
+#: modules/amazon/controller.php:105 modules/dropbox/controller.php:117
+#: modules/onedrive/controller.php:76
+msgid "Please, wait..."
+msgstr "Пожалуйста, подождите ..."
+
+#: modules/amazon/controller.php:141
+msgid "You did not specify credentials or credentials are invalid"
+msgstr ""
+"Вы не указали учетные данные или учетные данные являются недействительными"
+
+#: modules/amazon/controller.php:144
+msgid "Bucket not found"
+msgstr "Bucket не найден"
+
+#: modules/amazon/controller.php:174 modules/dropbox/controller.php:205
+#: modules/gdrive/controller.php:154
+msgid "File successfully deleted"
+msgstr "Файл успешно удален"
+
+#: modules/amazon/controller.php:177
+msgid "Not enough input parameters"
+msgstr "Не хватает входных параметры"
+
+#: modules/amazon/controller.php:180
+msgid "File not found on server"
+msgstr "Файл не найден на сервере"
+
+#: modules/amazon/controller.php:183
+msgid "Failed to delete the selected file"
+msgstr "Не удалось удалить выбранный файл"
+
+#: modules/amazon/controller.php:206
+msgid "File not found on Amazon S3"
+msgstr "Файл не найден на Amazon S3"
+
+#: modules/amazon/controller.php:221
+msgid "Enter your AWS Access Key, Secret Key and Bucket name"
+msgstr "Введите ключ доступа AWS, секретный ключ и имя Bucket"
+
+#: modules/amazon/controller.php:224
+msgid "Access Key"
+msgstr "Ключ доступа"
+
+#: modules/amazon/controller.php:230
+msgid "Secret Key"
+msgstr "Секретный ключ"
+
+#: modules/amazon/controller.php:236
+msgid "Bucket"
+msgstr "Bucket"
+
+#: modules/amazon/controller.php:246
+msgid "Store credentials"
+msgstr "Хранение учётных данных"
+
+#: modules/backup/controller.php:78
+msgid "Clear out old temporary files"
+msgstr "Очистите старые временные файлы"
+
+#: modules/backup/controller.php:109
+msgid "Send request to generate temporary file stacks"
+msgstr "Отправить запрос для получения временных файлов стека"
+
+#: modules/backup/controller.php:239 modules/backup/controller.php:240
+msgid "Unable to create the temporary archive"
+msgstr "Невозможно создать временный архив"
+
+#: modules/backup/controller.php:284
+msgid "Unable to restore from "
+msgstr "Невозможно восстановить из"
+
+#: modules/backup/controller.php:292
+msgid ""
+"Unable to restore backup files. Check folder or files writing permissions. "
+"Try to set 766 permissions to the:"
+msgstr ""
+"Невозможно восстановить резервные файлы. Проверьте папки или файлы на права "
+"записи. Попробуйте установить права доступа 766 на:"
+
+#: modules/backup/controller.php:345
+msgid "Unable to delete backup"
+msgstr "Невозможно удалить бекап"
+
+#: modules/backup/controller.php:358
+msgid "Successfully!"
+msgstr "Успешно!"
+
+#: modules/backup/controller.php:371
+msgid "Setting saved!"
+msgstr "Настройки сохранены!"
+
+#: modules/backup/controller.php:373
+msgid "Database error, please try again"
+msgstr "Ошибка базы данных, пожалуйста, попробуйте еще раз"
+
+#: modules/backup/controller.php:398
+msgid ""
+"There are no zlib extension on your server. This mean that you can make only "
+"database backup.<br/>Check this link <a target=\"_blank\" href=\"http://php."
+"net/manual/en/zlib.installation.php\">http://php.net/manual/en/zlib."
+"installation.php</a> or contact your hosting provider and ask them to "
+"resolve this issue for you."
+msgstr ""
+"Отсутствует  расширение Zlib на вашем сервере. Это означает, что Вы можете "
+"сделать только резервную копию базы данных. <br/>Перейдите по этой ссылке <a "
+"target=\"_blank\" href=\"http://php.net/manual/en/book.zip.php\">http://php."
+"net/manual/en/book.zip.php</a> или свяжитесь с хостинг-провайдером и "
+"попросите их, помочь решить эту проблему для Вас."
+
+#: modules/backup/controller.php:406
+msgid ""
+"There are no ZipArchive library on your server. This mean that you can make "
+"only database backup.<br/>Check this link <a target=\"_blank\" href=\"http://"
+"php.net/manual/en/book.zip.php\">http://php.net/manual/en/book.zip.php</a> "
+"or contact your hosting provider and ask them to resolve this issue for you."
+msgstr ""
+"Отсутствует  ZipArchive библиотека на вашем сервере. Это означает, что Вы "
+"можете сделать только резервную копию базы данных. <br/>Перейдите по этой "
+"ссылке <a target=\"_blank\" href=\"http://php.net/manual/en/book.zip.php"
+"\">http://php.net/manual/en/book.zip.php</a> или свяжитесь с хостинг-"
+"провайдером и попросите их, помочь решить эту проблему для Вас."
+
+#: modules/backup/mod.php:188
+msgid "Local Backup"
+msgstr "Локальный бекап"
+
+#: modules/backup/models/backupLog.php:54
+msgid ""
+"Please, don't delete the line that is lower, it is used for technical "
+"purposes!"
+msgstr ""
+"Пожалуйста, не удаляйте линию, которая ниже, онf используется для "
+"технических целей!"
+
+#: modules/backup/models/backupLog.php:82
+msgid "Backup settings: "
+msgstr "Настройки бекапа:"
+
+#: modules/backup/models/backupLog.php:106
+msgid "Exclude: "
+msgstr "Исключить:"
+
+#: modules/backup/models/backupLog.php:109
+msgid "Email notification: "
+msgstr "Уведомление по электронной почте:"
+
+#: modules/backup/models/database.php:167
+msgid "Secret key for decrypt DB data wrong! Please, try again."
+msgstr ""
+"Секретный ключ для расшифровки данных БД неправильный! Пожалуйста, "
+"попробуйте еще раз."
+
+#: modules/backup/models/database.php:185
+#: modules/backup/models/database.php:389
+msgid ""
+"Your MySQL server does not support transactions, \"safe update\" unavailable"
+msgstr ""
+"Сервер MySQL не поддерживает транзакции, \"безопасное обновление\" недоступно"
+
+#: modules/backup/models/database.php:280
+msgid "Error: unexpected fgets() fail"
+msgstr "Ошибка: unexpected fgets() fail"
+
+#: modules/backup/models/database.php:285
+msgid "Unable to clear the database before restoring"
+msgstr "Невозможно очистить базу данных перед восстановлением"
+
+#: modules/backup/models/database.php:314
+msgid "Can not find file "
+msgstr "Не удается найти файл"
+
+#: modules/backup/models/database.php:337
+msgid ""
+"Revision of backup and your database do not match. You must enable the Force "
+"Update options to update (at one's own risk)"
+msgstr ""
+"Редакция резервного копирования и базы данных не совпадают. Вы должны "
+"включить опцию \"Форсированное обновление\" для обновления (на свой страх и "
+"риск)"
+
+#: modules/backup/models/database.php:346
+msgid ""
+"This backup was made on another version of WordPress. You must enable the "
+"Force Update options to update (at one's own risk)"
+msgstr ""
+"Эта резервная копия была сделана на другой версии WordPress. Вы должны "
+"включить опции \"Форсированное обновление\" для обновления (на свой страх и "
+"риск)"
+
+#: modules/backup/models/database.php:355
+msgid ""
+"Backup was created with a different version of the plugin. You must enable "
+"the Force Update options to update (at one's own risk)"
+msgstr ""
+"Резервная копия была создана с другой версией плагина. Вы должны включить "
+"опцию \"Форсированное обновление\" для обновления (на свой страх и риск)"
+
+#: modules/backup/models/filesystem.php:29
+#, php-format
+msgid "Filesystem backup %s does not exists"
+msgstr "Файловая система резервного копирования %s не существует"
+
+#: modules/backup/models/filesystem.php:57
+msgid "An error has occurred while unpacking the archive"
+msgstr "Произошла ошибка при распаковке архива"
+
+#: modules/backup/views/tpl/backup.index.php:8
+msgid "Restore Presets:"
+msgstr "Восстановление пресетов:"
+
+#: modules/backup/views/tpl/backup.index.php:11
+msgid "Safe Update"
+msgstr "Безопасное обновление"
+
+#: modules/backup/views/tpl/backup.index.php:13
+msgid ""
+"If the ckeckbox is set up, the database backup will be performed. This will "
+"let the database backup work in the transaction mode, i.e. should there "
+"occur any failure during the data base recovery, no data from the data-base "
+"backup will be transferred to the data-base. The data-base backup recovery "
+"will occur if and only there were no failures during the process. If the "
+"ckeckbox is not set up the data-base backup will be performed without "
+"transaction mode."
+msgstr ""
+"Если ckeckbox настроен, резервное копирование базы данных будет выполняться. "
+"Это позволит резервному копированию базы данных работать в режиме "
+"транзакций, то есть при возникновении каких-либо сбоев в базе данных, данные "
+"резервной копии не будут переданы в базу данных. Восстановление базы данных "
+"будет происходить, если и только там не было никаких сбоев в процессе "
+"резервного копирования. Если ckeckbox не настроен база данных будет "
+"выполнять резервное копирование без режима транзакций."
+
+#: modules/backup/views/tpl/backup.index.php:23
+msgid "Force Update"
+msgstr "Форсированное обновление"
+
+#: modules/backup/views/tpl/backup.index.php:25
+msgid ""
+"When backup is performed, the labels are usually put at the beginning of the "
+"file dump, such as: WordPress version for the backup; WordPress data-base "
+"version for the backup; the plugin version for the backup. At recovering, if "
+"the force has been off, the backup will not be performed, because it will "
+"constantly pop up with the message, that the version is incorrect (the "
+"version of WordPress, the version of WordPress data-base or the plugin "
+"version). If the force has been on, there will be no such system check and "
+"the recovery will be performed."
+msgstr ""
+"При выполнении резервного копирования, labels обычно ставят в начале файла "
+"дампа, таких как: WordPress версии для резервного копирования; версии базы "
+"данных WordPress для резервного копирования; версию плагина для резервного "
+"копирования. При востановлении,  если форсирование будет выключено, "
+"резервное копирование не будет выполняться, потому что будет постоянно "
+"всплывать с сообщения, что версия неверна (версия WordPress, версии базы "
+"данных или плагина)). Если форсирование будет включено, не будет никакой "
+"проверки системы и восстановление будет выполнено."
+
+#: modules/backup/views/tpl/backup.index.php:43
+msgid " / Start:"
+msgstr " / Старт:"
+
+#: modules/backup/views/tpl/backup.index.php:44
+msgid " / Finish:"
+msgstr " / Финиш:"
+
+#: modules/backup/views/tpl/backup.index.php:54
+msgid "Backup to <b>FTP</b> / ID"
+msgstr "Бекап на <b>ФТП</b> / ID"
+
+#: modules/backup/views/tpl/backup.index.php:90
+#: modules/backup/views/tpl/backup.index.php:151
+#: modules/backup/views/tpl/backup.index.php:215
+#: modules/backup/views/tpl/backup.index.php:277
+#: modules/backup/views/tpl/backup.index.php:328
+msgid "Filesystem"
+msgstr "Файловая система"
+
+#: modules/backup/views/tpl/backup.index.php:90
+#: modules/backup/views/tpl/backup.index.php:151
+#: modules/backup/views/tpl/backup.index.php:215
+#: modules/backup/views/tpl/backup.index.php:277
+#: modules/backup/views/tpl/backup.index.php:328
+msgid "Database"
+msgstr "База данных"
+
+#: modules/backup/views/tpl/backup.index.php:101
+msgid "Download"
+msgstr "Скачать"
+
+#: modules/backup/views/tpl/backup.index.php:123
+#: modules/backup/views/tpl/backup.index.php:188
+#: modules/backup/views/tpl/backup.index.php:251
+#: modules/backup/views/tpl/backup.index.php:302
+#: modules/backup/views/tpl/backup.index.php:364
+msgid "Show Backup Log"
+msgstr "Показать лог бекапов"
+
+#: modules/backup/views/tpl/backup.index.php:125
+#: modules/backup/views/tpl/backup.index.php:190
+#: modules/backup/views/tpl/backup.index.php:253
+#: modules/backup/views/tpl/backup.index.php:304
+#: modules/backup/views/tpl/backup.index.php:366
+msgid "Log is clear."
+msgstr "Лог пустой"
+
+#: modules/backup/views/tpl/backup.index.php:141
+msgid "Backup to <b>GoogleDrive</b> / ID"
+msgstr "Бекап на <b>GoogleDrive</b> / ID"
+
+#: modules/backup/views/tpl/backup.index.php:205
+msgid "Backup to <b>OneDrive</b> / ID"
+msgstr "Бекап на <b>OneDrive</b> / ID"
+
+#: modules/backup/views/tpl/backup.index.php:268
+msgid "Backup to <b>Amazon S3</b> / ID"
+msgstr "Бекап на <b>Amazon S3</b> / ID"
+
+#: modules/backup/views/tpl/backup.index.php:319
+msgid "Backup to <b>DropBox</b> / ID"
+msgstr "Бекап на <b>DropBox</b> / ID"
+
+#: modules/backup/views/tpl/backup.index.php:382
+msgid "Backups don't exist!"
+msgstr "Бекап не существует!"
+
+#: modules/backup/views/tpl/backup.index.php:387
+msgid "Backup Log:"
+msgstr "Лог бекапа:"
+
+#: modules/backup/views/tpl/backup.index.php:393
+msgid "Get PRO Verion!"
+msgstr "Получить ПРО версию!"
+
+#: modules/backup/views/tpl/backup.index.php:395
+msgid ""
+"Please, be advised, that this option is available only in PRO version. You "
+"can"
+msgstr ""
+"Пожалуйста, имейте в виду, что эта опция доступна только в PRO версии. Вы "
+"можете"
+
+#: modules/backup/views/tpl/backup.index.php:396
+#: modules/promo_supsystic/mod.php:12
+#: modules/promo_supsystic/views/tpl/schedulePromo.php:7
+msgid "Get PRO"
+msgstr "Получить ПРО"
+
+#: modules/dropbox/controller.php:130
+msgid "Your server not meet the requirements Dropbox SDK"
+msgstr "Ваш сервер не отвечает требованиям Dropbox SDK"
+
+#: modules/dropbox/controller.php:170 modules/dropbox/models/dropbox.php:252
+#: modules/dropbox/models/dropbox52.php:282
+#: modules/dropbox/models/dropbox52.php:317 modules/gdrive/controller.php:120
+#: modules/gdrive/controller.php:157 modules/gdrive/controller.php:173
+msgid "Authentication required"
+msgstr "Требуется аутентификация"
+
+#: modules/dropbox/controller.php:173 modules/gdrive/controller.php:127
+msgid "Nothing to upload"
+msgstr "Нечего загрузить"
+
+#: modules/dropbox/controller.php:201 modules/gdrive/controller.php:150
+msgid "Nothing to delete"
+msgstr "Ничего не удалять"
+
+#: modules/dropbox/controller.php:224
+msgid "There was an error during recovery"
+msgstr "Произошла ошибка во время восстановления"
+
+#: modules/dropbox/mod.php:130
+msgid "Your server does not support the Dropbox without cURL extension"
+msgstr "Ваш сервер не поддерживает Dropbox без расширения cURL "
+
+#: modules/dropbox/views/tpl/dropbox.auth.php:8
+#: modules/gdrive/views/tpl/gdrive.auth.php:3
+#: modules/onedrive/views/tpl/onedrive.auth.php:3
+msgid "Authenticate"
+msgstr "Авторизация"
+
+#: modules/gdrive/controller.php:21
+msgid "Your server do not have curl extension installed."
+msgstr "Ваш сервер не имеет расширение curl."
+
+#: modules/gdrive/controller.php:22
+msgid "This extension is required by Google API SDK."
+msgstr "Это расширение требует API SDK Google."
+
+#: modules/gdrive/controller.php:23
+msgid "Please install it at first."
+msgstr "Пожалуйста, установите его в первую очередь."
+
+#: modules/gdrive/controller.php:24
+msgid "You can also check following links for more info:"
+msgstr ""
+"Вы также можете проверить следующие ссылки для получения дополнительной "
+"информации:"
+
+#: modules/gdrive/controller.php:40
+msgid ""
+"For long-term storage of Google Drive authorization, please re-connect our "
+"application in your personal account of Google Drive."
+msgstr ""
+"Для долгосрочного хранения авторизации Google Drive, пожалуйста, повторно "
+"подключитесь к Google Drive аккаунту в нашем плагине."
+
+#: modules/gdrive/controller.php:55
+msgid "Your server is not support Google API Client Library."
+msgstr "Ваш сервер не поддерживает библиотеку клиента Google API."
+
+#: modules/gdrive/controller.php:57
+msgid "PHP JSON extension required"
+msgstr "Требуется расширение PHP JSON"
+
+#: modules/gdrive/controller.php:97
+msgid "Please wait..."
+msgstr "Пожалуйста, подождите ..."
+
+#: modules/gdrive/controller.php:188
+msgid "File not found on Google Drive"
+msgstr "Файл не найден на Google Drive"
+
+#: modules/gdrive/controller.php:191
+msgid "Failed to download file"
+msgstr "Не удалось загрузить файл"
+
+#: modules/gdrive/models/gdrive.php:313
+msgid "Unable to get parent folder ID."
+msgstr "Не удалось получить идентификатор родительской папки."
+
+#: modules/onedrive/controller.php:104
+msgid "Deleted successfully"
+msgstr "Успешно удалено"
+
+#: modules/onedrive/controller.php:122
+#: modules/onedrive/models/onedrive.php:399
+msgid "Authorization required."
+msgstr "Требуется Авторизация."
+
+#: modules/onedrive/controller.php:127
+msgid "Uploaded successfully."
+msgstr "Успешно загружено."
+
+#: modules/onedrive/controller.php:135
+msgid "Unexpected error."
+msgstr "Неожиданная ошибка."
+
+#: modules/onedrive/controller.php:150
+msgid "File downloaded."
+msgstr "Файл загружен."
+
+#: modules/onedrive/models/onedrive.php:408
+msgid "Enexpected error."
+msgstr "Неожиданная ошибка."
+
+#: modules/onedrive/models/onedrive.php:422
+msgid "Failed to save downloaded file."
+msgstr "Не удалось сохранить загруженный файл."
+
+#: modules/onedrive/views/tpl/onedrive.authError.php:4
+msgid "Authentication failed."
+msgstr "Ошибка аутентификации."
+
+#: modules/onedrive/views/tpl/onedrive.error.php:4
+msgid "An error has been occured."
+msgstr "Произошла ошибка."
+
+#: modules/options/controller.php:10 modules/options/controller.php:21
+msgid "Save Complete"
+msgstr "Сохранение завершено"
+
+#: modules/options/mod.php:20
+msgid "General"
+msgstr "Общее"
+
+#: modules/options/models/modules.php:32
+msgid "Module Updated"
+msgstr "Модуль обновлено"
+
+#: modules/options/models/modules.php:47
+msgid "Module Update Failed"
+msgstr "Обновление модуля не удалось"
+
+#: modules/options/models/modules.php:50
+msgid "Error module ID"
+msgstr "Ошибка модуля ID"
+
+#: modules/options/models/options.php:27
+msgid "Incorrect email address"
+msgstr "Неверный адрес электронной почты"
+
+#: modules/options/models/options.php:39
+msgid "No change"
+msgstr "Без изменений"
+
+#: modules/options/models/options.php:57
+msgid "PRO version is not activated"
+msgstr "PRO версия не активирована"
+
+#: modules/options/models/options.php:61
+msgid "No selected options"
+msgstr "Параметры не выбраны"
+
+#: modules/options/models/options.php:246
+msgid "Option "
+msgstr "Опция"
+
+#: modules/options/models/options.php:248
+msgid "Invalid option ID or Code"
+msgstr "Неверный параметр ID или код"
+
+#: modules/options/models/options.php:251
+msgid "Empty data to save option"
+msgstr "Пустые данные, чтобы сохранить опцию"
+
+#: modules/options/models/options.php:291
+#: modules/options/models/options.php:307
+msgid "Empty data to setup"
+msgstr "Пустые данные для установки"
+
+#: modules/options/models/options.php:321
+#: modules/options/models/options.php:323
+#: modules/options/models/options.php:344
+#: modules/options/models/options.php:346
+#: modules/options/models/options.php:376
+#: modules/options/models/options.php:378
+msgid "There is no default for this option and current template"
+msgstr "Нет значения по умолчанию для этой опции и текущего шаблона"
+
+#: modules/options/models/options.php:325
+#: modules/options/models/options.php:348
+#: modules/options/models/options.php:380
+msgid "Empty option code"
+msgstr "Пустой код опции"
+
+#: modules/options/models/options.php:358
+#: modules/options/models/options.php:390
+msgid "Unable to remove image"
+msgstr "Не удается удалить файл"
+
+#: modules/options/views/tpl/backupOptions.php:137
+msgid "Exclude"
+msgstr "Исключение"
+
+#: modules/options/views/tpl/backupOptions.php:140
+msgid ""
+" If entering multiple files/directories, then separate them with commas."
+msgstr "При вводе нескольких файлов / каталогов, разделите их запятыми."
+
+#: modules/options/views/tpl/backupOptions.php:160
+msgid "Warehouse"
+msgstr "Хранилище"
+
+#: modules/options/views/tpl/backupOptions.php:179
+msgid ""
+"If the checkbox has been set up, then the backup path must be specified in "
+"the Warehouse field against the root directory, where the WordPress is "
+"installed. if the checkbox has been off, then the backup path must be "
+"specified in the Warehouse field against the disk root.\""
+msgstr ""
+
+#: modules/options/views/tpl/backupOptions.php:180
+msgid "Use relative path"
+msgstr "Используйте относительный путь"
+
+#: modules/options/views/tpl/deactivatePage.php:33
+#: modules/pages/views/tpl/deactivatePage.php:33
+msgid "Delete Plugin Data (options, setup data, database tables, etc.)"
+msgstr ""
+"Удалить данные плагина (опции, данные настройки, таблицы базы данных и т.д.)"
+
+#: modules/options/views/tpl/mainOptionsTab.php:9
+msgid ""
+"To restore website backup, be sure that all files and folders in the core "
+"directory have writing permissions. Backup restoration can rewrite some of "
+"them."
+msgstr ""
+"Для восстановления резервной копии сайта, убедитесь, что все файлы и папки в "
+"основной папке имеют права на запись. Резервное восстановление может "
+"переписать некоторые из них."
+
+#: modules/options/views/tpl/mainOptionsTab.php:29
+msgid "Where to Backup:"
+msgstr "Куда делать бекап"
+
+#: modules/options/views/tpl/mainOptionsTab.php:31
+msgid "Available space:"
+msgstr "Доступное место:"
+
+#: modules/options/views/tpl/mainOptionsTab.php:39
+msgid "An errors has been occured while initialize warehouse module."
+msgstr "Произошла ошибка в то время инициализации модуля хранилища."
+
+#: modules/options/views/tpl/mainOptionsTab.php:49
+msgid "Show Log"
+msgstr "Показать лог"
+
+#: modules/options/views/tpl/mainOptionsTab.php:54
+msgid "Backup already in process."
+msgstr "Резервное копирование уже в процессе."
+
+#: modules/pages/views/tpl/pagesTab.php:14
+msgid "Pages Options"
+msgstr "Опции страниц"
+
+#: modules/pages/views/tpl/pagesTab.php:17
+msgid "Recreate Pages"
+msgstr "Пересоздайте страницы"
+
+#: modules/pages/views/tpl/pagesTab.php:18
+msgid ""
+"If you accidently deleted one of plugin page - Login, or Checkout, or "
+"Shopping cart for example, just click on this button - and pages, that you "
+"deleted, will be created again. Do not use it without emergency."
+msgstr ""
+"Если Вы случайно удалили одну страницу - например страницу авторизации, или "
+"страницу Checkout, или страницу Корзина, просто нажмите на эту кнопку - и "
+"страницы, которые Вы удалили, будут созданы заново. Не используйте его без "
+"крайней необходимости."
+
+#: modules/promo_supsystic/controller.php:8
+msgid "Information was saved. Thank you!"
+msgstr "Информация сохранена. Спасибо!"
+
+#: modules/promo_supsystic/mod.php:12
+msgid ""
+"Please, be advised, that this option is available only in PRO version. You "
+"can "
+msgstr ""
+"Пожалуйста, имейте в виду, что эта опция доступна только в PRO версии. Вы "
+"можете"
+
+#: modules/promo_supsystic/mod.php:70
+msgid "Name"
+msgstr "Имя"
+
+#: modules/promo_supsystic/mod.php:72
+msgid "Website"
+msgstr "Сайт"
+
+#: modules/promo_supsystic/mod.php:73
+msgid "Subject"
+msgstr "Заголовок"
+
+#: modules/promo_supsystic/mod.php:74
+msgid "Topic"
+msgstr "Раздел"
+
+#: modules/promo_supsystic/mod.php:75
+msgid "Plugin options"
+msgstr "Опции плагина"
+
+#: modules/promo_supsystic/mod.php:76
+msgid "Report a bug"
+msgstr "Сообщить об ошибке"
+
+#: modules/promo_supsystic/mod.php:77
+msgid "Require a new functionallity"
+msgstr "Предложить новый функционал"
+
+#: modules/promo_supsystic/mod.php:78
+msgid "Other"
+msgstr "Другое"
+
+#: modules/promo_supsystic/mod.php:80
+msgid "Message"
+msgstr "Сообщение"
+
+#: modules/promo_supsystic/mod.php:80
+msgid "Hello Supsystic Team!"
+msgstr "Привет, команда Supsystic!"
+
+#: modules/promo_supsystic/mod.php:93
+msgid "Schedule <p class=\"bupAIP\">Available In PRO</p>"
+msgstr "Расписание <p class=\"bupAIP\">доступно в PRO версии</p>"
+
+#: modules/promo_supsystic/mod.php:102
+msgid "Remote FTP Server"
+msgstr "Удалённый FTP-сервер"
+
+#: modules/promo_supsystic/mod.php:102
+msgid "Remote SFTP(SCP) Server"
+msgstr "Удалённый SFTP(SCP) сервер"
+
+#: modules/promo_supsystic/mod.php:102
+msgid "Remote FTPS Server"
+msgstr "Удаленный FTPS серевер"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:5
+msgid "Google"
+msgstr "Google"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:6
+msgid "Wordpress.org"
+msgstr "Wordpress.org"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:7
+msgid "Refer a friend"
+msgstr "Привел друг"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:8
+msgid "Find on the web"
+msgstr "Нашел в интернете"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:9
+msgid "Other way..."
+msgstr "Другое..."
+
+#: modules/promo_supsystic/views/promo_supsystic.php:33
+msgid "How to get PRO version of plugin for FREE?"
+msgstr "Как получить PRO версию плагина БЕСПЛАТНО?"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:33
+#, php-format
+msgid ""
+"You have an incredible opportunity to get PRO version for free. Make "
+"Translation of plugin! It will be amazing if you take advantage of this "
+"offer! More info you can find here <a target=\"_blank\" href=\"%s\">\"Get "
+"PRO version of any plugin for FREE\"</a>"
+msgstr ""
+"У Вас есть невероятная возможность получить PRO версию бесплатно. Сделайте "
+"перевод плагина! Это будет удивительно, если Вы воспользоваться этим "
+"предложением! Подробнее вы можете найти здесь <a target=\"_blank\" href=\"%s"
+"\">\"Получить PRO версии любого плагина БЕСПЛАТНО\"</a>"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:34
+msgid "Translation"
+msgstr "Перевод"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:34
+#, php-format
+msgid ""
+"All available languages are provided with the Supsystic Google Maps plugin. "
+"If your language isn't available, your plugin will be in English by default."
+"<br /><b>Available Translations: English</b><br />Translate or update a "
+"translation Backup WordPress plugin in your language and get a Premium "
+"license for FREE. <a target=\"_blank\" href=\"%s\">Contact us</a>."
+msgstr ""
+"Все доступные языки обеспечиваются SupsysticBackup.  Если ваш язык не "
+"доступен, ваш плагин будет на английском языке по умолчанию.<br /"
+"><b>Доступные переводы:. English, Russian, Galician, Swiss-German, Dutch, "
+"French</b><br />Переведите или обновите перевод плагина на вашем языке и "
+"получите Премиум лицензию БЕСПЛАТНО. <a target=\"_blank\" href=\"%s"
+"\">Свяжитесь с нами</a>."
+
+#: modules/promo_supsystic/views/promo_supsystic.php:51
+#, php-format
+msgid ""
+"There were some problem while trying to retrive our news, but you can always "
+"check all list <a target=\"_blank\" href=\"%s\">here</a>."
+msgstr ""
+"Были некоторые проблемы при попытке получить ваши новости, но вы всегда "
+"можете проверить весь список <a target=\"_blank\" href=\"%s\">здесь</a>."
+
+#: modules/promo_supsystic/views/promo_supsystic.php:61
+#: modules/promo_supsystic/views/promo_supsystic.php:62
+#: modules/promo_supsystic/views/promo_supsystic.php:67
+#: modules/promo_supsystic/views/promo_supsystic.php:69
+#: modules/promo_supsystic/views/promo_supsystic.php:70
+msgid "Yes"
+msgstr "Да"
+
+#: modules/promo_supsystic/views/promo_supsystic.php:61
+#: modules/promo_supsystic/views/promo_supsystic.php:62
+#: modules/promo_supsystic/views/promo_supsystic.php:67
+#: modules/promo_supsystic/views/promo_supsystic.php:69
+#: modules/promo_supsystic/views/promo_supsystic.php:70
+msgid "No"
+msgstr "Нет"
+
+#: modules/promo_supsystic/views/tpl/adminFooter.php:4
+#: modules/promo_supsystic/views/tpl/welcomePage.php:93
+msgid "Version"
+msgstr "Версия"
+
+#: modules/promo_supsystic/views/tpl/adminFooter.php:9
+msgid "Get"
+msgstr "Получить"
+
+#: modules/promo_supsystic/views/tpl/adminFooter.php:13
+msgid "Support"
+msgstr "Поддержка"
+
+#: modules/promo_supsystic/views/tpl/adminSendStatNote.php:9
+msgid "No, don\\'t send"
+msgstr "Нет, не отправлять"
+
+#: modules/promo_supsystic/views/tpl/adminSendStatNote.php:26
+msgid "Yes, send statistics"
+msgstr "Да, отправлять статистику"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:5
+msgid "FAQ and Documentation"
+msgstr "Вопросы и документация"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:17
+msgid "Check all FAQs"
+msgstr "Проверьте все вопросы"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:22
+msgid "Video tutorial"
+msgstr "Видео инструкция"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:31
+msgid "Server Settings"
+msgstr "Настройки сервера"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:44
+msgid "News"
+msgstr "Новости"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:50
+msgid "All news and info"
+msgstr "Все новости и информация"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:55
+msgid "Contact form"
+msgstr "Контактная форма"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:89
+msgid "Send email"
+msgstr "Отправить письмо"
+
+#: modules/promo_supsystic/views/tpl/overviewTabContent.php:98
+msgid ""
+"Your email was send, we will try to respond to you as soon as possible. "
+"Thank you for support!"
+msgstr ""
+"Ваше письмо отправлено, мы постараемся ответить Вам как можно скорее. "
+"Спасибо за поддержку!"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:91
+msgid "Welcome to"
+msgstr "Добро пожаловать"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:98
+msgid "This is first start up of the "
+msgstr "Это первый запуск"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:99
+msgid ""
+"If you are newbie - check all features on that page, if you are guru - "
+"please correct us."
+msgstr ""
+"Если вы новичок - проверить все функции на этой странице, если вы гуру - "
+"пожалуйста, поправьте нас."
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:109
+msgid "Where did you find us?"
+msgstr "Где вы нас нашли?"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:124
+msgid "What to do next? Check below section:"
+msgstr "Что делать дальше? Проверьте ниже разделе:"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:128
+msgid "Boost us:"
+msgstr ""
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:129
+msgid ""
+"It's amazing when you boost development with your feedback and ratings. So "
+"we create special <a target=\"_blank\" href=\"https://supsystic.com/\">boost "
+"page</a> to help you to help us."
+msgstr ""
+"Это удивительно, когда вы стимулируете нас к развитию через обратную связь "
+"или рейтинг на странице плагина. Поэтому мы создали специальнуюl <a target="
+"\"_blank\" href=\"https://supsystic.com/\">boost страницу</a> чтобы помочь "
+"вам и нам."
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:133
+msgid "Documentation:"
+msgstr "Документация:"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:134
+msgid ""
+"Check <a target=\"_blank\" href=\"https://supsystic.com/\">documentation</a> "
+"and FAQ section. If you can't solve your problems - <a target=\"_blank\" "
+"href=\"http://supsystic.com/contacts/\">contact us</a>."
+msgstr ""
+"Проверьте <a target=\"_blank\" href=\"https://supsystic.com/\">документацию</"
+"a> и раздел часто задаваемых вопросов. Если Вы не можете решить ваши "
+"проблемы - <a target=\"_blank\" href=\"http://supsystic.com/contacts/"
+"\">свяжитесь с нами</a>."
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:138
+msgid "Full Features List:"
+msgstr "Полный список особенностей:"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:139
+msgid "There are so many features, so we can't post it here. Like:"
+msgstr ""
+"Так много особенностей, поэтому мы не можем опубликовать их здесь. Like:"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:141
+msgid "Files and Database backup"
+msgstr "Бекап файлов и базы данных"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:142
+msgid "Backup to the Dropbox"
+msgstr "Бекап на Dropbox"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:143
+msgid "FTP backup"
+msgstr "FTP бекап"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:144
+msgid "Custom backup"
+msgstr "Пользовательский бекап"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:145
+msgid "Backup in archive"
+msgstr "Бекап в архив"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:146
+msgid "Restore backups anywhere"
+msgstr "Восстановление бекапов в любом месте"
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:148
+msgid ""
+"So check full features list <a target=\"_blank\" href=\"https://supsystic."
+"com/\">here</a>."
+msgstr ""
+"Поэтому проверить Полный список функций <a target=\"_blank\" href=\"https://"
+"supsystic.com/\">здесь</a>."
+
+#: modules/promo_supsystic/views/tpl/welcomePage.php:156
+msgid "Thank for check info. Start using plugin."
+msgstr "Спасибо за проверку информации. Начните использовать плагин."
+
+#: modules/templates/mod.php:11
+msgid "Templates"
+msgstr "Шаблоны"
+
+#: modules/templates/views/tpl/noTemplates.php:1
+msgid "No Templates were found"
+msgstr "Шаблоны были не найдены"
+
+#: modules/templates/views/tpl/templatesTab.php:42
+msgid "Template Updated. Reload page to see results."
+msgstr "Шаблон Обновлено. Обновите страницу, чтобы увидеть результаты."
+
+#: modules/templates/views/tpl/templatesTab.php:72
+msgid "Deactivate"
+msgstr "Деактивировать"
+
+#: modules/warehouse/mod.php:73
+#, php-format
+msgid "Folder \"%s\" is not writable."
+msgstr "Папка  \"%s\" не для записи."
+
+#: modules/warehouse/mod.php:85
+#, php-format
+msgid "Can't create warehouse directory \"%s\"."
+msgstr "Невозможно создать каталог  хранилища \"%s\"."
+
+#: modules/warehouse/models/temporary.php:69
+#, php-format
+msgid "Failed to clear temporary folder by pattern \"%s\""
+msgstr "Не удалось очистить временную папку по шаблону \"%s\""

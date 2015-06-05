@@ -6,23 +6,28 @@
                 <div class="bupMsgDest"></div>
                 <h3><?php _e('Where to backup', BUP_LANG_CODE)?></h3>
                 <hr/>
-                <?php foreach($this->backupPlaces as $key => $bupPlace): ?>
 
-                    <div class="bupMargDest">
-                        <label>
-                            <?php echo htmlBup::radiobutton('dest_opt', array('value'   => $key)); ?> <?php echo $bupPlace['title']?>
-                        </label>
-                    </div>
+                <table class="form-table" style="width: 100% !important;">
+                    <?php foreach($this->backupPlaces as $key => $bupPlace): ?>
 
-                    <?php if(!empty($bupPlace['content'])): ?>
+                        <tr class="bupMargDest">
+                            <td>
+                                <label>
+                                    <?php echo htmlBup::radiobutton('dest_opt', array('value'   => $key)); ?> <?php echo $bupPlace['title']?>
+                                </label>
 
-                        <div class="bupOptions bup-<?php echo $key ?>">
-                            <?php echo $bupPlace['content']?>
-                        </div>
+                                <?php if(!empty($bupPlace['content'])): ?>
+                                    <div class="bupOptions bup-<?php echo $key ?>">
+                                        <br/>
+                                        <?php echo $bupPlace['content']?>
+                                    </div>
+                                <?php endif; ?>
+                            </td>
+                        <tr>
 
-                    <?php endif; ?>
 
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </table>
             </div>
 
             <div class="toeBupOptResponsive" id="bupMainOption">
@@ -31,9 +36,9 @@
 
                 <table class="form-table" style="width: 100% !important;">
                     <tr>
-                        <th class="col-w-30perc">
+                        <td class="col-w-30perc">
                             <?php _e('Full backup', BUP_LANG_CODE) ?>
-                        </th>
+                        </td>
                         <td class="col-w-1perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Full backup', BUP_LANG_CODE) ?>"></i>
                         </td class="col-w-1perc">
@@ -42,9 +47,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="col-w-30perc">
+                        <td class="col-w-30perc">
                             <?php _e('Wordpress Core', BUP_LANG_CODE) ?>
-                        </th>
+                        </td>
                         <td class="col-w-1perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('All folders and files backup in the root directory, where the WordPress is installed, except the /wp-content folder.', BUP_LANG_CODE) ?>"></i>
                         </td>
@@ -53,9 +58,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="col-w-30perc">
+                        <td class="col-w-30perc">
                             <?php _e('Plugins folder', BUP_LANG_CODE) ?>
-                        </th>
+                        </td>
                         <td class="col-w-1perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Plugins folder', BUP_LANG_CODE) ?>"></i>
                         </td>
@@ -64,9 +69,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="col-w-30perc">
+                        <td class="col-w-30perc">
                             <?php _e('Themes folder', BUP_LANG_CODE) ?>
-                        </th>
+                        </td>
                         <td class="col-w-1perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Themes folder', BUP_LANG_CODE) ?>"></i>
                         </td>
@@ -75,9 +80,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="col-w-30perc">
+                        <td class="col-w-30perc">
                             <?php _e('Uploads folder', BUP_LANG_CODE) ?>
-                        </th>
+                        </td>
                         <td class="col-w-1perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Uploads folder', BUP_LANG_CODE) ?>"></i>
                         </td>
@@ -86,9 +91,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="col-w-30perc">
+                        <td class="col-w-30perc">
                             <?php _e('Any folder inside wp-content', BUP_LANG_CODE) ?>
-                        </th>
+                        </td>
                         <td class="col-w-1perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Any folder inside wp-content', BUP_LANG_CODE) ?>"></i>
                         </td>
@@ -97,9 +102,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="col-w-30perc">
+                        <td class="col-w-30perc">
                             <?php _e('Database backup', BUP_LANG_CODE) ?>
-                        </th>
+                        </td>
                         <td class="col-w-1perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Database backup', BUP_LANG_CODE) ?>"></i>
                         </td>
@@ -108,9 +113,9 @@
                         </td>
                     </tr>
                     <tr class="bupSecretKeyDBRow" style="display: none">
-                        <th  style="padding-left: 0">
+                        <td>
                             <?php _e('Secret key for DB', BUP_LANG_CODE) ?>
-                        </th>
+                        </td>
                         <td class="col-w-1perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Secret key for encrypting DB data', BUP_LANG_CODE) ?>"></i>
                         </td>
@@ -119,7 +124,7 @@
                         </td>
                     </tr>
                     <tr class="bupSecretKeyDBRow" style="display: none">
-                        <td colspan="3" style="padding-left: 0">
+                        <td colspan="3">
                             <?php echo dispatcherBup::applyFilters('getInputForSecretKeyEncryptDb', '') ?>
                         </td>
                     </tr>
@@ -128,42 +133,42 @@
             </div>
 
             <div class="toeBupOptResponsive">
-                <h3><?php _e('Additional setting', BUP_LANG_CODE) ?></h3>
+                <h3><?php _e('Additional Settings', BUP_LANG_CODE) ?></h3>
                 <hr/>
 
-                <table  class="form-table" style="width: 100% !important;">
+                <table class="form-table" style="width: 100% !important;">
                     <tr>
                         <td class="col-w-60perc">
-                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('Specify and enter files and folders names which must not be backed up.', BUP_LANG_CODE) ?>"></i><?php echo __('Exclude', BUP_LANG_CODE); ?>
-                        </td>
-                        <td>
-                            <?php echo htmlBup::text( 'opt_values[exclude]', array('attrs'=>'class="excludeInput" title="' . __(' If entering multiple files/directories, then separate them with commas.', BUP_LANG_CODE) . '"', 'value' => frameBup::_()->getModule('options')->get('exclude')) ); ?>
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('Specify and enter files and folders names which must not be backed up.', BUP_LANG_CODE) ?>"></i><?php echo __('Exclude:', BUP_LANG_CODE); ?>
+                            <br/><br/>
+                            <?php echo htmlBup::text( 'opt_values[exclude]', array('attrs'=>'class="excludeInput" style="width: 100% !important" title="' . __(' If entering multiple files/directories, then separate them with commas.', BUP_LANG_CODE) . '"', 'value' => frameBup::_()->getModule('options')->get('exclude')) ); ?>
                         </td>
                     </tr>
                     <tr>
-                        <td >
-                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('Email notification', BUP_LANG_CODE) ?>"></i><?php echo __('Email notification', BUP_LANG_CODE); ?>
-                        </td>
                         <td>
-                            <?php echo htmlBup::checkbox('__toggleEmailCheckbox', array('attrs'=>'class="bupCheckboxNotUnCheck emailCh"', 'checked' => frameBup::_()->getModule('options')->get('email_ch') == 1 ? 'checked' : '')); ?>
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('Email notification', BUP_LANG_CODE) ?>"></i><?php echo __('Email notification:', BUP_LANG_CODE); ?>
+
+                            <div style="float: right">
+                                <?php echo htmlBup::checkbox('__toggleEmailCheckbox', array('attrs'=>'class="bupCheckboxNotUnCheck emailCh" style="float: right"', 'checked' => frameBup::_()->getModule('options')->get('email_ch') == 1 ? 'checked' : '')); ?>
+                            </div>
                             <input type="hidden" value="<?php echo frameBup::_()->getModule('options')->get('email_ch'); ?>" name="opt_values[email_ch]">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="emailAddress" <?php echo frameBup::_()->getModule('options')->get('email_ch') ? '' : 'style="display:none"';?> >
-                            <?php echo htmlBup::text( 'opt_values[email]', array('attrs'=>'class="excludeInput" placeholder="example@mail.com" title=""', 'value' => frameBup::_()->getModule('options')->get('email')) );?>
+
+                            <span class="emailAddress" <?php echo frameBup::_()->getModule('options')->get('email_ch') ? '' : 'style="display:none"';?> >
+                                <br/><br/>
+                                <?php echo htmlBup::text( 'opt_values[email]', array('attrs'=>'class="excludeInput" placeholder="example@mail.com" title="" style="width: 100% !important"', 'value' => frameBup::_()->getModule('options')->get('email')) );?>
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Specify the path where the data is to be backed up. It \'Use relative path\' ckeckbox has been set up, the path will be set against in the root directory, where the WordPress is installed. If \'Use relative path\' checkbox has been of, the full path to the disk root should be specified.', BUP_LANG_CODE) ?>"></i>
-                            <?php _e('Warehouse', BUP_LANG_CODE); ?>
-                        </td>
-                        <td>
+                            <?php _e('Warehouse:', BUP_LANG_CODE); ?>
+                            <br/><br/>
+
                             <?php
                             echo htmlBup::text(
                                 'opt_values[warehouse]', array(
-                                    'attrs' => 'class="input-regular" id="warehouseInput"',
+                                    'attrs' => 'class="input-regular" id="warehouseInput" style="width: 100% !important"',
                                     'value' => str_replace(
                                         '\\',
                                         '/',
@@ -178,24 +183,24 @@
                         <td>
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('If the checkbox has been set up, then the backup path must be specified in the Warehouse field against the root directory, where the WordPress is installed. if the checkbox has been off, then the backup path must be specified in the Warehouse field against the disk root."', BUP_LANG_CODE) ?>"></i>
                             <?php _e('Use relative path', BUP_LANG_CODE); ?>
-                        </td>
-                        <td>
-                            <?php
-                            echo htmlBup::checkbox(
-                                '__toggleWarehouseAbs',
-                                array(
-                                    'attrs'   => 'class="bupCheckbox wareabs" id="warehouseToggle"',
-                                    'checked' => frameBup::_()->getModule('options')->get('warehouse_abs') == 1 ? 'checked' : '',
-                                )
-                            );
-                            ?>
+                            <div style="float: right">
+                                <?php
+                                echo htmlBup::checkbox(
+                                    '__toggleWarehouseAbs',
+                                    array(
+                                        'attrs'   => 'class="bupCheckbox wareabs" id="warehouseToggle"',
+                                        'checked' => frameBup::_()->getModule('options')->get('warehouse_abs') == 1 ? 'checked' : '',
+                                    )
+                                );
+                                ?>
+                            <div
                             <input type="hidden" value="<?php echo frameBup::_()->getModule('options')->get('warehouse_abs'); ?>" name="opt_values[warehouse_abs]">
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td>
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Path to directory, where will be stored backup files.', BUP_LANG_CODE) ?>"></i>
-                            <span id="abspath"><?php echo ABSPATH; ?></span><span id="realpath"></span>
+                            <span id="abspath"><?php echo ABSPATH; ?></span><wbr><span id="realpath"></span>
                         </td>
                     </tr>
                 </table>

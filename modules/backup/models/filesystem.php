@@ -109,9 +109,10 @@ class filesystemModelBup extends modelBup {
      * @param string $name Path to the archive with name and extension
      * @param array $files A numeric array of files
      * @param string $replace
+     * @param string $fullPath
      * @return int How many files has been successfully handled
      */
-    public function getArchive($name, array $files, $replace = ABSPATH, $fullPath=false)
+    public function getArchive($name, array $files, $replace = ABSPATH, $fullPath = false)
     {
         set_time_limit(300);
 
@@ -162,9 +163,18 @@ class filesystemModelBup extends modelBup {
      */
     public function getFilesList($directory, array $exclude = array())
     {
+        $pluginsDirectory = BUP_WP_CONTENT_DIR . DS . 'plugins';
+        $themesDirectory = BUP_WP_CONTENT_DIR . DS . 'themes';
+
         @set_time_limit(0);
         if (!is_dir($directory) || in_array(basename($directory), $exclude)) {
-            return false;
+            // if directory path not contain  free backup or pro ver plugin - don't add this directory to backup file
+            if(stripos($directory, BUP_PLUG_NAME) !== false || stripos($directory, BUP_PLUG_NAME_PRO) !== false) {
+                return false;
+                // if directory path not contain plugins or themes directory - don't add this directory to backup file
+            } elseif (stripos($directory, $pluginsDirectory) === false && stripos($directory, $themesDirectory) === false) {
+                return false;
+            }
         }
 
         $absPath = str_replace('/', DS, ABSPATH);
@@ -180,7 +190,7 @@ class filesystemModelBup extends modelBup {
         foreach ($directory as $node) {
             if (is_dir($node) && file_exists($node)) {
 
-                if (!in_array(basename($node), $exclude)) {
+                if (stripos($node, $pluginsDirectory) !== false || stripos($node, $themesDirectory) !== false || !in_array(basename($node), $exclude)) {
 					$addNodes = $this->getFilesList($node, $exclude);
 					if(!empty($addNodes) && is_array($addNodes))
 						$nodes = array_merge($nodes, $addNodes);
@@ -286,7 +296,7 @@ class filesystemModelBup extends modelBup {
         if(1 == $options['wp_core']){
             $directory = realpath(ABSPATH);
             unset($excluded);
-            $excluded = array('wp-content');
+            $excluded = array(BUP_WP_CONTENT_DIR);
             $wpCoreFileList = $this->getNotWritableFiles($directory, $excluded);
             $fileList = array_merge($fileList,  $wpCoreFileList);
         }
@@ -315,9 +325,11 @@ class filesystemModelBup extends modelBup {
     private function clearTmpDirectory(){
         $tmpPath = untrailingslashit(frameBup::_()->getModule('warehouse')->getPath()) . DS . 'tmp' . DS;
         $tmpFiles = glob($tmpPath . 'BUP*');
-        foreach($tmpFiles as $file){
-            if(file_exists($file))
-                unlink($file);
+        if (is_array($tmpFiles)) {
+            foreach ($tmpFiles as $file) {
+                if (file_exists($file))
+                    unlink($file);
+            }
         }
     }
 }

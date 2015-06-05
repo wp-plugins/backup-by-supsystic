@@ -15,7 +15,7 @@
     define('BUP_WP_CONTENT_DIR', $wpContentFolder);
 
     define('BUP_PLUG_NAME', basename(dirname(__FILE__)));
-	define('BUP_PLUG_NAME_PRO', 'supsystic-backup-pro');
+	define('BUP_PLUG_NAME_PRO', 'backup-supsystic-pro');
     define('BUP_DIR', WP_PLUGIN_DIR. DS. BUP_PLUG_NAME. DS);
     define('BUP_TPL_DIR', BUP_DIR. 'tpl'. DS);
     define('BUP_CLASSES_DIR', BUP_DIR. 'classes'. DS);
@@ -59,7 +59,7 @@
 
 
     define('BUP_PLUGIN_INSTALLED', true);
-    define('BUP_VERSION', '1.2.7');
+    define('BUP_VERSION', '1.2.8');
 	define('BUP_S_VERSION', BUP_VERSION);
     define('BUP_USER', 'user');
 

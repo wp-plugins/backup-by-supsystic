@@ -1,40 +1,7 @@
 <section>
     <div class="supsystic-item supsystic-panel">
         <div id="bupBackupWrapper">
-            <div class="bupRestoreSettingBlock" style="position: fixed !important; display: inline-block; left: 60%">
-                <div id="bupRestorePresetsMsg"></div>
-                <table class="bup-form-table-restore-presets form-table">
-                    <tr>
-                        <th colspan="3"><?php _e('Restore Presets:', BUP_LANG_CODE); ?></th>
-                    </tr>
-                    <tr>
-                        <th class="col-w-30perc"><?php _e('Safe Update', BUP_LANG_CODE); ?></th>
-                        <td class="col-w-1perc">
-                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('If the ckeckbox is set up, the database backup will be performed. This will let the database backup work in the transaction mode, i.e. should there occur any failure during the data base recovery, no data from the data-base backup will be transferred to the data-base. The data-base backup recovery will occur if and only there were no failures during the process. If the ckeckbox is not set up the data-base backup will be performed without transaction mode.', BUP_LANG_CODE) ?>"></i>
-                        </td>
-                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[safe_update]', array(
-                                'attrs'   => 'class="bupCheckbox bupSaveRestoreSetting" data-setting-key="safe_update"',
-                                'value'   => '1',
-                                'checked' => frameBup::_()->getModule('options')->get('safe_update') == 1 ? 'checked' : '',
-                            )); ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="col-w-30perc"><?php _e('Force Update', BUP_LANG_CODE); ?></th>
-                        <td class="col-w-1perc">
-                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('When backup is performed, the labels are usually put at the beginning of the file dump, such as: WordPress version for the backup; WordPress data-base version for the backup; the plugin version for the backup. At recovering, if the force has been off, the backup will not be performed, because it will constantly pop up with the message, that the version is incorrect (the version of WordPress, the version of WordPress data-base or the plugin version). If the force has been on, there will be no such system check and the recovery will be performed.', BUP_LANG_CODE) ?>"></i>
-                        </td>
-                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[force_update]', array(
-                                'attrs'   => 'class="bupCheckbox bupSaveRestoreSetting" data-setting-key="force_update"',
-                                'value'   => '1',
-                                'checked' => frameBup::_()->getModule('options')->get('force_update') == 1 ? 'checked' : '',
-                            )); ?>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <div id="bupAdminStorageTable" style="width: 50%;">
+            <div id="bupAdminStorageTable" style="width: 50%; display: inline-block;">
 
                 <?php
                 if(!empty($backups)):
@@ -383,6 +350,40 @@
                 <?php endif;
                 ?>
             </div>
+
+
+            <div class="bupRestoreSettingBlock" style="width: 45%; display: inline-block; position: fixed; padding-left: 20px">
+                <div id="bupRestorePresetsMsg"></div>
+                <table class="bup-form-table-restore-presets form-table" style="width: 45% !important;">
+                    <tr>
+                        <th colspan="3"><?php _e('Restore Presets:', BUP_LANG_CODE); ?></th>
+                    </tr>
+                    <tr>
+                        <th class="col-w-30perc"><?php _e('Safe Update', BUP_LANG_CODE); ?></th>
+                        <td class="col-w-1perc">
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('If the ckeckbox is set up, the database backup will be performed. This will let the database backup work in the transaction mode, i.e. should there occur any failure during the data base recovery, no data from the data-base backup will be transferred to the data-base. The data-base backup recovery will occur if and only there were no failures during the process. If the ckeckbox is not set up the data-base backup will be performed without transaction mode.', BUP_LANG_CODE) ?>"></i>
+                        </td>
+                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[safe_update]', array(
+                                'attrs'   => 'class="bupCheckbox bupSaveRestoreSetting" data-setting-key="safe_update"',
+                                'value'   => '1',
+                                'checked' => frameBup::_()->getModule('options')->get('safe_update') == 1 ? 'checked' : '',
+                            )); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-w-30perc"><?php _e('Force Update', BUP_LANG_CODE); ?></th>
+                        <td class="col-w-1perc">
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('When backup is performed, the labels are usually put at the beginning of the file dump, such as: WordPress version for the backup; WordPress data-base version for the backup; the plugin version for the backup. At recovering, if the force has been off, the backup will not be performed, because it will constantly pop up with the message, that the version is incorrect (the version of WordPress, the version of WordPress data-base or the plugin version). If the force has been on, there will be no such system check and the recovery will be performed.', BUP_LANG_CODE) ?>"></i>
+                        </td>
+                        <td class="col-w-1perc"><?php echo htmlBup::checkbox('opt_values[force_update]', array(
+                                'attrs'   => 'class="bupCheckbox bupSaveRestoreSetting" data-setting-key="force_update"',
+                                'value'   => '1',
+                                'checked' => frameBup::_()->getModule('options')->get('force_update') == 1 ? 'checked' : '',
+                            )); ?>
+                        </td>
+                    </tr>
+                </table>
+            </div>
             <!-- Log modal window start  -->
             <div id="bupShowLogDlg" title="<?php _e('Backup Log:', BUP_LANG_CODE); ?>">
                 <p id="bupLogText"></p>
@@ -393,7 +394,7 @@
             <div id="bupShowMigratePromoDlg" title="<?php _e('Get PRO Verion!', BUP_LANG_CODE); ?>" style="display: none">
                 <p id="bupMigratePromoText" class="supsystic-plugin">
                     <?php _e('Please, be advised, that this option is available only in PRO version. You can', BUP_LANG_CODE)?>
-                    <a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank"><?php _e('Get PRO', BUP_LANG_CODE)?></a>
+                    <a class="button button-primary button-small" href="<?php echo frameBup::_()->getModule('promo_supsystic')->getProPluginURL();?>" target="_blank"><?php _e('Get PRO', BUP_LANG_CODE)?></a>
                 </p>
             </div>
             <!-- Migrate promo modal window end  -->

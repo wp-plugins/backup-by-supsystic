@@ -328,7 +328,7 @@ class backupModelBup extends modelBup {
         if(1 == $options->get('wp_core')){
             $directory = realpath(ABSPATH);
             unset($excluded);
-            $excluded = array('wp-content');
+            $excluded = array(BUP_WP_CONTENT_DIR);
             $wpCoreFileList = $this->filesystem->getFilesList($directory, $excluded);
             $fileList = array_merge($fileList,  $wpCoreFileList);
         }

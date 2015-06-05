@@ -117,13 +117,13 @@ class installerBup {
 			  UNIQUE INDEX `code` (`code`)
 			) DEFAULT CHARSET=utf8");
 			dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES
-				(NULL,'full','0','Full backup','on/off full backup',1,'',0,0,'dest_backup'),
+				(NULL,'full','1','Full backup','on/off full backup',1,'',0,0,'dest_backup'),
 				(NULL,'wp_core','1','Wordpress core backup','on/off Wordpress core backup',1,'',0,0,'dest_backup'),
-				(NULL,'plugins','0','Plugins','on/off backup plugins',1,'',0,0,'dest_backup'),
-				(NULL,'themes','0','Themes','on/off backup themes',1,'',0,0,'dest_backup'),
-				(NULL,'uploads','0','Uploads','on/off backup uploads',1,'',0,0,'dest_backup'),
-				(NULL,'database','0','Database','on/off backup database',1,'',0,0,'db_backup'),
-				(NULL,'any_directories','0','Any','Any other directories found inside wp-content',1,'',0,0,'dest_backup'),
+				(NULL,'plugins','1','Plugins','on/off backup plugins',1,'',0,0,'dest_backup'),
+				(NULL,'themes','1','Themes','on/off backup themes',1,'',0,0,'dest_backup'),
+				(NULL,'uploads','1','Uploads','on/off backup uploads',1,'',0,0,'dest_backup'),
+				(NULL,'database','1','Database','on/off backup database',1,'',0,0,'db_backup'),
+				(NULL,'any_directories','1','Any','Any other directories found inside wp-content',1,'',0,0,'dest_backup'),
 				(NULL,'warehouse','".$warehouse."','Warehouse','path to storage',1,'',0,0,''),
 				(NULL,'warehouse_ignore','upsupsystic','Warehouse_ignore','Name ignore directory storage',1,'',0,0,''),
 				(NULL,'safe_array','','Safe array','Safe file array',1,'',0,0,''),
@@ -236,14 +236,5 @@ class installerBup {
 			self::init();
 			update_option($wpPrefix. 'db_version', BUP_VERSION);
 		}
-	}
-
-	static public function setUsed() {
-		update_option(BUP_DB_PREF. 're_used', 1);
-	}
-	static public function isUsed() {
-		// No welcome page for now
-		return true;
-		return (int) get_option(BUP_DB_PREF. 're_used');
 	}
 }

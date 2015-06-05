@@ -2,8 +2,6 @@
 class promo_supsysticControllerBup extends controllerBup {
 	public function bupSendInfo(){
 		$res = new responseBup();
-		// Start usage in any case
-		installerBup::setUsed();
 		if($this->getModel()->welcomePageSaveInfo(reqBup::get('post'))) {
 			$res->addMessage(__('Information was saved. Thank you!', BUP_LANG_CODE));
 		} else {

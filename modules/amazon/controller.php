@@ -218,7 +218,7 @@ class amazonControllerBup extends controllerBup {
      */
     protected function getCredentialsForm($defaults = array()) {
         return array(
-            'legend' => __('Enter your AWS Access Key, Secret Key and Bucket name', BUP_LANG_CODE),
+            'legend' => __('Enter your AWS Access Key,<br/>Secret Key and Bucket name', BUP_LANG_CODE),
             'fields' => array(
                 array(
                     'label' => __('Access Key', BUP_LANG_CODE),
@@ -243,7 +243,7 @@ class amazonControllerBup extends controllerBup {
                 htmlBup::hidden('reqType', array('value' => 'ajax')),
                 htmlBup::hidden('page',    array('value' => 'amazon')),
                 htmlBup::hidden('action',  array('value' => 'manageCredentialsAction')),
-                htmlBup::button(array('value' => __('Store credentials', BUP_LANG_CODE), 'attrs' => 'class="button button-primary button-large" id="bupAmazonCredentials"')),
+                htmlBup::button(array('value' => __('&nbsp;&nbsp; Save &nbsp;&nbsp;', BUP_LANG_CODE), 'attrs' => 'class="button button-primary button-large" id="bupAmazonCredentials"')),
             ),
         );
     }

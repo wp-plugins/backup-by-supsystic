@@ -9,7 +9,7 @@ class promo_supsysticBup extends moduleBup {
 	public function __construct($d) {
 		parent::__construct($d);
 		$this->getMainLink();
-		$this->_msgForPro = __('Please, be advised, that this option is available only in PRO version. You can ', BUP_LANG_CODE) . '<a class="button button-primary button-small" href="http://supsystic.com/plugins/backup-plugin/" target="_blank">' . __('Get PRO', BUP_LANG_CODE) . '</a>';
+		$this->_msgForPro = __('Please, be advised, that this option is available only in PRO version. You can ', BUP_LANG_CODE) . '<a class="button button-primary button-small" href="' . $this->getProPluginURL() . '" target="_blank">' . __('Get PRO', BUP_LANG_CODE) . '</a>';
 	}
 	public function init() {
 		parent::init();
@@ -43,10 +43,6 @@ class promo_supsysticBup extends moduleBup {
 	public function getOverviewTabContent() {
 		return $this->getView()->getOverviewTabContent();
 	}
-	public function addWelcome() {
-		installerBup::setUsed();
-		return $this->getView()->showWelcomePage();
-	}
 	private function _encodeSlug($slug) {
 		return str_replace($this->_specSymbols['from'], $this->_specSymbols['to'], $slug);
 	}
@@ -61,7 +57,7 @@ class promo_supsysticBup extends moduleBup {
 	}
 	public function getMainLink() {
 		if(empty($this->_mainLink)) {
-			$this->_mainLink = 'http://supsystic.com/plugins/backup-plugin/';
+			$this->_mainLink = $this->getProPluginURL();
 		}
 		return $this->_mainLink ;
 	}
@@ -98,7 +94,7 @@ class promo_supsysticBup extends moduleBup {
 
         return $tabs;
     }
-    public function addRemoteBackupDestination(array $destinations){
+    public function addRemoteBackupDestination(array $destinations) {
         $connectType = array('remoteFtp' => __('Remote FTP Server', BUP_LANG_CODE), 'remoteSFtp' => __('Remote SFTP(SCP) Server', BUP_LANG_CODE), 'remoteFtpS' => __('Remote FTPS Server', BUP_LANG_CODE));
         foreach($connectType as $type => $title){
             $destinations[$type] = array(
@@ -108,7 +104,12 @@ class promo_supsysticBup extends moduleBup {
         }
         return $destinations;
     }
-    public function getPromoSecretKeyEncryptDb(){
+    public function getPromoSecretKeyEncryptDb() {
         return $this->_msgForPro;
+    }
+    public function getProPluginURL(){
+        $link = '//supsystic.com/plugins/backup-plugin/';
+        $affiliateQueryString = null;
+        return $link . $affiliateQueryString;
     }
 }

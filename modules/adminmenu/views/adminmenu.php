@@ -9,7 +9,6 @@ class adminmenuViewBup extends viewBup {
     }
     public function initMenu() {
 		$accessCap = 'manage_options';
-		$firstTimeLookedToPlugin = installerBup::isUsed();
         $subMenuTabs = array(
             1 => array('parentSlug' => $this->_file, 'pageTitle' => __('Backup', BUP_LANG_CODE), 'menuTitle' => __('Backup', BUP_LANG_CODE), 'capability' => $accessCap, 'menuSlug' => $this->_file),
 			2 => array('parentSlug' => $this->_file, 'pageTitle' => __('Overview', BUP_LANG_CODE), 'menuTitle' => __('Overview', BUP_LANG_CODE), 'capability' => $accessCap, 'menuSlug' => 'admin.php?page=supsystic-backup&tab=overview'),
@@ -17,20 +16,12 @@ class adminmenuViewBup extends viewBup {
             4 => array('parentSlug' => $this->_file, 'pageTitle' => __('Restore', BUP_LANG_CODE), 'menuTitle' => __('Restore', BUP_LANG_CODE), 'capability' => $accessCap, 'menuSlug' => 'admin.php?page=supsystic-backup&tab=bupLog'),
         );
         $subMenuTabs = dispatcherBup::applyFilters('addAdminSubMenuTabs', $subMenuTabs);
-		if($firstTimeLookedToPlugin) {
-            add_menu_page(__('Backup by Supsystic', BUP_LANG_CODE), __('Backup by Supsystic', BUP_LANG_CODE), $accessCap, $this->_file, array(frameBup::_()->getModule('options')->getView(), 'getAdminPage'));
-            foreach($subMenuTabs as $tab){
-                add_submenu_page($tab['parentSlug'], $tab['pageTitle'], $tab['menuTitle'], $tab['capability'], $tab['menuSlug']);
-            }
-//            remove_submenu_page($this->_file, $this->_file);
-		} else {
-			if ( frameBup::_()->getModule('promo_supsystic') ){
-				add_menu_page(__('Backup by Supsystic', BUP_LANG_CODE), __('Backup by Supsystic', BUP_LANG_CODE), $accessCap, $this->_file, array(frameBup::_()->getModule('promo_supsystic')->getView(), 'showWelcomePage'));
-			} else { // if not install module "promo_supsystic"
-				installerBup::setUsed();
-				add_menu_page(__('Backup by Supsystic', BUP_LANG_CODE), __('Backup by Supsystic', BUP_LANG_CODE), $accessCap, $this->_file, array(frameBup::_()->getModule('options')->getView(), 'getAdminPage'));
-			}
-		}
+
+        add_menu_page(__('Backup by Supsystic', BUP_LANG_CODE), __('Backup by Supsystic', BUP_LANG_CODE), $accessCap, $this->_file, array(frameBup::_()->getModule('options')->getView(), 'getAdminPage'));
+        foreach($subMenuTabs as $tab){
+            add_submenu_page($tab['parentSlug'], $tab['pageTitle'], $tab['menuTitle'], $tab['capability'], $tab['menuSlug']);
+        }
+//        remove_submenu_page($this->_file, $this->_file);
     }
     public function getFile() {
         return $this->_file;

@@ -61,11 +61,9 @@ class templatesBup extends moduleBup {
             frameBup::_()->addScript('icheck', BUP_JS_PATH. 'icheck.min.js');
             frameBup::_()->addScript('tooltipster', BUP_JS_PATH. 'jquery.tooltipster.min.js');
 
-
-				//installerBup::isUsed() ? frameBup::_()->addScript('adminOptionsBup', BUP_JS_PATH. 'admin.options.js') : false;
-				frameBup::_()->addScript('adminOptionsBup', BUP_JS_PATH. 'admin.options.js', array(), false, true);
-				frameBup::_()->addScript('ajaxupload', BUP_JS_PATH. 'ajaxupload.js');
-				frameBup::_()->addScript('postbox', get_bloginfo('wpurl'). '/wp-admin/js/postbox.js');
+            frameBup::_()->addScript('adminOptionsBup', BUP_JS_PATH. 'admin.options.js', array(), false, true);
+            frameBup::_()->addScript('ajaxupload', BUP_JS_PATH. 'ajaxupload.js');
+            frameBup::_()->addScript('postbox', get_bloginfo('wpurl'). '/wp-admin/js/postbox.js');
 
 			frameBup::_()->addJSVar('coreBup', 'BUP_DATA', $jsData);
 
