@@ -220,15 +220,19 @@ class amazonModelBup extends ModelBup {
             $file     = $this->getBackupsPath() . $filename;
 
             if(file_exists($file)) {
-                $result[] = $client->putObject(array(
-                    'Bucket'     => $bucket,
+                try {
+                    $result[] = $client->putObject(array(
+                        'Bucket' => $bucket,
 
-                    'Key'        => $this->getCurrentDomain() . '/' . $filename,
-                    'SourceFile' => $file,
-                    'Metadata'   => array(
-                        'Content-Type' => $this->getMimetype($file),
-                    ),
-                ));
+                        'Key' => $this->getCurrentDomain() . '/' . $filename,
+                        'SourceFile' => $file,
+                        'Metadata' => array(
+                            'Content-Type' => $this->getMimetype($file),
+                        ),
+                    ));
+                } catch (Exception $e) {
+                    return 401;
+                }
             }
         }
 
@@ -404,11 +408,17 @@ class amazonModelBup extends ModelBup {
         return $this;
     }
 
-    protected function getCurrentDomain()
-    {
+    protected function getCurrentDomain() {
         $homeUrl = parse_url(get_home_url());
         $host = str_replace('.', '_', $homeUrl['host']);
 
         return $host;
+    }
+
+    public function isUserAuthorizedInService() {
+        $isAuthorized = $this->isCredentialsSaved() ? true : false;
+        if(!$isAuthorized)
+            $this->pushError($this->backupPlaceAuthErrorMsg . 'Amazon!');
+        return $isAuthorized;
     }
 }

@@ -203,9 +203,6 @@ jQuery(document).ready(function($){
 	});
 
 	jQuery('#bupMainFormOptions').submit(function(){
-		jQuery(this).sendFormBup({
-			msgElID: 'bupMainFormOptionsMsg'
-		});
 		return false;
 	});
 

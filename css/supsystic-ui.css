@@ -188,18 +188,31 @@ ul.supsystic-bar-controls > li.separator {
 
 .ui-widget-content {
     background: #fff !important;
+	border: none !important;
 }
 
 .ui-widget-header {
     border: none !important;
     border-bottom: 1px solid #ddd !important;
-    background: none !important;
-    color: #777 !important;
+	background: #e8eded !important;
+    color: #000 !important;
     border-radius: 0 !important;
+	margin: 3px;
+	font-size: 1.0em;
+	font-weight: normal !important;
+	font-family: Verdana,Arial,sans-serif !important;
+	padding-left: 6px !important;
 }
 
 .ui-dialog-titlebar-close {
     background: none !important;
+	top: 12px !important;
+	right: 6px !important;
+	width: 19px !important;
+	height: 19px !important;
+}
+.ui-dialog-titlebar-close:before{
+	content: none !important;
 }
 
 .supsystic-title-row {

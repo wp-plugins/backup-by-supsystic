@@ -3,6 +3,11 @@
 abstract class modelBup extends baseObjectBup {
     protected $_data = array();
 	protected $_code = '';
+    public $backupPlaceAuthErrorMsg;
+
+    public function __construct() {
+        $this->backupPlaceAuthErrorMsg = __('Before start backup, You must login to ');
+    }
     
     public function init() {
 
@@ -55,5 +60,13 @@ abstract class modelBup extends baseObjectBup {
                 'time' => $datetime['time'],
             );
         }
+    }
+
+    /**
+     * This method used to check is user authorized in cloud service or remote server, where backup files will be stored
+     */
+    public function isUserAuthorizedInService() {
+        $this->pushError(__('Unexpected error.', BUP_LANG_CODE));
+        return false;
     }
 }

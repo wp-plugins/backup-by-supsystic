@@ -38,7 +38,7 @@ class promo_supsysticViewBup extends viewBup {
 		) {
 			$content = $getData['body'];
 		} else {
-			$content = sprintf(__('There were some problem while trying to retrive our news, but you can always check all list <a target="_blank" href="%s">here</a>.', BUP_LANG_CODE), frameBup::_()->getModule('promo_supsystic')->getProPluginURL());
+			$content = sprintf(__('There were some problem while trying to retrive our news, but you can always check all list <a target="_blank" href="%s">here</a>.', BUP_LANG_CODE), frameBup::_()->getModule('promo_supsystic')->getMainLink());
 		}
 		return $content;
 	}

@@ -360,7 +360,8 @@ class dropboxModelBup extends modelBup {
     {
         return '/' . $this->getDomainName() . '/';
     }
-	protected function getToken() {
+	protected function getToken()
+    {
 		if(isset($_SESSION[self::TOKEN_SESS_NAME]) && !empty($_SESSION[self::TOKEN_SESS_NAME])) {
 			return $_SESSION[self::TOKEN_SESS_NAME];
 		}
@@ -371,4 +372,11 @@ class dropboxModelBup extends modelBup {
 
 		return false;
 	}
+    public function isUserAuthorizedInService()
+    {
+        $isAuthorized = $this->isAuthenticated() ? true : false;
+        if(!$isAuthorized)
+            $this->pushError($this->backupPlaceAuthErrorMsg . 'DropBox!');
+        return $isAuthorized;
+    }
 }

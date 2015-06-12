@@ -394,7 +394,7 @@
             <div id="bupShowMigratePromoDlg" title="<?php _e('Get PRO Verion!', BUP_LANG_CODE); ?>" style="display: none">
                 <p id="bupMigratePromoText" class="supsystic-plugin">
                     <?php _e('Please, be advised, that this option is available only in PRO version. You can', BUP_LANG_CODE)?>
-                    <a class="button button-primary button-small" href="<?php echo frameBup::_()->getModule('promo_supsystic')->getProPluginURL();?>" target="_blank"><?php _e('Get PRO', BUP_LANG_CODE)?></a>
+                    <a class="button button-primary button-small" href="<?php echo frameBup::_()->getModule('promo_supsystic')->getMainLink();?>" target="_blank"><?php _e('Get PRO', BUP_LANG_CODE)?></a>
                 </p>
             </div>
             <!-- Migrate promo modal window end  -->

@@ -15,11 +15,11 @@ class dropboxBup extends moduleBup {
 	private $config = array(
 		'tabs' => array(
 			'key'    => 'bupDropboxOptions',
-			'title'  => 'Dropbox',
+			'title'  => 'DropBox',
 			'action' => 'indexAction',
 		),
 		'storage' => array(
-			'label'    => 'Dropbox',
+			'label'    => 'DropBox',
 			'provider' => 'dropbox',
 			'action'   => 'uploadAction',
 		),
@@ -125,10 +125,12 @@ class dropboxBup extends moduleBup {
 	}
 
 	public function registerNotSupport($tabs) {
-		$tabs['dropbox'] = array(
+		$tabs[] = array(
 			'title'   => $this->config['tabs']['title'],
 			'content' => __('Your server does not support the Dropbox without cURL extension', BUP_LANG_CODE),
             'faIcon' => 'fa-dropbox',
+            'sortNum' => 2,
+            'key' => 'dropbox',
 		);
 
 		return $tabs;
@@ -142,10 +144,12 @@ class dropboxBup extends moduleBup {
 	 * @return array
 	 */
 	public function addDropboxBupDestination($tabs) {
-		$tabs['dropbox'] = array(
+		$tabs[] = array(
 			'title'   => $this->config['tabs']['title'],
 			'content' => $this->run($this->config['tabs']['action']),
             'faIcon' => 'fa-dropbox',
+            'sortNum' => 2,
+            'key' => 'dropbox',
 		);
 
 		return $tabs;

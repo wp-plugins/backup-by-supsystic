@@ -44,7 +44,15 @@ class optionsViewBup extends viewBup {
     public function getMainOptionsTab() {
         if(!isset($this->optModel))
             $this->assign('optModel', $this->getModel());
+
         $backupPlaces = dispatcherBup::applyFilters('getBackupDestination', array());
+        // sorting $backupPlaces by $backupPlaces['sortNum']
+        $sort = array();
+        foreach ($backupPlaces as $key => $row) {
+            $sort[$key] = $row['sortNum'];
+        }
+        array_multisort($sort, SORT_ASC, $backupPlaces);
+
         $backupDest = frameBup::_()->getModule('options')->get('glb_dest');
 		$zipNotExtMsg = frameBup::_()->getModule('backup')->getController()->checkExtensions();
         $zipExtExist = ($zipNotExtMsg !== true) ? 'disabled' : true;

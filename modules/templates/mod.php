@@ -107,7 +107,10 @@ class templatesBup extends moduleBup {
 			}
 			add_action('wp_head', array($this, 'addInitJsVars'));
 		}
-		
+
+        // Some common styles - that need to be on all admin pages - be careful with them
+        $a= BUP_CSS_PATH. 'supsystic-for-all-admin.css';
+        frameBup::_()->addStyle('supsystic-for-all-admin-' . BUP_CODE, BUP_CSS_PATH . 'supsystic-for-all-admin.css');
         parent::init();
     }
 	/**

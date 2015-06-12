@@ -126,12 +126,6 @@ Version: 1.0
 	padding-left: 0;
 }
 
-.bupRemoteServerParamsInput{
-	display: inline-block;
-	margin-bottom: 5px;
-	width: 250px;
-}
-
 table.bup-form-table-restore-presets th, table.bup-form-table-restore-presets td{
 	padding: 8px 0;
 	margin: 0;
@@ -153,4 +147,19 @@ div.bupPluginReviewBlock p{
 }
 div.bupPluginReviewBlock a.bupDoNotShowReviewBlock{
 	color: #0D17DE;
+}
+
+/*Remote server backup auth table*/
+table.bupRemoteServerBackup td {
+	padding: 0 0 5px 0 !important;
+}
+
+.bupTable100per {
+	width: 100% !important;
+	max-width: 400px;
+}
+
+.inputField100per {
+	width: 100% !important;
+	max-width: 250px;
 }

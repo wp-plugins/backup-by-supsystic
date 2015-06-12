@@ -796,4 +796,11 @@ class onedriveModelBup extends modelBup
             @error_log('Backup by Supsystic: Failed to write OneDrive refresh token expire time.');
         }
     }
+    public function isUserAuthorizedInService()
+    {
+        $isAuthorized = $this->isAuthenticated() ? true : false;
+        if(!$isAuthorized)
+            $this->pushError($this->backupPlaceAuthErrorMsg . 'OneDrive!');
+        return $isAuthorized;
+    }
 }

@@ -79,10 +79,12 @@ class onedriveBup extends moduleBup
 
     public function addOnedriveBupDestination($tabs)
     {
-        $tabs['onedrive'] = array(
+        $tabs[] = array(
             'content' => $this->run($this->tab['action']),
             'title'   => $this->tab['title'],
             'faIcon' => ' fa-cloud-upload',
+            'sortNum' => 4,
+            'key' => 'onedrive',
         );
 
         return $tabs;

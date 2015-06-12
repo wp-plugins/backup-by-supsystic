@@ -46,7 +46,7 @@ class databaseModelBup extends modelBup
 		$dumpHandle = fopen($filename, 'a');
         $database = array(
             sprintf('-- Created with %s %s', BUP_S_WP_PLUGIN_NAME, BUP_VERSION),
-            '-- http:' . frameBup::_()->getModule('promo_supsystic')->getProPluginURL() . PHP_EOL,
+            '-- http:' . frameBup::_()->getModule('promo_supsystic')->getMainLink() . PHP_EOL,
             sprintf('-- Do not change these values if you doesnt want broke the database during recovery:'),
             sprintf('-- @dbrev=%s;', $wp_db_version),        // database revision
             sprintf('-- @wpcrv=%s;', $wp_version),           // wordpress verison

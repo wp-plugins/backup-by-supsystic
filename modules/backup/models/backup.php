@@ -487,4 +487,22 @@ class backupModelBup extends modelBup {
             return false;
         }
     }
+
+    public function checkCloudServiceRemoteServerIsAuth($destination)
+    {
+        $isAuthorized = false;
+        $handlers = dispatcherBup::applyFilters('adminBackupUpload', array());
+        /* @var modelBup $handlerModel*/
+        $handlerModel = !empty($handlers[$destination][0]) ? $handlers[$destination][0] : null;
+
+        if(is_a($handlerModel, 'modelBup')) {
+            $isAuthorized = $handlerModel->isUserAuthorizedInService($destination);
+            if (!$isAuthorized)
+                $this->pushError($handlerModel->getErrors());
+        } else {
+            $this->pushError(__('Unexpected error.', BUP_LANG_CODE));
+        }
+
+        return $isAuthorized;
+    }
 }

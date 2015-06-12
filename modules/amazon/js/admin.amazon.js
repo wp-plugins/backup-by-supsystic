@@ -36,24 +36,45 @@ jQuery(document).ready(function() {
 });
 
 var j = jQuery.noConflict();
-var AmazonModule = {
 
+var AmazonModule = {
     login: function(element) {
-		var accessKey = j('#AmazonCredentialData input[name=access]').val();
-		var SecretKey = j('#AmazonCredentialData input[name=secret]').val();
-		var bucket    = j('#AmazonCredentialData input[name=bucket]').val();
-		j.post(ajaxurl, {
-			pl: 'bup',
-			reqType: 'ajax',
-			page: 'amazon',
-			action: 'manageCredentialsAction',
-			access: accessKey,
-			secret: SecretKey,
-			bucket: bucket
-		}).success(function () {
-				document.location.reload(true);
-		});
-    },
+		var fullLoginData = true;
+
+		var accessKey = j('#AmazonCredentialData input[name=access]').removeClass('bupInputError').val();
+		var SecretKey = j('#AmazonCredentialData input[name=secret]').removeClass('bupInputError').val();
+		var bucket    = j('#AmazonCredentialData input[name=bucket]').removeClass('bupInputError').val();
+
+		if(!accessKey || !SecretKey || !bucket)
+			fullLoginData = false;
+
+		if(!accessKey)
+			j('#AmazonCredentialData input[name=access]').addClass('bupInputError').attr('placeholder', 'Required Field');
+		if(!SecretKey)
+			j('#AmazonCredentialData input[name=secret]').addClass('bupInputError').attr('placeholder', 'Required Field');
+		if(!bucket)
+			j('#AmazonCredentialData input[name=bucket]').addClass('bupInputError').attr('placeholder', 'Required Field');
+
+		if(fullLoginData) {
+			jQuery.sendFormBup({
+				msgElID: 'Amazon_Auth_Result',
+				data: {
+					pl: 'bup',
+					reqType: 'ajax',
+					page: 'amazon',
+					action: 'manageCredentialsAction',
+					access: accessKey,
+					secret: SecretKey,
+					bucket: bucket
+				},
+				onSuccess: function (res) {
+					res = (typeof res === 'string') ? j.parseJSON(res) : res;
+					if (!res.error)
+						document.location.reload(true);
+				}
+			});
+		}
+	},
     logout: function(element) {
 		j.post(ajaxurl, {
 			pl: 'bup',

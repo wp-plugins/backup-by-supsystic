@@ -104,12 +104,14 @@ class amazonBup extends moduleBup {
     }
     
     public function registerNotSupportTab($tabs) {
-        $tabs['amazon'] = array(
+        $tabs[] = array(
             'title'   => $this->config['title'],
             'content' => __(sprintf('To use this module you need '
                     . 'PHP version <code>5.3.3</code> or higher, your PHP version: '
                     . '<code>%s</code>', PHP_VERSION), BUP_LANG_CODE),
             'faIcon' => 'fa-font',
+            'sortNum' => 5,
+            'key' => 'amazon',
         );
 
         return $tabs;
@@ -123,10 +125,12 @@ class amazonBup extends moduleBup {
      * @return array
      */
     public function addAmazonBupDestination($tabs) {
-        $tabs['amazon'] = array(
+        $tabs[] = array(
             'title'   => $this->config['title'],
             'content' => $this->run($this->config['action']),
             'faIcon' => 'fa-font',
+            'sortNum' => 5,
+            'key' => 'amazon',
         );
 
         return $tabs;

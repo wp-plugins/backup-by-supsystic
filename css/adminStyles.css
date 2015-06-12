@@ -169,12 +169,12 @@ div.supsystic-item div.toeBupOptResponsive {
 
 @media screen and (min-width:100px) and (max-width:920px) {
 	div.supsystic-item div.toeBupOptResponsive {
-		display: block; width: 100%;
+		display: block; width: 100%; max-width: 400px;
 	}
 }
 
 @media screen and (max-width: 782px) {
 	div.supsystic-item div.toeBupOptResponsive .form-table td, .form-table th {
-		display: table-cell;
+		display: table-cell;  max-width: 400px;
 	}
 }

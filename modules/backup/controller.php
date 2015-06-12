@@ -30,6 +30,7 @@ class backupControllerBup extends controllerBup {
 	public function createAction() {
         $request = reqBup::get('post');
         $response = new responseBup();
+
         /** @var backupLogModelBup $log */
         $log = $this->getModel('backupLog');
 
@@ -44,6 +45,15 @@ class backupControllerBup extends controllerBup {
             $bupFolder = frameBup::_()->getModule('warehouse');
             if (!$bupFolder->getFolder()->exists())
                 $bupFolder->getFolder()->create();
+        }
+
+        $destination = $this->getModel()->getConfig('dest');
+        if($destination !== 'ftp') {
+            $isAuthorized = $this->getModel()->checkCloudServiceRemoteServerIsAuth($destination);
+            if(!$isAuthorized){
+                $response->addError($this->getModel()->getErrors());
+                return $response->ajaxExec();
+            }
         }
 
         // We are need to check "warehouse" directory (usually: wp-content/upsupsystic)
@@ -133,8 +143,7 @@ class backupControllerBup extends controllerBup {
 
         $log->string(__('Backup complete', BUP_LANG_CODE));
 
-        $destination = $this->getModel()->getConfig('dest');
-        $handlers    = $this->getModel()->getDestinationHandlers();
+        $handlers = $this->getModel()->getDestinationHandlers();
 
         if (array_key_exists($destination, $handlers)) {
 
@@ -183,9 +192,15 @@ class backupControllerBup extends controllerBup {
             }
         }
 
-
-
-        $response->addMessage(__('Backup complete', BUP_LANG_CODE));
+        if(empty($error)) {
+            $response->addMessage(__(
+                sprintf(
+                    'Backup complete. You can restore backup <a href="%s">here</a>.', uriBup::_(array('baseUrl' => get_admin_url(0, 'admin.php?page=' . BUP_PLUGIN_PAGE_URL_SUFFIX . '&tab=' . 'bupLog')))
+                ), BUP_LANG_CODE
+            ));
+        } else {
+            $response->addError(__('Error occurred: ' . ucfirst($destination) . ', ' . $error, BUP_LANG_CODE));
+        }
 
         // Allow to do new backups.
         $this->unlock();

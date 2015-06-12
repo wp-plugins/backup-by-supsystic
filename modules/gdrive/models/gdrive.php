@@ -660,7 +660,8 @@ class gdriveModelBup extends modelBup {
         return null;
     }
 
-    protected function addRefreshTokenToJSONToken($token){
+    protected function addRefreshTokenToJSONToken($token)
+    {
         $refreshToken = frameBup::_()->getTable('options')->get('value', array('code' => 'gdrive_refresh_token'), '', 'row');
         if (!empty($refreshToken['value']) && false !== json_decode($token)) {
             $token = json_decode($token);
@@ -668,5 +669,12 @@ class gdriveModelBup extends modelBup {
             $token = json_encode($token);
         }
         return $token;
+    }
+    public function isUserAuthorizedInService()
+    {
+        $isAuthorized = $this->isAuthenticated() ? true : false;
+        if(!$isAuthorized)
+            $this->pushError($this->backupPlaceAuthErrorMsg . 'GoogleDrive!');
+        return $isAuthorized;
     }
 }

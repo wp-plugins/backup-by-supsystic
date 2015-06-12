@@ -70,19 +70,19 @@ class amazonControllerBup extends controllerBup {
         $request  = reqBup::get('post');
         $response = new responseBup();
         $model    = $this->getModel();
-        
+        //save backup destination
+        frameBup::_()->getTable('options')->update(array('value' => 'amazon'), array('code' => 'glb_dest'));
+
         if($model->storeCredentials($request) === true) {
             $response->addMessage(__('Credentials are stored in the database', BUP_LANG_CODE));
-        }
-        else {
+        } else {
             $response->addError(__('Invalid or empty credentials', BUP_LANG_CODE));
         }
         
         if(!empty($request['bucket'])) {
             $model->setBucket($request['bucket']);
             $response->addMessage(__('Bucket stored in the database', BUP_LANG_CODE));
-        }
-        else {
+        } else {
             $response->addError(__('Invalid bucket', BUP_LANG_CODE));
         }
 
@@ -121,8 +121,7 @@ class amazonControllerBup extends controllerBup {
 		
 		if (empty($files)) {
 			$stack = $request['sendArr'];
-		}
-		else {
+		} else {
 			$stack = $files;
 		}
 		
@@ -201,8 +200,7 @@ class amazonControllerBup extends controllerBup {
         if($model->download($request['filename']) === 201) {
             $filename = pathinfo($request['filename']);
             $response->addData(array('filename' => $filename['basename']));
-        }
-        else {
+        } else {
             $response->addError(array(__('File not found on Amazon S3', BUP_LANG_CODE)));
         }
 
@@ -224,25 +222,25 @@ class amazonControllerBup extends controllerBup {
                     'label' => __('Access Key', BUP_LANG_CODE),
                     'field' => htmlBup::text('access', array(
                         'value' => (isset($defaults['access']) ? $defaults['access'] : ''),
+                        'attrs' => 'class="inputField100per"',
                     )),
                 ),
                 array(
                     'label' => __('Secret Key', BUP_LANG_CODE),
                     'field' => htmlBup::text('secret', array(
                         'value' => (isset($defaults['access']) ? $defaults['access'] : ''),
+                        'attrs' => 'class="inputField100per"',
                     )),
                 ),
                 array(
                     'label' => __('Bucket', BUP_LANG_CODE),
                     'field' => htmlBup::text('bucket', array(
                         'value' => (isset($defaults['bucket']) ? $defaults['bucket'] : ''),
+                        'attrs' => 'class="inputField100per"',
                     )),
                 ),
             ),
             'extra' => array(
-                htmlBup::hidden('reqType', array('value' => 'ajax')),
-                htmlBup::hidden('page',    array('value' => 'amazon')),
-                htmlBup::hidden('action',  array('value' => 'manageCredentialsAction')),
                 htmlBup::button(array('value' => __('&nbsp;&nbsp; Save &nbsp;&nbsp;', BUP_LANG_CODE), 'attrs' => 'class="button button-primary button-large" id="bupAmazonCredentials"')),
             ),
         );

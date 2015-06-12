@@ -116,10 +116,12 @@ class gdriveBup extends moduleBup {
 	 * @return array
 	 */
 	public function addGDriveBupDestination($tabs) {
-		$tabs['googledrive'] = array(
+		$tabs[] = array(
 			'title'   => $this->config['tabs']['title'],
 			'content' => $this->run($this->config['tabs']['action']),
             'faIcon' => 'fa-google',
+            'sortNum' => 3,
+            'key' => 'googledrive',
 		);
 
 		return $tabs;

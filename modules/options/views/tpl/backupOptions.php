@@ -8,16 +8,16 @@
                 <hr/>
 
                 <table class="form-table" style="width: 100% !important;">
-                    <?php foreach($this->backupPlaces as $key => $bupPlace): ?>
+                    <?php foreach($this->backupPlaces as $bupPlace): ?>
 
                         <tr class="bupMargDest">
-                            <td>
+                            <td style="padding-right: 0 !important;">
                                 <label>
-                                    <?php echo htmlBup::radiobutton('dest_opt', array('value'   => $key)); ?> <?php echo $bupPlace['title']?>
+                                    <?php echo htmlBup::radiobutton('dest_opt', array('value'   => $bupPlace['key'])); ?> <?php echo $bupPlace['title']?>
                                 </label>
 
                                 <?php if(!empty($bupPlace['content'])): ?>
-                                    <div class="bupOptions bup-<?php echo $key ?>">
+                                    <div class="bupOptions bup-<?php echo $bupPlace['key'] ?>">
                                         <br/>
                                         <?php echo $bupPlace['content']?>
                                     </div>
@@ -206,9 +206,6 @@
                 </table>
             </div>
 
-            <?php echo htmlBup::hidden('reqType', array('value' => 'ajax'))?>
-            <?php echo htmlBup::hidden('page', array('value' => 'options'))?>
-            <?php echo htmlBup::hidden('action', array('value' => 'saveMainFromDestGroup'))?>
             <?php echo htmlBup::hidden('backupDest', array('value' => $this->backupDest))?>
             <div id="bupMainFormOptionsMsg"></div>
         </div>
