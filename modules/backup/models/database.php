@@ -34,42 +34,50 @@ class databaseModelBup extends modelBup
     /**
      * Create database backup
      * @param string $filename Path and file name of backup
+     * @param array $tablesNameArray Tables name in array
+     * @param bool $firstQuery
      * @return bool TRUE if dump successfully created, FALSE otherwise.
      */
-    public function create($filename)
+    public function create($filename, $tablesNameArray = null, $firstQuery = true)
     {
         /** @var wpdb $wpdb */
         global $wpdb;
         global $wp_db_version;
         global $wp_version;
 
-		$dumpHandle = fopen($filename, 'a');
-        $database = array(
-            sprintf('-- Created with %s %s', BUP_S_WP_PLUGIN_NAME, BUP_VERSION),
-            '-- http:' . frameBup::_()->getModule('promo_supsystic')->getMainLink() . PHP_EOL,
-            sprintf('-- Do not change these values if you doesnt want broke the database during recovery:'),
-            sprintf('-- @dbrev=%s;', $wp_db_version),        // database revision
-            sprintf('-- @wpcrv=%s;', $wp_version),           // wordpress verison
-            sprintf('-- @plgnv=%s;', BUP_VERSION) . PHP_EOL, // plugin version
-        );
-        $database = dispatcherBup::applyFilters('changeDBDumpHeader', $database);
-		fwrite($dumpHandle, implode(PHP_EOL, $database));
+//		$dumpHandle = fopen($filename, 'a');
+        if($firstQuery) {
+            $database = array(
+                sprintf('-- Created with %s %s', BUP_S_WP_PLUGIN_NAME, BUP_VERSION),
+                '-- http:' . frameBup::_()->getModule('promo_supsystic')->getMainLink() . PHP_EOL,
+                sprintf('-- Do not change these values if you doesnt want broke the database during recovery:'),
+                sprintf('-- @dbrev=%s;', $wp_db_version),        // database revision
+                sprintf('-- @wpcrv=%s;', $wp_version),           // wordpress verison
+                sprintf('-- @plgnv=%s;', BUP_VERSION) . PHP_EOL, // plugin version
+            );
+            $database = dispatcherBup::applyFilters('changeDBDumpHeader', $database);
+            file_put_contents($filename, implode(PHP_EOL, $database));
+        }
+
         $tables = $wpdb->get_results('SHOW TABLES', ARRAY_N);
         foreach($tables as $table) {
             $table['name'] = $table[0];
+            if(!empty($tablesNameArray) && !in_array($table['name'], $tablesNameArray)) {
+                continue;
+            }
             //$table['insert'] = '';
 
             // Drop table query
             //$table['drop'] = 'DROP TABLE IF EXISTS `'.$table['name'].'`#endQuery' . PHP_EOL;
             $dropTableQuery = 'DROP TABLE IF EXISTS `'.$table['name'].'`#endQuery' . PHP_EOL;
             $dropTableQuery = dispatcherBup::applyFilters('encryptDbData', $dropTableQuery);
-			fwrite($dumpHandle, $dropTableQuery);
+            file_put_contents($filename, $dropTableQuery, FILE_APPEND);
             // Create table query
             $createQuery = $wpdb->get_row('SHOW CREATE TABLE `'.$table['name'].'`', ARRAY_A);
             if(isset($createQuery['Create Table'])) {
                 $createTableQuery = $createQuery['Create Table'] . '#endQuery' . PHP_EOL;
                 $createTableQuery = dispatcherBup::applyFilters('encryptDbData', $createTableQuery);
-				fwrite($dumpHandle, $createTableQuery);
+                file_put_contents($filename, $createTableQuery, FILE_APPEND);
                 //$table['create'] = $createQuery['Create Table'] . '#endQuery' . PHP_EOL;
             }
 
@@ -92,21 +100,29 @@ class databaseModelBup extends modelBup
 					//$table['insert'] .= 'INSERT INTO `' . $table['name'] . '` (' . implode(', ', array_map(array($this, 'addColQuotes'), $tableCols)) . ') VALUES ('. implode('),(', $tableData). ');';
 					$insertQuery = 'INSERT INTO `' . $table['name'] . '` (' . implode(', ', array_map(array($this, 'addColQuotes'), $tableCols)) . ') VALUES ('. implode('),/*BUP_EOL*/(', $tableData). ');' . '#endQuery'. PHP_EOL;
 					$insertQuery = dispatcherBup::applyFilters('encryptDbData', $insertQuery);
-                    fwrite($dumpHandle, $insertQuery);
+                    file_put_contents($filename, $insertQuery, FILE_APPEND);
 				}
 			}
 
             // Push results to stack
             //$database[] = implode(PHP_EOL, array($table['drop'], $table['create'], isset($table['insert']) ? $table['insert'] : ''));
         }
-		fclose($dumpHandle);
+//		fclose($dumpHandle);
         /*if (file_put_contents($filename, implode(PHP_EOL, $database))) {
             return true;
         }*/
 
         return true;
     }
-
+    public function getTablesName() {
+        /** @var wpdb $wpdb */
+        global $wpdb;
+        $tables = $wpdb->get_results('SHOW TABLES', ARRAY_N);
+        foreach($tables as $key => $value) {
+            $tables[$key] = $value[0];
+        }
+        return !empty($tables) ? $tables : null;
+    }
 	private function _flexRestore($filename) {
 		$res = true;
 		$permitted = array('CREATE', 'INSERT', 'DROP');

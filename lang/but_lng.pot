@@ -3,9 +3,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Backup by Supsystic 1.2.7\n"
+"Project-Id-Version: Backup by Supsystic 1.2.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-25 20:02+0500\n"
+"POT-Creation-Date: 2015-06-15 11:00+0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: supsystic.com <supsystic.team@gmail.com>\n"
@@ -76,6 +76,7 @@ msgstr ""
 
 #: classes/fieldAdapter.php:96
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:30
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:30
 msgid "Destination"
 msgstr ""
 
@@ -129,6 +130,15 @@ msgstr ""
 
 #: classes/installer.php:222
 msgid " Page Content"
+msgstr ""
+
+#: classes/model.php:9
+msgid "Before start backup, You must login to "
+msgstr ""
+
+#: classes/model.php:69 modules/backup/models/backup.php:503
+#: modules/onedrive/controller.php:135
+msgid "Unexpected error."
 msgstr ""
 
 #: classes/modInstaller.php:34
@@ -304,17 +314,21 @@ msgid "Value Type"
 msgstr ""
 
 #: doc/backup-supsystic-pro/wpUpdater.php:65
+#: doc/promo-backup-supsystic-pro/wpUpdater.php:65
 msgid ""
 "An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?"
 "\" onclick=\"document.location.reload(); return false;\">Try again</a>"
 msgstr ""
 
 #: doc/backup-supsystic-pro/wpUpdater.php:70
+#: doc/promo-backup-supsystic-pro/wpUpdater.php:70
 msgid "An unknown error occurred"
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/controller.php:9
 #: doc/backup-supsystic-pro/remote_backup/controller.php:76
+#: doc/promo-backup-supsystic-pro/license/controller.php:9
+#: doc/promo-backup-supsystic-pro/remote_backup/controller.php:76
 #: modules/adminmenu/controller.php:28
 #: modules/options/views/tpl/deactivatePage.php:37
 #: modules/pages/views/tpl/deactivatePage.php:37
@@ -322,68 +336,82 @@ msgid "Done"
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/controller.php:13
+#: doc/promo-backup-supsystic-pro/license/controller.php:13
 msgid "Please, try again!"
 msgstr ""
 
-#: doc/backup-supsystic-pro/license/mod.php:23
+#: doc/backup-supsystic-pro/license/mod.php:24
+#: doc/promo-backup-supsystic-pro/license/mod.php:24
 #, php-format
 msgid ""
 "Your license is expired. Once you extend your license - you will be able to "
 "Update PRO version. To extend PRO version license - follow <a href=\"%s\" "
 "target=\"_blank\">this link</a>, then - go to <a href=\"%s\">License</a> tab "
-"anc click on \"Re-activate\" button to re-activate your PRO version."
+"and click on \"Re-activate\" button to re-activate your PRO version."
 msgstr ""
 
-#: doc/backup-supsystic-pro/license/mod.php:31
+#: doc/backup-supsystic-pro/license/mod.php:32
+#: doc/promo-backup-supsystic-pro/license/mod.php:32
 #, php-format
 msgid ""
 "Your license for PRO version of %s plugin - expired. You can <a href=\"%s\" "
 "target=\"_blank\">click here</a> to extend your license, then - go to <a "
-"href=\"%s\">License</a> tab anc click on \"Re-activate\" button to re-"
+"href=\"%s\">License</a> tab and click on \"Re-activate\" button to re-"
 "activate your PRO version."
 msgstr ""
 
-#: doc/backup-supsystic-pro/license/mod.php:44
+#: doc/backup-supsystic-pro/license/mod.php:45
+#: doc/backup-supsystic-pro/license/mod.php:56
+#: doc/promo-backup-supsystic-pro/license/mod.php:45
+#: doc/promo-backup-supsystic-pro/license/mod.php:56
 #: modules/promo_supsystic/views/tpl/adminFooter.php:9
 msgid "License"
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/models/license.php:54
+#: doc/promo-backup-supsystic-pro/license/models/license.php:54
 msgid "Please enter your License Key"
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/models/license.php:56
+#: doc/promo-backup-supsystic-pro/license/models/license.php:56
 msgid "Please enter your Email address"
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/models/license.php:132
+#: doc/promo-backup-supsystic-pro/license/models/license.php:132
 msgid ""
 "There was a problem with sending request to our autentification server. "
 "Please try latter."
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/models/license.php:158
+#: doc/promo-backup-supsystic-pro/license/models/license.php:158
 #, php-format
 msgid "License for plugin %s will expire today."
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/models/license.php:160
+#: doc/promo-backup-supsystic-pro/license/models/license.php:160
 #, php-format
 msgid "License for plugin %s will expire tomorrow."
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/models/license.php:162
+#: doc/promo-backup-supsystic-pro/license/models/license.php:162
 #, php-format
 msgid "<p>License for plugin %s will expire in %d days.</p>"
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:4
+#: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:4
 #, php-format
 msgid ""
 "Congratulations! PRO version of %s plugin is activated and working fine!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:6
+#: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:6
 #, php-format
 msgid ""
 "Your license for PRO version of %s plugin - expired. You can <a href=\"%s\" "
@@ -392,6 +420,7 @@ msgid ""
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:8
+#: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:8
 #, php-format
 msgid ""
 "Congratulations! You have successfully installed PRO version of %s plugin. "
@@ -401,11 +430,13 @@ msgid ""
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:20
-#: modules/promo_supsystic/mod.php:71
+#: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:20
+#: modules/promo_supsystic/mod.php:68
 msgid "Email"
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:23
+#: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:23
 #, php-format
 msgid ""
 "Your email address, used on checkout procedure on <a href=\"%s\" target="
@@ -413,29 +444,35 @@ msgid ""
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:31
+#: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:31
 msgid "License Key"
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:34
+#: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:34
 #, php-format
 msgid ""
 "Your License Key from your account on <a href=\"%s\" target=\"_blank\">%s</a>"
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:47
+#: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:47
 msgid "Re-activate"
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:49
+#: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:49
 #: modules/templates/views/tpl/templatesTab.php:71
 msgid "Activate"
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/views/tpl/noticeForTrialPro.php:32
+#: doc/promo-backup-supsystic-pro/license/views/tpl/noticeForTrialPro.php:32
 msgid "License for plugin '"
 msgstr ""
 
 #: doc/backup-supsystic-pro/license/views/tpl/noticeForTrialPro.php:33
+#: doc/promo-backup-supsystic-pro/license/views/tpl/noticeForTrialPro.php:33
 msgid ""
 "We're happy you keep using our product.<br/>Kindly note that testing period "
 "of PRO Version is over in two days. You can <button class=\"button button-"
@@ -443,15 +480,19 @@ msgid ""
 msgstr ""
 
 #: doc/backup-supsystic-pro/migration/controller.php:10
+#: doc/promo-backup-supsystic-pro/migration/controller.php:10
 msgid "This log created by Migration module, on site: "
 msgstr ""
 
 #: doc/backup-supsystic-pro/migration/controller.php:38
 #: doc/backup-supsystic-pro/migration/controller.php:54
+#: doc/promo-backup-supsystic-pro/migration/controller.php:38
+#: doc/promo-backup-supsystic-pro/migration/controller.php:54
 msgid "Backup files don't exist!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/migration/models/migration.php:98
+#: doc/promo-backup-supsystic-pro/migration/models/migration.php:98
 msgid ""
 "Entered secret key for decrypt/encrypt DB data wrong! Please, try again."
 msgstr ""
@@ -461,52 +502,68 @@ msgstr ""
 #: doc/backup-supsystic-pro/migration/views/migration.php:75
 #: doc/backup-supsystic-pro/migration/views/migration.php:99
 #: doc/backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:49
-#: modules/backup/views/tpl/backup.index.php:118
-#: modules/backup/views/tpl/backup.index.php:181
-#: modules/backup/views/tpl/backup.index.php:244
-#: modules/backup/views/tpl/backup.index.php:295
-#: modules/backup/views/tpl/backup.index.php:357
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:22
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:47
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:75
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:99
+#: doc/promo-backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:49
+#: modules/backup/views/tpl/backup.index.php:85
+#: modules/backup/views/tpl/backup.index.php:148
+#: modules/backup/views/tpl/backup.index.php:211
+#: modules/backup/views/tpl/backup.index.php:262
+#: modules/backup/views/tpl/backup.index.php:324
 msgid "Migrate"
 msgstr ""
 
 #: doc/backup-supsystic-pro/migration/views/migration.php:113
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:113
 msgid "Find"
 msgstr ""
 
 #: doc/backup-supsystic-pro/migration/views/migration.php:114
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:114
 msgid "Replace"
 msgstr ""
 
 #: doc/backup-supsystic-pro/migration/views/migration.php:117
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:117
 msgid "Site URL"
 msgstr ""
 
 #: doc/backup-supsystic-pro/migration/views/migration.php:122
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:122
 msgid "WordPress directory"
 msgstr ""
 
 #: doc/backup-supsystic-pro/migration/views/migration.php:124
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:124
 msgid "New WP directory"
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/controller.php:58
-#: modules/amazon/controller.php:138 modules/backup/controller.php:297
+#: doc/promo-backup-supsystic-pro/remote_backup/controller.php:58
+#: modules/amazon/controller.php:137 modules/backup/controller.php:312
 #: modules/dropbox/controller.php:167 modules/gdrive/controller.php:117
 msgid "Done!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/controller.php:62
+#: doc/promo-backup-supsystic-pro/remote_backup/controller.php:62
 msgid "Please, check connecting params!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/controller.php:78
 #: doc/backup-supsystic-pro/remote_backup/controller.php:95
 #: doc/backup-supsystic-pro/remote_backup/controller.php:112
+#: doc/promo-backup-supsystic-pro/remote_backup/controller.php:78
+#: doc/promo-backup-supsystic-pro/remote_backup/controller.php:95
+#: doc/promo-backup-supsystic-pro/remote_backup/controller.php:112
 msgid "Error, please try again"
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/controller.php:93
-#: modules/backup/controller.php:342
+#: doc/promo-backup-supsystic-pro/remote_backup/controller.php:93
+#: modules/backup/controller.php:357
 msgid "Backup successfully removed"
 msgstr ""
 
@@ -514,25 +571,36 @@ msgstr ""
 #: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:47
 #: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:16
 #: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:45
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:16
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:47
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_sftp.php:16
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_sftp.php:45
 msgid "Host name is wrong!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:19
 #: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:19
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:19
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_sftp.php:19
 msgid "User or password don't be empty!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:31
 #: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:31
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:31
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_sftp.php:31
 msgid "Wrong path on remote server!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:44
 #: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:42
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:44
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_sftp.php:42
 msgid "Invalid login or password!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:140
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:140
 msgid ""
 "There are no FTP extension on your server. You need to install it. How to "
 "install check this link <a target=\"_blank\" href=\"http://php.net/manual/en/"
@@ -540,6 +608,7 @@ msgid ""
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:145
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:145
 msgid ""
 "There are no FTPS extension on your server. You need to install it. How to "
 "install check this link <a target=\"_blank\" href=\"http://php.net/manual/en/"
@@ -548,6 +617,7 @@ msgid ""
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:156
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_sftp.php:156
 msgid ""
 "There are no SFTP(Secure Shell2) extension on your server. You need to "
 "install it. How to install check this link <a target=\"_blank\" href="
@@ -556,31 +626,36 @@ msgid ""
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:27
-#: modules/adminmenu/views/adminmenu.php:17 modules/backup/mod.php:101
-#: modules/backup/views/tpl/backup.index.php:95
-#: modules/backup/views/tpl/backup.index.php:163
-#: modules/backup/views/tpl/backup.index.php:226
-#: modules/backup/views/tpl/backup.index.php:282
-#: modules/backup/views/tpl/backup.index.php:339 modules/log/mod.php:20
+#: doc/promo-backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:27
+#: modules/adminmenu/views/adminmenu.php:16 modules/backup/mod.php:101
+#: modules/backup/views/tpl/backup.index.php:62
+#: modules/backup/views/tpl/backup.index.php:130
+#: modules/backup/views/tpl/backup.index.php:193
+#: modules/backup/views/tpl/backup.index.php:249
+#: modules/backup/views/tpl/backup.index.php:306 modules/log/mod.php:20
 #: modules/storage/views/tpl/storageBlock.php:31
 msgid "Restore"
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:33
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:63
-#: modules/backup/views/tpl/backup.index.php:107
-#: modules/backup/views/tpl/backup.index.php:171
-#: modules/backup/views/tpl/backup.index.php:232
-#: modules/backup/views/tpl/backup.index.php:285
-#: modules/backup/views/tpl/backup.index.php:347
+#: doc/promo-backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:33
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:63
+#: modules/backup/views/tpl/backup.index.php:74
+#: modules/backup/views/tpl/backup.index.php:138
+#: modules/backup/views/tpl/backup.index.php:199
+#: modules/backup/views/tpl/backup.index.php:252
+#: modules/backup/views/tpl/backup.index.php:314
 msgid "Delete"
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/views/tpl/remoteFtpAuth.php:25
+#: doc/promo-backup-supsystic-pro/remote_backup/views/tpl/remoteFtpAuth.php:25
 msgid "Store params"
 msgstr ""
 
 #: doc/backup-supsystic-pro/remote_backup/views/tpl/remoteFtpLogout.php:3
+#: doc/promo-backup-supsystic-pro/remote_backup/views/tpl/remoteFtpLogout.php:3
 #: modules/amazon/views/tpl/amazon.index.php:4
 #: modules/dropbox/views/tpl/dropbox.index.php:4
 #: modules/gdrive/views/tpl/gdrive.index.php:5
@@ -590,303 +665,388 @@ msgid "Logout"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/controller.php:36
+#: doc/promo-backup-supsystic-pro/schedule/controller.php:36
 msgid "Schedule successfully removed!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/controller.php:47
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:241
-#: modules/backup/controller.php:134 modules/backup/controller.php:188
+#: doc/promo-backup-supsystic-pro/schedule/controller.php:47
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:241
+#: modules/backup/controller.php:144
 msgid "Backup complete"
 msgstr ""
 
+#: doc/backup-supsystic-pro/schedule/controller.php:61
+msgid "Before create schedule, you must login to "
+msgstr ""
+
 #: doc/backup-supsystic-pro/schedule/mod.php:16
+#: doc/promo-backup-supsystic-pro/schedule/mod.php:16
 msgid "Once Weekly"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/mod.php:21
+#: doc/promo-backup-supsystic-pro/schedule/mod.php:21
 msgid "Once a month"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/mod.php:43
 #: doc/backup-supsystic-pro/schedule/mod.php:71
-#: modules/adminmenu/views/adminmenu.php:16
+#: doc/promo-backup-supsystic-pro/schedule/mod.php:43
+#: doc/promo-backup-supsystic-pro/schedule/mod.php:71
+#: modules/adminmenu/views/adminmenu.php:15
 msgid "Schedule"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/mod.php:49
+#: doc/promo-backup-supsystic-pro/schedule/mod.php:49
 msgid "Schedule Edit"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:48
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:48
 msgid "Schedule successfully edited!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:54
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:54
 msgid "Cannot create schedule \""
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:54
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:54
 msgid "Name will be unique, \""
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:54
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:54
 msgid "exist in DB."
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:59
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:59
 msgid "Schedule successfully created!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:73
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:73
 msgid "Schedule must have name!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:114
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:114
 msgid "Please try again!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:154
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:154
 msgid "Start backup schedule:"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:160
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:160
 msgid "files scanned."
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:162
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:162
 msgid "Create a backup of the file system:"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:167
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:167
 msgid "Create a backup of the database:"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:171
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:171
 msgid "Errors during creation of database backup, errors count"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:178
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:178
 msgid "Upload to the"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:178
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:178
 msgid "required"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:179
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:179
 msgid "Files to upload:"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:186
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:186
 msgid "Successfully uploaded to the"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:202
-#: modules/backup/controller.php:164
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:202
+#: modules/backup/controller.php:173
 msgid "Authentication required."
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:205
-#: modules/backup/controller.php:167 modules/dropbox/models/dropbox.php:274
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:205
+#: modules/backup/controller.php:176 modules/dropbox/models/dropbox.php:274
 msgid "File not found"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:208
-#: modules/backup/controller.php:170
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:208
+#: modules/backup/controller.php:179
 msgid "Unexpected error (500)"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:211
-#: modules/backup/controller.php:173
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:211
+#: modules/backup/controller.php:182
 msgid "Unexpected error"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:229
-#: modules/backup/controller.php:195
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:229
+#: modules/backup/controller.php:210
 msgid "Backup by Supsystic Notifications"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:231
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:231
 msgid ". Backup Error!"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:232
-#: modules/backup/controller.php:197
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:232
+#: modules/backup/controller.php:212
 msgid "Email notification required."
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:233
-#: modules/backup/controller.php:198
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:233
+#: modules/backup/controller.php:213
 msgid "Sending to"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:300
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:10
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:300
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:10
 msgid "Every hour"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:301
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:301
 msgid "Twice a day"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:302
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:26
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:302
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:26
 msgid "Every day"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:303
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:34
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:303
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:34
 msgid "Every week"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:304
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:42
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:304
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:42
 msgid "Every month"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:312
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:312
 msgid "FTP"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:313
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:313
 msgid "OneDrive"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:314
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:314
 msgid "Google Drive"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:315
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:315
 msgid "Dropbox"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:316
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:316
 msgid "Amazon S3"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:329
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:92
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:329
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:92
 #: modules/backup/models/backupLog.php:88
-#: modules/options/views/tpl/backupOptions.php:46
+#: modules/options/views/tpl/backupOptions.php:51
 msgid "Wordpress Core"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:331
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:103
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:106
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:331
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:103
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:106
 #: modules/backup/models/backupLog.php:91
-#: modules/options/views/tpl/backupOptions.php:57
-#: modules/options/views/tpl/backupOptions.php:60
+#: modules/options/views/tpl/backupOptions.php:62
+#: modules/options/views/tpl/backupOptions.php:65
 msgid "Plugins folder"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:333
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:114
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:117
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:333
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:114
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:117
 #: modules/backup/models/backupLog.php:94
-#: modules/options/views/tpl/backupOptions.php:68
-#: modules/options/views/tpl/backupOptions.php:71
+#: modules/options/views/tpl/backupOptions.php:73
+#: modules/options/views/tpl/backupOptions.php:76
 msgid "Themes folder"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:335
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:125
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:128
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:335
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:125
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:128
 #: modules/backup/models/backupLog.php:97
-#: modules/options/views/tpl/backupOptions.php:79
-#: modules/options/views/tpl/backupOptions.php:82
+#: modules/options/views/tpl/backupOptions.php:84
+#: modules/options/views/tpl/backupOptions.php:87
 msgid "Uploads folder"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:337
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:136
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:139
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:337
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:136
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:139
 #: modules/backup/models/backupLog.php:100
-#: modules/options/views/tpl/backupOptions.php:90
-#: modules/options/views/tpl/backupOptions.php:93
+#: modules/options/views/tpl/backupOptions.php:95
+#: modules/options/views/tpl/backupOptions.php:98
 msgid "Any folder inside wp-content"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:339
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:147
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:150
-#: modules/options/views/tpl/backupOptions.php:101
-#: modules/options/views/tpl/backupOptions.php:104
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:339
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:147
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:150
+#: modules/options/views/tpl/backupOptions.php:106
+#: modules/options/views/tpl/backupOptions.php:109
 msgid "Database backup"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:4
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:4
 msgid "Schedule Settings"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:18
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:18
 msgid "Every twice a day"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:50
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:50
 #: modules/options/views/tpl/backupOptions.php:7
 msgid "Where to backup"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:74
-#: modules/options/views/tpl/backupOptions.php:29
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:74
+#: modules/options/views/tpl/backupOptions.php:34
 msgid "What to backup"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:81
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:84
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:81
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:84
 #: modules/backup/models/backupLog.php:85
-#: modules/options/views/tpl/backupOptions.php:35
-#: modules/options/views/tpl/backupOptions.php:38
+#: modules/options/views/tpl/backupOptions.php:40
+#: modules/options/views/tpl/backupOptions.php:43
 msgid "Full backup"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:95
-#: modules/options/views/tpl/backupOptions.php:49
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:95
+#: modules/options/views/tpl/backupOptions.php:54
 msgid ""
 "All folders and files backup in the root directory, where the WordPress is "
 "installed, except the /wp-content folder."
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:158
-#: modules/options/views/tpl/backupOptions.php:112
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:158
+#: modules/options/views/tpl/backupOptions.php:117
 msgid "Secret key for DB"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:161
-#: modules/options/views/tpl/backupOptions.php:115
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:161
+#: modules/options/views/tpl/backupOptions.php:120
 msgid "Secret key for encrypting DB data"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:178
-#: modules/options/views/tpl/backupOptions.php:131
-msgid "Additional setting"
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:178
+#: modules/options/views/tpl/backupOptions.php:136
+msgid "Additional Settings"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:184
-#: modules/options/views/tpl/backupOptions.php:137
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:184
+#: modules/options/views/tpl/backupOptions.php:142
 msgid "Specify and enter files and folders names which must not be backed up."
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:185
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:185
+#: modules/options/views/tpl/backupOptions.php:142
 msgid "Exclude:"
 msgstr ""
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:188
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:187
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:187
 msgid "If entering multiple files/directories, then separate them with commas."
 msgstr ""
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:193
-#: modules/options/views/tpl/backupOptions.php:145
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:192
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:192
+#: modules/options/views/tpl/backupOptions.php:149
 msgid "Email notification"
 msgstr ""
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:194
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:193
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:193
+#: modules/options/views/tpl/backupOptions.php:149
 msgid "Email notification:"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:208
-#: modules/options/views/tpl/backupOptions.php:159
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:208
+#: modules/options/views/tpl/backupOptions.php:164
 msgid ""
 "Specify the path where the data is to be backed up. It 'Use relative path' "
 "ckeckbox has been set up, the path will be set against in the root "
@@ -895,10 +1055,13 @@ msgid ""
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:209
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:209
+#: modules/options/views/tpl/backupOptions.php:165
 msgid "Warehouse:"
 msgstr ""
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:230
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:228
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:228
 msgid ""
 "If the checkbox has been set up, then the backup path must be specified in "
 "the Warehouse field against the root directory, where the WordPress is "
@@ -906,16 +1069,19 @@ msgid ""
 "specified in the Warehouse field against the disk root."
 msgstr ""
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:231
-msgid "User relative path:"
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:229
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:229
+msgid "User relative path"
 msgstr ""
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:248
-#: modules/options/views/tpl/backupOptions.php:197
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:247
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:247
+#: modules/options/views/tpl/backupOptions.php:202
 msgid "Path to directory, where will be stored backup files."
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:4
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:4
 msgid ""
 "Backup schedule will upload data to the cloud services. To make the work of "
 "backup scheduler smooth and correct, you need to be constantly authorized on "
@@ -927,22 +1093,27 @@ msgid ""
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:15
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:15
 msgid "Schedule Name:"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:16
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:16
 msgid "Enable Schedule"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:17
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:17
 msgid "Save Schedule"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:8
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:8
 msgid "Create new schedule"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:17
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:17
 msgid ""
 "<span class=\"bupWarningRed\">Warning:</span> The plugin can not increase "
 "the standard work time of the script, please contact your hosting provider."
@@ -953,18 +1124,22 @@ msgid ""
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:28
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:28
 msgid "Schedules"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:29
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:29
 msgid "Periodicity"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:31
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:31
 msgid "Backup content"
 msgstr ""
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:57
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:57
 msgid "Edit"
 msgstr ""
 
@@ -996,30 +1171,28 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+#: modules/adminmenu/views/adminmenu.php:13 modules/promo_supsystic/mod.php:36
+msgid "Overview"
+msgstr ""
+
 #: modules/adminmenu/views/adminmenu.php:14
 #: modules/options/views/options.php:7
 msgid "Backup"
 msgstr ""
 
-#: modules/adminmenu/views/adminmenu.php:15 modules/promo_supsystic/mod.php:36
-msgid "Overview"
-msgstr ""
-
-#: modules/adminmenu/views/adminmenu.php:21
-#: modules/adminmenu/views/adminmenu.php:28
-#: modules/adminmenu/views/adminmenu.php:31
+#: modules/adminmenu/views/adminmenu.php:20
 msgid "Backup by Supsystic"
 msgstr ""
 
-#: modules/amazon/controller.php:75
+#: modules/amazon/controller.php:77
 msgid "Credentials are stored in the database"
 msgstr ""
 
-#: modules/amazon/controller.php:78
+#: modules/amazon/controller.php:79
 msgid "Invalid or empty credentials"
 msgstr ""
 
-#: modules/amazon/controller.php:83
+#: modules/amazon/controller.php:84
 msgid "Bucket stored in the database"
 msgstr ""
 
@@ -1032,44 +1205,44 @@ msgstr ""
 msgid "Please, wait..."
 msgstr ""
 
-#: modules/amazon/controller.php:141
+#: modules/amazon/controller.php:140
 msgid "You did not specify credentials or credentials are invalid"
 msgstr ""
 
-#: modules/amazon/controller.php:144
+#: modules/amazon/controller.php:143
 msgid "Bucket not found"
 msgstr ""
 
-#: modules/amazon/controller.php:174 modules/dropbox/controller.php:205
+#: modules/amazon/controller.php:173 modules/dropbox/controller.php:205
 #: modules/gdrive/controller.php:154
 msgid "File successfully deleted"
 msgstr ""
 
-#: modules/amazon/controller.php:177
+#: modules/amazon/controller.php:176
 msgid "Not enough input parameters"
 msgstr ""
 
-#: modules/amazon/controller.php:180
+#: modules/amazon/controller.php:179
 msgid "File not found on server"
 msgstr ""
 
-#: modules/amazon/controller.php:183
+#: modules/amazon/controller.php:182
 msgid "Failed to delete the selected file"
 msgstr ""
 
-#: modules/amazon/controller.php:206
+#: modules/amazon/controller.php:204
 msgid "File not found on Amazon S3"
 msgstr ""
 
-#: modules/amazon/controller.php:221
-msgid "Enter your AWS Access Key, Secret Key and Bucket name"
+#: modules/amazon/controller.php:219
+msgid "Enter your AWS Access Key,<br/>Secret Key and Bucket name"
 msgstr ""
 
-#: modules/amazon/controller.php:224
+#: modules/amazon/controller.php:222
 msgid "Access Key"
 msgstr ""
 
-#: modules/amazon/controller.php:230
+#: modules/amazon/controller.php:229
 msgid "Secret Key"
 msgstr ""
 
@@ -1077,49 +1250,53 @@ msgstr ""
 msgid "Bucket"
 msgstr ""
 
-#: modules/amazon/controller.php:246
-msgid "Store credentials"
+#: modules/amazon/controller.php:244
+msgid "&nbsp;&nbsp; Save &nbsp;&nbsp;"
 msgstr ""
 
-#: modules/backup/controller.php:78
+#: modules/backup/controller.php:88
 msgid "Clear out old temporary files"
 msgstr ""
 
-#: modules/backup/controller.php:109
+#: modules/backup/controller.php:119
 msgid "Send request to generate temporary file stacks"
 msgstr ""
 
-#: modules/backup/controller.php:239 modules/backup/controller.php:240
+#: modules/backup/controller.php:202
+msgid "Error occurred: "
+msgstr ""
+
+#: modules/backup/controller.php:254 modules/backup/controller.php:255
 msgid "Unable to create the temporary archive"
 msgstr ""
 
-#: modules/backup/controller.php:284
+#: modules/backup/controller.php:299
 msgid "Unable to restore from "
 msgstr ""
 
-#: modules/backup/controller.php:292
+#: modules/backup/controller.php:307
 msgid ""
 "Unable to restore backup files. Check folder or files writing permissions. "
 "Try to set 766 permissions to the:"
 msgstr ""
 
-#: modules/backup/controller.php:345
+#: modules/backup/controller.php:360
 msgid "Unable to delete backup"
 msgstr ""
 
-#: modules/backup/controller.php:358
+#: modules/backup/controller.php:373
 msgid "Successfully!"
 msgstr ""
 
-#: modules/backup/controller.php:371
+#: modules/backup/controller.php:386
 msgid "Setting saved!"
 msgstr ""
 
-#: modules/backup/controller.php:373
+#: modules/backup/controller.php:388
 msgid "Database error, please try again"
 msgstr ""
 
-#: modules/backup/controller.php:398
+#: modules/backup/controller.php:413
 msgid ""
 "There are no zlib extension on your server. This mean that you can make only "
 "database backup.<br/>Check this link <a target=\"_blank\" href=\"http://php."
@@ -1128,7 +1305,7 @@ msgid ""
 "resolve this issue for you."
 msgstr ""
 
-#: modules/backup/controller.php:406
+#: modules/backup/controller.php:421
 msgid ""
 "There are no ZipArchive library on your server. This mean that you can make "
 "only database backup.<br/>Check this link <a target=\"_blank\" href=\"http://"
@@ -1207,15 +1384,83 @@ msgstr ""
 msgid "An error has occurred while unpacking the archive"
 msgstr ""
 
-#: modules/backup/views/tpl/backup.index.php:8
-msgid "Restore Presets:"
+#: modules/backup/views/tpl/backup.index.php:10
+msgid " / Start:"
 msgstr ""
 
 #: modules/backup/views/tpl/backup.index.php:11
+msgid " / Finish:"
+msgstr ""
+
+#: modules/backup/views/tpl/backup.index.php:21
+msgid "Backup to <b>FTP</b> / ID"
+msgstr ""
+
+#: modules/backup/views/tpl/backup.index.php:57
+#: modules/backup/views/tpl/backup.index.php:118
+#: modules/backup/views/tpl/backup.index.php:182
+#: modules/backup/views/tpl/backup.index.php:244
+#: modules/backup/views/tpl/backup.index.php:295
+msgid "Filesystem"
+msgstr ""
+
+#: modules/backup/views/tpl/backup.index.php:57
+#: modules/backup/views/tpl/backup.index.php:118
+#: modules/backup/views/tpl/backup.index.php:182
+#: modules/backup/views/tpl/backup.index.php:244
+#: modules/backup/views/tpl/backup.index.php:295
+msgid "Database"
+msgstr ""
+
+#: modules/backup/views/tpl/backup.index.php:68
+msgid "Download"
+msgstr ""
+
+#: modules/backup/views/tpl/backup.index.php:90
+#: modules/backup/views/tpl/backup.index.php:155
+#: modules/backup/views/tpl/backup.index.php:218
+#: modules/backup/views/tpl/backup.index.php:269
+#: modules/backup/views/tpl/backup.index.php:331
+msgid "Show Backup Log"
+msgstr ""
+
+#: modules/backup/views/tpl/backup.index.php:92
+#: modules/backup/views/tpl/backup.index.php:157
+#: modules/backup/views/tpl/backup.index.php:220
+#: modules/backup/views/tpl/backup.index.php:271
+#: modules/backup/views/tpl/backup.index.php:333
+msgid "Log is clear."
+msgstr ""
+
+#: modules/backup/views/tpl/backup.index.php:108
+msgid "Backup to <b>GoogleDrive</b> / ID"
+msgstr ""
+
+#: modules/backup/views/tpl/backup.index.php:172
+msgid "Backup to <b>OneDrive</b> / ID"
+msgstr ""
+
+#: modules/backup/views/tpl/backup.index.php:235
+msgid "Backup to <b>Amazon S3</b> / ID"
+msgstr ""
+
+#: modules/backup/views/tpl/backup.index.php:286
+msgid "Backup to <b>DropBox</b> / ID"
+msgstr ""
+
+#: modules/backup/views/tpl/backup.index.php:349
+msgid "Backups don't exist!"
+msgstr ""
+
+#: modules/backup/views/tpl/backup.index.php:359
+msgid "Restore Presets:"
+msgstr ""
+
+#: modules/backup/views/tpl/backup.index.php:362
 msgid "Safe Update"
 msgstr ""
 
-#: modules/backup/views/tpl/backup.index.php:13
+#: modules/backup/views/tpl/backup.index.php:364
 msgid ""
 "If the ckeckbox is set up, the database backup will be performed. This will "
 "let the database backup work in the transaction mode, i.e. should there "
@@ -1226,11 +1471,11 @@ msgid ""
 "transaction mode."
 msgstr ""
 
-#: modules/backup/views/tpl/backup.index.php:23
+#: modules/backup/views/tpl/backup.index.php:374
 msgid "Force Update"
 msgstr ""
 
-#: modules/backup/views/tpl/backup.index.php:25
+#: modules/backup/views/tpl/backup.index.php:376
 msgid ""
 "When backup is performed, the labels are usually put at the beginning of the "
 "file dump, such as: WordPress version for the backup; WordPress data-base "
@@ -1242,89 +1487,21 @@ msgid ""
 "the recovery will be performed."
 msgstr ""
 
-#: modules/backup/views/tpl/backup.index.php:43
-msgid " / Start:"
-msgstr ""
-
-#: modules/backup/views/tpl/backup.index.php:44
-msgid " / Finish:"
-msgstr ""
-
-#: modules/backup/views/tpl/backup.index.php:54
-msgid "Backup to <b>FTP</b> / ID"
-msgstr ""
-
-#: modules/backup/views/tpl/backup.index.php:90
-#: modules/backup/views/tpl/backup.index.php:151
-#: modules/backup/views/tpl/backup.index.php:215
-#: modules/backup/views/tpl/backup.index.php:277
-#: modules/backup/views/tpl/backup.index.php:328
-msgid "Filesystem"
-msgstr ""
-
-#: modules/backup/views/tpl/backup.index.php:90
-#: modules/backup/views/tpl/backup.index.php:151
-#: modules/backup/views/tpl/backup.index.php:215
-#: modules/backup/views/tpl/backup.index.php:277
-#: modules/backup/views/tpl/backup.index.php:328
-msgid "Database"
-msgstr ""
-
-#: modules/backup/views/tpl/backup.index.php:101
-msgid "Download"
-msgstr ""
-
-#: modules/backup/views/tpl/backup.index.php:123
-#: modules/backup/views/tpl/backup.index.php:188
-#: modules/backup/views/tpl/backup.index.php:251
-#: modules/backup/views/tpl/backup.index.php:302
-#: modules/backup/views/tpl/backup.index.php:364
-msgid "Show Backup Log"
-msgstr ""
-
-#: modules/backup/views/tpl/backup.index.php:125
-#: modules/backup/views/tpl/backup.index.php:190
-#: modules/backup/views/tpl/backup.index.php:253
-#: modules/backup/views/tpl/backup.index.php:304
-#: modules/backup/views/tpl/backup.index.php:366
-msgid "Log is clear."
-msgstr ""
-
-#: modules/backup/views/tpl/backup.index.php:141
-msgid "Backup to <b>GoogleDrive</b> / ID"
-msgstr ""
-
-#: modules/backup/views/tpl/backup.index.php:205
-msgid "Backup to <b>OneDrive</b> / ID"
-msgstr ""
-
-#: modules/backup/views/tpl/backup.index.php:268
-msgid "Backup to <b>Amazon S3</b> / ID"
-msgstr ""
-
-#: modules/backup/views/tpl/backup.index.php:319
-msgid "Backup to <b>DropBox</b> / ID"
-msgstr ""
-
-#: modules/backup/views/tpl/backup.index.php:382
-msgid "Backups don't exist!"
-msgstr ""
-
-#: modules/backup/views/tpl/backup.index.php:387
+#: modules/backup/views/tpl/backup.index.php:388
 msgid "Backup Log:"
 msgstr ""
 
-#: modules/backup/views/tpl/backup.index.php:393
+#: modules/backup/views/tpl/backup.index.php:394
 msgid "Get PRO Verion!"
 msgstr ""
 
-#: modules/backup/views/tpl/backup.index.php:395
+#: modules/backup/views/tpl/backup.index.php:396
 msgid ""
 "Please, be advised, that this option is available only in PRO version. You "
 "can"
 msgstr ""
 
-#: modules/backup/views/tpl/backup.index.php:396
+#: modules/backup/views/tpl/backup.index.php:397
 #: modules/promo_supsystic/mod.php:12
 #: modules/promo_supsystic/views/tpl/schedulePromo.php:7
 msgid "Get PRO"
@@ -1422,10 +1599,6 @@ msgstr ""
 msgid "Uploaded successfully."
 msgstr ""
 
-#: modules/onedrive/controller.php:135
-msgid "Unexpected error."
-msgstr ""
-
 #: modules/onedrive/controller.php:150
 msgid "File downloaded."
 msgstr ""
@@ -1519,20 +1692,12 @@ msgstr ""
 msgid "Unable to remove image"
 msgstr ""
 
-#: modules/options/views/tpl/backupOptions.php:137
-msgid "Exclude"
-msgstr ""
-
-#: modules/options/views/tpl/backupOptions.php:140
+#: modules/options/views/tpl/backupOptions.php:144
 msgid ""
 " If entering multiple files/directories, then separate them with commas."
 msgstr ""
 
-#: modules/options/views/tpl/backupOptions.php:160
-msgid "Warehouse"
-msgstr ""
-
-#: modules/options/views/tpl/backupOptions.php:179
+#: modules/options/views/tpl/backupOptions.php:184
 msgid ""
 "If the checkbox has been set up, then the backup path must be specified in "
 "the Warehouse field against the root directory, where the WordPress is "
@@ -1540,7 +1705,7 @@ msgid ""
 "specified in the Warehouse field against the disk root.\""
 msgstr ""
 
-#: modules/options/views/tpl/backupOptions.php:180
+#: modules/options/views/tpl/backupOptions.php:185
 msgid "Use relative path"
 msgstr ""
 
@@ -1591,7 +1756,7 @@ msgid ""
 "deleted, will be created again. Do not use it without emergency."
 msgstr ""
 
-#: modules/promo_supsystic/controller.php:8
+#: modules/promo_supsystic/controller.php:6
 msgid "Information was saved. Thank you!"
 msgstr ""
 
@@ -1601,55 +1766,55 @@ msgid ""
 "can "
 msgstr ""
 
-#: modules/promo_supsystic/mod.php:70
+#: modules/promo_supsystic/mod.php:67
 msgid "Name"
 msgstr ""
 
-#: modules/promo_supsystic/mod.php:72
+#: modules/promo_supsystic/mod.php:69
 msgid "Website"
 msgstr ""
 
-#: modules/promo_supsystic/mod.php:73
+#: modules/promo_supsystic/mod.php:70
 msgid "Subject"
 msgstr ""
 
-#: modules/promo_supsystic/mod.php:74
+#: modules/promo_supsystic/mod.php:71
 msgid "Topic"
 msgstr ""
 
-#: modules/promo_supsystic/mod.php:75
+#: modules/promo_supsystic/mod.php:72
 msgid "Plugin options"
 msgstr ""
 
-#: modules/promo_supsystic/mod.php:76
+#: modules/promo_supsystic/mod.php:73
 msgid "Report a bug"
 msgstr ""
 
-#: modules/promo_supsystic/mod.php:77
+#: modules/promo_supsystic/mod.php:74
 msgid "Require a new functionallity"
 msgstr ""
 
-#: modules/promo_supsystic/mod.php:78
+#: modules/promo_supsystic/mod.php:75
 msgid "Other"
 msgstr ""
 
-#: modules/promo_supsystic/mod.php:80
+#: modules/promo_supsystic/mod.php:77
 msgid "Message"
 msgstr ""
 
-#: modules/promo_supsystic/mod.php:80
+#: modules/promo_supsystic/mod.php:77
 msgid "Hello Supsystic Team!"
 msgstr ""
 
-#: modules/promo_supsystic/mod.php:93
+#: modules/promo_supsystic/mod.php:90
 msgid "Schedule <p class=\"bupAIP\">Available In PRO</p>"
 msgstr ""
 
-#: modules/promo_supsystic/mod.php:102
+#: modules/promo_supsystic/mod.php:100
 msgid "Remote FTP Server"
 msgstr ""
 
-#: modules/promo_supsystic/mod.php:102
+#: modules/promo_supsystic/mod.php:101
 msgid "Remote SFTP(SCP) Server"
 msgstr ""
 
@@ -1657,31 +1822,11 @@ msgstr ""
 msgid "Remote FTPS Server"
 msgstr ""
 
-#: modules/promo_supsystic/views/promo_supsystic.php:5
-msgid "Google"
-msgstr ""
-
-#: modules/promo_supsystic/views/promo_supsystic.php:6
-msgid "Wordpress.org"
-msgstr ""
-
-#: modules/promo_supsystic/views/promo_supsystic.php:7
-msgid "Refer a friend"
-msgstr ""
-
-#: modules/promo_supsystic/views/promo_supsystic.php:8
-msgid "Find on the web"
-msgstr ""
-
-#: modules/promo_supsystic/views/promo_supsystic.php:9
-msgid "Other way..."
-msgstr ""
-
-#: modules/promo_supsystic/views/promo_supsystic.php:33
+#: modules/promo_supsystic/views/promo_supsystic.php:23
 msgid "How to get PRO version of plugin for FREE?"
 msgstr ""
 
-#: modules/promo_supsystic/views/promo_supsystic.php:33
+#: modules/promo_supsystic/views/promo_supsystic.php:23
 #, php-format
 msgid ""
 "You have an incredible opportunity to get PRO version for free. Make "
@@ -1690,11 +1835,11 @@ msgid ""
 "PRO version of any plugin for FREE\"</a>"
 msgstr ""
 
-#: modules/promo_supsystic/views/promo_supsystic.php:34
+#: modules/promo_supsystic/views/promo_supsystic.php:24
 msgid "Translation"
 msgstr ""
 
-#: modules/promo_supsystic/views/promo_supsystic.php:34
+#: modules/promo_supsystic/views/promo_supsystic.php:24
 #, php-format
 msgid ""
 "All available languages are provided with the Supsystic Google Maps plugin. "
@@ -1704,31 +1849,30 @@ msgid ""
 "license for FREE. <a target=\"_blank\" href=\"%s\">Contact us</a>."
 msgstr ""
 
-#: modules/promo_supsystic/views/promo_supsystic.php:51
+#: modules/promo_supsystic/views/promo_supsystic.php:41
 #, php-format
 msgid ""
 "There were some problem while trying to retrive our news, but you can always "
 "check all list <a target=\"_blank\" href=\"%s\">here</a>."
 msgstr ""
 
-#: modules/promo_supsystic/views/promo_supsystic.php:61
-#: modules/promo_supsystic/views/promo_supsystic.php:62
-#: modules/promo_supsystic/views/promo_supsystic.php:67
-#: modules/promo_supsystic/views/promo_supsystic.php:69
-#: modules/promo_supsystic/views/promo_supsystic.php:70
+#: modules/promo_supsystic/views/promo_supsystic.php:51
+#: modules/promo_supsystic/views/promo_supsystic.php:52
+#: modules/promo_supsystic/views/promo_supsystic.php:57
+#: modules/promo_supsystic/views/promo_supsystic.php:59
+#: modules/promo_supsystic/views/promo_supsystic.php:60
 msgid "Yes"
 msgstr ""
 
-#: modules/promo_supsystic/views/promo_supsystic.php:61
-#: modules/promo_supsystic/views/promo_supsystic.php:62
-#: modules/promo_supsystic/views/promo_supsystic.php:67
-#: modules/promo_supsystic/views/promo_supsystic.php:69
-#: modules/promo_supsystic/views/promo_supsystic.php:70
+#: modules/promo_supsystic/views/promo_supsystic.php:51
+#: modules/promo_supsystic/views/promo_supsystic.php:52
+#: modules/promo_supsystic/views/promo_supsystic.php:57
+#: modules/promo_supsystic/views/promo_supsystic.php:59
+#: modules/promo_supsystic/views/promo_supsystic.php:60
 msgid "No"
 msgstr ""
 
 #: modules/promo_supsystic/views/tpl/adminFooter.php:4
-#: modules/promo_supsystic/views/tpl/welcomePage.php:93
 msgid "Version"
 msgstr ""
 
@@ -1784,92 +1928,6 @@ msgstr ""
 msgid ""
 "Your email was send, we will try to respond to you as soon as possible. "
 "Thank you for support!"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:91
-msgid "Welcome to"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:98
-msgid "This is first start up of the "
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:99
-msgid ""
-"If you are newbie - check all features on that page, if you are guru - "
-"please correct us."
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:109
-msgid "Where did you find us?"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:124
-msgid "What to do next? Check below section:"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:128
-msgid "Boost us:"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:129
-msgid ""
-"It's amazing when you boost development with your feedback and ratings. So "
-"we create special <a target=\"_blank\" href=\"https://supsystic.com/\">boost "
-"page</a> to help you to help us."
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:133
-msgid "Documentation:"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:134
-msgid ""
-"Check <a target=\"_blank\" href=\"https://supsystic.com/\">documentation</a> "
-"and FAQ section. If you can't solve your problems - <a target=\"_blank\" "
-"href=\"http://supsystic.com/contacts/\">contact us</a>."
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:138
-msgid "Full Features List:"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:139
-msgid "There are so many features, so we can't post it here. Like:"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:141
-msgid "Files and Database backup"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:142
-msgid "Backup to the Dropbox"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:143
-msgid "FTP backup"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:144
-msgid "Custom backup"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:145
-msgid "Backup in archive"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:146
-msgid "Restore backups anywhere"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:148
-msgid ""
-"So check full features list <a target=\"_blank\" href=\"https://supsystic."
-"com/\">here</a>."
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/welcomePage.php:156
-msgid "Thank for check info. Start using plugin."
 msgstr ""
 
 #: modules/templates/mod.php:11

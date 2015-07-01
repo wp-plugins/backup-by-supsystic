@@ -218,7 +218,12 @@ var BackupModule = {
 			msgElID: 'BUP_MESS_MAIN',
 			onSuccess: function(response) {
 
-                if (response.data.length === 0) {
+                if (response.data.files === undefined) {
+					if(response.data.tables.length > 0) {
+						createDatabaseBackupPerQuery(response.data.dbDumpFileName, response.data.tables, response.data.per_stack, false);
+						return;
+					}
+
 					jQuery('input[name="backupnow"]').val('Start Backup');
 					progress.hide();
 					jQuery('#BUP_SHOW_LOG').hide();
@@ -353,32 +358,86 @@ function bupGetTemporaryArchive(files, progress, cb) {
         }
     });
 
-//    jQuery.postq('bupTempArchive', {
-//        data: {
-//            reqType:  'ajax',
-//            page:     'backup',
-//            action:   'createStackAction',
-//            files:    files
-//        },
-//        onSuccess: function(response) {
-//
-//            cb();
-//
-//            if (response.error === false) {
-//                jQuery.sendFormBup({
-//                    data: {
-//                        reqType:  'ajax',
-//                        page:     'backup',
-//                        action:   'writeTmpDbAction',
-//                        tmp:      response.data.filename
-//                    }
-//                });
-//            } else {
-//                progress.hide(function() {
-//                });
-//            }
-//        }
-//    });
+/*    jQuery.postq('bupTempArchive', {
+        data: {
+            reqType:  'ajax',
+            page:     'backup',
+            action:   'createStackAction',
+            files:    files
+        },
+        onSuccess: function(response) {
+
+            cb();
+
+            if (response.error === false) {
+                jQuery.sendFormBup({
+                    data: {
+                        reqType:  'ajax',
+                        page:     'backup',
+                        action:   'writeTmpDbAction',
+                        tmp:      response.data.filename
+                    }
+                });
+            } else {
+                progress.hide(function() {
+                });
+            }
+        }
+    });*/
+}
+
+function createDatabaseBackupPerQuery(dumpFileName, tables, perStack, zipBackupExist){
+	perStack = parseInt(perStack);
+	var i          = 0,
+		generalI   = 0,
+		stack      = [],
+		subStack   = [],
+		firstQuery = 1;
+
+	jQuery.each(tables, function(index, element) {
+		subStack.push(element);
+		i++;
+		generalI++;
+
+		if(i === perStack || generalI === tables.length){
+			stack.push(subStack);
+			i = 0;
+			subStack = [];
+		}
+	});
+
+	jQuery.each(stack, function(index, element) {
+		//the pause
+		setTimeout(function(){
+		}, 1000);
+
+		jQuery.sendFormBup({
+			data: {
+				reqType:  'ajax',
+				page:     'backup',
+				action:   'createDBDumpPerStack',
+				filename: jQuery.parseJSON( dumpFileName ),
+				stack: element,
+				firstQuery: firstQuery
+			}
+		});
+
+		firstQuery = 0;
+	});
+
+	jQuery.sendFormBup({
+		msgElID: 'BUP_MESS_MAIN',
+		data: {
+			reqType:  'ajax',
+			page:     'backup',
+			action:   'createAction',
+			filesBackupComplete: true,
+			databaseBackupComplete: true
+		},
+		onSuccess: function(){
+			onBackupFullCompleteAction();
+		}
+	});
 }
 
 function sendCompleteRequest(progress) {
@@ -390,12 +449,12 @@ function sendCompleteRequest(progress) {
             action:   'createAction',
             complete: true
         },
-        onSuccess: function(r) {
-			jQuery('input[name="backupnow"]').val('Start Backup');
-            progress.hide();
-			jQuery('#BUP_SHOW_LOG').hide();
-			jQuery('#bupInfo').show();
-			jQuery('#bupLogText').html('Log is clear.');
+        onSuccess: function(response) {
+			if(response.data.dbDumpFileName !== undefined && response.data.tables !== undefined && response.data.per_stack !== undefined) {
+				createDatabaseBackupPerQuery(response.data.dbDumpFileName, response.data.tables, response.data.per_stack, true);
+				return;
+			}
+			onBackupFullCompleteAction();
         }
     });
 }
@@ -442,4 +501,12 @@ function bupBackupsShowLogDlg() {
 		j('#bupLogText').html(logContent);
 		$container.dialog('open');
 	});
+}
+
+function onBackupFullCompleteAction(){
+	jQuery('input[name="backupnow"]').val('Start Backup');
+	jQuery('.main-progress-bar').hide();
+	jQuery('#BUP_SHOW_LOG').hide();
+	jQuery('#bupInfo').show();
+	jQuery('#bupLogText').html('Log is clear.');
 }

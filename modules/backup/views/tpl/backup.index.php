@@ -386,7 +386,7 @@
             </div>
             <!-- Log modal window start  -->
             <div id="bupShowLogDlg" title="<?php _e('Backup Log:', BUP_LANG_CODE); ?>">
-                <p id="bupLogText"></p>
+                <p id="bupLogText" style="margin-top: 0"></p>
             </div>
             <!-- Log modal window end  -->
 

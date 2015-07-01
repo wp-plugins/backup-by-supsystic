@@ -7,6 +7,7 @@ class backupLogModelBup extends modelBup
     /** Session key */
     const KEY = 'bup_logger';
     const BUP_DIR_SETTINGS_KEY = 'bup_dir_setting';
+    const CURRENT_BACKUP_FILES_NAME = 'bup_current_backup_files_name';
 
     /**
      * Write heading message
@@ -40,6 +41,9 @@ class backupLogModelBup extends modelBup
         }
         if (isset($_SESSION[self::BUP_DIR_SETTINGS_KEY])) {
             unset ($_SESSION[self::BUP_DIR_SETTINGS_KEY]);
+        }
+        if (isset($_SESSION[self::CURRENT_BACKUP_FILES_NAME])) {
+            unset ($_SESSION[self::CURRENT_BACKUP_FILES_NAME]);
         }
     }
 
@@ -125,5 +129,17 @@ class backupLogModelBup extends modelBup
             }
             $_SESSION[self::BUP_DIR_SETTINGS_KEY] = serialize($settingsArray);
         }
+    }
+
+    public function setCurrentBackupFilesName($filename){
+        if(!empty($filename)) {
+            $files = $this->getCurrentBackupFilesName();
+            $files = is_array($files) ? array_merge($files, array($filename)) : array($filename);
+            $_SESSION[self::CURRENT_BACKUP_FILES_NAME] = $files;
+        }
+    }
+
+    public function getCurrentBackupFilesName(){
+        return !empty($_SESSION[self::CURRENT_BACKUP_FILES_NAME]) ? $_SESSION[self::CURRENT_BACKUP_FILES_NAME] : null;
     }
 }

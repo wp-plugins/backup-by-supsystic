@@ -5,6 +5,7 @@
  * @version 2.0
  */
 class backupControllerBup extends controllerBup {
+    private $_tablesPerStack = 10;
 
     public function indexAction() {
 		$model   = $this->getModel();
@@ -35,6 +36,8 @@ class backupControllerBup extends controllerBup {
         $log = $this->getModel('backupLog');
 
         if(!empty($request['opt_values'])){
+            // clear previous log data
+            $log->clear();
             do_action('bupBeforeSaveBackupSettings', $request['opt_values']);
             $log->writeBackupSettings($request['opt_values']);
             frameBup::_()->getModule('options')->getModel('options')->saveMainFromDestGroup($request);
@@ -68,9 +71,8 @@ class backupControllerBup extends controllerBup {
         }
 
         $filename = $this->getModel()->generateFilename(array('zip', 'sql', 'txt'));
-        $cloud = array();
 
-        if ($this->getModel()->isFilesystemRequired()) {
+        if ($this->getModel()->isFilesystemRequired() && empty($request['filesBackupComplete'])) {
             if(!empty($request['opt_values']))
                 $log->saveBackupDirSetting($request['opt_values']);
             if (!isset($request['complete'])) {
@@ -106,11 +108,6 @@ class backupControllerBup extends controllerBup {
                     }
                 }
 
-                // Defined in ./config.php
-                if (!defined('BUP_FILES_PER_STACK')) {
-                    define('BUP_FILES_PER_STACK', 500);
-                }
-
                 $response->addData(array(
                     'files'     => $files,
                     'per_stack' => BUP_FILES_PER_STACK,
@@ -123,24 +120,47 @@ class backupControllerBup extends controllerBup {
 
             $log->string(__(sprintf('Create a backup of the file system: %s', $filename['zip']), BUP_LANG_CODE));
             $this->getModel()->getFilesystem()->create($filename['zip']);
-            $cloud[] = $filename['zip'];
+
+            $log->setCurrentBackupFilesName($filename['zip']);
         }
 
         if ($this->getModel()->isDatabaseRequired()) {
-            // Disallow to do backups while backup already in proccess.
-            $this->lock();
+            if(empty($request['databaseBackupComplete'])) {
+                // Disallow to do backups while backup already in proccess.
+                $this->lock();
 
-            $log->string(__(sprintf('Create a backup of the database: %s', $filename['sql']), BUP_LANG_CODE));
-            $this->getModel()->getDatabase()->create($filename['sql']);
-            $dbErrors = $this->getModel()->getDatabase()->getErrors();
-            if(!empty($dbErrors)) {
-                $log->string(__(sprintf('Errors during creation of database backup, errors count %d', count($dbErrors)), BUP_LANG_CODE));
-                $response->addError( $dbErrors );
-                return $response->ajaxExec();
+                $log->string(__(sprintf('Create a backup of the database: %s', $filename['sql']), BUP_LANG_CODE));
+
+                if ($this->_tablesPerStack > 0) {
+                    $tables = $this->getModel()->getDatabase()->getTablesName();
+                    $response->addData(
+                        array(
+                            'dbDumpFileName' => json_encode($filename['sql']),
+                            'tables' => $tables,
+                            'per_stack' => $this->_tablesPerStack
+                        )
+                    );
+
+                    $log->string(__('Send requests to getting database tables name.', BUP_LANG_CODE));
+
+                    $log->setCurrentBackupFilesName($filename['sql']);
+
+                    return $response->ajaxExec();
+                } else {
+                    $this->getModel()->getDatabase()->create($filename['sql']);
+                    $dbErrors = $this->getModel()->getDatabase()->getErrors();
+                    if (!empty($dbErrors)) {
+                        $log->string(__(sprintf('Errors during creation of database backup, errors count %d', count($dbErrors)), BUP_LANG_CODE));
+                        $response->addError($dbErrors);
+                        return $response->ajaxExec();
+                    }
+                    $log->setCurrentBackupFilesName($filename['sql']);
+                }
+            } else {
+                $log->string(__('Database backup complete.'), BUP_LANG_CODE);
             }
-            $cloud[] = $filename['sql'];
         }
-
+        $cloud = $log->getCurrentBackupFilesName();
         $log->string(__('Backup complete', BUP_LANG_CODE));
 
         $handlers = $this->getModel()->getDestinationHandlers();
@@ -217,7 +237,9 @@ class backupControllerBup extends controllerBup {
             wp_mail($email, $subject, $message);
         }
 
-        $log->save($filename['txt']);
+        $backupPath =  untrailingslashit(frameBup::_()->getModule('warehouse')->getPath()) . DS;
+        $pathInfo = pathinfo($cloud[0]);
+        $log->save($backupPath . $pathInfo['filename'] . '.txt');
         $log->clear();
 
         return $response->ajaxExec();
@@ -272,6 +294,29 @@ class backupControllerBup extends controllerBup {
 
             file_put_contents($file, $request['tmp'] . PHP_EOL, FILE_APPEND);
         }
+    }
+
+    public function createDBDumpPerStack(){
+        $response = new responseBup();
+        $request = reqBup::get('post');
+        $stack = !empty($request['stack']) ? $request['stack'] : false;
+        $filename = !empty($request['filename']) ? $request['filename'] : false;
+        $firstQuery = !empty($request['firstQuery']) ? true : false;
+        /** @var backupLogModelBup $log */
+        $log = $this->getModel('backupLog');
+
+        if(!empty($stack) && !empty($filename)) {
+            $result = $this->getModel('database')->create($filename, $stack, $firstQuery);
+            if($result){
+                $log->string(__('Tables backup complete: ', BUP_LANG_CODE) . implode(', ', $stack));
+            } else {
+                $log->string(__('Tables backup failure: ', BUP_LANG_CODE) . implode(', ', $stack));
+            }
+        } else {
+            $response->addError(__('Error in database.', BUP_LANG_CODE));
+        }
+
+        return $response->ajaxExec();
     }
 
 	/**

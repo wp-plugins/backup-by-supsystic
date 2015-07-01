@@ -163,16 +163,29 @@ class filesystemModelBup extends modelBup {
      */
     public function getFilesList($directory, array $exclude = array())
     {
-        $pluginsDirectory = BUP_WP_CONTENT_DIR . DS . 'plugins';
-        $themesDirectory = BUP_WP_CONTENT_DIR . DS . 'themes';
-
         @set_time_limit(0);
         if (!is_dir($directory) || in_array(basename($directory), $exclude)) {
-            // if directory path not contain  free backup or pro ver plugin - don't add this directory to backup file
             if(stripos($directory, BUP_PLUG_NAME) !== false || stripos($directory, BUP_PLUG_NAME_PRO) !== false) {
                 return false;
-                // if directory path not contain plugins or themes directory - don't add this directory to backup file
-            } elseif (stripos($directory, $pluginsDirectory) === false && stripos($directory, $themesDirectory) === false) {
+            }
+
+            $continue = false;
+
+            if( stripos($directory, 'themes') !== false ) {
+                if(in_array('themes', $exclude)){
+                    return false;
+                } else {
+                    $continue = true;
+                }
+            } elseif( stripos($directory, 'plugins') !== false ) {
+                if(in_array('plugins', $exclude)){
+                    return false;
+                } else {
+                    $continue = true;
+                }
+            }
+
+            if(!$continue) {
                 return false;
             }
         }
@@ -189,11 +202,12 @@ class filesystemModelBup extends modelBup {
 
         foreach ($directory as $node) {
             if (is_dir($node) && file_exists($node)) {
-
-                if (stripos($node, $pluginsDirectory) !== false || stripos($node, $themesDirectory) !== false || !in_array(basename($node), $exclude)) {
-					$addNodes = $this->getFilesList($node, $exclude);
-					if(!empty($addNodes) && is_array($addNodes))
-						$nodes = array_merge($nodes, $addNodes);
+                if ( in_array(basename($node), $exclude) && ( stripos($node, 'themes')===false && stripos($node, 'plugins')===false ) ) {
+                    continue;
+                } else {
+                    $addNodes = $this->getFilesList($node, $exclude);
+                    if(!empty($addNodes) && is_array($addNodes))
+                        $nodes = array_merge($nodes, $addNodes);
                 }
 
             } elseif (is_file($node) && is_readable($node)) {
