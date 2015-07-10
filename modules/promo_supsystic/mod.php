@@ -110,6 +110,8 @@ class promo_supsysticBup extends moduleBup {
                 'content' => $this->_msgForPro,
                 'sortNum' => $sortNum,
                 'key' => $type,
+                'isAuthenticated' => 1,
+                'msgForNotAuthenticated' => '',
             );
         }
 

@@ -75,8 +75,6 @@ jQuery(document).ready(function($) {
 		}
 	}).trigger('change');
 
-	// Autosave
-
 	// Toggle 'Send to'
 	j('.bupSendTo').on('click', function() {
 		j(this).parent().next().toggle();
@@ -114,6 +112,20 @@ jQuery(document).ready(function($) {
 
 	// Create
 	j('#bupAdminMainForm').submit(function(event) {
+		var isAuthenticated = parseInt(jQuery('#bup-is-authenticated').val());
+		var msgForNotAuthenticated = jQuery('#bup-msg-for-not-authenticated').val();
+		var authenticateBlockId = jQuery('#bup-authenticate-block-id').val();
+		jQuery('span.bupErrorMsg').html('');
+
+		if(!isAuthenticated) {
+			$('html, body').animate({
+				scrollTop: $('#' + authenticateBlockId).offset().top
+			}, 2000);
+
+			jQuery('#' + authenticateBlockId + ' span.bupErrorMsg').html(msgForNotAuthenticated);
+			return false;
+		}
+
 		var submitButton = jQuery('input[name="backupnow"]').val();
 		if(submitButton == 'Cancel'){
 			// Unlock
@@ -219,7 +231,7 @@ var BackupModule = {
 			onSuccess: function(response) {
 
                 if (response.data.files === undefined) {
-					if(response.data.tables.length > 0) {
+					if(response.data.tables !== undefined && response.data.tables.length > 0) {
 						createDatabaseBackupPerQuery(response.data.dbDumpFileName, response.data.tables, response.data.per_stack, false);
 						return;
 					}
@@ -406,37 +418,43 @@ function createDatabaseBackupPerQuery(dumpFileName, tables, perStack, zipBackupE
 		}
 	});
 
-	jQuery.each(stack, function(index, element) {
-		//the pause
-		setTimeout(function(){
-		}, 1000);
+	var totalStacksNum = stack.length;
+	i = 0;
 
-		jQuery.sendFormBup({
-			data: {
-				reqType:  'ajax',
-				page:     'backup',
-				action:   'createDBDumpPerStack',
-				filename: jQuery.parseJSON( dumpFileName ),
-				stack: element,
-				firstQuery: firstQuery
+	jQuery.each(stack, function(index, element) {
+		jQuery.postq('bupCreateDbPerQuery', ajaxurl,{
+			reqType:  'ajax',
+			page:     'backup',
+			action:   'createDBDumpPerStack',
+			filename: jQuery.parseJSON( dumpFileName ),
+			stack: element,
+			firstQuery: firstQuery,
+			pl: 'bup'
+		}, function (response) {
+			response = jQuery.parseJSON(response);
+			i++;
+
+			if(i === totalStacksNum && !response.error){
+				jQuery.sendFormBup({
+					msgElID: 'BUP_MESS_MAIN',
+					data: {
+						reqType:  'ajax',
+						page:     'backup',
+						action:   'createAction',
+						filesBackupComplete: true,
+						databaseBackupComplete: true
+					},
+					onSuccess: function(){
+						onBackupFullCompleteAction();
+					}
+				});
+			} else if(response.error){
+				jQuery('#BUP_MESS_MAIN').addClass('bupErrorMsg').html(response.errors.join('<br>'));
+				onBackupFullCompleteAction();
 			}
 		});
 
 		firstQuery = 0;
-	});
-
-	jQuery.sendFormBup({
-		msgElID: 'BUP_MESS_MAIN',
-		data: {
-			reqType:  'ajax',
-			page:     'backup',
-			action:   'createAction',
-			filesBackupComplete: true,
-			databaseBackupComplete: true
-		},
-		onSuccess: function(){
-			onBackupFullCompleteAction();
-		}
 	});
 }
 
@@ -495,7 +513,7 @@ function bupBackupsShowLogDlg() {
 	});
 	var j = jQuery.noConflict();
 
-	jQuery('.bupShowLogDlg').click(function($this){
+	jQuery('.bupShowLogHistory').click(function($this){
 		j('#bupLogText').html('');
 		var logContent = j($this.currentTarget).data('log');
 		j('#bupLogText').html(logContent);

@@ -85,6 +85,8 @@ class onedriveBup extends moduleBup
             'faIcon' => ' fa-cloud-upload',
             'sortNum' => 4,
             'key' => 'onedrive',
+            'isAuthenticated' => $this->getController()->getModel()->isAuthenticated() ? 1 : 0,
+            'msgForNotAuthenticated' => __('Before start backup - please authenticate in the OneDrive.', BUP_LANG_CODE),
         );
 
         return $tabs;

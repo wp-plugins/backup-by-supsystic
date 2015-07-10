@@ -10,10 +10,16 @@
                 <table class="form-table" style="width: 100% !important;">
                     <?php foreach($this->backupPlaces as $bupPlace): ?>
 
-                        <tr class="bupMargDest">
+                        <tr class="bupMargDest" id="bupPlace<?php echo $bupPlace['key']?>">
                             <td style="padding-right: 0 !important;">
                                 <label>
-                                    <?php echo htmlBup::radiobutton('dest_opt', array('value'   => $bupPlace['key'])); ?> <?php echo $bupPlace['title']?>
+                                    <?php echo htmlBup::radiobutton('dest_opt', array(
+                                        'value'   => $bupPlace['key'],
+                                        'attrs' => 'data-is-authenticated="' . $bupPlace['isAuthenticated'] . '"
+                                                    data-msg-for-not-authenticated="' . $bupPlace['msgForNotAuthenticated'] . '"
+                                                    data-authenticate-block-id="bupPlace' . $bupPlace['key'] . '"'
+                                    )); ?>
+                                    <?php echo $bupPlace['title']?>
                                 </label>
 
                                 <?php if(!empty($bupPlace['content'])): ?>
@@ -22,12 +28,16 @@
                                         <?php echo $bupPlace['content']?>
                                     </div>
                                 <?php endif; ?>
+                                <br/>
+                                <span class="bupErrorMsg"></span>
                             </td>
                         <tr>
 
-
                     <?php endforeach; ?>
                 </table>
+                <?php echo htmlBup::hidden('bup-is-authenticated', array('value' => '', 'attrs' => 'id="bup-is-authenticated"'))?>
+                <?php echo htmlBup::hidden('bup-msg-for-not-authenticated', array('value' => '', 'attrs' => 'id="bup-msg-for-not-authenticated"'))?>
+                <?php echo htmlBup::hidden('bup-authenticate-block-id', array('value' => '', 'attrs' => 'id="bup-authenticate-block-id"'))?>
             </div>
 
             <div class="toeBupOptResponsive" id="bupMainOption">

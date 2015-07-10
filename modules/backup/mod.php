@@ -189,6 +189,8 @@ class backupBup extends moduleBup {
             'faIcon' => 'fa-server',
             'sortNum' => 1,
             'key' => 'ftp',
+            'isAuthenticated' => 1,
+            'msgForNotAuthenticated' => '',
         );
 
         return $tabs;

@@ -87,7 +87,7 @@
                             </p>
                             <!-- /migrateButton -->
                             <?php if(!empty($logs[$id]['content'])):?>
-                                <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
+                                <span class="bupShowLogHistory" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
                             <?php else: ?>
                                 <b><?php _e('Log is clear.', BUP_LANG_CODE) ?></b>
                             <?php endif; ?>
@@ -116,9 +116,6 @@
                                         <tr id="<?php echo $type.'-'.$id; ?>">
                                             <td>
                                                 <?php echo ($type == 'zip')? __('Filesystem'. BUP_LANG_CODE) : __('Database', BUP_LANG_CODE)?>
-                                            </td>
-                                            <td>
-                                                <img src="<?php echo $file['iconLink']; ?>" /> <?php echo $file['title']; ?>
                                             </td>
                                             <td>
                                                 <button data-row-id="<?php echo $id; ?>"
@@ -152,7 +149,7 @@
                                     <!-- /migrateButton -->
                                 <?php endif; ?>
                                 <?php if(!empty($logs[$id]['content'])):?>
-                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
+                                    <span class="bupShowLogHistory" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
                                 <?php else: ?>
                                     <b><?php _e('Log is clear.', BUP_LANG_CODE) ?></b>
                                 <?php endif; ?>
@@ -180,9 +177,6 @@
                                                 <tr id="backup-<?php echo $file->id; ?>" data-id="<?php echo $id; ?>" data-filename="<?php echo $file->name; ?>">
                                                     <td>
                                                         <?php echo ($type == 'zip')? __('Filesystem', BUP_LANG_CODE) : __('Database', BUP_LANG_CODE)?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $file->name; ?>
                                                     </td>
                                                     <td>
                                                         <button data-row-id="<?php echo $id; ?>"
@@ -215,7 +209,7 @@
                                 <!-- /migrateButton -->
 
                                 <?php if(!empty($logs[$id]['content'])):?>
-                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
+                                    <span class="bupShowLogHistory" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
                                 <?php else: ?>
                                     <b><?php _e('Log is clear.', BUP_LANG_CODE) ?></b>
                                 <?php endif; ?>
@@ -243,7 +237,6 @@
                                                 <td>
                                                     <?php echo ($type == 'zip')? __('Filesystem', BUP_LANG_CODE) : __('Database', BUP_LANG_CODE)?>
                                                 </td>
-                                                <td><?php echo $file['file']; ?></td>
                                                 <td>
                                                     <button class="button button-primary button-small bupAmazonS3Restore" data-row-id="<?php echo $id; ?>" data-filename="<?php echo $file['file']; ?>">
                                                         <?php _e('Restore', BUP_LANG_CODE); ?>
@@ -266,7 +259,7 @@
                                 <!-- /migrateButton -->
 
                                 <?php if(!empty($logs[$id]['content'])):?>
-                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
+                                    <span class="bupShowLogHistory" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
                                 <?php else: ?>
                                     <b><?php _e('Log is clear.', BUP_LANG_CODE)?></b>
                                 <?php endif; ?>
@@ -293,9 +286,6 @@
                                         <tr id="row-<?php echo $type.'-'.$id; ?>">
                                             <td>
                                                 <?php echo ($type == 'sql') ? __('Database', BUP_LANG_CODE) : __('Filesystem', BUP_LANG_CODE); ?>
-                                            </td>
-                                            <td>
-                                                <?php echo basename($file['path']); ?>
                                             </td>
                                             <td>
                                                 <button
@@ -328,7 +318,7 @@
                                 <!-- /migrateButton -->
 
                                 <?php if(!empty($logs[$id]['content'])):?>
-                                    <span class="bupShowLogDlg" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE)?></span>
+                                    <span class="bupShowLogHistory" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE)?></span>
                                 <?php else: ?>
                                     <b><?php _e('Log is clear.', BUP_LANG_CODE) ?></b>
                                 <?php endif; ?>

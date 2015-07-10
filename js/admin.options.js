@@ -122,8 +122,19 @@ jQuery(document).ready(function($){
 
 	var $destinationForm = $('input[name=dest_opt]');
 	$destinationForm.on('click', function ($this) {
-		var proVersion = jQuery($this.currentTarget).closest('div.bupMargDest').find('span.bupAIP').html() ? false : true;
-		var backupPlace = $this.currentTarget.attributes.value.value;
+		var radioButton = $this.currentTarget;
+		var proVersion = jQuery(radioButton).closest('div.bupMargDest').find('span.bupAIP').html() ? false : true;
+		var backupPlace = radioButton.attributes.value.value;
+
+		var isAuthenticated = jQuery(radioButton).data('is-authenticated');
+		jQuery('#bup-is-authenticated').val(isAuthenticated);
+
+		var msgForNotAuthenticated = jQuery(radioButton).data('msg-for-not-authenticated');
+		jQuery('#bup-msg-for-not-authenticated').val(msgForNotAuthenticated);
+
+		var authenticateBlockId = jQuery(radioButton).data('authenticate-block-id');
+		jQuery('#bup-authenticate-block-id').val(authenticateBlockId);
+
 		jQuery('div.bupOptions').hide('slow');
 		jQuery('div .bup-' + backupPlace).show('slow');
 		if(proVersion){

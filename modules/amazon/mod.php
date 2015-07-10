@@ -131,6 +131,8 @@ class amazonBup extends moduleBup {
             'faIcon' => 'fa-font',
             'sortNum' => 5,
             'key' => 'amazon',
+            'isAuthenticated' => $this->getController()->getModel()->isUserAuthorizedInService() ? 1 : 0,
+            'msgForNotAuthenticated' => __('Before start backup - please authenticate in the Amazon.', BUP_LANG_CODE),
         );
 
         return $tabs;
