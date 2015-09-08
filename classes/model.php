@@ -38,14 +38,22 @@ abstract class modelBup extends baseObjectBup {
 	}
     
     public function getBackupInfoByFilename($filename, $logTxt=false) {
+        $pathInfo = pathinfo($filename);
+        $folder = empty($pathInfo['extension']) ? true : false;
+
         if($logTxt)
             $pattern = '/(backup_([0-9_-]*)_id([0-9]+))\.(txt)/ui';
+        elseif($folder)
+            $pattern = '/(backup_([0-9_-]*)_id([0-9]+))/ui';
         else
             $pattern = '/(backup_([0-9_-]*)_id([0-9]+))\.(zip|sql)/ui';
         $matches = array();
 
         if (preg_match($pattern, $filename, $matches)) {
-            list ($name, $rawname, $date, $id, $extension) = $matches;
+            if($folder)
+                list ($name, $rawname, $date, $id) = $matches;
+            else
+                list ($name, $rawname, $date, $id, $extension) = $matches;
 
             $e = explode('-', $date);
             $datetime['date'] = str_replace('_', '-', $e[0]);
@@ -55,7 +63,7 @@ abstract class modelBup extends baseObjectBup {
                 'id'   => $id,
                 'name' => $name,
                 'raw'  => $rawname,
-                'ext'  => $extension,
+                'ext'  => !empty($extension) ? $extension : null,
                 'date' => $datetime['date'],
                 'time' => $datetime['time'],
             );
@@ -65,8 +73,21 @@ abstract class modelBup extends baseObjectBup {
     /**
      * This method used to check is user authorized in cloud service or remote server, where backup files will be stored
      */
-    public function isUserAuthorizedInService() {
+    public function isUserAuthorizedInService($destination = null) {
         $this->pushError(__('Unexpected error.', BUP_LANG_CODE));
         return false;
+    }
+
+    public function sendSelfRequest(array $data) {
+        $data['auth'] = AUTH_KEY;
+        $data['pl'] = BUP_CODE;
+        $url = get_option('siteurl');
+        $string = http_build_query($data);
+        $response = wp_remote_post($url, array(
+                'body' => $data
+            )
+        );
+
+        return ($response) ? true : false;
     }
 }

@@ -193,7 +193,7 @@ class amazonModelBup extends ModelBup {
      * @param  array $files
      * @return integer
      */
-    public function upload(array $files) {
+    public function upload(array $files, $stacksFolder = '') {
         $credentials = $this->getCredentials();
         $bucket = $this->getBucket();
 
@@ -217,14 +217,14 @@ class amazonModelBup extends ModelBup {
 
         foreach($files as $file) {
             $filename = basename($file);
-            $file     = $this->getBackupsPath() . $filename;
+            $file     = $this->getBackupsPath() . $stacksFolder . $filename;
 
             if(file_exists($file)) {
                 try {
                     $result[] = $client->putObject(array(
                         'Bucket' => $bucket,
 
-                        'Key' => $this->getCurrentDomain() . '/' . $filename,
+                        'Key' => $this->getCurrentDomain() . '/' . $stacksFolder . $filename,
                         'SourceFile' => $file,
                         'Metadata' => array(
                             'Content-Type' => $this->getMimetype($file),
@@ -249,7 +249,7 @@ class amazonModelBup extends ModelBup {
      * @param  string $filename
      * @return integer
      */
-    public function remove($filename = null) {
+    public function remove($filename = null, $folder = false) {
         if($filename === null OR empty($filename)) {
             return 400;
         }
@@ -259,16 +259,25 @@ class amazonModelBup extends ModelBup {
             'secret' => $this->getCredential('secret'),
         ));
 
-        if($client->doesObjectExist($this->getBucket(), $filename) === false) {
-            return 404;
+        if($folder) {
+            $result = $client->deleteMatchingObjects(
+                $this->getBucket(),
+                $filename . '/'
+            );
+
+            return 200;
+        } else {
+            if ($client->doesObjectExist($this->getBucket(), $filename) === false) {
+                return 404;
+            }
+
+            $client->deleteObject(array(
+                'Bucket' => $this->getBucket(),
+                'Key' => $filename,
+            ));
+
+            return 200;
         }
-
-        $client->deleteObject(array(
-            'Bucket' => $this->getBucket(),
-            'Key'    => $filename,
-        ));
-
-        return 200;
     }
 
     /**
@@ -279,7 +288,7 @@ class amazonModelBup extends ModelBup {
      * @param  string $filename 
      * @return integer
      */
-    public function download($filename) {
+    public function download($filename, $stacksFolder = '') {
         $filenameInfo = pathinfo($filename);
         $backupPath = $this->getBackupsPath();
         if(!file_exists($backupPath . $filenameInfo['basename'])) {
@@ -295,7 +304,7 @@ class amazonModelBup extends ModelBup {
                 $client->getObject(array(
                     'Bucket' => $this->getBucket(),
                     'Key' => $filename,
-                    'SaveAs' => $backupPath . $filenameInfo['basename'],
+                    'SaveAs' => $backupPath . $stacksFolder . $filenameInfo['basename'],
                 ));
             }
 
@@ -319,7 +328,7 @@ class amazonModelBup extends ModelBup {
      * @param  integer $order ascending or descending
      * @return array
      */
-    public function getUploadedFiles($match = true, $order = amazonModelBup::ORDER_DESCENDING) {
+    public function getUploadedFiles($stacksFolder = '', $match = true, $order = amazonModelBup::ORDER_DESCENDING) {
         $credentials = $this->getCredentials();
         $bucket      = $this->getBucket();
         $files       = array();
@@ -333,7 +342,7 @@ class amazonModelBup extends ModelBup {
 
         $filesIterator = $client->getIterator('ListObjects', array(
             'Bucket' => $bucket,
-			'Prefix' => $this->getCurrentDomain() . '/',
+			'Prefix' => $this->getCurrentDomain() . '/' . $stacksFolder,
         ));
 
         foreach($filesIterator as $storageFile) {
@@ -351,21 +360,36 @@ class amazonModelBup extends ModelBup {
             krsort($files);
         }
 
-        // Formatting uploading data files for use their on backups page
-        $newFiles = array();
-        foreach ($files as $file) {
-            $backupInfo = $this->getBackupInfoByFilename($file);
+        if($stacksFolder) {
+            return $files;
+        } else {
+            // Formatting uploading data files for use their on backups page
+            $newFiles = array();
+            foreach ($files as $file) {
+                $pathElementsCount = explode('/', $file);
+                // if $pathElementsCount contains 3 element - so this is filesystem backup with stacks, else backup with one big archive
+                $oneFileBackup = count($pathElementsCount) > 2 ? false : true;
+                $extension = pathinfo($file, PATHINFO_EXTENSION);
 
-            if(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql'){
-                $newFiles[$backupInfo['id']]['amazon']['sql']['file'] = $file;
-                $newFiles[$backupInfo['id']]['amazon']['sql']['backupInfo'] = $backupInfo;
-                $newFiles[$backupInfo['id']]['amazon']['sql']['backupInfo'] = dispatcherBup::applyFilters('addInfoIfEncryptedDb', $newFiles[$backupInfo['id']]['amazon']['sql']['backupInfo']);
-            }elseif(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'zip'){
-                $newFiles[$backupInfo['id']]['amazon']['zip']['file'] = $file;
-                $newFiles[$backupInfo['id']]['amazon']['zip']['backupInfo'] = $backupInfo;
+                if ($extension === 'sql'|| ($extension === 'zip' && $oneFileBackup))
+                    $backupInfo = $this->getBackupInfoByFilename($file);
+                else
+                    $backupInfo = $this->getBackupInfoByFilename(pathinfo($file, PATHINFO_DIRNAME));
+
+                if (!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql') {
+                    $newFiles[$backupInfo['id']]['amazon']['sql']['file'] = $file;
+                    $newFiles[$backupInfo['id']]['amazon']['sql']['backupInfo'] = $backupInfo;
+                    $newFiles[$backupInfo['id']]['amazon']['sql']['backupInfo'] = dispatcherBup::applyFilters('addInfoIfEncryptedDb', $newFiles[$backupInfo['id']]['amazon']['sql']['backupInfo']);
+                } elseif (!empty($backupInfo['ext']) && $backupInfo['ext'] == 'zip' && $oneFileBackup) {
+                    $newFiles[$backupInfo['id']]['amazon']['zip']['file'] = $file;
+                    $newFiles[$backupInfo['id']]['amazon']['zip']['backupInfo'] = $backupInfo;
+                } else {
+                    $newFiles[$backupInfo['id']]['amazon']['zip']['file'] = pathinfo($file, PATHINFO_DIRNAME);
+                    $newFiles[$backupInfo['id']]['amazon']['zip']['backupInfo'] = $backupInfo;
+                }
             }
+            return $newFiles;
         }
-        return $newFiles;
     }
     
     /**
@@ -415,7 +439,7 @@ class amazonModelBup extends ModelBup {
         return $host;
     }
 
-    public function isUserAuthorizedInService() {
+    public function isUserAuthorizedInService($destination = null) {
         $isAuthorized = $this->isCredentialsSaved() ? true : false;
         if(!$isAuthorized)
             $this->pushError($this->backupPlaceAuthErrorMsg . 'Amazon!');

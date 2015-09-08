@@ -59,7 +59,7 @@
 
 
     define('BUP_PLUGIN_INSTALLED', true);
-    define('BUP_VERSION', '1.3.1');
+    define('BUP_VERSION', '2.0.1');
 	define('BUP_S_VERSION', BUP_VERSION);
     define('BUP_USER', 'user');
 
@@ -89,14 +89,8 @@
 	define('BUP_CODE', 'bup');
 	define('BUP_LANG_CODE', 'but_lng');
 
-    /** Files per stack in filesystem backup */
-    define('BUP_FILES_PER_STACK', 500);
-
 	//define('PCLZIP_TEMPORARY_DIR', '/usr/www/temp/');
 	//require_once(BUP_HELPERS_DIR. 'pclzip.lib.php');
-
-	//define('BUP_SIZE_REQUEST', 4194304); // 1M  //2097152 //4194304 //8388608
-	define('BUP_MAX_FILE_REQUEST', 500);
 
     define('BUP_LOCK_FIELD', 'bup_locked');
 	

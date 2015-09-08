@@ -167,7 +167,9 @@ class gdriveControllerBup extends controllerBup {
     public function downloadAction() {
 		$request  = reqBup::get('post');
 		$response = new responseBup();
+        /** @var gdriveModelBup $model*/
 		$model    = $this->getModel();
+        $result = false;
 
 		if($model->isAuthenticated() === false) {
 			$response->addError(__('Authentication required', BUP_LANG_CODE));
@@ -175,26 +177,42 @@ class gdriveControllerBup extends controllerBup {
 
 		// if there is a local file, then we do not have sense to download it
 		// from the server, so just immediately recover from it
-		if($model->isLocalFileExists($request['filename']) === false) {
-			$result = $model->download($request['download_url'], $request['filename']);
+        if(!empty($request['download_url'])) {
+            if($model->isLocalFileExists($request['filename']) === false) {
+                $result = $model->download($request['download_url'], $request['filename']);
+            } else {
+                $result = true;
+            }
+        } else {
+            $stacksFolder = !empty($request['filename']) ? $request['filename'] : '';
+            $stacksList = $model->getUploadedFiles($stacksFolder, true);
 
-			if($result === true) {
-				$response->addData(array('filename' => $request['filename']));
-			}
-//			if($result) {
-//				$response->addData(array('responseBody' => $result));
-//			}
-			elseif($result === null) {
-				$response->addError(__('File not found on Google Drive', BUP_LANG_CODE));
-			}
-			elseif($result === false) {
-				$response->addError(__('Failed to download file', BUP_LANG_CODE));
-			}
-		}
-		else {
-			$response->addData(array('filename' => $request['filename']));
-		}
-		$response->ajaxExec();
+            if(!empty($stacksList)){
+                $backupPath = $model->getBackupsPath();
+                $result = true;
+
+                if(!file_exists($backupPath . $stacksFolder)) {
+                    frameBup::_()->getModule('warehouse')->getController()->getModel('warehouse')->create($backupPath . $stacksFolder . DS);
+                }
+
+                foreach($stacksList as $stack){
+                    if(!file_exists($backupPath . $stacksFolder . DS . $stack['title']))
+                        $result = ($model->download($stack['downloadUrl'], $stacksFolder . DS . $stack['title']) && $result) ? true : false;
+                }
+            } else {
+                $response->addError(__('Files not found on Google Drive', BUP_LANG_CODE));
+            }
+        }
+
+        if($result === true) {
+            $response->addData(array('filename' => $request['filename']));
+        } elseif($result === null) {
+            $response->addError(__('File not found on Google Drive', BUP_LANG_CODE));
+        } elseif($result === false) {
+            $response->addError(__('Failed to download file', BUP_LANG_CODE));
+        }
+
+        return $response->ajaxExec();
 	}
 
     /**

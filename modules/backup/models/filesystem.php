@@ -4,7 +4,13 @@
  * Class filesystemModelBup
  */
 class filesystemModelBup extends modelBup {
+    private $_maxFileSizeInStack; //in mb
 
+    public function __construct() {
+        parent::__construct();
+        $this->_maxFileSizeInStack = frameBup::_()->getModule('options')->get('max_file_size_in_stack_mb');
+        $this->_maxFileSizeInStack = ($this->_maxFileSizeInStack > 0) ? $this->_maxFileSizeInStack * 1024 * 1024 : 30 * 1024 * 1024;
+    }
     /**
      * Create filesystem backup
      * @param string $filename File name with full path to the file
@@ -21,16 +27,14 @@ class filesystemModelBup extends modelBup {
             $this->getArchive($filename, $files, $warehouse);
     }
 
-    public function restore($filename)
+    public function restore($filename, $oneFileBackup = false)
     {
-        $this->clearTmpDirectory(); // remove all temporary files from tmp directory, before filesystem restore process started
-        $absolutePath = frameBup::_()->getModule('options')->get('warehouse_abs') ? false : true;
         if (!file_exists($filename)) {
             $this->pushError(sprintf(__('Filesystem backup %s does not exists', BUP_LANG_CODE), basename($filename)));
             return false;
         }
-
-        $logFilename  = str_replace('.zip', '.txt', $filename);
+        $extension = pathinfo($filename, PATHINFO_EXTENSION);
+        $logFilename = empty($extension) ? $filename . '.txt' : str_replace('.zip', '.txt', $filename);
         if(file_exists($logFilename)) {
             $logContent = file($logFilename);
             $backupDirSettings = unserialize(array_pop($logContent));
@@ -45,30 +49,39 @@ class filesystemModelBup extends modelBup {
             $backup = $this->getModule();
             $backup->loadLibrary('pcl');
         }
-        $pcl = new PclZip($filename);
-        if($absolutePath) {
-            $absPath = explode(DS, ABSPATH);
-            $absPath = $absPath[0].DS;
+        if($oneFileBackup) {
+            /**/
+            $this->clearTmpDirectory(); // remove all temporary files from tmp directory, before filesystem restore process started
+            $absolutePath = frameBup::_()->getModule('options')->get('warehouse_abs') ? false : true;
+
+            $pcl = new PclZip($filename);
+            if($absolutePath) {
+                $absPath = explode(DS, ABSPATH);
+                $absPath = $absPath[0].DS;
+            } else {
+                $absPath = ABSPATH;
+            }
+
+            if ($files = $pcl->extract(PCLZIP_OPT_PATH, $absPath, PCLZIP_OPT_REPLACE_NEWER) === 0) {
+                $this->pushError(__('An error has occurred while unpacking the archive', BUP_LANG_CODE));
+                return false;
+            }
+
+            unset($pcl);
+
+            // Unpack stacks
+            $warehouse = frameBup::_()->getModule('options')->get('warehouse');
+
+            if($absolutePath)
+                $stacksPath = realpath($warehouse . DS . 'tmp') . DS;
+            else
+                $stacksPath = realpath(ABSPATH . $warehouse . DS . 'tmp') . DS;
+
+            $stacks = glob($stacksPath . 'BUP*');
+
         } else {
-            $absPath = ABSPATH;
+            $stacks = glob($filename . DS . 'BUP*');
         }
-
-        if ($files = $pcl->extract(PCLZIP_OPT_PATH, $absPath, PCLZIP_OPT_REPLACE_NEWER) === 0) {
-            $this->pushError(__('An error has occurred while unpacking the archive', BUP_LANG_CODE));
-            return false;
-        }
-
-        unset($pcl);
-
-        // Unpack stacks
-        $warehouse = frameBup::_()->getModule('options')->get('warehouse');
-
-        if($absolutePath)
-            $stacksPath = realpath($warehouse . DS . 'tmp') . DS;
-        else
-            $stacksPath = realpath(ABSPATH . $warehouse . DS . 'tmp') . DS;
-
-        $stacks = glob($stacksPath . 'BUP*');
 
         if (empty($stacks)) {
             return true;
@@ -80,7 +93,9 @@ class filesystemModelBup extends modelBup {
 
                 $pcl->extract(PCLZIP_OPT_PATH, ABSPATH, PCLZIP_OPT_REPLACE_NEWER);
 
-                unlink($stack);
+                if($oneFileBackup)
+                    unlink($stack);
+
                 unset($pcl);
             }
         }
@@ -93,11 +108,12 @@ class filesystemModelBup extends modelBup {
      * @param array $files A numeric array of files
      * @return null|string Path to the tmp file if one or more files has been handled or null.
      */
-    public function getTemporaryArchive(array $files)
+    public function getTemporaryArchive(array $files, $backupFolder)
     {
-        $temporary = frameBup::_()->getModule('warehouse')->getTemporaryPath()
-            . DIRECTORY_SEPARATOR
-            . uniqid('BUP', true);
+        $temporary = $backupFolder
+            . DS
+            . uniqid('BUP')
+            . '.zip';
 
         $this->getArchive($temporary, $files);
 
@@ -190,7 +206,8 @@ class filesystemModelBup extends modelBup {
             }
         }
 
-        $absPath = str_replace('/', DS, ABSPATH);
+//        $absPath = str_replace('/', DS, ABSPATH);
+        $absPath = rtrim(rtrim(ABSPATH, '/'), '\\');
 
         $nodes = array();
 
@@ -210,7 +227,7 @@ class filesystemModelBup extends modelBup {
                         $nodes = array_merge($nodes, $addNodes);
                 }
 
-            } elseif (is_file($node) && is_readable($node)) {
+            } elseif (is_file($node) && is_readable($node) && (($fileSize = filesize($node)) <= $this->_maxFileSizeInStack)) {
                 $nodes[] = str_replace($absPath, '', $node);
             }
         }
@@ -246,7 +263,7 @@ class filesystemModelBup extends modelBup {
 
     public function getFilesListByBUPDirSettingArray($options)
     {
-        $excluded = array(BUP_PLUG_NAME, BUP_PLUG_NAME_PRO);
+        $excluded = $this->getModule('backup')->getController()->getModel('backup')->getDefaultExcludedFolders();
 
         // Where we are need to look for files.
         $directory = realpath(ABSPATH);
@@ -343,6 +360,30 @@ class filesystemModelBup extends modelBup {
             foreach ($tmpFiles as $file) {
                 if (file_exists($file))
                     unlink($file);
+            }
+        }
+    }
+    /** Delete local backup after uploading to cloud
+     * @param $backups
+     */
+    public function deleteLocalBackup(array $backups){
+        foreach($backups as $backup){
+            $extension = pathinfo($backup, PATHINFO_EXTENSION);
+
+            if($extension != 'txt' && file_exists($backup)) {
+                if(is_dir($backup)){
+                    $files = scandir($backup);
+
+                    foreach($files as $file) {
+                        $file = $backup . DS . $file;
+                        if(is_file($file))
+                            unlink($file);
+                    }
+
+                    rmdir($backup);
+                } else {
+                    unlink($backup);
+                }
             }
         }
     }

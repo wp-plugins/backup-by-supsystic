@@ -123,7 +123,7 @@ class gdriveBup extends moduleBup {
             'sortNum' => 3,
             'key' => 'googledrive',
             'isAuthenticated' => $this->getController()->getModel()->isAuthenticated() ? 1 : 0,
-            'msgForNotAuthenticated' => __('Before start backup - please authenticate in the Google Drive.', BUP_LANG_CODE),
+            'msgForNotAuthenticated' => __('Before start backup - please authenticate with Google Drive.', BUP_LANG_CODE),
 		);
 
 		return $tabs;

@@ -3,315 +3,316 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Backup by Supsystic 2.0.1\n"
+"Project-Id-Version: Backup by Supsystic 1.3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-06 19:08+0500\n"
+"POT-Creation-Date: 2015-07-21 09:47+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: supsystic.com <supsystic.team@gmail.com>\n"
-"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
 "_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
-"X-Poedit-Basepath: ../\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 1.8.2\n"
+"Language: zh_CN\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: classes/field.php:131
 msgid "Select"
-msgstr ""
+msgstr "选择"
 
 #: classes/field.php:170 classes/field.php:179 classes/field.php:184
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: classes/field.php:277
 msgid "Add Checkbox"
-msgstr ""
+msgstr "添加复选框"
 
 #: classes/field.php:282 classes/field.php:287
 msgid "Add Item"
-msgstr ""
+msgstr "添加项目"
 
 #: classes/field.php:293
 msgid "Add Radio Button"
-msgstr ""
+msgstr "天津单选按钮"
 
 #: classes/field.php:311
 msgid "Dimensions"
-msgstr ""
+msgstr "尺寸"
 
 #: classes/field.php:314
 msgid "width"
-msgstr ""
+msgstr "宽度"
 
 #: classes/field.php:316
 msgid "height"
-msgstr ""
+msgstr "高度"
 
 #: classes/field.php:323
 msgid "Click to set field \"id\" and \"class\""
-msgstr ""
+msgstr "单击此处可设置字段\"id\"和\"class\""
 
 #: classes/field.php:324
 msgid "Attributes"
-msgstr ""
+msgstr "属性"
 
 #: classes/field.php:402
 msgid "There are no configuration options for this module"
-msgstr ""
+msgstr "这个模块没有配置选项"
 
 #: classes/fieldAdapter.php:93
 msgid "Apply To"
-msgstr ""
+msgstr "适用于"
 
 #: classes/fieldAdapter.php:95
 msgid "Address"
-msgstr ""
+msgstr "地址"
 
 #: classes/fieldAdapter.php:96
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:30
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:30
 msgid "Destination"
-msgstr ""
+msgstr "目的地"
 
 #: classes/fieldAdapter.php:97
 msgid "Country"
-msgstr ""
+msgstr "国家"
 
 #: classes/fieldAdapter.php:100
 msgid "Categories"
-msgstr ""
+msgstr "分类"
 
 #: classes/fieldAdapter.php:101
 msgid "You have no categories"
-msgstr ""
+msgstr "您没有设置分类"
 
 #: classes/fieldAdapter.php:102
 msgid "Brands"
-msgstr ""
+msgstr "品牌"
 
 #: classes/fieldAdapter.php:103
 msgid "You have no brands"
-msgstr ""
+msgstr "您没有设置品牌"
 
 #: classes/fieldAdapter.php:105
 msgid "Tax Rate"
-msgstr ""
+msgstr "税率"
 
 #: classes/fieldAdapter.php:106
 msgid "Absolute"
-msgstr ""
+msgstr "绝对"
 
 #: classes/fieldAdapter.php:134
 msgid "Not selected"
-msgstr ""
+msgstr "没有选择"
 
 #: classes/fieldAdapter.php:184
 msgid "class"
-msgstr ""
+msgstr "class"
 
 #: classes/fieldAdapter.php:186
 msgid "id"
-msgstr ""
+msgstr "id"
 
 #: classes/frame.php:138
 msgid "You have no permissions to view this page"
-msgstr ""
+msgstr "您没有权限浏览这个页面"
 
 #: classes/html.php:166
 msgid "Upload"
-msgstr ""
+msgstr "上载"
 
 #: classes/installer.php:222
 msgid " Page Content"
-msgstr ""
+msgstr "页面内容"
 
 #: classes/model.php:9
 msgid "Before start backup, You must login to "
-msgstr ""
+msgstr "在开始备份前，您必须登入"
 
-#: classes/model.php:77 modules/backup/models/backup.php:803
+#: classes/model.php:69 modules/backup/models/backup.php:509
 #: modules/onedrive/controller.php:135
 msgid "Unexpected error."
-msgstr ""
+msgstr "意料之外的错误"
 
 #: classes/modInstaller.php:34
 #, php-format
 msgid "Move files for %s failed"
-msgstr ""
+msgstr "移动%s文件失败"
 
 #: classes/modInstaller.php:37
 #, php-format
 msgid "%s is not plugin module"
-msgstr ""
+msgstr "%s不是插件模块"
 
 #: classes/modInstaller.php:76
 msgid "Can not create module directory. Try to set permission to "
-msgstr ""
+msgstr "不能建立模块目录。请尝试将权限设置为"
 
 #: classes/modInstaller.php:103
 msgid "No modules were found in XML file"
-msgstr ""
+msgstr "XML文件中找不到任何模块"
 
 #: classes/modInstaller.php:107
 msgid "Invalid XML file"
-msgstr ""
+msgstr "XML文件无效"
 
 #: classes/modInstaller.php:109
 msgid "No XML file were found"
-msgstr ""
+msgstr "没有找到XML文件"
 
 #: classes/modInstaller.php:128
 #, php-format
 msgid "Install %s failed"
-msgstr ""
+msgstr "%s安装失败"
 
 #: classes/modInstaller.php:134
 msgid "Error Activate module"
-msgstr ""
+msgstr "模块激活失败"
 
 #: classes/modInstaller.php:164
 msgid "Error Deactivation module"
-msgstr ""
+msgstr "关闭模块失败"
 
 #: classes/modInstaller.php:185
 msgid "Error Activating module"
-msgstr ""
+msgstr "模块激活失败"
 
 #: classes/table.php:263
 msgid "Nothig to update"
-msgstr ""
+msgstr "没有需要更新的"
 
 #: classes/table.php:280
 msgid "Database error. Please contact your developer."
-msgstr ""
+msgstr "数据库错误。请联系您的程序员。"
 
 #: classes/tables/files.php:7
 msgid "Product ID"
-msgstr ""
+msgstr "产品ID"
 
 #: classes/tables/files.php:8
 msgid "File name"
-msgstr ""
+msgstr "文件名称"
 
 #: classes/tables/files.php:9
 msgid "Real Path To File"
-msgstr ""
+msgstr "文件真实路径"
 
 #: classes/tables/files.php:10
 msgid "Mime Type"
-msgstr ""
+msgstr "MIME分类"
 
 #: classes/tables/files.php:11
 msgid "File Size"
-msgstr ""
+msgstr "文件大小"
 
 #: classes/tables/files.php:12
 msgid "Active Download"
-msgstr ""
+msgstr "进行中的下载"
 
 #: classes/tables/files.php:13
 msgid "Upload Date"
-msgstr ""
+msgstr "上载日期"
 
 #: classes/tables/files.php:14
 msgid "Download Limit"
-msgstr ""
+msgstr "下载限定"
 
 #: classes/tables/files.php:15
 msgid "Period Limit"
-msgstr ""
+msgstr "期限"
 
 #: classes/tables/files.php:16
 msgid "Descritpion"
-msgstr ""
+msgstr "说明"
 
 #: classes/tables/files.php:17
 msgid "Type ID"
-msgstr ""
+msgstr "分类ID"
 
 #: classes/tables/htmltype.php:7 classes/tables/log.php:7
 #: classes/tables/modules_type.php:7 classes/tables/options.php:7
 #: classes/tables/options_categories.php:7
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: classes/tables/htmltype.php:8 classes/tables/options_categories.php:8
 msgid "Method"
-msgstr ""
+msgstr "方式"
 
 #: classes/tables/htmltype.php:9 classes/tables/modules.php:12
 #: classes/tables/options.php:11
 msgid "Description"
-msgstr ""
+msgstr "说明"
 
 #: classes/tables/log.php:8 classes/tables/modules.php:8
 #: classes/tables/options.php:12
 msgid "Type"
-msgstr ""
+msgstr "分类"
 
 #: classes/tables/log.php:9
 msgid "Data"
-msgstr ""
+msgstr "数据"
 
 #: classes/tables/log.php:10
 msgid "Date created"
-msgstr ""
+msgstr "建立日期"
 
 #: classes/tables/log.php:11
 msgid "User ID"
-msgstr ""
+msgstr "用户ID"
 
 #: classes/tables/log.php:12
 msgid "Order ID"
-msgstr ""
+msgstr "订购ID"
 
 #: classes/tables/modules.php:7 classes/tables/modules_type.php:8
 #: classes/tables/options.php:10
 msgid "Label"
-msgstr ""
+msgstr "标签"
 
 #: classes/tables/modules.php:9
 msgid "Active"
-msgstr ""
+msgstr "进行中"
 
 #: classes/tables/modules.php:10
 msgid "Params"
-msgstr ""
+msgstr "参数"
 
 #: classes/tables/modules.php:11
 msgid "Has Tab"
-msgstr ""
+msgstr "有标签"
 
 #: classes/tables/modules.php:13 classes/tables/options.php:8
 msgid "Code"
-msgstr ""
+msgstr "代码"
 
 #: classes/tables/modules.php:14
 msgid "External plugin directory"
-msgstr ""
+msgstr "外部插件目录"
 
 #: classes/tables/options.php:9
 msgid "Value"
-msgstr ""
+msgstr "值"
 
 #: classes/tables/options.php:13
 msgid "Category ID"
-msgstr ""
+msgstr "分类ID"
 
 #: classes/tables/options.php:14
 msgid "Sort Order"
-msgstr ""
+msgstr "排序"
 
 #: classes/tables/options.php:15
 msgid "Value Type"
-msgstr ""
+msgstr "值分类"
 
 #: doc/backup-supsystic-pro/wpUpdater.php:65
 #: doc/promo-backup-supsystic-pro/wpUpdater.php:65
@@ -319,11 +320,13 @@ msgid ""
 "An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?"
 "\" onclick=\"document.location.reload(); return false;\">Try again</a>"
 msgstr ""
+"意料之外的HTTP错误在API请求中产生。</p> <p><a href=\"?\" onclick=\"document."
+"location.reload(); return false;\">请再尝试</a>"
 
 #: doc/backup-supsystic-pro/wpUpdater.php:70
 #: doc/promo-backup-supsystic-pro/wpUpdater.php:70
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "发生未知错误"
 
 #: doc/backup-supsystic-pro/license/controller.php:9
 #: doc/backup-supsystic-pro/remote_backup/controller.php:76
@@ -333,15 +336,15 @@ msgstr ""
 #: modules/options/views/tpl/deactivatePage.php:37
 #: modules/pages/views/tpl/deactivatePage.php:37
 msgid "Done"
-msgstr ""
+msgstr "完成"
 
 #: doc/backup-supsystic-pro/license/controller.php:13
 #: doc/promo-backup-supsystic-pro/license/controller.php:13
 msgid "Please, try again!"
-msgstr ""
+msgstr "请再尝试一次！"
 
-#: doc/backup-supsystic-pro/license/mod.php:28
-#: doc/promo-backup-supsystic-pro/license/mod.php:28
+#: doc/backup-supsystic-pro/license/mod.php:24
+#: doc/promo-backup-supsystic-pro/license/mod.php:24
 #, php-format
 msgid ""
 "Your license is expired. Once you extend your license - you will be able to "
@@ -349,9 +352,12 @@ msgid ""
 "target=\"_blank\">this link</a>, then - go to <a href=\"%s\">License</a> tab "
 "and click on \"Re-activate\" button to re-activate your PRO version."
 msgstr ""
+"您的许可证已逾期。当您更新了您的许可证 - 您将可以更新PRO版本。要更新PRO版本许"
+"可证，点<a href=\"%s\" target=\"_blank\">此链接</a>，然后到<a href=\"%s\">许"
+"可证</a> 分页，点击“重新激活”按钮来重新激活您的PRO版本。"
 
-#: doc/backup-supsystic-pro/license/mod.php:36
-#: doc/promo-backup-supsystic-pro/license/mod.php:36
+#: doc/backup-supsystic-pro/license/mod.php:32
+#: doc/promo-backup-supsystic-pro/license/mod.php:32
 #, php-format
 msgid ""
 "Your license for PRO version of %s plugin - expired. You can <a href=\"%s\" "
@@ -359,66 +365,59 @@ msgid ""
 "href=\"%s\">License</a> tab and click on \"Re-activate\" button to re-"
 "activate your PRO version."
 msgstr ""
+"您的%s插件PRO版本许可证已逾期。 您可以<a href=\"%s\" target=\"_blank\">点击这"
+"里</a>来更新许可证，然后到<a href=\"%s\">许可证</a> 分页，点击“重新激活”按钮"
+"来重新激活您的PRO版本。"
 
-#: doc/backup-supsystic-pro/license/mod.php:49
-#: doc/backup-supsystic-pro/license/mod.php:60
-#: doc/promo-backup-supsystic-pro/license/mod.php:49
-#: doc/promo-backup-supsystic-pro/license/mod.php:60
+#: doc/backup-supsystic-pro/license/mod.php:45
+#: doc/backup-supsystic-pro/license/mod.php:56
+#: doc/promo-backup-supsystic-pro/license/mod.php:45
+#: doc/promo-backup-supsystic-pro/license/mod.php:56
 #: modules/promo_supsystic/views/tpl/adminFooter.php:9
 msgid "License"
-msgstr ""
-
-#: doc/backup-supsystic-pro/license/mod.php:86
-#: doc/promo-backup-supsystic-pro/license/mod.php:86
-msgid "Activate License"
-msgstr ""
-
-#: doc/backup-supsystic-pro/license/mod.php:88
-#: doc/promo-backup-supsystic-pro/license/mod.php:88
-msgid "Renew License"
-msgstr ""
+msgstr "许可证"
 
 #: doc/backup-supsystic-pro/license/models/license.php:54
 #: doc/promo-backup-supsystic-pro/license/models/license.php:54
 msgid "Please enter your License Key"
-msgstr ""
+msgstr "请输入您的许可证密钥"
 
 #: doc/backup-supsystic-pro/license/models/license.php:56
 #: doc/promo-backup-supsystic-pro/license/models/license.php:56
 msgid "Please enter your Email address"
-msgstr ""
+msgstr "请输入您的电邮地址"
 
 #: doc/backup-supsystic-pro/license/models/license.php:132
 #: doc/promo-backup-supsystic-pro/license/models/license.php:132
 msgid ""
 "There was a problem with sending request to our autentification server. "
 "Please try latter."
-msgstr ""
+msgstr "提交请求到我们的认证服务器过程出现问题，请稍后再试。"
 
 #: doc/backup-supsystic-pro/license/models/license.php:158
 #: doc/promo-backup-supsystic-pro/license/models/license.php:158
 #, php-format
 msgid "License for plugin %s will expire today."
-msgstr ""
+msgstr "%s插件许可证将在今天到期。"
 
 #: doc/backup-supsystic-pro/license/models/license.php:160
 #: doc/promo-backup-supsystic-pro/license/models/license.php:160
 #, php-format
 msgid "License for plugin %s will expire tomorrow."
-msgstr ""
+msgstr "%s插件许可证将在明天到期。"
 
 #: doc/backup-supsystic-pro/license/models/license.php:162
 #: doc/promo-backup-supsystic-pro/license/models/license.php:162
 #, php-format
 msgid "<p>License for plugin %s will expire in %d days.</p>"
-msgstr ""
+msgstr "<p>%s插件许可证将在%d天内到期。</p>"
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:4
 #: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:4
 #, php-format
 msgid ""
 "Congratulations! PRO version of %s plugin is activated and working fine!"
-msgstr ""
+msgstr "恭喜！%s插件的PRO版本成功激活并正常运行！"
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:6
 #: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:6
@@ -428,6 +427,8 @@ msgid ""
 "target=\"_blank\">click here</a> to extend your license, then - click on "
 "\"Re-activate\" button to re-activate your PRO version."
 msgstr ""
+"您的%s插件PRO版本许可证已逾期。您可以点<a href=\"%s\" target=\"_blank\">此链"
+"接</a>，以更新许可证，然后点击“重新激活”按钮来重新激活您的PRO版本。"
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:8
 #: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:8
@@ -438,12 +439,14 @@ msgid ""
 "License Key on this page. This will activate Your copy of software on this "
 "site."
 msgstr ""
+"恭喜！您已成功的安装了PRO版本的%s插件。完成您的PRO版本插件安装最后步骤 - 请在"
+"此页输入您的电邮地址和许可证密钥。这将激活您的软件。"
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:20
 #: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:20
 #: modules/promo_supsystic/mod.php:68
 msgid "Email"
-msgstr ""
+msgstr "电邮"
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:23
 #: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:23
@@ -451,35 +454,35 @@ msgstr ""
 msgid ""
 "Your email address, used on checkout procedure on <a href=\"%s\" target="
 "\"_blank\">%s</a>"
-msgstr ""
+msgstr "您用以购买<a href=\"%s\" target=\"_blank\">%s</a>的电邮地址"
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:31
 #: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:31
 msgid "License Key"
-msgstr ""
+msgstr "许可证密钥"
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:34
 #: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:34
 #, php-format
 msgid ""
 "Your License Key from your account on <a href=\"%s\" target=\"_blank\">%s</a>"
-msgstr ""
+msgstr "您的许可证密钥来自<a href=\"%s\" target=\"_blank\">%s</a>的户口。"
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:47
 #: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:47
 msgid "Re-activate"
-msgstr ""
+msgstr "重新激活"
 
 #: doc/backup-supsystic-pro/license/views/tpl/licenseAdmin.php:49
 #: doc/promo-backup-supsystic-pro/license/views/tpl/licenseAdmin.php:49
 #: modules/templates/views/tpl/templatesTab.php:71
 msgid "Activate"
-msgstr ""
+msgstr "激活"
 
 #: doc/backup-supsystic-pro/license/views/tpl/noticeForTrialPro.php:32
 #: doc/promo-backup-supsystic-pro/license/views/tpl/noticeForTrialPro.php:32
 msgid "License for plugin '"
-msgstr ""
+msgstr "许可证属于插件‘"
 
 #: doc/backup-supsystic-pro/license/views/tpl/noticeForTrialPro.php:33
 #: doc/promo-backup-supsystic-pro/license/views/tpl/noticeForTrialPro.php:33
@@ -488,124 +491,154 @@ msgid ""
 "of PRO Version is over in two days. You can <button class=\"button button-"
 "primary button-small bupShowBuyDialog\">Get PRO</button> just for 29$"
 msgstr ""
+"我们很高兴您继续使用我们的产品。<br/>请留意PRO版本的试用期将在两天内到期。您"
+"可以<button class=\"button button-primary button-small bupShowBuyDialog\">购"
+"买PRO</button> 只需$29"
 
-#: doc/backup-supsystic-pro/migration/mod.php:14
-#: doc/backup-supsystic-pro/migration/mod.php:26
-#: modules/adminmenu/views/adminmenu.php:17
-msgid "Migration"
-msgstr ""
+#: doc/backup-supsystic-pro/migration/controller.php:10
+#: doc/promo-backup-supsystic-pro/migration/controller.php:10
+msgid "This log created by Migration module, on site: "
+msgstr "这日志是迁移模块建立于网站"
 
-#: doc/backup-supsystic-pro/migration/models/migration.php:38
-msgid "Find or replace data empty!"
-msgstr ""
+#: doc/backup-supsystic-pro/migration/controller.php:38
+#: doc/backup-supsystic-pro/migration/controller.php:54
+#: doc/promo-backup-supsystic-pro/migration/controller.php:38
+#: doc/promo-backup-supsystic-pro/migration/controller.php:54
+msgid "Backup files don't exist!"
+msgstr "备份文件不存在！"
 
-#: doc/backup-supsystic-pro/migration/views/tpl/migration.php:4
+#: doc/backup-supsystic-pro/migration/models/migration.php:98
+#: doc/promo-backup-supsystic-pro/migration/models/migration.php:98
 msgid ""
-"Full documentation you can be found <a href=\"http://supsystic.com/migrate-"
-"your-site-with-backup-by-supsystic/\" target=\"_blank\">here</a>"
-msgstr ""
+"Entered secret key for decrypt/encrypt DB data wrong! Please, try again."
+msgstr "所输入的解密/加密数据库数据密钥错误！请重试。"
 
-#: doc/backup-supsystic-pro/migration/views/tpl/migration.php:11
+#: doc/backup-supsystic-pro/migration/views/migration.php:22
+#: doc/backup-supsystic-pro/migration/views/migration.php:47
+#: doc/backup-supsystic-pro/migration/views/migration.php:75
+#: doc/backup-supsystic-pro/migration/views/migration.php:99
+#: doc/backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:49
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:22
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:47
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:75
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:99
+#: doc/promo-backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:49
+#: modules/backup/views/tpl/backup.index.php:85
+#: modules/backup/views/tpl/backup.index.php:145
+#: modules/backup/views/tpl/backup.index.php:205
+#: modules/backup/views/tpl/backup.index.php:255
+#: modules/backup/views/tpl/backup.index.php:314
+msgid "Migrate"
+msgstr "迁移"
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:117
 #: doc/promo-backup-supsystic-pro/migration/views/migration.php:117
 msgid "Find"
-msgstr ""
+msgstr "寻找"
 
-#: doc/backup-supsystic-pro/migration/views/tpl/migration.php:12
+#: doc/backup-supsystic-pro/migration/views/migration.php:118
 #: doc/promo-backup-supsystic-pro/migration/views/migration.php:118
 msgid "Replace"
-msgstr ""
+msgstr "更换"
 
-#: doc/backup-supsystic-pro/migration/views/tpl/migration.php:15
+#: doc/backup-supsystic-pro/migration/views/migration.php:121
 #: doc/promo-backup-supsystic-pro/migration/views/migration.php:121
 msgid "Site URL"
-msgstr ""
+msgstr "网站网址"
 
-#: doc/backup-supsystic-pro/migration/views/tpl/migration.php:32
-msgid "Get migration DB"
-msgstr ""
+#: doc/backup-supsystic-pro/migration/views/migration.php:126
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:126
+msgid "WordPress directory"
+msgstr "WordPress目录"
+
+#: doc/backup-supsystic-pro/migration/views/migration.php:128
+#: doc/promo-backup-supsystic-pro/migration/views/migration.php:128
+msgid "New WP directory"
+msgstr "新WordPress目录"
 
 #: doc/backup-supsystic-pro/remote_backup/controller.php:58
 #: doc/promo-backup-supsystic-pro/remote_backup/controller.php:58
-#: modules/amazon/controller.php:137 modules/backup/controller.php:207
+#: modules/amazon/controller.php:137 modules/backup/controller.php:357
 #: modules/dropbox/controller.php:167 modules/gdrive/controller.php:117
 msgid "Done!"
-msgstr ""
+msgstr "完成！"
 
 #: doc/backup-supsystic-pro/remote_backup/controller.php:62
 #: doc/promo-backup-supsystic-pro/remote_backup/controller.php:62
 msgid "Please, check connecting params!"
-msgstr ""
+msgstr "请检查连接参数"
 
 #: doc/backup-supsystic-pro/remote_backup/controller.php:78
 #: doc/backup-supsystic-pro/remote_backup/controller.php:95
-#: doc/backup-supsystic-pro/remote_backup/controller.php:131
+#: doc/backup-supsystic-pro/remote_backup/controller.php:112
 #: doc/promo-backup-supsystic-pro/remote_backup/controller.php:78
 #: doc/promo-backup-supsystic-pro/remote_backup/controller.php:95
 #: doc/promo-backup-supsystic-pro/remote_backup/controller.php:112
 msgid "Error, please try again"
-msgstr ""
+msgstr "错误，请重试"
 
 #: doc/backup-supsystic-pro/remote_backup/controller.php:93
 #: doc/promo-backup-supsystic-pro/remote_backup/controller.php:93
-#: modules/backup/controller.php:252
+#: modules/backup/controller.php:402
 msgid "Backup successfully removed"
-msgstr ""
+msgstr "备份成功移除"
 
-#: doc/backup-supsystic-pro/remote_backup/mod.php:30
-#: doc/promo-backup-supsystic-pro/remote_backup/mod.php:30
-msgid "Before start backup - - please authenticate on "
-msgstr ""
-
-#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:19
-#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:51
-#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:17
-#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:47
-#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:18
-#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:49
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:18
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:49
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:16
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:45
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:16
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:47
 #: doc/promo-backup-supsystic-pro/remote_backup/models/remote_sftp.php:16
 #: doc/promo-backup-supsystic-pro/remote_backup/models/remote_sftp.php:45
 msgid "Host name is wrong!"
-msgstr ""
+msgstr "错误主机名称！"
 
-#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:22
-#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:20
-#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:21
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:21
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:19
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:19
 #: doc/promo-backup-supsystic-pro/remote_backup/models/remote_sftp.php:19
 msgid "User or password don't be empty!"
-msgstr ""
+msgstr "用户名或密码不能留空！"
 
-#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:35
-#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:33
-#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:33
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:33
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:31
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:31
 #: doc/promo-backup-supsystic-pro/remote_backup/models/remote_sftp.php:31
 msgid "Wrong path on remote server!"
-msgstr ""
+msgstr "远程服务器路径错误！"
 
-#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:48
-#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:44
-#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:46
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:46
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:42
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:44
 #: doc/promo-backup-supsystic-pro/remote_backup/models/remote_sftp.php:42
 msgid "Invalid login or password!"
-msgstr ""
+msgstr "用户名或密码错误！"
 
-#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:164
-#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:210
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:210
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:140
 msgid ""
 "There are no FTP extension on your server. You need to install it. How to "
 "install check this link <a target=\"_blank\" href=\"http://php.net/manual/en/"
 "book.ftp.php\">http://php.net/manual/en/book.ftp.php</a>"
 msgstr ""
+"您的服务器没有FTP扩展。您需要安装它。请查阅这链接<a target=\"_blank\" href="
+"\"http://php.net/manual/en/book.ftp.php\">http://php.net/manual/en/book.ftp."
+"php</a>以了解如何安装"
 
-#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:169
-#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:215
+#: doc/backup-supsystic-pro/remote_backup/models/remote_ftp.php:215
+#: doc/promo-backup-supsystic-pro/remote_backup/models/remote_ftp.php:145
 msgid ""
 "There are no FTPS extension on your server. You need to install it. How to "
 "install check this link <a target=\"_blank\" href=\"http://php.net/manual/en/"
 "function.ftp-ssl-connect.php\">http://php.net/manual/en/function.ftp-ssl-"
 "connect.php</a>"
 msgstr ""
+"您的服务器没有FTPS扩展。您需要安装它。请查阅这链接<a target=\"_blank\" href="
+"\"http://php.net/manual/en/function.ftp-ssl-connect.php\">http://php.net/"
+"manual/en/function.ftp-ssl-connect.php</a>以了解如何安装"
 
-#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:150
+#: doc/backup-supsystic-pro/remote_backup/models/remote_sftp.php:156
 #: doc/promo-backup-supsystic-pro/remote_backup/models/remote_sftp.php:156
 msgid ""
 "There are no SFTP(Secure Shell2) extension on your server. You need to "
@@ -613,44 +646,38 @@ msgid ""
 "\"http://php.net/manual/en/book.ssh2.php\">http://php.net/manual/en/book."
 "ssh2.php</a>"
 msgstr ""
+"您的服务器没有SFTP (Secure Shell2)扩展。您需要安装它。请查阅这链接<a target="
+"\"_blank\" href=\"http://php.net/manual/en/book.ssh2.php\">http://php.net/"
+"manual/en/book.ssh2.php</a>以了解如何安装"
 
 #: doc/backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:27
 #: doc/promo-backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:27
-#: modules/adminmenu/views/adminmenu.php:16 modules/backup/mod.php:102
+#: modules/adminmenu/views/adminmenu.php:16 modules/backup/mod.php:101
 #: modules/backup/views/tpl/backup.index.php:62
-#: modules/backup/views/tpl/backup.index.php:123
-#: modules/backup/views/tpl/backup.index.php:176
-#: modules/backup/views/tpl/backup.index.php:222
-#: modules/backup/views/tpl/backup.index.php:268 modules/log/mod.php:20
+#: modules/backup/views/tpl/backup.index.php:127
+#: modules/backup/views/tpl/backup.index.php:187
+#: modules/backup/views/tpl/backup.index.php:242
+#: modules/backup/views/tpl/backup.index.php:296 modules/log/mod.php:20
 #: modules/storage/views/tpl/storageBlock.php:31
 msgid "Restore"
-msgstr ""
+msgstr "恢复"
 
 #: doc/backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:33
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:63
 #: doc/promo-backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:33
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:63
-#: modules/backup/views/tpl/backup.index.php:68
-#: modules/backup/views/tpl/backup.index.php:131
-#: modules/backup/views/tpl/backup.index.php:182
-#: modules/backup/views/tpl/backup.index.php:225
-#: modules/backup/views/tpl/backup.index.php:276
+#: modules/backup/views/tpl/backup.index.php:74
+#: modules/backup/views/tpl/backup.index.php:135
+#: modules/backup/views/tpl/backup.index.php:193
+#: modules/backup/views/tpl/backup.index.php:245
+#: modules/backup/views/tpl/backup.index.php:304
 msgid "Delete"
-msgstr ""
-
-#: doc/backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:49
-#: doc/promo-backup-supsystic-pro/migration/views/migration.php:22
-#: doc/promo-backup-supsystic-pro/migration/views/migration.php:47
-#: doc/promo-backup-supsystic-pro/migration/views/migration.php:75
-#: doc/promo-backup-supsystic-pro/migration/views/migration.php:99
-#: doc/promo-backup-supsystic-pro/remote_backup/views/tpl/backupsFileList.php:49
-msgid "Migrate"
-msgstr ""
+msgstr "删除"
 
 #: doc/backup-supsystic-pro/remote_backup/views/tpl/remoteFtpAuth.php:25
 #: doc/promo-backup-supsystic-pro/remote_backup/views/tpl/remoteFtpAuth.php:25
 msgid "Store params"
-msgstr ""
+msgstr "储存参数"
 
 #: doc/backup-supsystic-pro/remote_backup/views/tpl/remoteFtpLogout.php:3
 #: doc/promo-backup-supsystic-pro/remote_backup/views/tpl/remoteFtpLogout.php:3
@@ -660,27 +687,35 @@ msgstr ""
 #: modules/onedrive/views/tpl/onedrive.error.php:13
 #: modules/onedrive/views/tpl/onedrive.index.php:6
 msgid "Logout"
-msgstr ""
+msgstr "登出"
 
 #: doc/backup-supsystic-pro/schedule/controller.php:36
 #: doc/promo-backup-supsystic-pro/schedule/controller.php:36
 msgid "Schedule successfully removed!"
-msgstr ""
+msgstr "时间表成功移除！"
 
-#: doc/backup-supsystic-pro/schedule/controller.php:54
+#: doc/backup-supsystic-pro/schedule/controller.php:47
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:241
+#: doc/promo-backup-supsystic-pro/schedule/controller.php:47
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:241
+#: modules/backup/controller.php:164
+msgid "Backup complete"
+msgstr "备份完成"
+
+#: doc/backup-supsystic-pro/schedule/controller.php:61
 #: doc/promo-backup-supsystic-pro/schedule/controller.php:61
 msgid "Before create schedule, you must login to "
-msgstr ""
+msgstr "建立时间表之前·，您必须登入"
 
 #: doc/backup-supsystic-pro/schedule/mod.php:16
 #: doc/promo-backup-supsystic-pro/schedule/mod.php:16
 msgid "Once Weekly"
-msgstr ""
+msgstr "每周一次"
 
 #: doc/backup-supsystic-pro/schedule/mod.php:21
 #: doc/promo-backup-supsystic-pro/schedule/mod.php:21
 msgid "Once a month"
-msgstr ""
+msgstr "每月一次"
 
 #: doc/backup-supsystic-pro/schedule/mod.php:43
 #: doc/backup-supsystic-pro/schedule/mod.php:71
@@ -688,349 +723,395 @@ msgstr ""
 #: doc/promo-backup-supsystic-pro/schedule/mod.php:71
 #: modules/adminmenu/views/adminmenu.php:15
 msgid "Schedule"
-msgstr ""
+msgstr "时间表"
 
 #: doc/backup-supsystic-pro/schedule/mod.php:49
 #: doc/promo-backup-supsystic-pro/schedule/mod.php:49
 msgid "Schedule Edit"
-msgstr ""
+msgstr "修改时间表"
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:48
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:48
 msgid "Schedule successfully edited!"
-msgstr ""
+msgstr "成功修改时间表！"
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:54
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:54
 msgid "Cannot create schedule \""
-msgstr ""
+msgstr "无法建立时间表“"
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:54
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:54
 msgid "Name will be unique, \""
-msgstr ""
+msgstr "名称必须独特，”"
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:54
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:54
 msgid "exist in DB."
-msgstr ""
+msgstr "存在于数据库。"
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:59
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:59
 msgid "Schedule successfully created!"
-msgstr ""
+msgstr "时间表成功建立！"
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:73
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:73
 msgid "Schedule must have name!"
-msgstr ""
+msgstr "时间表需要命名！"
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:114
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:114
 msgid "Please try again!"
-msgstr ""
+msgstr "请重试！"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:162
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:154
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:154
 msgid "Start backup schedule:"
-msgstr ""
+msgstr "开始使用备份时间表"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:163
-#: modules/backup/controller.php:89
-msgid "Clear temporary directory"
-msgstr ""
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:160
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:160
+msgid "files scanned."
+msgstr "文件扫描"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:176
-#: modules/backup/controller.php:104
-msgid "Database backup complete."
-msgstr ""
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:162
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:162
+msgid "Create a backup of the file system:"
+msgstr "建立备份文件系统"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:185
-#: modules/backup/controller.php:113
-msgid "Scanning files."
-msgstr ""
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:167
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:167
+msgid "Create a backup of the database:"
+msgstr "建立备份数据库"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:190
-#: modules/backup/controller.php:118
-msgid "Total stacks: "
-msgstr ""
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:171
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:171
+msgid "Errors during creation of database backup, errors count"
+msgstr "建立备份数据库错误统计，错误数"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:214
-#: modules/backup/controller.php:142
-msgid "Send request to generate backup file stacks"
-msgstr ""
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:178
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:178
+msgid "Upload to the"
+msgstr "上载到"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:221
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:178
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:178
+msgid "required"
+msgstr "需要"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:179
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:179
+msgid "Files to upload:"
+msgstr "上载的文件"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:186
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:186
+msgid "Successfully uploaded to the"
+msgstr "成功上载到"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:202
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:202
+#: modules/backup/controller.php:193
+msgid "Authentication required."
+msgstr "需要认证。"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:205
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:205
+#: modules/backup/controller.php:196 modules/dropbox/models/dropbox.php:274
+msgid "File not found"
+msgstr "无法找到文件"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:208
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:208
+#: modules/backup/controller.php:199
+msgid "Unexpected error (500)"
+msgstr "意料之外的错误（500）"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:211
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:211
+#: modules/backup/controller.php:202
+msgid "Unexpected error"
+msgstr "意料之外的错误"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:229
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:229
-#: modules/backup/controller.php:149
+#: modules/backup/controller.php:230
 msgid "Backup by Supsystic Notifications"
-msgstr ""
+msgstr "使用Supsystic Notifications 备份"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:223
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:231
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:231
+msgid ". Backup Error!"
+msgstr "，备份错误！"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:232
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:232
-#: modules/backup/controller.php:151
+#: modules/backup/controller.php:232
 msgid "Email notification required."
-msgstr ""
+msgstr "需要电邮通知。"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:224
-#: modules/backup/controller.php:152
-msgid "Sending to "
-msgstr ""
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:233
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:233
+#: modules/backup/controller.php:233
+msgid "Sending to"
+msgstr "寄送给"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:287
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:300
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:10
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:300
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:10
 msgid "Every hour"
-msgstr ""
+msgstr "每小时"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:288
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:301
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:301
 msgid "Twice a day"
-msgstr ""
+msgstr "一天两次"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:289
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:302
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:26
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:302
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:26
 msgid "Every day"
-msgstr ""
+msgstr "每天"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:290
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:303
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:34
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:303
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:34
 msgid "Every week"
-msgstr ""
+msgstr "每周"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:291
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:304
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:42
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:304
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:42
 msgid "Every month"
-msgstr ""
+msgstr "每月"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:299
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:312
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:312
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:300
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:313
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:313
 msgid "OneDrive"
-msgstr ""
+msgstr "OneDrive"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:301
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:314
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:314
 msgid "Google Drive"
-msgstr ""
+msgstr "GoogleDrive"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:302
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:315
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:315
 msgid "Dropbox"
-msgstr ""
-
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:303
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:316
-msgid "Amazon S3"
-msgstr ""
+msgstr "Dropbox"
 
 #: doc/backup-supsystic-pro/schedule/models/schedule.php:316
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:102
+#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:316
+msgid "Amazon S3"
+msgstr "Amazon S3"
+
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:329
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:92
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:329
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:102
-#: modules/backup/models/backupLog.php:100
-#: modules/backup/models/backupLogTxt.php:43
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:92
+#: modules/backup/models/backupLog.php:92
 #: modules/options/views/tpl/backupOptions.php:61
 msgid "Wordpress Core"
-msgstr ""
+msgstr "Wordpress 核心"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:318
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:113
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:116
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:331
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:103
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:106
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:331
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:113
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:116
-#: modules/backup/models/backupLog.php:103
-#: modules/backup/models/backupLogTxt.php:46
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:103
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:106
+#: modules/backup/models/backupLog.php:95
 #: modules/options/views/tpl/backupOptions.php:72
 #: modules/options/views/tpl/backupOptions.php:75
 msgid "Plugins folder"
-msgstr ""
+msgstr "插件夹"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:320
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:124
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:127
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:333
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:114
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:117
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:333
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:124
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:127
-#: modules/backup/models/backupLog.php:106
-#: modules/backup/models/backupLogTxt.php:49
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:114
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:117
+#: modules/backup/models/backupLog.php:98
 #: modules/options/views/tpl/backupOptions.php:83
 #: modules/options/views/tpl/backupOptions.php:86
 msgid "Themes folder"
-msgstr ""
+msgstr "主题夹"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:322
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:135
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:138
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:335
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:125
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:128
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:335
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:135
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:138
-#: modules/backup/models/backupLog.php:109
-#: modules/backup/models/backupLogTxt.php:52
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:125
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:128
+#: modules/backup/models/backupLog.php:101
 #: modules/options/views/tpl/backupOptions.php:94
 #: modules/options/views/tpl/backupOptions.php:97
 msgid "Uploads folder"
-msgstr ""
+msgstr "上载夹"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:324
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:146
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:149
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:337
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:136
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:139
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:337
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:146
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:149
-#: modules/backup/models/backupLog.php:112
-#: modules/backup/models/backupLogTxt.php:55
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:136
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:139
+#: modules/backup/models/backupLog.php:104
 #: modules/options/views/tpl/backupOptions.php:105
 #: modules/options/views/tpl/backupOptions.php:108
 msgid "Any folder inside wp-content"
-msgstr ""
+msgstr "任何在wp-content中的文件夹"
 
-#: doc/backup-supsystic-pro/schedule/models/schedule.php:326
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:157
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:160
+#: doc/backup-supsystic-pro/schedule/models/schedule.php:339
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:147
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:150
 #: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:339
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:157
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:160
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:147
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:150
 #: modules/options/views/tpl/backupOptions.php:116
 #: modules/options/views/tpl/backupOptions.php:119
 msgid "Database backup"
-msgstr ""
+msgstr "数据库备份"
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:4
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:4
 msgid "Schedule Settings"
-msgstr ""
+msgstr "时间表设定"
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:18
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:18
 msgid "Every twice a day"
-msgstr ""
+msgstr "每天两次"
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:50
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:50
 #: modules/options/views/tpl/backupOptions.php:7
 msgid "Where to backup"
-msgstr ""
+msgstr "哪里备份"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:84
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:84
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:74
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:74
 #: modules/options/views/tpl/backupOptions.php:44
 msgid "What to backup"
-msgstr ""
+msgstr "备份什么"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:91
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:94
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:91
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:94
-#: modules/backup/models/backupLog.php:97
-#: modules/backup/models/backupLogTxt.php:40
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:81
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:84
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:81
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:84
+#: modules/backup/models/backupLog.php:89
 #: modules/options/views/tpl/backupOptions.php:50
 #: modules/options/views/tpl/backupOptions.php:53
 msgid "Full backup"
-msgstr ""
+msgstr "完整备份"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:105
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:105
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:95
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:95
 #: modules/options/views/tpl/backupOptions.php:64
 msgid ""
 "All folders and files backup in the root directory, where the WordPress is "
 "installed, except the /wp-content folder."
 msgstr ""
+"在WordPress安装所在的根目录中，所有文件夹和文件的备份，除了/wp-content的文件"
+"夹。"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:168
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:168
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:158
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:158
 #: modules/options/views/tpl/backupOptions.php:127
 msgid "Secret key for DB"
-msgstr ""
+msgstr "数据库密钥"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:171
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:171
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:161
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:161
 #: modules/options/views/tpl/backupOptions.php:130
 msgid "Secret key for encrypting DB data"
-msgstr ""
+msgstr "密钥用以加密数据库数据"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:188
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:188
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:178
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:178
 #: modules/options/views/tpl/backupOptions.php:146
 msgid "Additional Settings"
-msgstr ""
+msgstr "更多设定"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:194
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:194
-#: modules/options/views/tpl/backupOptions.php:166
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:184
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:184
+#: modules/options/views/tpl/backupOptions.php:152
 msgid "Specify and enter files and folders names which must not be backed up."
-msgstr ""
+msgstr "不需备份的文件和文件夹名称"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:195
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:195
-#: modules/options/views/tpl/backupOptions.php:166
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:185
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:185
+#: modules/options/views/tpl/backupOptions.php:152
 msgid "Exclude:"
-msgstr ""
+msgstr "排除"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:197
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:197
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:187
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:187
 msgid "If entering multiple files/directories, then separate them with commas."
-msgstr ""
+msgstr "如果输入多个文件或目录，用逗号分隔。"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:202
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:202
-#: modules/options/views/tpl/backupOptions.php:173
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:192
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:192
+#: modules/options/views/tpl/backupOptions.php:159
 msgid "Email notification"
-msgstr ""
+msgstr "电邮通知"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:203
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:203
-#: modules/options/views/tpl/backupOptions.php:173
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:193
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:193
+#: modules/options/views/tpl/backupOptions.php:159
 msgid "Email notification:"
-msgstr ""
+msgstr "电邮通知"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:218
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:218
-#: modules/options/views/tpl/backupOptions.php:188
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:208
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:208
+#: modules/options/views/tpl/backupOptions.php:174
 msgid ""
 "Specify the path where the data is to be backed up. It 'Use relative path' "
 "ckeckbox has been set up, the path will be set against in the root "
 "directory, where the WordPress is installed. If 'Use relative path' checkbox "
 "has been of, the full path to the disk root should be specified."
 msgstr ""
+"指定是要备份的数据路径。它的“使用相对路径\"复选框已经建立，路径将针对在根目录"
+"下，安装的WordPress的地方进行设置。如果“使用相对路径”复选框一直的完整路径磁盘"
+"根应符合规定。"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:219
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:219
-#: modules/options/views/tpl/backupOptions.php:189
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:209
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:209
+#: modules/options/views/tpl/backupOptions.php:175
 msgid "Warehouse:"
-msgstr ""
+msgstr "储存库"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:238
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:238
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:228
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:228
 msgid ""
 "If the checkbox has been set up, then the backup path must be specified in "
 "the Warehouse field against the root directory, where the WordPress is "
 "installed. if the checkbox has been off, then the backup path must be "
 "specified in the Warehouse field against the disk root."
 msgstr ""
+"如果该复选框已经成立，那么备份路径必须以对根目录下，安装的WordPress，其中仓库"
+"字段中指定。如果该复选框已经关闭，则备份路径必须在对磁盘根仓库字段中指定。"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:239
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:239
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:229
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:229
 msgid "User relative path"
-msgstr ""
+msgstr "用户相对路径"
 
-#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:257
-#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:257
-#: modules/options/views/tpl/backupOptions.php:226
+#: doc/backup-supsystic-pro/schedule/views/tpl/backupOptions.php:247
+#: doc/promo-backup-supsystic-pro/schedule/views/tpl/backupOptions.php:247
+#: modules/options/views/tpl/backupOptions.php:212
 msgid "Path to directory, where will be stored backup files."
-msgstr ""
+msgstr "路径目录，其中将保存备份文件。"
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:4
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:4
@@ -1043,26 +1124,29 @@ msgid ""
 "the back up plugin and vice versa. If you're logged out any of these pages, "
 "you're non authorized on both of them."
 msgstr ""
+"备份时间表将数据上传到云服务中心。为了使备份调度顺畅和正确的工作，你需要不断"
+"再授权这些服务。记住，如果你在那里备份手动启动页面上登录，您自动授权备份插"
+"件，反之亦然的编辑页面上。如果你登出任何这些页面，你非授权他们两个。"
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:15
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:15
 msgid "Schedule Name:"
-msgstr ""
+msgstr "时间表名称："
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:16
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:16
 msgid "Enable Schedule"
-msgstr ""
+msgstr "启动时间表"
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:17
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/scheduleEdit.php:17
 msgid "Save Schedule"
-msgstr ""
+msgstr "保存时间表"
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:8
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:8
 msgid "Create new schedule"
-msgstr ""
+msgstr "建立时间表"
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:17
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:17
@@ -1074,264 +1158,210 @@ msgid ""
 "\"_blank\" href=\"http://www.php.net/manual/en/info.configuration.php#ini."
 "max-execution-time\">here</a><br />Current max_execution_time = "
 msgstr ""
+"<span class=\"bupWarningRed\">警告:</span> 插件无法增加脚本的正常工作时间，请"
+"联系您的服务器供应商.<br />\n"
+"                        详细说明 <a class=\"bupBlueLink\" target=\"_blank\" "
+"href=\"http://www.php.net/manual/en/info.configuration.php#ini.max-execution-"
+"time\">这里</a><br />目前 max_execution_time = "
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:28
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:28
 msgid "Schedules"
-msgstr ""
+msgstr "时间表"
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:29
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:29
 msgid "Periodicity"
-msgstr ""
+msgstr "周期"
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:31
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:31
 msgid "Backup content"
-msgstr ""
+msgstr "备份内容"
 
 #: doc/backup-supsystic-pro/schedule/views/tpl/schedulePage.php:57
 #: doc/promo-backup-supsystic-pro/schedule/views/tpl/schedulePage.php:57
 msgid "Edit"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/migration/controller.php:10
-msgid "This log created by Migration module, on site: "
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/migration/controller.php:38
-#: doc/promo-backup-supsystic-pro/migration/controller.php:54
-msgid "Backup files don't exist!"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/migration/models/migration.php:98
-msgid ""
-"Entered secret key for decrypt/encrypt DB data wrong! Please, try again."
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/migration/views/migration.php:126
-msgid "WordPress directory"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/migration/views/migration.php:128
-msgid "New WP directory"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/controller.php:47
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:241
-msgid "Backup complete"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:160
-msgid "files scanned."
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:162
-msgid "Create a backup of the file system:"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:167
-msgid "Create a backup of the database:"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:171
-msgid "Errors during creation of database backup, errors count"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:178
-msgid "Upload to the"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:178
-msgid "required"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:179
-msgid "Files to upload:"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:186
-msgid "Successfully uploaded to the"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:202
-#: modules/backup/models/backup.php:217
-msgid "Authentication required."
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:205
-#: modules/backup/models/backup.php:220 modules/dropbox/models/dropbox.php:274
-msgid "File not found"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:208
-#: modules/backup/models/backup.php:223
-msgid "Unexpected error (500)"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:211
-#: modules/backup/models/backup.php:226
-msgid "Unexpected error"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:231
-msgid ". Backup Error!"
-msgstr ""
-
-#: doc/promo-backup-supsystic-pro/schedule/models/schedule.php:233
-msgid "Sending to"
-msgstr ""
+msgstr "修改"
 
 #: modules/adminmenu/controller.php:7
 msgid "Your name field is required."
-msgstr ""
+msgstr "您需要填写您的名字。"
 
 #: modules/adminmenu/controller.php:8
 msgid "Your website field is required."
-msgstr ""
+msgstr "您需要填写网站网址"
 
 #: modules/adminmenu/controller.php:9
 msgid "Your e-mail field is required."
-msgstr ""
+msgstr "您需要填写电邮地址。"
 
 #: modules/adminmenu/controller.php:10
 msgid "Subject field is required."
-msgstr ""
+msgstr "您需要填写事由。"
 
 #: modules/adminmenu/controller.php:11
 msgid "You must select a valid category."
-msgstr ""
+msgstr "您需要选择一个有效分类。"
 
 #: modules/adminmenu/controller.php:12
 msgid "Message field is required."
-msgstr ""
+msgstr "您需要填写内容。"
 
 #: modules/adminmenu/mod.php:10
 msgid "Settings"
-msgstr ""
+msgstr "设定"
 
 #: modules/adminmenu/views/adminmenu.php:13 modules/promo_supsystic/mod.php:36
 msgid "Overview"
-msgstr ""
+msgstr "概述"
 
 #: modules/adminmenu/views/adminmenu.php:14
 #: modules/options/views/options.php:7
 msgid "Backup"
-msgstr ""
+msgstr "备份"
 
-#: modules/adminmenu/views/adminmenu.php:22
+#: modules/adminmenu/views/adminmenu.php:20
 msgid "Backup by Supsystic"
-msgstr ""
+msgstr "以Supsystic 备份"
 
 #: modules/amazon/controller.php:77
 msgid "Credentials are stored in the database"
-msgstr ""
+msgstr "身份证明储存在数据库中"
 
 #: modules/amazon/controller.php:79
 msgid "Invalid or empty credentials"
-msgstr ""
+msgstr "无效或空白身份证明"
 
 #: modules/amazon/controller.php:84
 msgid "Bucket stored in the database"
-msgstr ""
+msgstr "容器储存在数据库中"
 
 #: modules/amazon/controller.php:86
 msgid "Invalid bucket"
-msgstr ""
+msgstr "容器无效"
 
 #: modules/amazon/controller.php:105 modules/dropbox/controller.php:117
 #: modules/onedrive/controller.php:76
 msgid "Please, wait..."
-msgstr ""
+msgstr "请稍等。。。"
 
 #: modules/amazon/controller.php:140
 msgid "You did not specify credentials or credentials are invalid"
-msgstr ""
+msgstr "您没有提供身份证明或身份证明无效"
 
 #: modules/amazon/controller.php:143
 msgid "Bucket not found"
-msgstr ""
+msgstr "容器不存在"
 
 #: modules/amazon/controller.php:173 modules/dropbox/controller.php:205
 #: modules/gdrive/controller.php:154
 msgid "File successfully deleted"
-msgstr ""
+msgstr "文件删除成功"
 
 #: modules/amazon/controller.php:176
 msgid "Not enough input parameters"
-msgstr ""
+msgstr "输入参数不足"
 
 #: modules/amazon/controller.php:179
 msgid "File not found on server"
-msgstr ""
+msgstr "文件不在服务器中"
 
 #: modules/amazon/controller.php:182
 msgid "Failed to delete the selected file"
-msgstr ""
+msgstr "指定文件删除失败"
 
-#: modules/amazon/controller.php:207
+#: modules/amazon/controller.php:204
 msgid "File not found on Amazon S3"
-msgstr ""
+msgstr "指定文件不存在于Amazon S3"
+
+#: modules/amazon/controller.php:219
+msgid "Enter your AWS Access Key,<br/>Secret Key and Bucket name"
+msgstr "输入您的AWS许可证密钥，<br/>数据库密钥和容器名称"
+
+#: modules/amazon/controller.php:222
+msgid "Access Key"
+msgstr "许可证密钥"
 
 #: modules/amazon/controller.php:229
-msgid "All stacks not downloaded!"
-msgstr ""
-
-#: modules/amazon/controller.php:233
-msgid "Files not found on Amazon S3!"
-msgstr ""
-
-#: modules/amazon/controller.php:249
-msgid "Enter your AWS Access Key,<br/>Secret Key and Bucket name"
-msgstr ""
-
-#: modules/amazon/controller.php:252
-msgid "Access Key"
-msgstr ""
-
-#: modules/amazon/controller.php:259
 msgid "Secret Key"
-msgstr ""
+msgstr "数据库密钥"
 
-#: modules/amazon/controller.php:266
+#: modules/amazon/controller.php:236
 msgid "Bucket"
-msgstr ""
+msgstr "容器"
 
-#: modules/amazon/controller.php:274
+#: modules/amazon/controller.php:244
 msgid "&nbsp;&nbsp; Save &nbsp;&nbsp;"
-msgstr ""
+msgstr "&nbsp;&nbsp; 保存 &nbsp;&nbsp;"
 
 #: modules/amazon/mod.php:135
-msgid "Before start backup - please authenticate with Amazon."
-msgstr ""
+msgid "Before start backup - please authenticate in the Amazon."
+msgstr "开始备份前，请在Amazon中认证。"
 
-#: modules/backup/controller.php:197
+#: modules/backup/controller.php:90
+msgid "Clear out old temporary files"
+msgstr "清除旧有的暂时文件"
+
+#: modules/backup/controller.php:116
+msgid "Send request to generate temporary file stacks"
+msgstr "提交要求以建立临时文件堆栈"
+
+#: modules/backup/controller.php:144
+msgid "Send requests to getting database tables name."
+msgstr "提交要求以获得数据库报表名称"
+
+#: modules/backup/controller.php:160
+msgid "Database backup complete."
+msgstr "数据库备份完成。"
+
+#: modules/backup/controller.php:222
+msgid "Error occurred: "
+msgstr "错误产生："
+
+#: modules/backup/controller.php:276 modules/backup/controller.php:277
+msgid "Unable to create the temporary archive"
+msgstr "无法建立临时存档"
+
+#: modules/backup/controller.php:311
+msgid "Tables backup complete: "
+msgstr "备份成功报表："
+
+#: modules/backup/controller.php:313
+msgid "Tables backup failure: "
+msgstr "备份失败报表："
+
+#: modules/backup/controller.php:316
+msgid "Error in database."
+msgstr "数据库错误"
+
+#: modules/backup/controller.php:344
 msgid "Unable to restore from "
-msgstr ""
+msgstr "无法恢复自"
 
-#: modules/backup/controller.php:203
+#: modules/backup/controller.php:352
 msgid ""
 "Unable to restore backup files. Check folder or files writing permissions. "
 "Try to set 766 permissions to the:"
-msgstr ""
+msgstr "无法恢复备份文件。检查文件夹或文件的书写权限。尝试设定766权限给："
 
-#: modules/backup/controller.php:255
+#: modules/backup/controller.php:405
 msgid "Unable to delete backup"
-msgstr ""
+msgstr "无法删除备份"
 
-#: modules/backup/controller.php:268
+#: modules/backup/controller.php:418
 msgid "Successfully!"
-msgstr ""
+msgstr "成功！"
 
-#: modules/backup/controller.php:281
+#: modules/backup/controller.php:431
 msgid "Setting saved!"
-msgstr ""
+msgstr "设定保存了！"
 
-#: modules/backup/controller.php:283
+#: modules/backup/controller.php:433
 msgid "Database error, please try again"
-msgstr ""
+msgstr "数据库错误，请重试"
 
-#: modules/backup/controller.php:308
+#: modules/backup/controller.php:458
 msgid ""
 "There are no zlib extension on your server. This mean that you can make only "
 "database backup.<br/>Check this link <a target=\"_blank\" href=\"http://php."
@@ -1339,187 +1369,173 @@ msgid ""
 "installation.php</a> or contact your hosting provider and ask them to "
 "resolve this issue for you."
 msgstr ""
+"在您的服务器上没有zlib的扩展。这意味着你只能进行数据库备份。 <br/>检查此链接"
+"<a target=\"_blank\" href=\"http://php.net/manual/en/zlib.installation.php"
+"\">http://php.net/manual/en/zlib.installation.php</a>或联系您的托管服务提供"
+"商，并要求他们协助您解决这个问题。"
 
-#: modules/backup/controller.php:316
+#: modules/backup/controller.php:466
 msgid ""
 "There are no ZipArchive library on your server. This mean that you can make "
 "only database backup.<br/>Check this link <a target=\"_blank\" href=\"http://"
 "php.net/manual/en/book.zip.php\">http://php.net/manual/en/book.zip.php</a> "
 "or contact your hosting provider and ask them to resolve this issue for you."
 msgstr ""
+"有您的服务器上没有ZipArchive文库。这意味着你只能进行数据库备份。 <br/>检查此"
+"链接<a target=\"_blank\" href=\"http://php.net/manual/en/book.zip.php"
+"\">http://php.net/manual/en/book.zip.php</a>或联系您的托管服务提供商，并要求"
+"他们协助您解决这个问题。"
 
-#: modules/backup/controller.php:403
-msgid "Backup complete!"
-msgstr ""
-
-#: modules/backup/mod.php:189
+#: modules/backup/mod.php:188
 msgid "Local Backup"
-msgstr ""
+msgstr "本地备份"
 
-#: modules/backup/models/backup.php:101
-msgid "Creating filesystem backup 0%"
-msgstr ""
-
-#: modules/backup/models/backup.php:131 modules/backup/models/backup.php:141
-msgid "Filesystem backup complete"
-msgstr ""
-
-#: modules/backup/models/backup.php:275
-msgid "Backup successful complete!"
-msgstr ""
-
-#: modules/backup/models/backup.php:832
-msgid "Undefined"
-msgstr ""
-
-#: modules/backup/models/backupLog.php:66
-#: modules/backup/models/backupLogTxt.php:86
+#: modules/backup/models/backupLog.php:58
 msgid ""
 "Please, don't delete the line that is lower, it is used for technical "
 "purposes!"
-msgstr ""
+msgstr "请别删除以下行列，它们是用于技术需求！"
 
-#: modules/backup/models/backupLog.php:94
-#: modules/backup/models/backupLogTxt.php:37
+#: modules/backup/models/backupLog.php:86
 msgid "Backup settings: "
-msgstr ""
+msgstr "备份设定："
 
-#: modules/backup/models/backupLog.php:118
-#: modules/backup/models/backupLogTxt.php:61
+#: modules/backup/models/backupLog.php:110
 msgid "Exclude: "
-msgstr ""
+msgstr "排除："
 
-#: modules/backup/models/backupLog.php:121
-#: modules/backup/models/backupLogTxt.php:64
+#: modules/backup/models/backupLog.php:113
 msgid "Email notification: "
-msgstr ""
+msgstr "电邮通知："
 
 #: modules/backup/models/database.php:183
 msgid "Secret key for decrypt DB data wrong! Please, try again."
-msgstr ""
+msgstr "所输入的解密/加密数据库数据密钥错误！请重试。"
 
 #: modules/backup/models/database.php:201
 #: modules/backup/models/database.php:405
 msgid ""
 "Your MySQL server does not support transactions, \"safe update\" unavailable"
-msgstr ""
+msgstr "你的MySQL服务器不支持事务，“安全更新”不可用"
 
 #: modules/backup/models/database.php:296
 msgid "Error: unexpected fgets() fail"
-msgstr ""
+msgstr "无法意料的fgets()错误"
 
 #: modules/backup/models/database.php:301
 msgid "Unable to clear the database before restoring"
-msgstr ""
+msgstr "无法在复原前清除数据库"
 
 #: modules/backup/models/database.php:330
 msgid "Can not find file "
-msgstr ""
+msgstr "无法找到文件"
 
 #: modules/backup/models/database.php:353
 msgid ""
 "Revision of backup and your database do not match. You must enable the Force "
 "Update options to update (at one's own risk)"
 msgstr ""
+"备份修订记录和您的数据库不匹配。您必须启用强制更新选项来更新（风险自负）"
 
 #: modules/backup/models/database.php:362
 msgid ""
 "This backup was made on another version of WordPress. You must enable the "
 "Force Update options to update (at one's own risk)"
 msgstr ""
+"备份是在不同版本的WordPress中建立的。您必须启用强制更新选项来更新（风险自负）"
 
 #: modules/backup/models/database.php:371
 msgid ""
 "Backup was created with a different version of the plugin. You must enable "
 "the Force Update options to update (at one's own risk)"
-msgstr ""
+msgstr "备份是用不同版本的插件建立的。您必须启用强制更新选项来更新（风险自负）"
 
-#: modules/backup/models/filesystem.php:33
+#: modules/backup/models/filesystem.php:29
 #, php-format
 msgid "Filesystem backup %s does not exists"
-msgstr ""
+msgstr "%s文件系统不存在"
 
-#: modules/backup/models/filesystem.php:66
+#: modules/backup/models/filesystem.php:57
 msgid "An error has occurred while unpacking the archive"
-msgstr ""
+msgstr "在解压文件时出现错误"
 
 #: modules/backup/views/tpl/backup.index.php:10
 msgid " / Start:"
-msgstr ""
+msgstr " / 开始:"
 
 #: modules/backup/views/tpl/backup.index.php:11
 msgid " / Finish:"
-msgstr ""
+msgstr " / 完成:"
 
 #: modules/backup/views/tpl/backup.index.php:21
 msgid "Backup to <b>FTP</b> / ID"
-msgstr ""
+msgstr "备份到 <b>FTP</b> / ID"
 
 #: modules/backup/views/tpl/backup.index.php:57
-#: modules/backup/views/tpl/backup.index.php:114
-#: modules/backup/views/tpl/backup.index.php:168
-#: modules/backup/views/tpl/backup.index.php:218
-#: modules/backup/views/tpl/backup.index.php:260
+#: modules/backup/views/tpl/backup.index.php:118
+#: modules/backup/views/tpl/backup.index.php:179
+#: modules/backup/views/tpl/backup.index.php:238
+#: modules/backup/views/tpl/backup.index.php:288
 msgid "Filesystem"
-msgstr ""
+msgstr "文件系统"
 
 #: modules/backup/views/tpl/backup.index.php:57
-#: modules/backup/views/tpl/backup.index.php:114
-#: modules/backup/views/tpl/backup.index.php:168
-#: modules/backup/views/tpl/backup.index.php:218
-#: modules/backup/views/tpl/backup.index.php:260
+#: modules/backup/views/tpl/backup.index.php:118
+#: modules/backup/views/tpl/backup.index.php:179
+#: modules/backup/views/tpl/backup.index.php:238
+#: modules/backup/views/tpl/backup.index.php:288
 msgid "Database"
-msgstr ""
+msgstr "数据库"
 
-#: modules/backup/views/tpl/backup.index.php:75
+#: modules/backup/views/tpl/backup.index.php:68
 msgid "Download"
-msgstr ""
+msgstr "下载"
 
-#: modules/backup/views/tpl/backup.index.php:86
-#: modules/backup/views/tpl/backup.index.php:141
-#: modules/backup/views/tpl/backup.index.php:192
-#: modules/backup/views/tpl/backup.index.php:234
-#: modules/backup/views/tpl/backup.index.php:285
+#: modules/backup/views/tpl/backup.index.php:90
+#: modules/backup/views/tpl/backup.index.php:152
+#: modules/backup/views/tpl/backup.index.php:212
+#: modules/backup/views/tpl/backup.index.php:262
+#: modules/backup/views/tpl/backup.index.php:321
 msgid "Show Backup Log"
-msgstr ""
+msgstr "展示备份日志"
 
-#: modules/backup/views/tpl/backup.index.php:88
-#: modules/backup/views/tpl/backup.index.php:143
-#: modules/backup/views/tpl/backup.index.php:194
-#: modules/backup/views/tpl/backup.index.php:236
-#: modules/backup/views/tpl/backup.index.php:287
+#: modules/backup/views/tpl/backup.index.php:92
+#: modules/backup/views/tpl/backup.index.php:154
+#: modules/backup/views/tpl/backup.index.php:214
+#: modules/backup/views/tpl/backup.index.php:264
+#: modules/backup/views/tpl/backup.index.php:323
 msgid "Log is clear."
-msgstr ""
+msgstr "日志为空"
 
-#: modules/backup/views/tpl/backup.index.php:104
+#: modules/backup/views/tpl/backup.index.php:108
 msgid "Backup to <b>GoogleDrive</b> / ID"
-msgstr ""
+msgstr "备份到 <b>GoogleDrive</b> / ID"
 
-#: modules/backup/views/tpl/backup.index.php:158
+#: modules/backup/views/tpl/backup.index.php:169
 msgid "Backup to <b>OneDrive</b> / ID"
-msgstr ""
+msgstr "备份到 <b>OneDrive</b> / ID"
 
-#: modules/backup/views/tpl/backup.index.php:209
+#: modules/backup/views/tpl/backup.index.php:229
 msgid "Backup to <b>Amazon S3</b> / ID"
-msgstr ""
+msgstr "备份到 <b>Amazon S3</b> / ID"
 
-#: modules/backup/views/tpl/backup.index.php:251
+#: modules/backup/views/tpl/backup.index.php:279
 msgid "Backup to <b>DropBox</b> / ID"
-msgstr ""
+msgstr "备份到 <b>DropBox</b> / ID"
 
-#: modules/backup/views/tpl/backup.index.php:303
+#: modules/backup/views/tpl/backup.index.php:339
 msgid "Backups don't exist!"
-msgstr ""
+msgstr "备份不存在！"
 
-#: modules/backup/views/tpl/backup.index.php:313
+#: modules/backup/views/tpl/backup.index.php:349
 msgid "Restore Presets:"
-msgstr ""
+msgstr "恢复备份预设"
 
-#: modules/backup/views/tpl/backup.index.php:316
+#: modules/backup/views/tpl/backup.index.php:352
 msgid "Safe Update"
-msgstr ""
+msgstr "安全的更新"
 
-#: modules/backup/views/tpl/backup.index.php:318
+#: modules/backup/views/tpl/backup.index.php:354
 msgid ""
 "If the ckeckbox is set up, the database backup will be performed. This will "
 "let the database backup work in the transaction mode, i.e. should there "
@@ -1529,12 +1545,16 @@ msgid ""
 "ckeckbox is not set up the data-base backup will be performed without "
 "transaction mode."
 msgstr ""
+"如果已设置ckeckbox，数据库备份将被执行。这将让数据库在交易模式下进行备份工"
+"作，即如果有在数据库恢复过程中发生任何故障，没有来自备份的数据被转移到该数据"
+"库。数据库的备份恢复将仅在恢复过程中没有失败时写入数据库。如果ckeckbox未设"
+"立，资料库的备份将以非交易方式进行。"
 
-#: modules/backup/views/tpl/backup.index.php:328
+#: modules/backup/views/tpl/backup.index.php:364
 msgid "Force Update"
-msgstr ""
+msgstr "强制更新"
 
-#: modules/backup/views/tpl/backup.index.php:330
+#: modules/backup/views/tpl/backup.index.php:366
 msgid ""
 "When backup is performed, the labels are usually put at the beginning of the "
 "file dump, such as: WordPress version for the backup; WordPress data-base "
@@ -1545,220 +1565,209 @@ msgid ""
 "version). If the force has been on, there will be no such system check and "
 "the recovery will be performed."
 msgstr ""
+"当进行备份时，通常在文件转储开始时标签，如：备份的WordPress版本; 备份的"
+"WordPress资料库版本;备份的插件版本。在恢复时，如果强制一直关闭，备份将不被执"
+"行，因为它会不断弹出消息，说明该版本不是正确（WordPress的，WordPress的资料库"
+"或版本的插件版本） 。如果强制启用，将不会有这样的系统检查而系统恢复将被执行。"
 
-#: modules/backup/views/tpl/backup.index.php:342
+#: modules/backup/views/tpl/backup.index.php:378
 msgid "Backup Log:"
-msgstr ""
+msgstr "备份日志："
 
-#: modules/backup/views/tpl/backup.index.php:348
+#: modules/backup/views/tpl/backup.index.php:384
 msgid "Get PRO Verion!"
-msgstr ""
+msgstr "获取PRO版本！"
 
-#: modules/backup/views/tpl/backup.index.php:350
+#: modules/backup/views/tpl/backup.index.php:386
 msgid ""
 "Please, be advised, that this option is available only in PRO version. You "
 "can"
-msgstr ""
+msgstr "请留意，这个选项只存在PRO版本中。您可以"
 
-#: modules/backup/views/tpl/backup.index.php:351
+#: modules/backup/views/tpl/backup.index.php:387
 #: modules/promo_supsystic/mod.php:12
-#: modules/promo_supsystic/views/tpl/migrationPromo.php:9
 #: modules/promo_supsystic/views/tpl/schedulePromo.php:7
 msgid "Get PRO"
-msgstr ""
+msgstr "获取PRO"
 
 #: modules/dropbox/controller.php:130
 msgid "Your server not meet the requirements Dropbox SDK"
-msgstr ""
+msgstr "您的服务器不符合Dropbox SDK的要求"
 
 #: modules/dropbox/controller.php:170 modules/dropbox/models/dropbox.php:252
-#: modules/dropbox/models/dropbox52.php:292
-#: modules/dropbox/models/dropbox52.php:328 modules/gdrive/controller.php:120
-#: modules/gdrive/controller.php:157 modules/gdrive/controller.php:175
+#: modules/dropbox/models/dropbox52.php:282
+#: modules/dropbox/models/dropbox52.php:317 modules/gdrive/controller.php:120
+#: modules/gdrive/controller.php:157 modules/gdrive/controller.php:173
 msgid "Authentication required"
-msgstr ""
+msgstr "需要认证"
 
 #: modules/dropbox/controller.php:173 modules/gdrive/controller.php:127
 msgid "Nothing to upload"
-msgstr ""
+msgstr "没什么需要上载"
 
 #: modules/dropbox/controller.php:201 modules/gdrive/controller.php:150
 msgid "Nothing to delete"
-msgstr ""
+msgstr "没什么需要删除"
 
-#: modules/dropbox/controller.php:225
+#: modules/dropbox/controller.php:224
 msgid "There was an error during recovery"
-msgstr ""
-
-#: modules/dropbox/controller.php:254
-msgid "All files not downloaded from DropBox, please, try again"
-msgstr ""
-
-#: modules/dropbox/controller.php:257 modules/onedrive/controller.php:174
-msgid "Files not found on OneDrive"
-msgstr ""
+msgstr "恢复中有一个错误"
 
 #: modules/dropbox/mod.php:130
 msgid "Your server does not support the Dropbox without cURL extension"
-msgstr ""
+msgstr "您的服务器缺少cURL扩展插件无法支援Dropbox"
 
 #: modules/dropbox/mod.php:154
-msgid "Before start backup - please authenticate with DropBox."
-msgstr ""
+msgid "Before start backup - please authenticate in the DropBox."
+msgstr "开始备份前，请在Dropbox中认证。"
 
 #: modules/dropbox/views/tpl/dropbox.auth.php:8
 #: modules/gdrive/views/tpl/gdrive.auth.php:3
 #: modules/onedrive/views/tpl/onedrive.auth.php:3
 msgid "Authenticate"
-msgstr ""
+msgstr "认证"
 
 #: modules/gdrive/controller.php:21
 msgid "Your server do not have curl extension installed."
-msgstr ""
+msgstr "您的服务器没有安装cURL扩展插件。"
 
 #: modules/gdrive/controller.php:22
 msgid "This extension is required by Google API SDK."
-msgstr ""
+msgstr "Google API SDK 需要这扩展插件。"
 
 #: modules/gdrive/controller.php:23
 msgid "Please install it at first."
-msgstr ""
+msgstr "请先安装它。"
 
 #: modules/gdrive/controller.php:24
 msgid "You can also check following links for more info:"
-msgstr ""
+msgstr "您可以检查下来的链接以获取更多资料："
 
 #: modules/gdrive/controller.php:40
 msgid ""
 "For long-term storage of Google Drive authorization, please re-connect our "
 "application in your personal account of Google Drive."
 msgstr ""
+"对于长期储存的谷歌Drive授权，请经由您在谷歌Drive的个人帐户来重新连接我们的应"
+"用程序。"
 
 #: modules/gdrive/controller.php:55
 msgid "Your server is not support Google API Client Library."
-msgstr ""
+msgstr "您的服务器不支持 Google API客户端文库。"
 
 #: modules/gdrive/controller.php:57
 msgid "PHP JSON extension required"
-msgstr ""
+msgstr "需要PHP JSON 扩展插件"
 
 #: modules/gdrive/controller.php:97
 msgid "Please wait..."
-msgstr ""
+msgstr "请稍等。。。"
 
-#: modules/gdrive/controller.php:203
-msgid "Files not found on Google Drive"
-msgstr ""
-
-#: modules/gdrive/controller.php:210
+#: modules/gdrive/controller.php:188
 msgid "File not found on Google Drive"
-msgstr ""
+msgstr "文件不存在于Google Drive"
 
-#: modules/gdrive/controller.php:212
+#: modules/gdrive/controller.php:191
 msgid "Failed to download file"
-msgstr ""
+msgstr "无法下载文件"
 
 #: modules/gdrive/mod.php:126
-msgid "Before start backup - please authenticate with Google Drive."
-msgstr ""
+msgid "Before start backup - please authenticate in the Google Drive."
+msgstr "开始备份前，请在Google Drive中认证。"
 
 #: modules/gdrive/models/gdrive.php:313
 msgid "Unable to get parent folder ID."
-msgstr ""
-
-#: modules/log/models/log.php:27
-msgid "Settings not found!"
-msgstr ""
+msgstr "无法获得母文件夹的ID"
 
 #: modules/onedrive/controller.php:104
 msgid "Deleted successfully"
-msgstr ""
+msgstr "成功删除"
 
 #: modules/onedrive/controller.php:122
-#: modules/onedrive/models/onedrive.php:429
+#: modules/onedrive/models/onedrive.php:399
 msgid "Authorization required."
-msgstr ""
+msgstr "需要认证"
 
 #: modules/onedrive/controller.php:127
 msgid "Uploaded successfully."
-msgstr ""
+msgstr "上载成功"
 
-#: modules/onedrive/controller.php:153
+#: modules/onedrive/controller.php:150
 msgid "File downloaded."
-msgstr ""
+msgstr "文件已下载。"
 
 #: modules/onedrive/mod.php:89
-msgid "Before start backup - please authenticate with OneDrive."
-msgstr ""
+msgid "Before start backup - please authenticate in the OneDrive."
+msgstr "开始备份前，请在OneDrive中认证。"
 
-#: modules/onedrive/models/onedrive.php:438
+#: modules/onedrive/models/onedrive.php:408
 msgid "Enexpected error."
-msgstr ""
+msgstr "意料之外的错误"
 
-#: modules/onedrive/models/onedrive.php:453
+#: modules/onedrive/models/onedrive.php:422
 msgid "Failed to save downloaded file."
-msgstr ""
+msgstr "无法保存已下载的文件"
 
 #: modules/onedrive/views/tpl/onedrive.authError.php:4
 msgid "Authentication failed."
-msgstr ""
+msgstr "认证失败。"
 
 #: modules/onedrive/views/tpl/onedrive.error.php:4
 msgid "An error has been occured."
-msgstr ""
+msgstr "一个错误产生了。"
 
 #: modules/options/controller.php:10 modules/options/controller.php:21
 msgid "Save Complete"
-msgstr ""
+msgstr "保存成功"
 
 #: modules/options/mod.php:20
 msgid "General"
-msgstr ""
+msgstr "一般"
 
 #: modules/options/models/modules.php:32
 msgid "Module Updated"
-msgstr ""
+msgstr "模块已更新"
 
 #: modules/options/models/modules.php:47
 msgid "Module Update Failed"
-msgstr ""
+msgstr "模块更新失败"
 
 #: modules/options/models/modules.php:50
 msgid "Error module ID"
-msgstr ""
+msgstr "错误模块ID"
 
 #: modules/options/models/options.php:27
 msgid "Incorrect email address"
-msgstr ""
+msgstr "电邮地址错误"
 
 #: modules/options/models/options.php:39
 msgid "No change"
-msgstr ""
+msgstr "没有更改"
 
 #: modules/options/models/options.php:57
 msgid "PRO version is not activated"
-msgstr ""
+msgstr "PRO版本还没激活"
 
 #: modules/options/models/options.php:61
 msgid "No selected options"
-msgstr ""
+msgstr "没有选择的选项"
 
 #: modules/options/models/options.php:246
 msgid "Option "
-msgstr ""
+msgstr "选项"
 
 #: modules/options/models/options.php:248
 msgid "Invalid option ID or Code"
-msgstr ""
+msgstr "无效选项ID或代码"
 
 #: modules/options/models/options.php:251
 msgid "Empty data to save option"
-msgstr ""
+msgstr "保存选项数据空白。"
 
 #: modules/options/models/options.php:291
 #: modules/options/models/options.php:307
 msgid "Empty data to setup"
-msgstr ""
+msgstr "空白数据设置"
 
 #: modules/options/models/options.php:321
 #: modules/options/models/options.php:323
@@ -1767,57 +1776,42 @@ msgstr ""
 #: modules/options/models/options.php:376
 #: modules/options/models/options.php:378
 msgid "There is no default for this option and current template"
-msgstr ""
+msgstr "此选项和当前模板没有设置默认"
 
 #: modules/options/models/options.php:325
 #: modules/options/models/options.php:348
 #: modules/options/models/options.php:380
 msgid "Empty option code"
-msgstr ""
+msgstr "空白选项代码"
 
 #: modules/options/models/options.php:358
 #: modules/options/models/options.php:390
 msgid "Unable to remove image"
-msgstr ""
+msgstr "无法移除镜像"
 
-#: modules/options/views/tpl/backupOptions.php:159
-msgid ""
-"The maximum size of a single file which will be added to the stack. If the "
-"plugin can not create backup of the file system (for example it hangs) - try "
-"to reduce the size. It is not recommended to put a value less than 10MB, "
-"because in this case, the backup will not include high-resolution images. If "
-"you want to put all the files in the backup - set value to 0"
-msgstr ""
-
-#: modules/options/views/tpl/backupOptions.php:159
-msgid "Max size of file in stack(MB):"
-msgstr ""
-
-#: modules/options/views/tpl/backupOptions.php:168
+#: modules/options/views/tpl/backupOptions.php:154
 msgid ""
 " If entering multiple files/directories, then separate them with commas."
-msgstr ""
+msgstr "如果输入多个文件或目录，用逗号分隔。"
 
-#: modules/options/views/tpl/backupOptions.php:180
-msgid "Email address is wrong, please check it: "
-msgstr ""
-
-#: modules/options/views/tpl/backupOptions.php:208
+#: modules/options/views/tpl/backupOptions.php:194
 msgid ""
 "If the checkbox has been set up, then the backup path must be specified in "
 "the Warehouse field against the root directory, where the WordPress is "
 "installed. if the checkbox has been off, then the backup path must be "
 "specified in the Warehouse field against the disk root.\""
 msgstr ""
+"如果该复选框已经建立，那么备份路径必须相对根目录下安装的WordPress，仓库字段中"
+"指定。如果该复选框已经关闭，则备份路径必须相对磁盘根仓库字段中指定。"
 
-#: modules/options/views/tpl/backupOptions.php:209
+#: modules/options/views/tpl/backupOptions.php:195
 msgid "Use relative path"
-msgstr ""
+msgstr "使用相对路径"
 
 #: modules/options/views/tpl/deactivatePage.php:33
 #: modules/pages/views/tpl/deactivatePage.php:33
 msgid "Delete Plugin Data (options, setup data, database tables, etc.)"
-msgstr ""
+msgstr "删除插件数据（选项，设置数据，数据库表等）"
 
 #: modules/options/views/tpl/mainOptionsTab.php:9
 msgid ""
@@ -1825,34 +1819,36 @@ msgid ""
 "directory have writing permissions. Backup restoration can rewrite some of "
 "them."
 msgstr ""
+"要恢复网站备份，请确定在核心文件夹中所有的文件和文件夹拥有可书写权限。备份恢"
+"复会覆盖其中一些。"
 
 #: modules/options/views/tpl/mainOptionsTab.php:29
 msgid "Where to Backup:"
-msgstr ""
+msgstr "备份到"
 
 #: modules/options/views/tpl/mainOptionsTab.php:31
 msgid "Available space:"
-msgstr ""
+msgstr "剩余空间"
 
 #: modules/options/views/tpl/mainOptionsTab.php:39
 msgid "An errors has been occured while initialize warehouse module."
-msgstr ""
+msgstr "在激活仓库模块时产生了错误。"
 
 #: modules/options/views/tpl/mainOptionsTab.php:49
 msgid "Show Log"
-msgstr ""
+msgstr "展示日志"
 
 #: modules/options/views/tpl/mainOptionsTab.php:54
 msgid "Backup already in process."
-msgstr ""
+msgstr "备份已在进行着"
 
 #: modules/pages/views/tpl/pagesTab.php:14
 msgid "Pages Options"
-msgstr ""
+msgstr "页面选项"
 
 #: modules/pages/views/tpl/pagesTab.php:17
 msgid "Recreate Pages"
-msgstr ""
+msgstr "重建页面"
 
 #: modules/pages/views/tpl/pagesTab.php:18
 msgid ""
@@ -1860,80 +1856,78 @@ msgid ""
 "Shopping cart for example, just click on this button - and pages, that you "
 "deleted, will be created again. Do not use it without emergency."
 msgstr ""
+"如果您意外的删除了插件的一个页面，例如登入或购买，或购物车，只要点击这个按"
+"钮，您意外删除的页面将被重新建立。请在紧急情况下才使用。"
 
 #: modules/promo_supsystic/controller.php:6
 msgid "Information was saved. Thank you!"
-msgstr ""
+msgstr "资料已保存。谢谢！"
 
 #: modules/promo_supsystic/mod.php:12
 msgid ""
 "Please, be advised, that this option is available only in PRO version. You "
 "can "
-msgstr ""
+msgstr "请留意，这个选项只存在PRO版本中。您可以"
 
 #: modules/promo_supsystic/mod.php:67
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: modules/promo_supsystic/mod.php:69
 msgid "Website"
-msgstr ""
+msgstr "网址"
 
 #: modules/promo_supsystic/mod.php:70
 msgid "Subject"
-msgstr ""
+msgstr "事由"
 
 #: modules/promo_supsystic/mod.php:71
 msgid "Topic"
-msgstr ""
+msgstr "主题"
 
 #: modules/promo_supsystic/mod.php:72
 msgid "Plugin options"
-msgstr ""
+msgstr "插件选项"
 
 #: modules/promo_supsystic/mod.php:73
 msgid "Report a bug"
-msgstr ""
+msgstr "报告问题"
 
 #: modules/promo_supsystic/mod.php:74
 msgid "Require a new functionallity"
-msgstr ""
+msgstr "需要一个新的功能"
 
 #: modules/promo_supsystic/mod.php:75
 msgid "Other"
-msgstr ""
+msgstr "其他"
 
 #: modules/promo_supsystic/mod.php:77
 msgid "Message"
-msgstr ""
+msgstr "信息"
 
 #: modules/promo_supsystic/mod.php:77
 msgid "Hello Supsystic Team!"
-msgstr ""
+msgstr "Supsystic团队你们好！"
 
 #: modules/promo_supsystic/mod.php:90
 msgid "Schedule <p class=\"bupAIP\">Available In PRO</p>"
-msgstr ""
+msgstr "时间表<p class=\"bupAIP\">PRO版本可用</p>"
 
-#: modules/promo_supsystic/mod.php:96
-msgid "Migration <p class=\"bupAIP\">Available In PRO</p>"
-msgstr ""
-
-#: modules/promo_supsystic/mod.php:106
+#: modules/promo_supsystic/mod.php:100
 msgid "Remote FTP Server"
-msgstr ""
+msgstr "远程FTP服务器"
 
-#: modules/promo_supsystic/mod.php:107
+#: modules/promo_supsystic/mod.php:101
 msgid "Remote SFTP(SCP) Server"
-msgstr ""
+msgstr "远程SFTP(SCP)服务器"
 
-#: modules/promo_supsystic/mod.php:108
+#: modules/promo_supsystic/mod.php:102
 msgid "Remote FTPS Server"
-msgstr ""
+msgstr "远程FTPS服务器"
 
 #: modules/promo_supsystic/views/promo_supsystic.php:23
 msgid "How to get PRO version of plugin for FREE?"
-msgstr ""
+msgstr "如何免费得到PRO版本插件？"
 
 #: modules/promo_supsystic/views/promo_supsystic.php:23
 #, php-format
@@ -1943,10 +1937,13 @@ msgid ""
 "offer! More info you can find here <a target=\"_blank\" href=\"%s\">\"Get "
 "PRO version of any plugin for FREE\"</a>"
 msgstr ""
+"你有令人难以置信的机会，以免费获取 PRO 版本。翻译插件文字!如果你能利用这项优"
+"惠，这将是令人惊叹的!你可以在这里可以找到更多的信息<a target=\"_blank\" href="
+"\"%s\">\"免费获取 任何插件的PRO 版本\"</a>"
 
 #: modules/promo_supsystic/views/promo_supsystic.php:24
 msgid "Translation"
-msgstr ""
+msgstr "翻译"
 
 #: modules/promo_supsystic/views/promo_supsystic.php:24
 #, php-format
@@ -1957,6 +1954,9 @@ msgid ""
 "translation Backup WordPress plugin in your language and get a Premium "
 "license for FREE. <a target=\"_blank\" href=\"%s\">Contact us</a>."
 msgstr ""
+"Supsystic 谷歌地图插件提供了所有可用的语言。如果你的语言不是可用的你的插件将"
+"默认为英语。<br><b>可用的翻译: 英语</b><br>翻译或更新您的语言翻译 WordPress "
+"备份插件和免费获得高级许可证。<a target=\"_blank\" href=\"%s\">联系我们</a>。"
 
 #: modules/promo_supsystic/views/promo_supsystic.php:41
 #, php-format
@@ -1964,6 +1964,8 @@ msgid ""
 "There were some problem while trying to retrive our news, but you can always "
 "check all list <a target=\"_blank\" href=\"%s\">here</a>."
 msgstr ""
+"在检索我们的新闻时发生一些问题，但你还是可以<a target=\"_blank\" href=\"%s\">"
+"在这里</a>检查所有列表。"
 
 #: modules/promo_supsystic/views/promo_supsystic.php:51
 #: modules/promo_supsystic/views/promo_supsystic.php:52
@@ -1971,7 +1973,7 @@ msgstr ""
 #: modules/promo_supsystic/views/promo_supsystic.php:59
 #: modules/promo_supsystic/views/promo_supsystic.php:60
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 #: modules/promo_supsystic/views/promo_supsystic.php:51
 #: modules/promo_supsystic/views/promo_supsystic.php:52
@@ -1979,99 +1981,93 @@ msgstr ""
 #: modules/promo_supsystic/views/promo_supsystic.php:59
 #: modules/promo_supsystic/views/promo_supsystic.php:60
 msgid "No"
-msgstr ""
+msgstr "否"
 
 #: modules/promo_supsystic/views/tpl/adminFooter.php:4
 msgid "Version"
-msgstr ""
+msgstr "版本"
 
 #: modules/promo_supsystic/views/tpl/adminFooter.php:9
 msgid "Get"
-msgstr ""
+msgstr "得到"
 
 #: modules/promo_supsystic/views/tpl/adminFooter.php:13
 msgid "Support"
-msgstr ""
+msgstr "支援"
 
 #: modules/promo_supsystic/views/tpl/adminSendStatNote.php:9
 msgid "No, don\\'t send"
-msgstr ""
+msgstr "不，别发送"
 
 #: modules/promo_supsystic/views/tpl/adminSendStatNote.php:26
 msgid "Yes, send statistics"
-msgstr ""
-
-#: modules/promo_supsystic/views/tpl/migrationPromo.php:5
-msgid ""
-"On this tab with PRO version of plugin, you can migrate this site to other "
-"hosting."
-msgstr ""
+msgstr "是，发送统计资料"
 
 #: modules/promo_supsystic/views/tpl/overviewTabContent.php:5
 msgid "FAQ and Documentation"
-msgstr ""
+msgstr "常见问题和文档"
 
 #: modules/promo_supsystic/views/tpl/overviewTabContent.php:17
 msgid "Check all FAQs"
-msgstr ""
+msgstr "查询所有常见问题"
 
 #: modules/promo_supsystic/views/tpl/overviewTabContent.php:22
 msgid "Video tutorial"
-msgstr ""
+msgstr "视频教程"
 
 #: modules/promo_supsystic/views/tpl/overviewTabContent.php:31
 msgid "Server Settings"
-msgstr ""
+msgstr "服务器设定"
 
 #: modules/promo_supsystic/views/tpl/overviewTabContent.php:44
 msgid "News"
-msgstr ""
+msgstr "消息"
 
 #: modules/promo_supsystic/views/tpl/overviewTabContent.php:50
 msgid "All news and info"
-msgstr ""
+msgstr "所有的消息和资讯"
 
 #: modules/promo_supsystic/views/tpl/overviewTabContent.php:55
 msgid "Contact form"
-msgstr ""
+msgstr "联系表单"
 
 #: modules/promo_supsystic/views/tpl/overviewTabContent.php:89
 msgid "Send email"
-msgstr ""
+msgstr "发送电邮"
 
 #: modules/promo_supsystic/views/tpl/overviewTabContent.php:98
 msgid ""
 "Your email was send, we will try to respond to you as soon as possible. "
 "Thank you for support!"
-msgstr ""
+msgstr "您的电邮已发送，我们将尽快给您回复。谢谢您的支持。"
 
 #: modules/templates/mod.php:11
 msgid "Templates"
-msgstr ""
+msgstr "模板"
 
 #: modules/templates/views/tpl/noTemplates.php:1
 msgid "No Templates were found"
-msgstr ""
+msgstr "找不到模板"
 
 #: modules/templates/views/tpl/templatesTab.php:42
 msgid "Template Updated. Reload page to see results."
-msgstr ""
+msgstr "模板更新了。重新加载页面以看到结果。"
 
 #: modules/templates/views/tpl/templatesTab.php:72
 msgid "Deactivate"
-msgstr ""
+msgstr "停用"
 
 #: modules/warehouse/mod.php:73
 #, php-format
 msgid "Folder \"%s\" is not writable."
-msgstr ""
+msgstr "文件夹\"%s\"不是可写的。"
 
 #: modules/warehouse/mod.php:85
 #, php-format
 msgid "Can't create warehouse directory \"%s\"."
-msgstr ""
+msgstr "无法建立“%s\"储存文件夹。"
 
 #: modules/warehouse/models/temporary.php:69
 #, php-format
 msgid "Failed to clear temporary folder by pattern \"%s\""
-msgstr ""
+msgstr "无法删除\"%s\"模式的暂时文件夹。"

@@ -62,9 +62,10 @@ jQuery(document).ready(function() {
 				msgElID: 'bupOnedriveAlerts-' + rowId,
 				data: {
 					reqType: 'ajax',
-				page:    'onedrive',
-				action:  'downloadAction',
-					file_id: fileId
+					page:    'onedrive',
+					action:  'downloadAction',
+					file_id: fileId,
+					fileName: fileName
 				},
 				onSuccess: function (response) {
 					if (!response.error) {
@@ -73,8 +74,8 @@ jQuery(document).ready(function() {
 							msgElID: 'bupOnedriveAlerts-' + rowId,
 							data: {
 								reqType: 'ajax',
-							page:    'backup',
-							action:  'restoreAction',
+								page:    'backup',
+								action:  'restoreAction',
 								filename: fileName,
 								'encryptDBSecretKey': secretKey
 							},

@@ -27,6 +27,10 @@ class promo_supsysticControllerBup extends controllerBup {
         return $this->render('schedulePromo');
     }
 
+    public function getPromoMigrationAction() {
+        return $this->render('migrationPromo');
+    }
+
     public function sendStatistic(){
         $res = new responseBup();
         $req = reqBup::get('post');

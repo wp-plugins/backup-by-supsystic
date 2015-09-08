@@ -295,7 +295,7 @@ class gdriveModelBup extends modelBup {
      * @param  array $files
      * @return integer
      */
-    public function upload($files) {
+    public function upload($files, $stacksFolder = '') {
 		if(is_array($files) === false) {
 			$files = explode(',', $files);
 		}
@@ -307,7 +307,7 @@ class gdriveModelBup extends modelBup {
 		$client  = $this->getClient();
 		$service = new Google_DriveService($client);
 
-        $domain = $this->getDomain();
+        $domain = $this->getDomain(basename($stacksFolder));
 
         if (!$domain) {
             $this->pushError(__('Unable to get parent folder ID.', BUP_LANG_CODE));
@@ -319,7 +319,7 @@ class gdriveModelBup extends modelBup {
         $parent->setId($domain['id']);
 
 		foreach($files as $storageFile) {
-			if(file_exists($filepath = $this->getBackupsPath() . basename($storageFile))) {
+			if(file_exists($filepath = $this->getBackupsPath() . $stacksFolder . basename($storageFile))) {
 
 				// Ugly hack to prevent log-*.txt upload
 				if(pathinfo($filepath, PATHINFO_EXTENSION) != 'txt') {
@@ -408,10 +408,11 @@ class gdriveModelBup extends modelBup {
 		}
 		return $this->_currentDomain;
 	}
-    public function getDomain()
+    public function getDomain($stacksFolder = '')
     {
         $rootObjects   = $this->getRootObjects();
         $currentDomain = $this->_getCurrentDomain();
+        $domainFolder = false;
 
         $folders = array();
         $root    = null;
@@ -438,19 +439,38 @@ class gdriveModelBup extends modelBup {
             if ($folder['title'] === $currentDomain) {
                 foreach ($folder['parents'] as $parent) {
                     if ($parent['id'] === $root['id']) {
-                        return $folder;
+                        $domainFolder = $folder;
+                        break;
                     }
                 }
             }
         }
 
-        return $this->createFolder($currentDomain, $root['id']);
+        if(!$domainFolder)
+            $domainFolder = $this->createFolder($currentDomain, $root['id']);
+
+        if(!$stacksFolder) {
+            return $domainFolder;
+        } else {
+            //creating folder for backup stacks
+            foreach ($folders as $folder) {
+                if ($folder['title'] === $stacksFolder) {
+                    foreach ($folder['parents'] as $parent) {
+                        if ($parent['id'] === $domainFolder['id']) {
+                            return $folder;
+                        }
+                    }
+                }
+            }
+
+            return $this->createFolder($stacksFolder, $domainFolder['id']);
+        }
     }
 
-    public function getDomainFiles()
+    public function getDomainFiles($stacksFolder = false, $getStacks = false)
     {
         $pageToken = null;
-        $domain    = $this->getDomain();
+        $domain    = $this->getDomain($stacksFolder);
         $child     = array();
 
         if (!$domain) {
@@ -485,17 +505,29 @@ class gdriveModelBup extends modelBup {
 
         // Formatting uploading data files for use their on backups page
         $files = array();
-        foreach ($child as $file) {
-            $backupInfo = $service->files->get($file['id']);
-            $backupInfo = $this->getBackupInfoByFilename($backupInfo['title']);
+        if($getStacks) {
+            $i=0;
+            foreach ($child as $file) {
+                $fileInfo = $service->files->get($file['id']);
+                if(!empty($fileInfo['downloadUrl']) && !empty($fileInfo['title'])) {
+                    $files[$i]['downloadUrl'] = $fileInfo['downloadUrl'];
+                    $files[$i]['title'] = $fileInfo['title'];
+                    $i++;
+                }
+            }
+        } else {
+            foreach ($child as $file) {
+                $backupInfo = $service->files->get($file['id']);
+                $backupInfo = $this->getBackupInfoByFilename($backupInfo['title']);
 
-            if(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql'){
-                $files[$backupInfo['id']]['gdrive']['sql'] = $service->files->get($file['id']);
-                $files[$backupInfo['id']]['gdrive']['sql']['backupInfo'] = $backupInfo;
-                $files[$backupInfo['id']]['gdrive']['sql']['backupInfo'] = dispatcherBup::applyFilters('addInfoIfEncryptedDb', $files[$backupInfo['id']]['gdrive']['sql']['backupInfo']);;
-            }elseif(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'zip'){
-                $files[$backupInfo['id']]['gdrive']['zip'] = $service->files->get($file['id']);
-                $files[$backupInfo['id']]['gdrive']['zip']['backupInfo'] = $backupInfo;
+                if (!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql') {
+                    $files[$backupInfo['id']]['gdrive']['sql'] = $service->files->get($file['id']);
+                    $files[$backupInfo['id']]['gdrive']['sql']['backupInfo'] = $backupInfo;
+                    $files[$backupInfo['id']]['gdrive']['sql']['backupInfo'] = dispatcherBup::applyFilters('addInfoIfEncryptedDb', $files[$backupInfo['id']]['gdrive']['sql']['backupInfo']);;
+                } else {
+                    $files[$backupInfo['id']]['gdrive']['zip'] = $service->files->get($file['id']);
+                    $files[$backupInfo['id']]['gdrive']['zip']['backupInfo'] = $backupInfo;
+                }
             }
         }
 
@@ -511,7 +543,7 @@ class gdriveModelBup extends modelBup {
 	 * @since  1.1
 	 * @return boolean|array
 	 */
-	public function getUploadedFiles() {
+	public function getUploadedFiles($stacksFolder = false, $getStacks = false) {
 		if($this->isAuthenticated() === false) {
 			return false;
 		}
@@ -539,7 +571,7 @@ class gdriveModelBup extends modelBup {
         //
 		// return $list;
 		//
-		return $this->getDomainFiles();
+		return $this->getDomainFiles($stacksFolder, $getStacks);
 	}
 
 	/**
@@ -670,7 +702,7 @@ class gdriveModelBup extends modelBup {
         }
         return $token;
     }
-    public function isUserAuthorizedInService()
+    public function isUserAuthorizedInService($destination = null)
     {
         $isAuthorized = $this->isAuthenticated() ? true : false;
         if(!$isAuthorized)

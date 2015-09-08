@@ -165,8 +165,8 @@ class amazonControllerBup extends controllerBup {
             $logFilename = pathinfo($request['filename']);
             $model->remove($logFilename['filename'].'.txt');
         }
-        
-        $result = $this->getModel()->remove($request['filename']);
+
+        $result = $this->getModel()->remove($request['filename'], pathinfo($request['filename'], PATHINFO_EXTENSION) == false ? true : false);
 
         switch($result) {
             case 200: 
@@ -193,15 +193,45 @@ class amazonControllerBup extends controllerBup {
      * @since  1.1
      */
     public function downloadAction() {
-        $request  = reqBup::get('post');
-        $response = new responseBup();
-        $model    = $this->getModel();
+        $request   = reqBup::get('post');
+        $response  = new responseBup();
+        /**@var amazonModelBup $model*/
+        $model     = $this->getModel();
+        $extension = pathinfo($request['filename'], PATHINFO_EXTENSION);
+        $filename = pathinfo($request['filename'], PATHINFO_BASENAME);
 
-        if($model->download($request['filename']) === 201) {
-            $filename = pathinfo($request['filename']);
-            $response->addData(array('filename' => $filename['basename']));
+        if($extension === 'sql' || $extension === 'zip') {
+            if (file_exists($model->getBackupsPath() . $filename) || $model->download($request['filename']) === 201) {
+                $response->addData(array('filename' => $filename));
+            } else {
+                $response->addError(array(__('File not found on Amazon S3', BUP_LANG_CODE)));
+            }
         } else {
-            $response->addError(array(__('File not found on Amazon S3', BUP_LANG_CODE)));
+            $stacksFolder = basename($request['filename']) . '/';
+            $stacksFileList = $model->getUploadedFiles($stacksFolder);
+
+            if(!empty($stacksFileList)) {
+                $backupPath = $model->getBackupsPath();
+                $result = true;
+
+                if(!file_exists($backupPath . $stacksFolder)) {
+                    frameBup::_()->getModule('warehouse')->getController()->getModel('warehouse')->create($backupPath . $stacksFolder . DS);
+                }
+
+                foreach($stacksFileList as $stack) {
+                    if(!file_exists($backupPath . $stacksFolder . basename($stack)))
+                        $result = ($model->download($stack, $stacksFolder) === 201 && $result) ? true : false;
+                }
+
+                if($result) {
+                    $response->addData(array('filename' => basename($stacksFolder)));
+                } else {
+                    $response->addError(__('All stacks not downloaded!', BUP_LANG_CODE));
+                    frameBup::_()->getModule('backup')->getController()->getModel('filesystem')->deleteLocalBackup(array($backupPath . $stacksFolder));
+                }
+            } else {
+                $response->addError(__('Files not found on Amazon S3!', BUP_LANG_CODE));
+            }
         }
 
         $response->ajaxExec();

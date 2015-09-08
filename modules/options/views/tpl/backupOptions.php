@@ -147,6 +147,20 @@
                 <hr/>
 
                 <table class="form-table" style="width: 100% !important;">
+<!--                    <tr>-->
+<!--                        <td class="col-w-60perc">-->
+<!--                            <i class="fa fa-question supsystic-tooltip" title="--><?php //_e('Backup File System is composed of of stacks. If the plugin can not create backup of the file system (for example it hangs) - try to reduce the number of files in the stack.', BUP_LANG_CODE) ?><!--"></i>--><?php //echo __('Files per stack:', BUP_LANG_CODE); ?>
+<!--                            <br/><br/>-->
+<!--                            --><?php //echo htmlBup::text( 'opt_values[files_per_stack]', array('attrs'=>'class="excludeInput" style="width: 100% !important"', 'value' => frameBup::_()->getModule('options')->get('files_per_stack')) ); ?>
+<!--                        </td>-->
+<!--                    </tr>-->
+                    <tr>
+                        <td class="col-w-60perc">
+                            <i class="fa fa-question supsystic-tooltip" title="<?php _e('The maximum size of a single file which will be added to the stack. If the plugin can not create backup of the file system (for example it hangs) - try to reduce the size. It is not recommended to put a value less than 10MB, because in this case, the backup will not include high-resolution images. If you want to put all the files in the backup - set value to 0', BUP_LANG_CODE) ?>"></i><?php echo __('Max size of file in stack(MB):', BUP_LANG_CODE); ?>
+                            <br/><br/>
+                            <?php echo htmlBup::text( 'opt_values[max_file_size_in_stack_mb]', array('attrs'=>'class="excludeInput" style="width: 100% !important"', 'value' => frameBup::_()->getModule('options')->get('max_file_size_in_stack_mb')) ); ?>
+                        </td>
+                    </tr>
                     <tr>
                         <td class="col-w-60perc">
                             <i class="fa fa-question supsystic-tooltip" title="<?php _e('Specify and enter files and folders names which must not be backed up.', BUP_LANG_CODE) ?>"></i><?php echo __('Exclude:', BUP_LANG_CODE); ?>
@@ -163,7 +177,7 @@
                             </div>
                             <input type="hidden" value="<?php echo frameBup::_()->getModule('options')->get('email_ch'); ?>" name="opt_values[email_ch]">
 
-                            <span class="emailAddress" <?php echo frameBup::_()->getModule('options')->get('email_ch') ? '' : 'style="display:none"';?> >
+                            <span class="emailAddress" <?php echo frameBup::_()->getModule('options')->get('email_ch') ? '' : 'style="display:none"';?> data-wrong-email-msg="<?php _e('Email address is wrong, please check it: ', BUP_LANG_CODE); ?>">
                                 <br/><br/>
                                 <?php echo htmlBup::text( 'opt_values[email]', array('attrs'=>'class="excludeInput" placeholder="example@mail.com" title="" style="width: 100% !important"', 'value' => frameBup::_()->getModule('options')->get('email')) );?>
                             </span>

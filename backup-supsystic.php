@@ -3,7 +3,7 @@
  * Plugin Name: Backup by Supsystic
  * Plugin URI: http://supsystic.com/plugins/backup
  * Description:  Complete online backup + restoration. Manual or automate backup to Dropbox, FTP and Email. Custom backup files, database, plugins
- * Version: 1.3.1
+ * Version: 2.0.1
  * Author: Supsystic
  * Author URI: http://supsystic.com/
  **/

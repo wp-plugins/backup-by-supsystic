@@ -34,25 +34,6 @@ jQuery(document).ready(function($) {
 	var j = jQuery.noConflict();
 
 	var inProcessMessage = j('#inProcessMessage');
-	if (inProcessMessage.length) {
-		var refreshId = setInterval(function () {
-			j.post(ajaxurl, {
-				pl: 'bup',
-				reqType: 'ajax',
-				page: 'backup',
-				action: 'checkProcessAction'
-			}).success(function (response) {
-				response = j.parseJSON(response);
-
-				if (response.data.in_process) {
-					inProcessMessage.show();
-				} else {
-					inProcessMessage.hide();
-					j('[name="backupnow"]').show();
-				}
-			});
-		}, 15000);
-	}
 
 	// Warehouse path
 	var warehouseInput = j('#warehouseInput'),
@@ -115,7 +96,15 @@ jQuery(document).ready(function($) {
 		var isAuthenticated = parseInt(jQuery('#bup-is-authenticated').val());
 		var msgForNotAuthenticated = jQuery('#bup-msg-for-not-authenticated').val();
 		var authenticateBlockId = jQuery('#bup-authenticate-block-id').val();
+		var emailAddress = jQuery('.emailAddress input[type=text]').val();
+		var emailNotify = jQuery("input.emailCh").prop('checked');
 		jQuery('span.bupErrorMsg').html('');
+
+		if(emailNotify && emailAddress && !isValidEmailAddress(emailAddress)) {
+			var emailErrorMsg = jQuery('.emailAddress').data('wrong-email-msg');
+			jQuery('#BUP_MESS_MAIN').addClass('bupErrorMsg').html(emailErrorMsg + emailAddress);
+			return false;
+		}
 
 		if(!isAuthenticated) {
 			$('html, body').animate({
@@ -158,11 +147,7 @@ jQuery(document).ready(function($) {
 			files          = jQuery(this).attr('data-files'),
 			id             = jQuery(this).attr('id');
 
-		/*console.log('Module: ' + providerModule);
-		console.log('Action: ' + providerAction);
-		console.log('Files: '  + files);*/
 		BackupModule.upload(providerModule, providerAction, files, id);
-
 	});
 
 	j('.bupSaveRestoreSetting').on('click', function(clickEvent) {
@@ -219,8 +204,10 @@ var BackupModule = {
 		});
 	},
 	create: function(form) {
-		jQuery('input[name="backupnow"]').val('Cancel');
+		//jQuery('input[name="backupnow"]').val('Cancel');
+		jQuery('input[name="backupnow"]').hide();
 		jQuery('#bupInfo').hide();
+		jQuery('#bupCompletePercent').html('');
 		var progress = jQuery('.main-progress-bar');
 
         jQuery('.' + progress.attr('class') + ' .progress-bar span').css({ width: '1%' });
@@ -229,59 +216,47 @@ var BackupModule = {
 		jQuery(form).sendFormBup({
 			msgElID: 'BUP_MESS_MAIN',
 			onSuccess: function(response) {
+				if(response.data.backupLog != undefined) {
+					//backupLog.html(response.data.backupLog);
+				}
 
-                if (response.data.files === undefined) {
-					if(response.data.tables !== undefined && response.data.tables.length > 0) {
-						createDatabaseBackupPerQuery(response.data.dbDumpFileName, response.data.tables, response.data.per_stack, false);
-						return;
-					}
+				if(response.data.backupComplete) {
+					onBackupFullCompleteAction();
+					return;
+				}
 
-					jQuery('input[name="backupnow"]').val('Start Backup');
-					progress.hide();
-					jQuery('#BUP_SHOW_LOG').hide();
-					jQuery('#bupInfo').show();
-					jQuery('#bupLogText').html('Log is clear.');
-                    return;
-                }
+				var backupId = response.data.backupId;
 
-                var files = response.data.files,
-                    perStack = response.data.per_stack,
-                    stacks = bupGetFilesStacks(files, perStack),
-                    total = stacks.length, i = 0;
+				var refreshLog = setInterval(function () {
+					jQuery.post(ajaxurl, {
+						pl: 'bup',
+						reqType: 'ajax',
+						page: 'backup',
+						action: 'getBackupLog',
+						backupId: backupId
+					}).success(function (response) {
+						response = jQuery.parseJSON(response);
 
-                if (stacks.length < 1) {
-                    progress.hide();
-                    jQuery('#BUP_MESS_MAIN')
-                        .addClass('bupSuccessMsg')
-                        .text('Could not find any files to backup based on your settings.');
-                }
+						if(response.data.backupLog != undefined) {
+							jQuery('span.bupShowLogDlg').data('backup-log', response.data.backupLog).attr('data-backup-log', response.data.backupLog);
+						}
 
-                jQuery.each(stacks, function(index, stack) {
-                    bupGetTemporaryArchive(stack, progress, function() {
+						if(response.data.backupProcessPercent != undefined && response.data.backupProcessPercent) {
+							jQuery('#bupCompletePercent').html(response.data.backupProcessPercent + '%');
+						} else {
+							jQuery('#bupCompletePercent').html('');
+						}
 
-                        var span = jQuery('.progress-bar').find('span'),
-                            width = jQuery.trim(parseFloat(jQuery(span[0]).attr('style').split(':')[1])), // :D
-                            current, percent;
+						if(response.data.backupMessage != undefined && response.data.backupMessage) {
+							jQuery('#BUP_MESS_MAIN').addClass('bupSuccessMsg').html(response.data.backupMessage);
+						}
 
-                        i++;
-
-                        percent = (i / total) * 100;
-
-                       /* console.log('Stack ' + i + ' of ' + total);
-                        console.log('Complete: ' + percent + '%');*/
-                        jQuery('#BUP_MESS_MAIN').addClass('bupSuccessMsg').text('Please wait while the plugin gathers information  (' + Math.round(percent) + '%)');
-                        jQuery('#bupCompletePercent').text(Math.round(percent) + '%');
-
-                        jQuery(span[0]).css({ width: percent + '%' });
-
-                        if (percent === 100) {
-                            setTimeout(function() {
-                                sendCompleteRequest(progress);
-                                jQuery('#BUP_MESS_MAIN').addClass('bupSuccessMsg').text('Processing file stacks, please wait. It may take some time (depending on the number and size of files)');
-                            }, 1000);
-                        }
-                    });
-                });
+						if (response.data.backupComplete) {
+							clearInterval(refreshLog);
+							onBackupFullCompleteAction();
+						}
+					});
+				}, 5000);
 			}
 		});
 //		jQuery('#BUP_SHOW_LOG').hide();
@@ -319,164 +294,6 @@ var BackupModule = {
 	}
 };
 
-function bupGetFilesStacks(files, num) {
-    var stack = [],
-        parts = Math.ceil(files.length / num);
-
-    for(var i = 0; i < parts; i++) {
-        stack.push(bupGetStack(files, num));
-    }
-
-    return stack;
-}
-
-function bupGetStack(files, num) {
-
-    var stack = [];
-
-    if (files.length < num) {
-        num = files.length;
-    }
-
-    for(var j = 0; j < num; j++) {
-        stack.push(files.pop());
-    }
-
-    return stack;
-}
-
-function bupGetTemporaryArchive(files, progress, cb) {
-    jQuery.postq('bupTempArchive', ajaxurl,{
-        reqType: 'ajax',
-        page:    'backup',
-        action:  'createStackAction',
-        files:   files,
-        pl:      'bup'
-    }, function (response) {
-
-        response = jQuery.parseJSON(response);
-
-        cb();
-        if (!response.error) {
-            jQuery.postq('bupWriteTempArchive', ajaxurl, {
-                reqType: 'ajax',
-                page: 'backup',
-                action: 'writeTmpDbAction',
-                tmp: response.data.filename,
-                pl: 'bup'
-            });
-        } else {
-            progress.hide();
-        }
-    });
-
-/*    jQuery.postq('bupTempArchive', {
-        data: {
-            reqType:  'ajax',
-            page:     'backup',
-            action:   'createStackAction',
-            files:    files
-        },
-        onSuccess: function(response) {
-
-            cb();
-
-            if (response.error === false) {
-                jQuery.sendFormBup({
-                    data: {
-                        reqType:  'ajax',
-                        page:     'backup',
-                        action:   'writeTmpDbAction',
-                        tmp:      response.data.filename
-                    }
-                });
-            } else {
-                progress.hide(function() {
-                });
-            }
-        }
-    });*/
-}
-
-function createDatabaseBackupPerQuery(dumpFileName, tables, perStack, zipBackupExist){
-	perStack = parseInt(perStack);
-	var i          = 0,
-		generalI   = 0,
-		stack      = [],
-		subStack   = [],
-		firstQuery = 1;
-
-	jQuery.each(tables, function(index, element) {
-		subStack.push(element);
-		i++;
-		generalI++;
-
-		if(i === perStack || generalI === tables.length){
-			stack.push(subStack);
-			i = 0;
-			subStack = [];
-		}
-	});
-
-	var totalStacksNum = stack.length;
-	i = 0;
-
-	jQuery.each(stack, function(index, element) {
-		jQuery.postq('bupCreateDbPerQuery', ajaxurl,{
-			reqType:  'ajax',
-			page:     'backup',
-			action:   'createDBDumpPerStack',
-			filename: jQuery.parseJSON( dumpFileName ),
-			stack: element,
-			firstQuery: firstQuery,
-			pl: 'bup'
-		}, function (response) {
-			response = jQuery.parseJSON(response);
-			i++;
-
-			if(i === totalStacksNum && !response.error){
-				jQuery.sendFormBup({
-					msgElID: 'BUP_MESS_MAIN',
-					data: {
-						reqType:  'ajax',
-						page:     'backup',
-						action:   'createAction',
-						filesBackupComplete: true,
-						databaseBackupComplete: true
-					},
-					onSuccess: function(){
-						onBackupFullCompleteAction();
-					}
-				});
-			} else if(response.error){
-				jQuery('#BUP_MESS_MAIN').addClass('bupErrorMsg').html(response.errors.join('<br>'));
-				onBackupFullCompleteAction();
-			}
-		});
-
-		firstQuery = 0;
-	});
-}
-
-function sendCompleteRequest(progress) {
-    jQuery.sendFormBup({
-        msgElID: 'BUP_MESS_MAIN',
-        data: {
-            reqType:  'ajax',
-            page:     'backup',
-            action:   'createAction',
-            complete: true
-        },
-        onSuccess: function(response) {
-			if(response.data.dbDumpFileName !== undefined && response.data.tables !== undefined && response.data.per_stack !== undefined) {
-				createDatabaseBackupPerQuery(response.data.dbDumpFileName, response.data.tables, response.data.per_stack, true);
-				return;
-			}
-			onBackupFullCompleteAction();
-        }
-    });
-}
-
 function bupShowLogDlg() {
 	var $container = jQuery('#bupShowLogDlg').dialog({
 		modal:    true,
@@ -488,18 +305,7 @@ function bupShowLogDlg() {
 		var j = jQuery.noConflict();
 		$container.dialog('open');
 
-		j.post(ajaxurl, {
-			pl: 'bup',
-			reqType: 'ajax',
-			page: 'backup',
-			action: 'getBackupLog'
-		}).success(function (response) {
-				response = j.parseJSON(response);
-				if(response.data.backupLog){
-					var logText = response.data.backupLog.join('<br>');
-					jQuery('#bupLogText').html(logText);
-				}
-		});
+		jQuery('#bupLogText').html(jQuery('span.bupShowLogDlg').data('backup-log'));
 		return false;
 	});
 }
@@ -522,7 +328,8 @@ function bupBackupsShowLogDlg() {
 }
 
 function onBackupFullCompleteAction(){
-	jQuery('input[name="backupnow"]').val('Start Backup');
+	//jQuery('input[name="backupnow"]').val('Start Backup');
+	jQuery('input[name="backupnow"]').show();
 	jQuery('.main-progress-bar').hide();
 	jQuery('#BUP_SHOW_LOG').hide();
 	jQuery('#bupInfo').show();

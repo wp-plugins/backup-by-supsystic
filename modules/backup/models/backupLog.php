@@ -8,6 +8,8 @@ class backupLogModelBup extends modelBup
     const KEY = 'bup_logger';
     const BUP_DIR_SETTINGS_KEY = 'bup_dir_setting';
     const CURRENT_BACKUP_FILES_NAME = 'bup_current_backup_files_name';
+    const MAX_FILES_IN_BACKUP = 'bup_max_file_size_in_backup';
+    const PATH_TO_LARGEST_FILE_IN_BACKUP = 'bup_path_to_largest_file_in_backup';
 
     /**
      * Write heading message
@@ -45,6 +47,12 @@ class backupLogModelBup extends modelBup
         if (isset($_SESSION[self::CURRENT_BACKUP_FILES_NAME])) {
             unset ($_SESSION[self::CURRENT_BACKUP_FILES_NAME]);
         }
+        if (isset($_SESSION[self::MAX_FILES_IN_BACKUP])) {
+            unset ($_SESSION[self::MAX_FILES_IN_BACKUP]);
+        }
+        if (isset($_SESSION[self::PATH_TO_LARGEST_FILE_IN_BACKUP])) {
+            unset ($_SESSION[self::PATH_TO_LARGEST_FILE_IN_BACKUP]);
+        }
     }
 
     /**
@@ -64,7 +72,7 @@ class backupLogModelBup extends modelBup
 
     public function getContents()
     {
-        return implode(PHP_EOL, $_SESSION[self::KEY]);
+        return !empty($_SESSION[self::KEY]) ? implode(PHP_EOL, $_SESSION[self::KEY]) : null;
     }
 
     /** Write to the session */
@@ -141,5 +149,21 @@ class backupLogModelBup extends modelBup
 
     public function getCurrentBackupFilesName(){
         return !empty($_SESSION[self::CURRENT_BACKUP_FILES_NAME]) ? $_SESSION[self::CURRENT_BACKUP_FILES_NAME] : null;
+    }
+
+    public function setMaxFileSizeInBackup($size){
+        $_SESSION[self::MAX_FILES_IN_BACKUP] = $size;
+    }
+
+    public function getMaxFileSizeInBackup(){
+        return !empty($_SESSION[self::MAX_FILES_IN_BACKUP]) ? $_SESSION[self::MAX_FILES_IN_BACKUP] : false;
+    }
+
+    public function setPathToLargestFileInBackup($size){
+        $_SESSION[self::PATH_TO_LARGEST_FILE_IN_BACKUP] = $size;
+    }
+
+    public function getPathToLargestFileInBackup(){
+        return !empty($_SESSION[self::PATH_TO_LARGEST_FILE_IN_BACKUP]) ? $_SESSION[self::PATH_TO_LARGEST_FILE_IN_BACKUP] : false;
     }
 }

@@ -371,4 +371,11 @@ class utilsBup {
 	static public function checkPRO() {
         return frameBup::_()->getModule('license') ? true : false;
     }
+	static public function isSessionStarted() {
+		if(version_compare(PHP_VERSION, '5.4.0') >= 0 && function_exists('session_status')) {
+			return !(session_status() == PHP_SESSION_NONE);
+		} else {
+			return !(session_id() == '');
+		}
+	}
 }

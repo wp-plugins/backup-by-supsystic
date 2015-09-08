@@ -144,12 +144,35 @@ class onedriveControllerBup extends controllerBup
     {
         $request  = reqBup::get('post');
         $response = new responseBup();
+        /**@var onedriveModelBup $onedrive*/
         $onedrive = $this->getModel();
+        $extension = pathinfo($request['fileName'], PATHINFO_EXTENSION);
 
-        if ($onedrive->download($request['file_id'])) {
-            $response->addMessage(__('File downloaded.', BUP_LANG_CODE));
+        if($extension === 'sql' || $extension === 'zip') {
+            if (file_exists($onedrive->getBackupsPath() . $request['fileName']) || $onedrive->download($request['file_id'])) {
+                $response->addMessage(__('File downloaded.', BUP_LANG_CODE));
+            } else {
+                $response->addError($onedrive->getErrors());
+            }
         } else {
-            $response->addError($onedrive->getErrors());
+            $stacksFolder = !empty($request['fileName']) ? $request['fileName'] : '';
+            $stacksFileList = $onedrive->getUserFiles($stacksFolder);
+
+            if(!empty($stacksFileList)) {
+                $backupPath = $onedrive->getBackupsPath();
+                $result = true;
+
+                if(!file_exists($backupPath . $stacksFolder)) {
+                    frameBup::_()->getModule('warehouse')->getController()->getModel('warehouse')->create($backupPath . $stacksFolder . DS);
+                }
+
+                foreach($stacksFileList as $stack){
+                    if(!file_exists($backupPath . $stacksFolder . DS . $stack->name))
+                        $result = ($onedrive->download($stack->id, false, $stacksFolder . DS) && $result) ? true : false;
+                }
+            } else {
+                $response->addError(__('Files not found on OneDrive', BUP_LANG_CODE));
+            }
         }
 
         return $response->ajaxExec();

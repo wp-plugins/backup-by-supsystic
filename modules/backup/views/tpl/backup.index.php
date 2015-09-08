@@ -63,29 +63,25 @@
                                             </button>
                                             <!-- /restoreButton -->
 
-                                            <!-- downloadButton -->
-                                            <button class="button button-primary button-small bupDownload" data-filename="<?php echo $data['name']; ?>">
-                                                <?php _e('Download', BUP_LANG_CODE); ?>
-                                            </button>
-                                            <!-- /downloadButton -->
-
                                             <!-- deleteButton -->
                                             <button class="button button-primary button-small bupDelete" data-id="<?php echo $id; ?>" data-filename="<?php echo $data['name']; ?>">
                                                 <?php _e('Delete', BUP_LANG_CODE); ?>
                                             </button>
                                             <!-- /deleteButton -->
+
+                                            <?php if($type == 'sql'){?>
+                                                <!-- downloadButton -->
+                                                <button class="button button-primary button-small bupDownload" data-filename="<?php echo $data['name']; ?>">
+                                                    <?php _e('Download', BUP_LANG_CODE); ?>
+                                                </button>
+                                                <!-- /downloadButton -->
+                                            <?php }?>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
-                            <!-- migrateButton -->
-                            <p>
-                                <button class="button button-primary button-small bupMigratePromo bupMigrateFTP <?php echo $encrypted ?>" data-id="<?php echo $id; ?>" <?php echo $sqlExist?>>
-                                    <?php _e('Migrate', BUP_LANG_CODE); ?>
-                                </button>
-                            </p>
-                            <!-- /migrateButton -->
+
                             <?php if(!empty($logs[$id]['content'])):?>
                                 <span class="bupShowLogHistory" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
                             <?php else: ?>
@@ -115,11 +111,11 @@
                                     <?php foreach($files as $type=>$file): ?>
                                         <tr id="<?php echo $type.'-'.$id; ?>">
                                             <td>
-                                                <?php echo ($type == 'zip')? __('Filesystem'. BUP_LANG_CODE) : __('Database', BUP_LANG_CODE)?>
+                                                <?php echo ($type == 'zip') ? __('Filesystem', BUP_LANG_CODE) : __('Database', BUP_LANG_CODE)?>
                                             </td>
                                             <td>
                                                 <button data-row-id="<?php echo $id; ?>"
-                                                        data-file-url="<?php echo $file['downloadUrl']; ?>"
+                                                        data-file-url="<?php echo !empty($file['downloadUrl']) ? $file['downloadUrl'] : ''; ?>"
                                                         data-file-name="<?php echo $file['title']; ?>"
                                                         data-file-type="<?php echo $type; ?>"
                                                         class="button button-primary button-small bupGDriveRestore"
@@ -139,14 +135,7 @@
                                     <?php endforeach;?>
                                     </tbody>
                                     </table>
-                                    <!-- migrateButton -->
-                                    <p>
-                                        <?php
-                                        $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateGoogleDrive">' . __('Migrate', BUP_LANG_CODE). '</button>';
-                                        echo dispatcherBup::applyFilters('getGoogleDriveMigrationButton', $button, $id, $files, $encrypted);
-                                        ?>
-                                    </p>
-                                    <!-- /migrateButton -->
+
                                 <?php endif; ?>
                                 <?php if(!empty($logs[$id]['content'])):?>
                                     <span class="bupShowLogHistory" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
@@ -173,7 +162,7 @@
                                 <table>
                                     <tbody>
                                         <?php foreach($files as $type=>$file):?>
-                                            <?php if ($file->type === 'file'): ?>
+                                            <?php if ($file->type === 'file' || $file->type === 'folder'): ?>
                                                 <tr id="backup-<?php echo $file->id; ?>" data-id="<?php echo $id; ?>" data-filename="<?php echo $file->name; ?>">
                                                     <td>
                                                         <?php echo ($type == 'zip')? __('Filesystem', BUP_LANG_CODE) : __('Database', BUP_LANG_CODE)?>
@@ -198,15 +187,6 @@
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
-
-                                <!-- migrateButton -->
-                                <p>
-                                    <?php
-                                    $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateOneDrive">' . __('Migrate', BUP_LANG_CODE). '</button>';
-                                    echo dispatcherBup::applyFilters('getOneDriveMigrationButton', $button, $id, $files, $encrypted);
-                                    ?>
-                                </p>
-                                <!-- /migrateButton -->
 
                                 <?php if(!empty($logs[$id]['content'])):?>
                                     <span class="bupShowLogHistory" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
@@ -249,14 +229,6 @@
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
-                                <!-- migrateButton -->
-                                <p>
-                                    <?php
-                                    $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateAmazon">' . __('Migrate', BUP_LANG_CODE). '</button>';
-                                    echo dispatcherBup::applyFilters('getAmazonMigrationButton', $button, $id, $files, $encrypted);
-                                    ?>
-                                </p>
-                                <!-- /migrateButton -->
 
                                 <?php if(!empty($logs[$id]['content'])):?>
                                     <span class="bupShowLogHistory" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE) ?></span>
@@ -308,14 +280,6 @@
                                     <?php endforeach; ?>
                                     </tbody>
                                 </table>
-                                <!-- migrateButton -->
-                                <p>
-                                    <?php
-                                    $button = '<button class="button button-primary button-small bupMigratePromo bupMigrateDropbox">' . __('Migrate', BUP_LANG_CODE). '</button>';
-                                    echo dispatcherBup::applyFilters('getDropboxMigrationButton', $button, $id, $files, $encrypted);
-                                    ?>
-                                </p>
-                                <!-- /migrateButton -->
 
                                 <?php if(!empty($logs[$id]['content'])):?>
                                     <span class="bupShowLogHistory" data-log="<?php echo nl2br($logs[$id]['content'])?>"><?php _e('Show Backup Log', BUP_LANG_CODE)?></span>

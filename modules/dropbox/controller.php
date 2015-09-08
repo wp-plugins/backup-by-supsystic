@@ -219,17 +219,44 @@ class dropboxControllerBup extends controllerBup {
 	public function restoreAction() {
 		$request  = reqBup::get('post');
 		$response = new responseBup();
+        $extension = pathinfo($request['file'], PATHINFO_EXTENSION);
 
 		if(!isset($request['file']) OR empty($request['file'])) {
 			$response->addError(__('There was an error during recovery', BUP_LANG_CODE));
 		}
 
-		if($this->model->download($request['file']) === true) {
-			$response->addData(array('filename' => $request['file']));
-		}
-		else {
-			$response->addError($this->model->getErrors());
-		}
+        if($extension === 'sql' || $extension === 'zip') {
+            if ($this->model->download($request['file']) === true) {
+                $response->addData(array('filename' => $request['file']));
+            } else {
+                $response->addError($this->model->getErrors());
+            }
+        } else {
+            $stacksFolder = !empty($request['file']) ? $request['file'] : '';
+            $stacksFileList = $this->model->getUploadedFiles($stacksFolder . '/');
+
+            if(!empty($stacksFileList)) {
+                $backupPath = $this->model->getBackupsPath();
+                $result = true;
+
+                if(!file_exists($backupPath . $stacksFolder)) {
+                    frameBup::_()->getModule('warehouse')->getController()->getModel('warehouse')->create($backupPath . $stacksFolder . DS);
+                }
+
+                foreach($stacksFileList as $stack){
+                    if(!file_exists($backupPath . $stacksFolder . DS . basename($stack)))
+                        $result = ($this->model->download($stack) && $result) ? true : false;
+                }
+
+                if($result) {
+                    $response->addData(array('filename' => $stacksFolder));
+                } else {
+                    $response->addError(__('All files not downloaded from DropBox, please, try again', BUP_LANG_CODE));
+                }
+            } else {
+                $response->addError(__('Files not found on OneDrive', BUP_LANG_CODE));
+            }
+        }
 
 		return $response->ajaxExec();
 	}

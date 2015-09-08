@@ -5,7 +5,7 @@
  * @version 2.0
  */
 class backupControllerBup extends controllerBup {
-    private $_tablesPerStack = 10;
+    private $_tablesPerStack = 20;
 
     public function indexAction() {
 		$model   = $this->getModel();
@@ -24,6 +24,14 @@ class backupControllerBup extends controllerBup {
 		));
 	}
 
+    public function createBackupAction() {
+        $request = reqBup::get('post');
+//        $request = reqBup::get('get');
+
+        if(!empty($request['auth']) && $request['auth'] === AUTH_KEY)
+            $this->getModel('backup')->createBackup($request);
+    }
+
 	/**
 	 * Create Action
 	 * Create new backup
@@ -32,17 +40,22 @@ class backupControllerBup extends controllerBup {
         $request = reqBup::get('post');
         $response = new responseBup();
 
-        /** @var backupLogModelBup $log */
-        $log = $this->getModel('backupLog');
+        /** @var optionsModelBup $optionsModel */
+        $optionsModel = frameBup::_()->getModule('options')->getModel();
+        /** @var backupLogTxtModelBup $logTxt */
+        $logTxt = $this->getModel('backupLogTxt');
+        /** @var backupTechLogModelBup $techLog */
+        $techLog = $this->getModel('backupTechLog');
+        /** @var warehouseBup $bupFolder */
+        $bupFolder = frameBup::_()->getModule('warehouse');
+        $uploadingList = array();
+        $backupComplete = false;
 
         if(!empty($request['opt_values'])){
-            // clear previous log data
-            $log->clear();
             do_action('bupBeforeSaveBackupSettings', $request['opt_values']);
-            $log->writeBackupSettings($request['opt_values']);
-            frameBup::_()->getModule('options')->getModel('options')->saveMainFromDestGroup($request);
-            frameBup::_()->getModule('options')->getModel('options')->saveGroup($request);
-            frameBup::_()->getModule('options')->getModel('options')->refreshOptions();
+            $optionsModel->saveMainFromDestGroup($request);
+            $optionsModel->saveGroup($request);
+            $optionsModel->refreshOptions();
 
             // if warehouse changed - create necessary dir
             $bupFolder = frameBup::_()->getModule('warehouse');
@@ -70,254 +83,94 @@ class backupControllerBup extends controllerBup {
             return $response->ajaxExec();
         }
 
-        $filename = $this->getModel()->generateFilename(array('zip', 'sql', 'txt'));
+        $currentBackupPath = $this->getModel()->generateFilename(array('zip', 'sql', 'txt'));
+        $logTxt->setLogName(basename($currentBackupPath['folder']));
+        $logTxt->writeBackupSettings($request['opt_values']);
+        $logTxt->add(__('Clear temporary directory', BUP_LANG_CODE));
+        $techLog->deleteOldLogs();
+        $techLog->setLogName(basename($currentBackupPath['folder']));
 
-        if ($this->getModel()->isFilesystemRequired() && empty($request['filesBackupComplete'])) {
-            if(!empty($request['opt_values']))
-                $log->saveBackupDirSetting($request['opt_values']);
-            if (!isset($request['complete'])) {
-                // Disallow to do backups while backup already in proccess.
-                $this->lock();
+        if ($this->getModel()->isDatabaseRequired()) {
+            $logTxt->add(__(sprintf('Start database backup: %s', $currentBackupPath['sql']), BUP_LANG_CODE));
+            $this->getModel()->getDatabase()->create($currentBackupPath['sql']);
+            $dbErrors = $this->getModel()->getDatabase()->getErrors();
 
-                $files = $this->getModel()->getFilesList();
-                // $files = array_map('realpath', $files);
-
-                $log->string(sprintf('%s files scanned.', count($files)));
-
-                $warehouse = frameBup::_()->getModule('warehouse')->getPath();
-                $dir = frameBup::_()->getModule('warehouse')->getTemporaryPath();
-
-                $log->string(__('Clear out old temporary files', BUP_LANG_CODE));
-                if (file_exists($file = $dir . '/stacks.dat')) {
-                    if (@unlink($file)) {
-                        $log->string(__(sprintf('%s successfully deleted', basename($file)), BUP_LANG_CODE));
-                    } else {
-                        $log->string(__(sprintf('Cannot delete file %s. If you notice a problem with archives - delete the file manually', $file), BUP_LANG_CODE));
-                    }
-                }
-                $tmpDirFiles = glob($dir . '/*');
-                if(!empty($tmpDirFiles) && is_array($tmpDirFiles)) {
-                    foreach ($tmpDirFiles as $tmp) {
-                        if (substr(basename($tmp), 0, 3) === 'BUP') {
-                            if (@unlink($tmp)) {
-                                $log->string(__(sprintf('%s successfully deleted', $tmp), BUP_LANG_CODE));
-                            } else {
-                                $log->string(__(sprintf('Cannot delete file %s', $tmp), BUP_LANG_CODE));
-                            }
-                        }
-                    }
-                }
-
-                $response->addData(array(
-                    'files'     => $files,
-                    'per_stack' => BUP_FILES_PER_STACK,
-                ));
-
-                $log->string(__('Send request to generate temporary file stacks', BUP_LANG_CODE));
-
+            if (!empty($dbErrors)) {
+                $logTxt->add(__(sprintf('Errors during creation of database backup, errors count %d', count($dbErrors)), BUP_LANG_CODE));
+                $response->addError($dbErrors);
                 return $response->ajaxExec();
             }
 
-            $log->string(__(sprintf('Create a backup of the file system: %s', $filename['zip']), BUP_LANG_CODE));
-            $this->getModel()->getFilesystem()->create($filename['zip']);
-
-            $log->setCurrentBackupFilesName($filename['zip']);
+            $logTxt->add(__('Database backup complete.'), BUP_LANG_CODE);
+            $uploadingList[] = $currentBackupPath['sql'];
+            $backupComplete = true;
         }
 
-        if ($this->getModel()->isDatabaseRequired()) {
-            if(empty($request['databaseBackupComplete'])) {
-                // Disallow to do backups while backup already in proccess.
-                $this->lock();
-
-                $log->string(__(sprintf('Create a backup of the database: %s', $filename['sql']), BUP_LANG_CODE));
-
-                if ($this->_tablesPerStack > 0) {
-                    $tables = $this->getModel()->getDatabase()->getTablesName();
-                    $response->addData(
-                        array(
-                            'dbDumpFileName' => json_encode($filename['sql']),
-                            'tables' => $tables,
-                            'per_stack' => $this->_tablesPerStack
-                        )
-                    );
-
-                    $log->string(__('Send requests to getting database tables name.', BUP_LANG_CODE));
-
-                    $log->setCurrentBackupFilesName($filename['sql']);
-
-                    return $response->ajaxExec();
-                } else {
-                    $this->getModel()->getDatabase()->create($filename['sql']);
-                    $dbErrors = $this->getModel()->getDatabase()->getErrors();
-                    if (!empty($dbErrors)) {
-                        $log->string(__(sprintf('Errors during creation of database backup, errors count %d', count($dbErrors)), BUP_LANG_CODE));
-                        $response->addError($dbErrors);
-                        return $response->ajaxExec();
-                    }
-                    $log->setCurrentBackupFilesName($filename['sql']);
-                }
-            } else {
-                $log->string(__('Database backup complete.'), BUP_LANG_CODE);
+        if ($this->getModel()->isFilesystemRequired()) {
+            if(!file_exists($currentBackupPath['folder'])) {
+                $bupFolder->getController()->getModel('warehouse')->create($currentBackupPath['folder'] . DS);
             }
-        }
-        $cloud = $log->getCurrentBackupFilesName();
-        $log->string(__('Backup complete', BUP_LANG_CODE));
+            $logTxt->add(__('Scanning files.', BUP_LANG_CODE));
+            $files = $this->getModel()->getFilesList();
+            // $files = array_map('realpath', $files);
 
-        $handlers = $this->getModel()->getDestinationHandlers();
-
-        if (array_key_exists($destination, $handlers)) {
-
-            $cloud = array_map('basename', $cloud);
-
-            $log->string(__(sprintf('Upload to the "%s" required', ucfirst($destination)), BUP_LANG_CODE));
-            $log->string(sprintf('Files to upload: %s', rtrim(implode(', ', $cloud), ', ')));
-            $handler = $handlers[$destination];
-            $result  = call_user_func_array($handler, array($cloud));
-            if ($result === true || $result == 200 || $result == 201) {
-                $log->string(__(sprintf('Successfully uploaded to the "%s"', ucfirst($destination)), BUP_LANG_CODE));
-
-                $path = frameBup::_()->getModule('warehouse')->getPath();
-                $path = untrailingslashit($path);
-
-                foreach ($cloud as $file) {
-                    $log->string(__(sprintf('Removing %s from the local storage.', $file), BUP_LANG_CODE));
-                    if (@unlink($path . '/' . $file)) {
-                        $log->string(__(sprintf('%s successfully removed.', $file), BUP_LANG_CODE));
-                    } else {
-                        $log->string(__(sprintf('Failed to remove %s', $file), BUP_LANG_CODE));
-                    }
-                }
-            } else {
-                switch ($result) {
-                    case 401:
-                        $error = __('Authentication required.', BUP_LANG_CODE);
-                        break;
-                    case 404:
-                        $error = __('File not found', BUP_LANG_CODE);
-                        break;
-                    case 500:
-                        $error = is_object($handler[0]) ? $handler[0]->getErrors() : __('Unexpected error (500)', BUP_LANG_CODE);
-                        break;
-                    default:
-                        $error = __('Unexpected error', BUP_LANG_CODE);
-                }
-
-                $log->string(__(
-                    sprintf(
-                        'Cannot upload to the "%s": %s',
-                        ucfirst($destination),
-                        is_array($error) ? array_pop($error) : $error
-                    )
-                , BUP_LANG_CODE));
-            }
+            $logTxt->add(sprintf('%s files scanned.', count($files, true) - count($files)));
+            $logTxt->add(__('Total stacks: ' . count($files), BUP_LANG_CODE));
+            $techLog->set('stacks', $files);
+            $techLog->set('totalStacksCount', count($files));
+            $uploadingList[] = $currentBackupPath['folder'];
+            $backupComplete = false;
         }
 
-        if(empty($error)) {
+        // if need create filesystem backup or send DB backup on cloud - backup not complete
+        if(!empty($files) || $destination !== 'ftp') {
+            $backupComplete = false;
+            $techInfoArray = array(
+                'destination'        => $destination,
+                'uploadingList'      => $uploadingList,
+                'emailNotifications' => (frameBup::_()->getModule('options')->get('email_ch') == 1) ? true : false
+            );
+            $techLog->set($techInfoArray);
+
+            $data = array(
+                'page' => 'backup',
+                'action' => 'createBackupAction',
+                'backupId' => $currentBackupPath['folder'],
+            );
+
+            if(!empty($files))
+                $logTxt->add(__('Send request to generate backup file stacks', BUP_LANG_CODE));
+
+            $this->getModel('backup')->sendSelfRequest($data);
+        }
+
+        if($backupComplete && frameBup::_()->getModule('options')->get('email_ch') == 1) {
+            $email = frameBup::_()->getModule('options')->get('email');
+            $subject = __('Backup by Supsystic Notifications', BUP_LANG_CODE);
+
+            $logTxt->add(__('Email notification required.', BUP_LANG_CODE));
+            $logTxt->add(sprintf(__('Sending to ', BUP_LANG_CODE) . '%s', $email));
+
+            $message = $logTxt->getContent(false);
+            wp_mail($email, $subject, $message);
+        }
+
+        $response->addData(array(
+            'backupLog' => $logTxt->getContent(),
+            'backupId' => basename($currentBackupPath['folder']),
+            'backupComplete' => $backupComplete
+        ));
+
+        if($backupComplete) {
             $response->addMessage(__(
                 sprintf(
                     'Backup complete. You can restore backup <a href="%s">here</a>.', uriBup::_(array('baseUrl' => get_admin_url(0, 'admin.php?page=' . BUP_PLUGIN_PAGE_URL_SUFFIX . '&tab=' . 'bupLog')))
                 ), BUP_LANG_CODE
             ));
-        } else {
-            $response->addError(__('Error occurred: ' . ucfirst($destination) . ', ' . $error, BUP_LANG_CODE));
         }
-
-        // Allow to do new backups.
-        $this->unlock();
-
-        if (frameBup::_()->getModule('options')->get('email_ch') == 1) {
-            $email = frameBup::_()->getModule('options')->get('email');
-            $subject = __('Backup by Supsystic Notifications', BUP_LANG_CODE);
-
-            $log->string(__('Email notification required.', BUP_LANG_CODE));
-            $log->string(sprintf(__('Sending to', BUP_LANG_CODE) . '%s', $email));
-
-            $message = $log->getContents();
-
-            wp_mail($email, $subject, $message);
-        }
-
-        $backupPath =  untrailingslashit(frameBup::_()->getModule('warehouse')->getPath()) . DS;
-        $pathInfo = pathinfo($cloud[0]);
-        $log->save($backupPath . $pathInfo['filename'] . '.txt');
-        $log->clear();
 
         return $response->ajaxExec();
 	}
-
-    /**
-     * Create Stack Action
-     * Creates stacks of files with BUP_FILER_PER_STACK files limit and returns temporary file name
-     */
-    public function createStackAction() {
-		@set_time_limit(0);
-
-        $request = reqBup::get('post');
-        $response = new responseBup();
-
-        /** @var backupLogModelBup $log */
-        $log = $this->getModel('backupLog');
-
-        if (!isset($request['files'])) {
-            return;
-        }
-
-        $log->string(__(sprintf('Trying to generate a stack of %s files', count($request['files'])), BUP_LANG_CODE));
-
-        $filesystem = $this->getModel()->getFilesystem();
-        $filename = $filesystem->getTemporaryArchive($request['files']);
-        if(frameBup::_()->getModule('options')->get('warehouse_abs') == 1){
-            $absPath = str_replace('/', DS, ABSPATH);
-            $filename = str_replace('/', DS, $filename);
-            $filename = str_replace($absPath, '', $filename);
-        }
-
-        if ($filename === null) {
-            $log->string(__('Unable to create the temporary archive', BUP_LANG_CODE));
-            $response->addError(__('Unable to create the temporary archive', BUP_LANG_CODE));
-        } else {
-            $log->string(__(sprintf('Temporary stack %s successfully generated', $filename), BUP_LANG_CODE));
-            $response->addData(array('filename' => $filename));
-        }
-
-        return $response->ajaxExec();
-    }
-
-    public function writeTmpDbAction()
-    {
-        $request = reqBup::get('post');
-
-        if (isset($request['tmp'])) {
-            $file = frameBup::_()->getModule('warehouse')->getTemporaryPath()
-                . DIRECTORY_SEPARATOR
-                . 'stacks.dat';
-
-            file_put_contents($file, $request['tmp'] . PHP_EOL, FILE_APPEND);
-        }
-    }
-
-    public function createDBDumpPerStack(){
-        $response = new responseBup();
-        $request = reqBup::get('post');
-        $stack = !empty($request['stack']) ? $request['stack'] : false;
-        $filename = !empty($request['filename']) ? $request['filename'] : false;
-        $firstQuery = !empty($request['firstQuery']) ? true : false;
-        /** @var backupLogModelBup $log */
-        $log = $this->getModel('backupLog');
-
-        if(!empty($stack) && !empty($filename)) {
-            $result = $this->getModel('database')->create($filename, $stack, $firstQuery);
-            if($result){
-                $log->string(__('Tables backup complete: ', BUP_LANG_CODE) . implode(', ', $stack));
-            } else {
-                $log->string(__('Tables backup failure: ', BUP_LANG_CODE) . implode(', ', $stack));
-            }
-        } else {
-            $response->addError(__('Error in database.', BUP_LANG_CODE));
-        }
-
-        return $response->ajaxExec();
-    }
 
 	/**
 	 * Restore Action
@@ -331,7 +184,7 @@ class backupControllerBup extends controllerBup {
 
         // This block for pro-version module 'scrambler'
         $needKeyToDecryptDB = dispatcherBup::applyFilters('checkIsNeedSecretKeyToEncryptedDB', false, $filename, $request);
-        if($needKeyToDecryptDB){
+        if($needKeyToDecryptDB) {
             $response->addData(array('need' => 'secretKey'));
             return $response->ajaxExec();
         }
@@ -344,15 +197,12 @@ class backupControllerBup extends controllerBup {
                 $errors = __('Unable to restore from ' . $filename, BUP_LANG_CODE);
             }
 			$response->addError($errors);
-		}
-        elseif(is_array($result) && array_key_exists('error', $result)) {
+		} elseif(is_array($result) && array_key_exists('error', $result)) {
             $response->addError($result['error']);
-        }
-        elseif(is_array($result) && !empty($result)) {
+        } elseif(is_array($result) && !empty($result)) {
             $content = __('Unable to restore backup files. Check folder or files writing permissions. Try to set 766 permissions to the:', BUP_LANG_CODE) . ' <br>'. implode('<br>', $result);
             $response->addError($content);
-        }
-		else {
+        } else {
 			$response->addData($result);
 			$response->addMessage(__('Done!', BUP_LANG_CODE));
 		}
@@ -472,11 +322,12 @@ class backupControllerBup extends controllerBup {
 		}
 		return true;
 	}
+
 	public function getPermissions() {
 		return array(
 			BUP_USERLEVELS => array(
-				BUP_ADMIN => array('render', 'getModel', 'removeAction', 'downloadAction', 'restoreAction', 'writeTmpDbAction',
-					'createStackAction', 'createAction', 'indexAction')
+				BUP_ADMIN => array('render', 'getModel', 'removeAction', 'downloadAction', 'restoreAction',
+					'createAction', 'indexAction')
 			),
 		);
 	}
@@ -523,15 +374,34 @@ class backupControllerBup extends controllerBup {
         frameBup::_()->getModule('backup')->unlock();
     }
 
-    public function getBackupLog()
-    {
+    public function getBackupLog() {
         $response = new responseBup();
+        $request = reqBup::get('post');
+        /** @var backupTechLogModelBup $techLog */
+        $techLog = $this->getModel('backupTechLog');
+        $techLog->setLogName($request['backupId']);
+        /** @var backupLogTxtModelBup $log */
+        $log = $this->getModel('backupLogTxt');
+        $log->setLogName($request['backupId']);
+        $backupComplete = $techLog->get('complete');
+        $backupMessage = $techLog->get('backupMessage');
+        $backupProcessPercent = $techLog->get('backupProcessPercent');
+        $filesystemBackupComplete = $techLog->get('filesystemBackupComplete');
 
-        $response->addData(
-            array(
-                'backupLog' => frameBup::_()->getModule('backup')->getModel('backupLog')->getBackupLog(),
-            )
+        $backupProcessData = array(
+            'backupLog' => $log->getContent(),
+            'backupComplete' => $backupComplete,
+            'backupMessage' => $backupMessage,
+            'backupProcessPercent' => $backupProcessPercent,
+            'filesystemBackupComplete' => $filesystemBackupComplete,
         );
+
+        $response->addData($backupProcessData);
+
+        if($backupComplete) {
+            $techLog->deleteOldLogs();
+            $response->addMessage(__('Backup complete!'), BUP_LANG_CODE);
+        }
 
         return $response->ajaxExec();
     }

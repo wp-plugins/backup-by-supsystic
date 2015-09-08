@@ -29,7 +29,7 @@
                         <?php echo htmlBup::submit('backupnow', array('value' => __('Where to Backup:', BUP_LANG_CODE), 'attrs' => implode(' ', $attrs))); ?>
                         <div id="bupInfo">
                             <p style="font-size: 15px;"><?php _e('Available space:', BUP_LANG_CODE) ?> <br/>
-                                <?php if (frameBup::_()->getModule('warehouse')->getWarehouseStatus()): ?>
+                                <?php if (frameBup::_()->getModule('warehouse')->getWarehouseStatus() && function_exists('disk_free_space')): ?>
                                     <?php echo frameBup::_()->humanSize(
                                         disk_free_space(frameBup::_()->getModule('warehouse')->getPath())
                                     );
@@ -46,7 +46,7 @@
                             <div class="progress-bar devblue shine">
                                 <span style="width: 0%;"><b id="bupCompletePercent"></b></span>
                             </div>
-                            <span class="bupShowLog bupShowLogDlg"><?php _e('Show Log', BUP_LANG_CODE) ?></span>
+                            <span class="bupShowLog bupShowLogDlg" data-backup-log=""><?php _e('Show Log', BUP_LANG_CODE) ?></span>
                         </div>
 
                         <div id="BUP_SHOW_LOG" style="display: none;">

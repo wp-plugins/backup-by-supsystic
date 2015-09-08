@@ -189,10 +189,10 @@ class onedriveModelBup extends modelBup
      * Returns the files from the Backup By Supsystic folder.
      * @return array|null
      */
-    public function getUserFiles()
+    public function getUserFiles($stacksFolder = '')
     {
         $this->refreshAccessToken();
-        $root = $this->getDomainObject();
+        $root = $this->getDomainObject($stacksFolder);
 
         if ($root) {
             return $this->getFolderObjects($root->id);
@@ -218,10 +218,11 @@ class onedriveModelBup extends modelBup
         return $this->createFolder('Backup By Supsystic');
     }
 
-    public function getDomainObject()
+    public function getDomainObject($stacksFolder = '')
     {
         $currentDomain = parse_url(get_bloginfo('wpurl'), PHP_URL_HOST);
         $root = $this->getBackupFolderObject();
+        $domainFolder = false;
 
         if (null === $root) {
             $this->pushError('Failed to get access to the Backup By Supsystic folder.');
@@ -237,11 +238,28 @@ class onedriveModelBup extends modelBup
 
         foreach ($domains as $domain) {
             if ($domain->type == 'folder' && $domain->name == $currentDomain) {
-                return $domain;
+                $domainFolder = $domain;
+                break;
             }
         }
 
-        return $this->createFolder($currentDomain, null, $root->id);
+        if(!$domainFolder)
+            $domainFolder = $this->createFolder($currentDomain, null, $root->id);
+
+        if(!$stacksFolder) {
+            return $domainFolder;
+        } else {
+            //creating folder for backup stacks
+            $domainFolders = $this->getFolderObjects($domainFolder->id, true);
+
+            foreach ($domainFolders as $folder) {
+                if (!empty($folder->type) && $folder->type == 'folder' && $folder->name == $stacksFolder) {
+                    return $folder;
+                }
+            }
+
+            return $this->createFolder($stacksFolder , null, $domainFolder->id);
+        }
     }
 
     /**
@@ -288,7 +306,7 @@ class onedriveModelBup extends modelBup
      * @param  string $folderId
      * @return stdClass[]|null
      */
-    public function getFolderObjects($folderId)
+    public function getFolderObjects($folderId, $getStacksFolder = false)
     {
         $url = $this->buildUrl('{folder_id}/files?access_token={token}', array(
             'folder_id' => $folderId,
@@ -305,25 +323,36 @@ class onedriveModelBup extends modelBup
 
         if(!empty($body->data[0]->name) && strpos($body->data[0]->name, 'backup_') !== false ){
 
-            // Formatting uploading data files for use their on backups page
-            $files = array();
-            foreach ($body->data as $key => $file) {
-                $backupInfo = $this->getBackupInfoByFilename($file->name);
+            if($getStacksFolder) {
+                $folders = array();
 
-                if(empty($files[$backupInfo['id']]['onedrive']))
-                    $files[$backupInfo['id']]['onedrive']= new stdClass();
-
-                if(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql'){
-                    $files[$backupInfo['id']]['onedrive']->sql = $body->data[$key];
-                    $files[$backupInfo['id']]['onedrive']->sql->backupInfo = $backupInfo;
-                    $files[$backupInfo['id']]['onedrive']->sql->backupInfo = dispatcherBup::applyFilters('addInfoIfEncryptedDb', $files[$backupInfo['id']]['onedrive']->sql->backupInfo);
-                }elseif(!empty($backupInfo['ext']) && $backupInfo['ext'] == 'zip'){
-                    $files[$backupInfo['id']]['onedrive']->zip = $body->data[$key];
-                    $files[$backupInfo['id']]['onedrive']->zip->backupInfo = $backupInfo;
+                foreach ($body->data as $key => $folder) {
+                    $folders[] = $folder;
                 }
-            }
 
-            return $files;
+                return $folders;
+            } else {
+                // Formatting uploading data files for use their on backups page
+                $files = array();
+
+                foreach ($body->data as $key => $file) {
+                    $backupInfo = $this->getBackupInfoByFilename($file->name);
+
+                    if (empty($files[$backupInfo['id']]['onedrive']))
+                        $files[$backupInfo['id']]['onedrive'] = new stdClass();
+
+                    if (!empty($backupInfo['ext']) && $backupInfo['ext'] == 'sql') {
+                        $files[$backupInfo['id']]['onedrive']->sql = $body->data[$key];
+                        $files[$backupInfo['id']]['onedrive']->sql->backupInfo = $backupInfo;
+                        $files[$backupInfo['id']]['onedrive']->sql->backupInfo = dispatcherBup::applyFilters('addInfoIfEncryptedDb', $files[$backupInfo['id']]['onedrive']->sql->backupInfo);
+                    } else {
+                        $files[$backupInfo['id']]['onedrive']->zip = $body->data[$key];
+                        $files[$backupInfo['id']]['onedrive']->zip->backupInfo = $backupInfo;
+                    }
+                }
+
+                return $files;
+            }
         }
 
         return $body->data;
@@ -357,7 +386,7 @@ class onedriveModelBup extends modelBup
         return $this->getBody($response);
     }
 
-    public function upload($files = array())
+    public function upload($files = array(), $stacksFolder = '')
     {
         if (!is_array($files)) {
             $files = explode(',', $files);
@@ -368,14 +397,14 @@ class onedriveModelBup extends modelBup
         }
 
         $this->refreshAccessToken();
-        if (null === $folder = $this->getDomainObject()) {
-            return;
+        if (null === $folder = $this->getDomainObject(basename($stacksFolder))) {
+            return 500;
         }
 
         $skydrive = new skydriveBup($this->getAccessToken());
 
         foreach ($files as $file) {
-            if (file_exists($file = $this->getBackupsPath() . basename($file))) {
+            if (file_exists($file = $this->getBackupsPath() . $stacksFolder .basename($file))) {
                 try {
                     $skydrive->put_file(
                         $folder->id,
@@ -383,6 +412,7 @@ class onedriveModelBup extends modelBup
                     );
                 } catch (Exception $e) {
                     $this->pushError($e->getMessage());
+                    return 500;
                 }
             }
         }
@@ -390,7 +420,7 @@ class onedriveModelBup extends modelBup
         return 201;
     }
 
-    public function download($fileId, $returnDataString = false)
+    public function download($fileId, $returnDataString = false, $stacksFolder = '')
     {
         $this->refreshAccessToken();
         $skydrive = new skydriveBup($this->getAccessToken());
@@ -413,6 +443,7 @@ class onedriveModelBup extends modelBup
             foreach ($data as $file) {
                 $filename = $this->getBackupsPath()
                     . '/'
+                    . $stacksFolder
                     . $file['properties']['name'];
 
                 if($returnDataString)
@@ -503,8 +534,7 @@ class onedriveModelBup extends modelBup
 
     public function getBackupsPath()
     {
-        return frameBup::_()->getModule('warehouse')->getPath()
-            . DIRECTORY_SEPARATOR;
+        return frameBup::_()->getModule('warehouse')->getPath() . DS;
     }
 
     public function isLocalFileExists($filename) {
@@ -796,7 +826,7 @@ class onedriveModelBup extends modelBup
             @error_log('Backup by Supsystic: Failed to write OneDrive refresh token expire time.');
         }
     }
-    public function isUserAuthorizedInService()
+    public function isUserAuthorizedInService($destination = null)
     {
         $isAuthorized = $this->isAuthenticated() ? true : false;
         if(!$isAuthorized)

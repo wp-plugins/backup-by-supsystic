@@ -86,7 +86,7 @@ class onedriveBup extends moduleBup
             'sortNum' => 4,
             'key' => 'onedrive',
             'isAuthenticated' => $this->getController()->getModel()->isAuthenticated() ? 1 : 0,
-            'msgForNotAuthenticated' => __('Before start backup - please authenticate in the OneDrive.', BUP_LANG_CODE),
+            'msgForNotAuthenticated' => __('Before start backup - please authenticate with OneDrive.', BUP_LANG_CODE),
         );
 
         return $tabs;

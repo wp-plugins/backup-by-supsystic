@@ -412,7 +412,7 @@ class frameBup {
         if(!function_exists('wp_get_current_user'))
 			$this->loadPlugins();
 		$user = wp_get_current_user();
-		return $user->data->ID;
+		return isset($user->data->ID) ? $user->data->ID : null;
     }
 
     public function humanSize($bytes) {

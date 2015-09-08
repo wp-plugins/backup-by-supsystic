@@ -5,6 +5,7 @@ class installerDbUpdaterBup {
 		self::update_002();
 		self::update_003();
 		self::update_004();
+		self::update_005();
 	}
 	static public function update_001() {
 		global $wpdb;
@@ -52,6 +53,18 @@ class installerDbUpdaterBup {
 				(NULL,'email_ch','0','---','---',1,'',0,0,'')");
 			dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."modules` (`id`, `code`, `active`, `type_id`, `params`, `has_tab`, `label`, `description`) VALUES
 				(NULL, 'warehouse', '1', '1','', '0', 'Warehouse', '');");
+		}
+	}
+	public static function update_005() {
+		global $wpdb;
+		$wpPrefix = $wpdb->prefix;
+		if(!dbBup::exist($wpPrefix.BUP_DB_PREF."options", 'code', 'files_per_stack')){
+			dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES
+				(NULL,'files_per_stack','300','How much files will be added in stack file','How much files will be added in stack file',1,'',0,0,'')");
+		}
+		if(!dbBup::exist($wpPrefix.BUP_DB_PREF."options", 'code', 'max_file_size_in_stack_mb')){
+			dbBup::query("INSERT INTO `".$wpPrefix.BUP_DB_PREF."options` (`id`,`code`,`value`,`label`,`description`,`htmltype_id`,`params`,`cat_id`,`sort_order`,`value_type`) VALUES
+				(NULL,'max_file_size_in_stack_mb','30','Max size of file, which will be added in stack file','Max size of file, which will be added in stack file',1,'',0,0,'')");
 		}
 	}
 }

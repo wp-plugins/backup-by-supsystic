@@ -76,12 +76,13 @@ class backupBup extends moduleBup {
 
     protected function loadPcl()
     {
-        if (is_file($file = ABSPATH . 'wp-admin/includes/class-pclzip.php')) {
+        if (!class_exists('PclZip') && is_file($file = ABSPATH . 'wp-admin/includes/class-pclzip.php')) {
             require_once $file;
             return;
         }
 
-        require_once realpath($this->getModDir()) . '/classes/pclzip.lib.php';
+        if(!class_exists('PclZip'))
+            require_once realpath($this->getModDir()) . '/classes/pclzip.lib.php';
     }
 
 	/**

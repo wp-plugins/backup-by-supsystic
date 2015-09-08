@@ -372,7 +372,7 @@ class dropboxModelBup extends modelBup {
 
 		return false;
 	}
-    public function isUserAuthorizedInService()
+    public function isUserAuthorizedInService($destination = null)
     {
         $isAuthorized = $this->isAuthenticated() ? true : false;
         if(!$isAuthorized)

@@ -95,8 +95,11 @@ var AmazonModule = {
                 'filename': filename,
                 'deleteLog': deleteLog
             },
-            onSuccess: function() {
-                jQuery('#' + rowId).remove();
+            onSuccess: function(response) {
+				if(!response.error) {
+					location.reload();
+					//jQuery('#' + rowId).remove();
+				}
             }
         });
     },

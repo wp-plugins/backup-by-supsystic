@@ -6,9 +6,9 @@ class reqBup {
 
     }
     static public function init() {
-        session_start();
-        //parse_str(file_get_contents('php://input'), self::$_requestData);
-        //self::getMethod();
+        if(!utilsBup::isSessionStarted()) {
+			session_start();
+		}
     }
 /**
  * @param string $name key in variables array

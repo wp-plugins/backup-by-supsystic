@@ -92,6 +92,12 @@ class promo_supsysticBup extends moduleBup {
             'faIcon' => 'fa-clock-o',
             'sort_order' => 15
         );
+        $tabs['bupMigration'] = array(
+            'title'   => __('Migration <p class="bupAIP">Available In PRO</p>', BUP_LANG_CODE),
+            'content' => array($this->getController(), 'getPromoMigrationAction'),
+            'faIcon' => 'fa-copy',
+            'sort_order' => 55
+        );
 
         return $tabs;
     }
