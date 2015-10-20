@@ -3,7 +3,7 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/backup-plugin
 Tags: backup, back up, restoration, db backup, dump, migrate, email, FTP, mysql backup, database backup, db backup, full backup, restore, transfer, website backup, wordpress backup, migration, backup plugins, backup posts, backup pages , backup scheduler
 Tested up to: 4.3.1
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 
 Online backup, restoration or migrate solution. Custom backup files and database to the FTP, DropBox, Google Drive or Amazon S3. Backup secure option
 
@@ -242,6 +242,10 @@ Temporarily restoring backup on the test servers is a unique feature provided by
 * [Secure Login by Supsystic](https://wordpress.org/plugins/secure-login-by-supsystic/ "Secure Login by Supsystic")
 
 == Changelog ==
+
+= 2.0.2 / 21.10.2015 =
+ * Code review
+ * Minor issues fix
 
 = 2.0.1 / 06.09.2015 =
  * Optimized the creation of backup files
